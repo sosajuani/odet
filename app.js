@@ -15,9 +15,10 @@ app.use(express.static('src/public'));
 //requiero rutas
 const rutasMain = require('./src/routes/mainRoutes');
 const rutasAdm = require('./src/routes/adminRoutes');
+const rutasNoticias = require('./src/routes/noticiasRoutes');
 app.use('/',rutasMain);
+app.use('/noticia',rutasNoticias);
 app.use('/admin',rutasAdm);
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
