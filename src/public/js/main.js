@@ -1,3 +1,4 @@
+
 let seleccion = (item)=>{
     const vari = document.querySelector(item);
     return vari;
@@ -15,4 +16,5 @@ let mostrar = (boton1,mostrar,btnCierra)=>{
         buttonMostrar.classList.remove("ocultarMobile");
     });
 }
-mostrar(".buttonMovilMenu",".menuHeaderCont",".cerraMenuBtn")
+mostrar(".buttonMovilMenu",".menuHeader",".cerraMenuBtn");
+mostrar(".buttonMovilMenu",".menuAdmin",".cerraMenuBtn");

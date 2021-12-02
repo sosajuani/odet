@@ -1,10 +1,10 @@
 const express = require('express');
 
 const adminController = {
-    'home': (req,res)=>{
+    home: (req,res)=>{
         res.render('admin/indexAdm.ejs')
     },
-    'config': (req,res)=>{
+    config: (req,res)=>{
         res.render('admin/configAdm.ejs')
     }
 }

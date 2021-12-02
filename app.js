@@ -14,7 +14,7 @@ app.use(express.static('src/public'));
 
 //requiero rutas
 const rutasMain = require('./src/routes/mainRoutes');
-const rutasAdm = require('./src/routes/adminRoutes');
+const rutasAdm = require('./src/routes/adminRoutes/adminRoutes');
 const rutasNoticias = require('./src/routes/noticiasRoutes');
 app.use('/',rutasMain);
 app.use('/noticia',rutasNoticias);
