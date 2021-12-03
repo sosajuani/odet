@@ -20,5 +20,5 @@ app.use('/',rutasMain);
 app.use('/noticia',rutasNoticias);
 app.use('/admin',rutasAdm);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Sevidor en http://localhost:3000/`));
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Players</title>
+    <%- include("../partials/head.ejs")  %> 
+</head>
+<body>
+    <div class="contenedorAdmin">    
+        <%- include("../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Jugadores</h3>
+            <div>
+                <form class="filterPlayerAdmin" action="">
+                    <div>
+                        <label for="">Buscar</label>
+                        <input placeholder="Nombre del jugador" type="search">
+                    </div>
+                    <div>
+                        <label for="">Torneo</label>
+                        <select name="" id="">
+                            <option value="">Torneo 1</option>
+                            <option value="">Torneo 2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="">División</label>
+                        <select name="" id="">
+                            <option value="">División 1</option>
+                            <option value="">División 2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="">Equipo</label>
+                        <select name="" id="">
+                            <option value="">Equipo 1</option>
+                            <option value="">Equipo 2</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="listaJugadoresAdmin">
+                    <div class="listaJugadoresAdminHead">
+                        <div>#</div>
+                        <div>Nombre</div>
+                        <div>Equipo</div>
+                        <div>Accion</div>
+                    </div>
+                    <div class="listaJugadoresAdminItem">
+                        <div>1</div>
+                        <div>Ringo sosa</div>
+                        <div>BJ</div>
+                        <div><i class='bx bxs-user-detail'></i></div>
+                    </div>
+                    <div class="listaJugadoresAdminItem">
+                        <div>1</div>
+                        <div>Ringo sosa</div>
+                        <div>BJ</div>
+                        <div><i class='bx bxs-user-detail'></i></div>
+                    </div>
+                    <div class="listaJugadoresAdminItem">
+                        <div>1</div>
+                        <div>Ringo sosa</div>
+                        <div>BJ</div>
+                        <div><i class='bx bxs-user-detail'></i></div>
+                    </div>
+                    <div class="listaJugadoresAdminItem">
+                        <div>1</div>
+                        <div>Ringo sosa</div>
+                        <div>BJ</div>
+                        <div><i class='bx bxs-user-detail'></i></div>
+                    </div>
+                    <div class="listaJugadoresAdminItem">
+                        <div>1</div>
+                        <div>Ringo sosa</div>
+                        <div>BJ</div>
+                        <div><i class='bx bxs-user-detail'></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../partials/footer.ejs")  %> 
+</body>
+</html>
