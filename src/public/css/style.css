@@ -246,6 +246,36 @@ body{
     display: grid;
     grid-template-columns: 16px repeat(3,1fr);
 }
+.listEquiposAdmHead, .listEquiposAdmItem{
+    grid-template-columns: 16px repeat(2,1fr);
+}
+.contRolAdm{
+    margin-top: 5px;
+    color: #fff;
+}
+.contRolAdm > h4{
+    margin: 0;
+    padding: 10px 5px;
+    display: inline-block;
+    background: #15547e;
+    border-radius: 5px 5px 0 0;
+    box-shadow: inset 0 0 0 1px #fff;
+    border-top: 1px solid #15547e;
+}
+.contRolAdm > ul{
+    background: #c7c7c7;
+    list-style: none;
+    margin: 0;
+    padding: 10px 15px;
+}
+.contRolAdm > ul > li{
+    background: #3282b8;
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
 /*Menu movil abrir, ocultar*/
 .mostrarMobile{
     transition: all ease 1s;

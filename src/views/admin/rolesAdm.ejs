@@ -10,7 +10,23 @@
 <body>
     <div class="contenedorAdmin">    
         <%- include("../partials/menuAdmin.ejs")  %> 
-        <div class="contAdminPrin">Roles</div>
+        <div class="contAdminPrin">
+            <h3>Roles</h3>
+            <div class="contRolAdm">
+                <h4>Roles actuales</h4>
+                <ul>
+                    <li>Admin <i class='bx bx-edit-alt'></i></li>
+                    <li>Arbitro <i class='bx bx-edit-alt'></i></li>
+                    <li>Jugador <i class='bx bx-edit-alt'></i></li>
+                </ul>
+            </div>
+            <div class="contRolAdm">
+                <h4>Agregar nuevo rol</h4>
+                <ul>
+                    <li>Proximamente</li>
+                </ul>
+            </div>
+        </div>
     </div>
     <%- include("../partials/footer.ejs")  %> 
 </body>
