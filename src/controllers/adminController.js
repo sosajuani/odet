@@ -19,6 +19,10 @@ const adminController = {
     tournament: (req,res)=>{
         res.render('admin/tournamentAdm.ejs')
     },
+    tournamentIndividual: (req,res)=>{
+        let torneoName = req.params.tournament;
+        res.render('admin/tournamentIndividualAdm.ejs',{torneo:torneoName});
+    },
     divisions: (req,res)=>{
         res.render('admin/divisionsAdm.ejs')
     },

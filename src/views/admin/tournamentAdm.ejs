@@ -10,7 +10,21 @@
 <body>
     <div class="contenedorAdmin">    
         <%- include("../partials/menuAdmin.ejs")  %> 
-        <div class="contAdminPrin">Torneos</div>
+        <div class="contAdminPrin">
+            <h3>Torneos</h3>
+            <div class="">
+                <form action="">
+                    <label for="">Nombre dlel torneo</label>
+                    <input placeholder="¿Como se va a llamar tu torneo?" type="text">
+                    <label for="">Nombre de temporada</label>
+                    <input placeholder="¿Como se va a llamar la temporada?" type="text">
+                    <label for="">Fecha de inicio</label>
+                    <input type="date">
+                    <label for="">Fecha de fin</label>
+                    <input type="date">
+                </form>
+            </div>
+        </div>
     </div>
     <%- include("../partials/footer.ejs")  %> 
 </body>

@@ -173,7 +173,7 @@ body{
 }
 .contAdminPrin > h3{
     background: rgba(199,199 ,199 ,0.3);
-    width: 40%;
+    display: inline-block;
     margin: 0;
     text-align: center;
     color: #808080;
@@ -276,6 +276,11 @@ body{
     display: flex;
     justify-content: space-between;
 }
+/********************** individual torneo inicio*****************/
+.torneoIndividualCont > h3{
+    display: inline-block;    
+}
+/********************** individual torneo fin*****************/
 /*Menu movil abrir, ocultar*/
 .mostrarMobile{
     transition: all ease 1s;

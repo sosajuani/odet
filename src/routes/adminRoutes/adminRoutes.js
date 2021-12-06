@@ -8,6 +8,7 @@ router.get('/players',adminController.players)
 router.get('/teams',adminController.teams)
 router.get('/roles',adminController.roles)
 router.get('/tournament',adminController.tournament)
+router.get('/tournament/:tournament',adminController.tournamentIndividual)
 router.get('/divisions',adminController.divisions)
 router.get('/info',adminController.info)
 
