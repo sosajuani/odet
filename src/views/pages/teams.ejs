@@ -10,7 +10,30 @@
 <body>
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin">
-
+    <form action="">
+        Seleccionar torneo
+        <select name="" id="">
+            <option value="">Torneo 1</option>
+            <option value="">Torneo 2</option>
+        </select><br>
+        División
+        <select name="" id="">
+            <option value="">Div 1</option>
+            <option value="">Div 2</option>
+        </select>
+    </form>
+    <div class="teamGridContHome">
+        <div class="teamGridHomeHead torneoTableContHead">
+            <div>#</div>
+            <div>Equipo</div>
+            <div>Acciones</div>
+        </div>
+        <div class="teamGridHomeItem torneoTableContItem">
+            <div>E</div>
+            <div>Boca juniors</div>
+            <div><i class='bx bxs-edit-alt'></i></div>
+        </div>
+    </div>
 </section>
 <%- include("../partials/footer.ejs") %>
 </body>
