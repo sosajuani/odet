@@ -2,7 +2,7 @@ const exp = require('constants');
 const express = require('express');
 const app = express();
 const path = require('path')
-const port = 3000;
+const port = 3030;
 
 
 //Motor de plantillas
@@ -20,5 +20,5 @@ app.use('/',rutasMain);
 app.use('/noticia',rutasNoticias);
 app.use('/admin',rutasAdm);
 
-app.listen(port, () => console.log(`Sevidor en http://localhost:3000/`));
+app.listen(port, () => console.log(`Sevidor en http://localhost:3030/`));
 

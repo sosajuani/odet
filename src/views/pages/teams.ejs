@@ -11,16 +11,20 @@
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <form action="">
-        Seleccionar torneo
-        <select name="" id="">
-            <option value="">Torneo 1</option>
-            <option value="">Torneo 2</option>
-        </select><br>
-        División
-        <select name="" id="">
-            <option value="">Div 1</option>
-            <option value="">Div 2</option>
-        </select>
+        <div class="formFilterTournament">
+            <label for="selectTournament">Seleccionar torneo</label>
+            <select name="" id="selectTournament">
+                <option value="">Torneo 1</option>
+                <option value="">Torneo 2</option>
+            </select><br>
+        </div>
+        <div class="formFilterTournament">
+            <label for="divsionTournament">División</label>
+            <select name="" id="divsionTournament">
+                <option value="">Div 1</option>
+                <option value="">Div 2</option>
+            </select>
+        </div>
     </form>
     <div class="teamGridContHome">
         <div class="teamGridHomeHead torneoTableContHead">

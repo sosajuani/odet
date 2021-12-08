@@ -124,6 +124,27 @@ body{
     color: #fff;
 }
 /****** tournament ********/
+.formFilterTournament{
+    display: flex;
+    margin-top: 5px;
+    color: #fff;
+}
+.formFilterTournament > label{
+    background: #3282b8;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+}
+.formFilterTournament > select{
+    background: #15547e;
+    border: 3px solid #3282b8;
+    color: #fff;
+    outline: none;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    margin: 0;
+}
 .torneoTableContHome > div{
     display: grid;
     grid-template-columns: 20px min(100%,5rem) repeat(5,1fr);
@@ -168,6 +189,50 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+/******** login ************/
+.loginCont{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.loginCont > h3{
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 5px 0px;
+    color: #15547e;
+}
+.loginCont > h3::after{
+    content: "";
+    background: linear-gradient(90deg, transparent 0%,#15547e 20%, #15547e 50%,#15547e 80%, transparent 100%);
+    width: 100%;
+    height: 1px;
+    display: flex;
+    flex-direction: column;
+}
+.loginCont > input[type="text"], .loginCont > input[type="email"]{
+    width: 80%;
+    padding: 5px;
+    margin: 5px 0;
+    outline: none;
+}
+.loginCont > input[type="submit"]{
+    background: #15547e;
+    border: 1px solid #15547e;
+    padding: 5px 10px;
+    color: #fff;
+    box-shadow: inset 0 1px 0 0 #fff;
+    border-radius: 5px;
+    margin: 10px 0 0 0;
+}
+.loginCont > p{
+    margin: 5px 0;
+    font-weight: bold;
+}
+.loginCont > p > a{
+    text-decoration: none;
+    color: #15547a;
 }
 /*ADMIN STYLE*/
 .headerAdmin{
@@ -326,7 +391,16 @@ body{
     display: inline-block;    
 }
 /********************** individual torneo fin*****************/
-
+/********************** footer inicio*****************/
+.footer{
+    background: #15547a;
+    color: #fff;
+    padding: 3px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+/********************** footer fin*******************/
 /*Menu movil abrir, ocultar*/
 .mostrarMobile{
     transition: all ease 1s;
@@ -335,4 +409,11 @@ body{
 .ocultarMobile{
     transition: all ease 1s;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+/************************************************/
+@media only screen and (min-width: 768px){
+    .torneoTableContHome > div{
+        grid-template-columns: 20px min(100%,5rem) repeat(8,1fr);
+    }
+    .ocultarMobileTorneo{ display: block;}
 }
