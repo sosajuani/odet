@@ -4,6 +4,7 @@
         "user":"ringo",
         "pass":"",
         "email":"contacto@juansosa.com.ar",
-        "team":null
+        "team":null,
+        "permisos": 1
     }
 ]
