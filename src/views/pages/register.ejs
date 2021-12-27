@@ -10,11 +10,17 @@
 <body>
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin">
-    <form class="loginCont" action="">
+    <% if (locals.errors) { %>
+        <% for( let iterador in errors ) { %>
+            <div><%= errors[iterador].msg %> </div>
+        <% } %>
+    <% } %>
+    <form class="loginCont" method="post" action="/register">
         <h3>Bienvenido</h3>
-        <input placeholder="Ingresa tu usuario" name="user" type="text">
-        <input placeholder="Ingresa tu email" name="email" type="email">
-        <input placeholder="Ingresa tu contraseña" name="pass" type="password">
+        <input placeholder="Ingresa tu usuario" name="user" type="text" >
+        <input placeholder="Ingresa tu email" name="email" type="email" >
+        <input placeholder="Ingresa tu contraseña" name="pass" type="password" >
+        <input placeholder="Ingresa tu contraseña nuevamente" name="pass2" type="password" >
         <input type="submit" value="Ingresar">
         <p>¿Tenes cuenta?. <a href="/login">Ingresa</a></p>
     </form>
