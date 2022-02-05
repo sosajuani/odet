@@ -1,0 +1,59 @@
+.fixtureGridHomeItem{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    text-align: center;
+}
+.fixtureGridHomeItem > div:nth-child(2) > p{margin: 0; }
+.fixtureGridHomeItem > div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/******** login ************/
+.loginCont{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.loginCont > h3{
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 5px 0px;
+    color: #15547e;
+}
+.loginCont > h3::after{
+    content: "";
+    background: linear-gradient(90deg, transparent 0%,#15547e 20%, #15547e 50%,#15547e 80%, transparent 100%);
+    width: 100%;
+    height: 1px;
+    display: flex;
+    flex-direction: column;
+}
+.loginCont > input[type="text"], .loginCont > input[type="email"],.loginCont > input[type="password"]{
+    width: 80%;
+    padding: 5px;
+    margin: 5px 0;
+    outline: none;
+}
+.loginCont > input[type="submit"]{
+    background: #15547e;
+    border: 1px solid #15547e;
+    padding: 5px 10px;
+    color: #fff;
+    box-shadow: inset 0 1px 0 0 #fff;
+    border-radius: 5px;
+    margin: 10px 0 0 0;
+}
+.loginCont > p{
+    margin: 5px 0;
+    font-weight: bold;
+}
+.loginCont > p > a{
+    text-decoration: none;
+    color: #15547a;
+}
+@media only screen and (min-width: 768px){
+
+    
+}

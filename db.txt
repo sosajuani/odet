@@ -1,0 +1,36 @@
+User
+- id
+- username - varchar
+- name - varchar
+- email - varchar
+- pass - varchar
+- team_id - int
+- avatar_id - int
+- rol_id - int
+
+Rol
+- id
+- name - varchar
+
+Team
+- id
+- name - varchar
+- avatar_id - varchar
+
+Tournament
+- name - varchar
+- teams - int
+- divisions - int
+- statistics_id - int
+- ascent_id - int
+- decline_id - int
+- startDate - date
+- endDate - date
+
+
+
+
+
+
+
+

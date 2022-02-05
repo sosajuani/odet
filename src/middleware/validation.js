@@ -9,7 +9,15 @@ const validation = {
         body('pass').notEmpty().withMessage("Debes colocar una contraseña"),
         body('email').notEmpty().withMessage("Debes colocar un email").bail()
             .isEmail().withMessage("Debes colocar un email valido"),
-        body('pass2').notEmpty().withMessage("Tiene que volver a escribir la contraseña")
+        body('pass')
+         .notEmpty().withMessage("Contraseña obligatoria")
+         .isLength({min:5}).withMessage("La contraseña debe tener mínimo 5 caracteres")
+         .custom((value,{req})=>{
+             if(value!=req.body.pass2){
+                 throw new Error('Las contraseñas no coinciden');
+             }
+             return true;
+         })
     ]
 }
 module.exports = validation;

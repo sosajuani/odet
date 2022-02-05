@@ -33,6 +33,7 @@ const mainController = {
         if(!errors.isEmpty()){
             return res.render("pages/register.ejs",{errors:errors.mapped(), oldData: req.body})
         }
+        res.send("sin errores")
     },
     perfil: (req,res)=>{
         res.render('user/perfil.ejs');
