@@ -6,6 +6,8 @@
     border-bottom: 1px solid #c7c7c7;
 }
 @media only screen and (min-width: 768px){
-
-    
+    .teamGridContHome{
+        max-width: 80%;
+        margin: auto;
+    }
 }

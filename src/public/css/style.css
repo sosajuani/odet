@@ -119,3 +119,13 @@ body{
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}
 }
+@media only screen and (min-width: 1024px){
+    .mostrarMobile{
+        transition: all ease 1s;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    .ocultarMobile{
+        transition: all ease 1s;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}

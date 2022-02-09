@@ -4,9 +4,33 @@ User
 - name - varchar
 - email - varchar
 - pass - varchar
-- team_id - int
 - avatar_id - int
 - rol_id - int
+
+Player
+- id
+- goals - int
+- suspension_id - int
+- team_id - int
+- user_id - int
+
+Goals
+- id
+- user_id
+- user_team
+- rival_team
+- goals_count
+
+avatar
+- id
+- image
+
+suspension
+- id
+- user_id
+- matchTime - date
+- match_id
+- description - varchar
 
 Rol
 - id
@@ -18,6 +42,7 @@ Team
 - avatar_id - varchar
 
 Tournament
+- id
 - name - varchar
 - teams - int
 - divisions - int
@@ -26,11 +51,57 @@ Tournament
 - decline_id - int
 - startDate - date
 - endDate - date
+- type - int
 
+Decline
+- id
+- type
 
+Ascent
+- id
+- type
 
+Statistics
+- id
+- team_id
+- partidos Jugados
+- ganados
+- empate
+- perdidos
+- diferencia de goles
+- goles en contra
+- goles a favor
+- diferencia de goles
+- puntos
+- torneo
 
+fechas
+- id
+- equipo Local_id - int
+- equipo visitante_id - int
+- torneo_id - int
+- fecha - date
 
+Info
+- id
+- user_id
+- mensaje
 
+-----------------------------------------------------------------------
+lista
+- User *
+- Player*
+- Goals
+- avatar *
+- suspension
+- rol *
+- team
+- Tournament
+- decline *
+- ascent *
+- Statistics
+- fechas
+- info
+-----------------------------------------------------------------------
 
 

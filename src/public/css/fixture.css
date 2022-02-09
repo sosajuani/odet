@@ -54,6 +54,8 @@
     color: #15547a;
 }
 @media only screen and (min-width: 768px){
-
-    
+    .fixtureGridContHome{
+        width: 60%;
+        margin: auto;
+    }
 }
