@@ -1,4 +1,3 @@
-const exp = require('constants');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -32,12 +31,14 @@ app.use(session({
 
 
 //requiero rutas
-const rutasMain = require('./src/routes/mainRoutes');
-const rutasAdm = require('./src/routes/adminRoutes/adminRoutes');
-const rutasNoticias = require('./src/routes/noticiasRoutes');
-app.use('/',rutasMain);
-app.use('/noticia',rutasNoticias);
-app.use('/admin',rutasAdm);
+const routesMain = require('./src/routes/mainRoutes');
+const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
+const routesNoticias = require('./src/routes/noticiasRoutes');
+const routesTeam = require('./src/routes/teamRoutes');
+app.use('/',routesMain);
+app.use('/teams',routesTeam);
+app.use('/noticia',routesNoticias);
+app.use('/admin',routesAdm);
 
 app.listen(port, () => console.log(`Sevidor en http://localhost:3030/`));
 

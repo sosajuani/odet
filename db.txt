@@ -40,13 +40,13 @@ Team
 - id
 - name - varchar
 - avatar_id - varchar
+- captain
 
 Tournament
 - id
 - name - varchar
 - teams - int
 - divisions - int
-- statistics_id - int
 - ascent_id - int
 - decline_id - int
 - startDate - date
@@ -64,44 +64,74 @@ Ascent
 Statistics
 - id
 - team_id
-- partidos Jugados
-- ganados
-- empate
-- perdidos
-- diferencia de goles
-- goles en contra
-- goles a favor
-- diferencia de goles
-- puntos
-- torneo
+- played
+- win
+- drawn
+- lost
+- goles a favor (gf)
+- goles en contra (ga)
+- diferencia de goles (gd)
+- puntos (pts)
+- torneo_id (tournament_id)
 
-fechas
+matchweek
 - id
-- equipo Local_id - int
-- equipo visitante_id - int
-- torneo_id - int
-- fecha - date
+- localTeamId - int
+- visitedTeamId - int
+- tournamentId - int
+- date - date
 
-Info
+report*
 - id
 - user_id
 - mensaje
 
+TypeTournament
+- id
+- name
+
 -----------------------------------------------------------------------
 lista
-- User *
-- Player*
-- Goals
-- avatar *
-- suspension
-- rol *
-- team
-- Tournament
-- decline *
-- ascent *
-- Statistics
-- fechas
-- info
+- User * |
+- Player* |
+- Goals *|
+- avatar * |
+- suspension *|
+- rol * |
+- team * |
+- Tournament*|
+- decline *|
+- ascent *|
+- Statistics*|
+- matchweek*|
+-tipo de torneo*|
+- report*
 -----------------------------------------------------------------------
+/////////
+asociaciones
+------------
+User - avatar(*), rol(*)
+Teams - avatar(*),user(*)
+Goals - user(*),team(*)
+Suspension - user(*),match(*)
+Player - suspension(*),team(*),user(*)
+Tournament - teamsId(*),ascent(*),decline(*), TypeTournament(*)
+Statistics - team(*),tournament(*)
+Matchweek - team(*),tournament(*)
+report - user()
 
-
+////////
+sequelize model:generate --name Avatar --attributes image:string
+sequelize model:generate --name Rol --attributes name:string
+sequelize model:generate --name User --attributes user:string,name:string,email:string,pass:string,avatarId:integer,rolId:integer
+sequelize model:generate --name Team --attributes name:string,avatarId:integer,captainId:integer
+sequelize model:generate --name Goal --attributes userId:integer,rivalTeamId:integer,goalsCount:integer
+sequelize model:generate --name Ascent --attributes type:string
+sequelize model:generate --name Decline --attributes type:string
+sequelize model:generate --name TypeTournament --attributes type:string
+sequelize model:generate --name Tournament --attributes name:string,teamsId:integer,divisions:integer,ascentId:integer,declineId:integer,startDate:date,endDate:date,typeId:integer
+sequelize model:generate --name Matchweek --attributes localTeamId:integer,visitedTeamId:integer,tournamentId:integer,date:date
+sequelize model:generate --name Suspension --attributes userId:integer,matchTime:date,matchId:integer,description:string
+sequelize model:generate --name Player --attributes goals:integer,suspensionId:integer,teamId:integer,userId:integer
+sequelize model:generate --name Statistic --attributes teamId:integer,played:integer,win:integer,drawn:integer,lost:integer,gf:integer,ga:integer,gd:integer,pts:integer,tournamentId:integer
+sequelize model:generate --name Report --attributes userId:integer,msg:string
