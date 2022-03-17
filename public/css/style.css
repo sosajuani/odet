@@ -44,6 +44,7 @@ body{
     margin: 0;
     padding: 0;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: all ease 1s;
     position: fixed;
     top: 0;
     left: 0;
@@ -72,16 +73,6 @@ body{
     padding: 3px;
     border: 1px solid #c7c7c7;
 }
-/*noticias seccion*/
-
-/****** tournament ********/
-
-/******* teams********/
-
-/******** fixture *********/
-
-
-/*ADMIN STYLE*/
 
 
 /********************** individual torneo inicio*****************/
@@ -115,11 +106,15 @@ body{
 }
 .errFormInput{
     box-shadow: #f00 0 0 7px inset;
+    border: none;
 }
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}
 }
 @media only screen and (min-width: 1024px){
+    .buttonDesktop{
+        display: none;
+    }
     .mostrarMobile{
         transition: all ease 1s;
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -127,5 +122,39 @@ body{
     .ocultarMobile{
         transition: all ease 1s;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .buttonMovilMenu{
+        display: none;
+    }
+    .menuHeader{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        display: flex;
+        height: auto;
+        flex-direction: row;
+        position: relative;
+        border-bottom: 2px solid transparent;
+    }
+    .menuHeader > li{
+        font-size: 1rem;
+        padding: 5px;
+        margin: 1px;
+    }
+    .linkHeader{
+        position: relative;
+        padding-bottom: 5px;
+    }
+    .linkHeader:after{
+        content: "";
+        width: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        margin-top: 10px;
+        background: #bbe1fa;
+        transition: all ease .3s;
+    }
+    .linkHeader:hover::after{
+        width: 100%;
     }
 }

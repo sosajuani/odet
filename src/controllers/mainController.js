@@ -1,4 +1,8 @@
 const {validationResult} = require('express-validator');
+const {compareSync, hashSync} = require('bcryptjs');
+const db = require('../database/models');
+const User = db.User;
+
 const mainController = {
     home: (req,res)=>{
         res.render('pages/home.ejs');
@@ -18,12 +22,32 @@ const mainController = {
     login: (req,res)=>{
         res.render('pages/login.ejs');
     },
-    loginProcess: (req,res)=>{
+    loginProcess: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.render("pages/login.ejs",{errors:errors.mapped(), oldData: req.body})
         }
-        res.send("aprobado")
+        let userConsult = await User.findOne();
+        if(userConsult === null){
+            return res.render('pages/login.ejs',{errors:{userNull:"El usuario no existe"},oldData:req.body})
+        }
+        let confirmPass = compareSync(req.body.pass,userConsult.pass);
+        if(!confirmPass){
+            return res.render('pages/login.ejs',{errors:{passIncorrect: "La contraseña ingresada no es válida"},oldData:req.body})
+        }
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log(userConsult);
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        console.log("*******************************");
+        res.redirect("/login")
     },
     register: (req,res)=>{
         res.render('pages/register.ejs');

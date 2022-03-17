@@ -1,0 +1,17 @@
+.fixtureGridHomeItem{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    text-align: center;
+}
+.fixtureGridHomeItem > div:nth-child(2) > p{margin: 0; }
+.fixtureGridHomeItem > div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+@media only screen and (min-width: 768px){
+    .fixtureGridContHome{
+        width: 60%;
+        margin: auto;
+    }
+}

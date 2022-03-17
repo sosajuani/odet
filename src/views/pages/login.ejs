@@ -1,15 +1,22 @@
 <%- include("../partials/head.ejs",{title:"Iniciar sesion"}) %>
 <%- include("../partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <% if (locals.errors) { %>
-        <% for( let iterador in errors ) { %>
-            <div><%= errors[iterador].msg %> </div>
-        <% } %>
-    <% } %>
+<section class="contPrin contPrinLogin">
     <form class="loginCont" method="post" action="/login">
         <h3>Bienvenido</h3>
-        <input placeholder="Ingresa tu usuario" value="<%= locals.oldData ? locals.oldData.user : null %>" name="user" type="text" required>
-        <input placeholder="Ingresa tu contraseña" name="pass" type="password" required>
+        <input placeholder="Ingresa tu usuario" class="<%= locals.errors && locals.errors.user || locals.errors.userNull ? "errFormInput" : null %>" value="<%= locals.oldData ? locals.oldData.user : null %>" name="user" type="text" required>
+        <% if(locals.errors && locals.errors.user){ %> 
+            <div class="errForm">El usuario no puede estar vacio</div>
+        <% } %> 
+        <% if (locals.errors && locals.errors.userNull) { %>
+            <div class="errForm"><%= locals.errors.userNull %></div>
+        <% } %>
+        <input placeholder="Ingresa tu contraseña" class="<%= locals.errors && locals.errors.pass ? "errFormInput" : null %>" name="pass" type="password" required>
+        <% if(locals.errors && locals.errors.pass){ %> 
+            <div class="errForm">La contraseña no puede estar vacia</div>
+        <% } %> 
+        <% if (locals.errors && locals.errors.passIncorrect) { %>
+            <div class="errForm"><%= locals.errors.passIncorrect %></div>
+        <% } %>
         <input type="submit" value="Ingresar">
         <p>¿No tenes cuenta?. <a href="/register">Crea una</a></p>
     </form>

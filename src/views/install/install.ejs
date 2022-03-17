@@ -1,0 +1,23 @@
+<%- include("../partials/head.ejs",{title:"Fixture"}) %>
+<%- include("../partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <h2>Registros de prueba</h2>
+    <ul>
+        Roles
+        <ul>
+            <li>Admin</li>
+            <li>Player</li>
+            <li>Referee</li>
+        </ul>
+    </ul>
+    <ul>
+        Avatar
+        <ul>
+            <li>avatar por defecto</li>
+        </ul>
+    </ul>
+    <form action="/install/registers" method="post">
+        <input type="submit" value="Crear registros">
+    </form>
+</section>
+<%- include("../partials/footer.ejs") %>
