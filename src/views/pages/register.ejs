@@ -3,13 +3,27 @@
 <section class="contPrin">
     <form class="loginCont" method="post" action="/register">
         <h3>Bienvenido</h3>
-        <input <% if (locals.errors && locals.errors.user) { %> class="errFormInput" <% } %> placeholder="Ingresa tu usuario" value="<%= locals.oldData ? locals.oldData.user:null %>"  name="user" type="text" >
+        <input <% if (locals.errors && locals.errors.user || locals.userError && locals.userError.msg) { %> class="errFormInput" <% } %> placeholder="Ingresa tu usuario" value="<%= locals.oldData ? locals.oldData.user:null %>"  name="user" type="text" >
         <% if (locals.errors && locals.errors.user) { %>
             <p class="errForm"><%= locals.errors.user.msg %></p>
         <% } %>
-        <input <% if (locals.errors && locals.errors.email) { %> class="errFormInput" <% } %> placeholder="Ingresa tu email" name="email" value="<%= locals.oldData ? locals.oldData.email:null %>" type="email" >
+        <% if (locals.userError && locals.userError.msg) { %>
+            <p class="errForm"><%= locals.userError.msg %></p>
+        <% } %>
+        <input <% if (locals.errors && locals.errors.firstName) { %> class="errFormInput" <% } %> placeholder="Ingresa tu nombre" value="<%= locals.oldData ? locals.oldData.firstName:null %>"  name="firstName" type="text" >
+        <% if (locals.errors && locals.errors.firstName) { %>
+            <p class="errForm"><%= locals.errors.firstName.msg %></p>
+        <% } %>       
+        <input <% if (locals.errors && locals.errors.lastName) { %> class="errFormInput" <% } %> placeholder="Ingresa tu apellido" value="<%= locals.oldData ? locals.oldData.lastName:null %>"  name="lastName" type="text" >
+        <% if (locals.errors && locals.errors.lastName) { %>
+            <p class="errForm"><%= locals.errors.lastName.msg %></p>
+        <% } %>
+        <input <% if (locals.errors && locals.errors.email || locals.emailError && locals.emailError.msg) { %> class="errFormInput" <% } %> placeholder="Ingresa tu email" name="email" value="<%= locals.oldData ? locals.oldData.email:null %>" type="email" >
         <% if (locals.errors && locals.errors.email) { %>
             <p class="errForm"><%= locals.errors.email.msg %></p>
+        <% } %>
+        <% if (locals.emailError && locals.emailError.msg) { %>
+            <p class="errForm"><%= locals.emailError.msg %></p>
         <% } %>
         <input <% if (locals.errors && locals.errors.pass) { %> class="errFormInput" <% } %> placeholder="Ingresa tu contraseña" name="pass" type="password" >
         <input <% if (locals.errors && locals.errors.pass) { %> class="errFormInput" <% } %> placeholder="Ingresa tu contraseña nuevamente" name="pass2" type="password" >

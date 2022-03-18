@@ -30,6 +30,9 @@
     color: #fff;
 }
 /*Noticia vista*/
+.notiContenido{
+    white-space: pre-line;
+}
 .contNotiVista > h1{
     text-align: center;
     margin: 0;
