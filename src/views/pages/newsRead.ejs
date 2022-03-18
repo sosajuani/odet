@@ -3,9 +3,9 @@
 <section class="contPrin">
     <div class="contNotiVista">
         <h1>TITULO</h1>
-        <div class="notiInfo"><p>Publicado por Admin - Hace 1 hora</p></div>
+        <div class="notiInfo"><p>Publicado por <%= news.users.user %>  - Hace 1 hora</p></div>
         <div class="notiContenido">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis ratione consequuntur aliquam, id magnam architecto sapiente iste optio iusto accusantium enim porro illo fugit cum beatae temporibus dolore. Placeat, aliquid?</p>
+            <p><%= news.body %></p>
         </div>
         <div class="notiVolver">
             <a href="/"><i class='bx bxs-chevron-left'></i> VOLVER</a>

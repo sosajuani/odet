@@ -1,8 +1,37 @@
 const express = require('express');
+const db = require('../database/models');
+
+const User = db.User;
+const News = db.News;
 
 const adminController = {
     home: (req,res)=>{
-        res.render('admin/indexAdm.ejs')
+        User.findOne({
+            where:{
+                id: req.session.user.id
+            }
+        })
+        .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
+        .catch(e => console.log(e))
+    },
+    news: (req,res)=>{
+        News.findAll()
+        .then(news => res.render('admin/newsAdm.ejs',{news}))
+        .catch(e => console.log(e))
+        
+    },
+    newsCreate: (req,res)=>{
+        res.render('admin/crud/newsCreate.ejs')
+    },
+    newsCreateProcess: (req,res)=>{
+        News.create({
+            title: req.body.title,
+            body: req.body.body,
+            authorId: req.session.user.id,
+            image: null,
+            date:Date('Y')
+        })
+        .then(r => res.redirect('/admin/news'))
     },
     config: (req,res)=>{
         res.render('admin/configAdm.ejs')

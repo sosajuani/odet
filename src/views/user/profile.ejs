@@ -1,0 +1,22 @@
+<%- include("../partials/head.ejs",{title: 'perfil'}) %>
+<%- include("../partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <div class="headProfile">
+        <div class="avatarProfile"></div>
+        <h3><%= userTable.firstName+" "+userTable.lastName %></h3>
+        <ul>
+            <li>Email: <%= userTable.email %></li>
+        </ul>
+        <% if(referee !== 1){ %>
+            <div>
+                Tabla de Jugador
+                <ul>
+                    <li>Equipo: <%= playerTable.teams.name %></li>
+                    <li>Goles: <%= playerTable.goals %></li>
+                </ul>
+            </div>
+        <% } %> 
+    </div>
+
+</section>
+<%- include("../partials/footer.ejs") %>

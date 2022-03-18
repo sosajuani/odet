@@ -1,36 +1,50 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Tournaments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user: {
-        type: Sequelize.STRING
-      },
       name: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      pass: {
-        type: Sequelize.STRING
-      },
-      avatarId: {
+      teamsId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'avatars',
+          model: 'teams',
           key: 'id'
         }
       },
-      rolId: {
+      divisions: {
+        type: Sequelize.INTEGER
+      },
+      ascentId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'ascents',
+          key: 'id'
+        }
+      },
+      declineId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'rols',
+          model: 'declines',
+          key: 'id'
+        }
+      },
+      startDate: {
+        type: Sequelize.DATE
+      },
+      endDate: {
+        type: Sequelize.DATE
+      },
+      typeId: {
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'typeTournaments',
           key: 'id'
         }
       },
@@ -45,6 +59,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Tournaments');
   }
 };

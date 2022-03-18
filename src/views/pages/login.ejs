@@ -2,8 +2,9 @@
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin contPrinLogin">
     <form class="loginCont" method="post" action="/login">
+         
         <h3>Bienvenido</h3>
-        <input placeholder="Ingresa tu usuario" class="<%= locals.errors && locals.errors.user || locals.errors.userNull ? "errFormInput" : null %>" value="<%= locals.oldData ? locals.oldData.user : null %>" name="user" type="text" required>
+        <input placeholder="Ingresa tu usuario" class="<%= locals.errors && locals.errors.user || locals.errors && locals.errors.userNull ? "errFormInput" : null %>" value="<%= locals.oldData ? locals.oldData.user : null %>" name="user" type="text" required>
         <% if(locals.errors && locals.errors.user){ %> 
             <div class="errForm">El usuario no puede estar vacio</div>
         <% } %> 

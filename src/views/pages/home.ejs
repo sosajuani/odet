@@ -1,41 +1,20 @@
 <%- include("../partials/head.ejs",{title:"Organizador de torneos"}) %>
 <%- include("../partials/menuHeader.ejs") %>
+<div class="infoWeb">
+    Página en desarrollo - Mas información sobre el proyecto <a target="_blank" href="https://juansosa.com.ar/odet">aquí</a>
+</div>
 <section class="contPrin contNotiHome">
+    <% if(news.length > 0){ %> 
+    <% for( let i=0; i<news.length; i++ ) { %>
     <article class="notiArt">
-        <h4>TITULO</h4>
+        <h4><%= news[i].title %></h4>
         <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="/noticia/123">Seguir leyendo</a></div>
+        <div class="notiArt__descrip"><p><%= news[i].body %></p></div>
+        <div class="notiArt__button"><a href="/news/detail/<%= news[i].id %>">Seguir leyendo</a></div>
     </article>
-    <article class="notiArt">
-        <h4>TITULO</h4>
-        <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="#">Seguir leyendo</a></div>
-    </article>
-    <article class="notiArt">
-        <h4>TITULO</h4>
-        <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="#">Seguir leyendo</a></div>
-    </article>
-    <article class="notiArt">
-        <h4>TITULO</h4>
-        <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="#">Seguir leyendo</a></div>
-    </article>
-    <article class="notiArt">
-        <h4>TITULO</h4>
-        <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="#">Seguir leyendo</a></div>
-    </article>
-    <article class="notiArt">
-        <h4>TITULO</h4>
-        <div class="notiArt__img"></div>
-        <div class="notiArt__descrip"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo itaque ipsum, vitae praesentium totam suscipit quaerat</p></div>
-        <div class="notiArt__button"><a href="/noticia/123">Seguir leyendo</a></div>
-    </article>
+    <% } %> 
+    <% }else{ %>
+        <div class="infoWeb">No hay resultados para mostrar</div>
+    <% } %>
 </section>
 <%- include("../partials/footer.ejs") %>

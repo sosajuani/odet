@@ -1,33 +1,28 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Matchweeks', {
+    await queryInterface.createTable('News', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      localTeamId: {
+      title: {
+        type: Sequelize.STRING
+      },
+      body: {
+        type: Sequelize.TEXT
+      },
+      authorId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'teams',
-          key: 'id'
+          model: 'users',
+          key:'id'
         }
       },
-      visitedTeamId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'teams',
-          key: 'id'
-        }
-      },
-      tournamentId: {
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'tournaments',
-          key: 'id'
-        }
+      image:{
+        type: Sequelize.STRING
       },
       date: {
         type: Sequelize.DATE
@@ -43,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Matchweeks');
+    await queryInterface.dropTable('News');
   }
 };

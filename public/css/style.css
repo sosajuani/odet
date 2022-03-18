@@ -108,6 +108,27 @@ body{
     box-shadow: #f00 0 0 7px inset;
     border: none;
 }
+.infoWeb{
+    background: #fff3cd;
+    border: 2px solid #ffecb5;
+    color: #664d03;
+    text-align: center;
+}
+.infoWeb > a{
+    color: #523e02
+}
+.btnLink{
+    background:#15547a;
+    padding: 10px;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.linkDisabled{cursor: default;}
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}
 }

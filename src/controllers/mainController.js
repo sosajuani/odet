@@ -2,10 +2,13 @@ const {validationResult} = require('express-validator');
 const {compareSync, hashSync} = require('bcryptjs');
 const db = require('../database/models');
 const User = db.User;
+const News = db.News;
 
 const mainController = {
     home: (req,res)=>{
-        res.render('pages/home.ejs');
+        News.findAll()
+        .then(news => res.render('pages/home.ejs',{news}))
+        .catch(e => console.log(e))
     },
     noticiaVista: (req,res)=>{
         res.render('pages/noticiaVista.ejs');
@@ -27,7 +30,7 @@ const mainController = {
         if(!errors.isEmpty()){
             return res.render("pages/login.ejs",{errors:errors.mapped(), oldData: req.body})
         }
-        let userConsult = await User.findOne();
+        let userConsult = await User.findOne({where:{user:req.body.user}});
         if(userConsult === null){
             return res.render('pages/login.ejs',{errors:{userNull:"El usuario no existe"},oldData:req.body})
         }
@@ -35,19 +38,14 @@ const mainController = {
         if(!confirmPass){
             return res.render('pages/login.ejs',{errors:{passIncorrect: "La contraseña ingresada no es válida"},oldData:req.body})
         }
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log(userConsult);
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
-        console.log("*******************************");
+        req.session.user = userConsult.dataValues
+        req.session.access = userConsult.dataValues.rolId
         res.redirect("/login")
+    },
+    logout: (req,res)=>{
+        delete req.session.user
+        delete req.session.access
+        res.redirect('/login')
     },
     register: (req,res)=>{
         res.render('pages/register.ejs');
@@ -58,9 +56,6 @@ const mainController = {
             return res.render("pages/register.ejs",{errors:errors.mapped(), oldData: req.body})
         }
         res.send("sin errores")
-    },
-    perfil: (req,res)=>{
-        res.render('user/perfil.ejs');
     }
 }
 

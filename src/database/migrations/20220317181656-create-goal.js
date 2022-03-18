@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Suspensions', {
+    await queryInterface.createTable('Goals', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,23 +10,20 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        references:{
+        references: {
           model: 'users',
           key: 'id'
         }
       },
-      matchTime: {
-        type: Sequelize.DATE
-      },
-      matchId: {
+      rivalTeamId: {
         type: Sequelize.INTEGER,
-        references:{
-          model: 'matchweeks',
+        references: {
+          model: 'teams',
           key: 'id'
         }
       },
-      description: {
-        type: Sequelize.STRING
+      goalsCount: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Suspensions');
+    await queryInterface.dropTable('Goals');
   }
 };

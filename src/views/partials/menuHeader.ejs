@@ -8,8 +8,17 @@
             <li><a class="linkHeader" href="/tournament">Torneo</a></li>
             <li><a class="linkHeader" href="/teams">Equipos</a></li>
             <li><a class="linkHeader" href="/fixture">Fixture</a></li>
-            <li><a class="linkHeader" href="/login"><i class='bx bx-log-in'></i> LOGIN</a></li>
-            <li><a class="linkHeader" href="/register"><i class='bx bxs-user-plus'></i> REGISTRO</a></li>
+            <% if(user && access == 1){ %> 
+                <li><a class="linkHeader" href="/admin">Admin</a></li>
+            <% } %> 
+            <% if (!user) { %>
+                <li><a class="linkHeader" href="/login"><i class='bx bx-log-in'></i> LOGIN</a></li>
+                <li><a class="linkHeader" href="/register"><i class='bx bxs-user-plus'></i> REGISTRO</a></li>
+            <% } %>
+            <% if(user){ %> 
+                <li><a class="linkHeader" href="/login"><i class='bx bx-user'></i> Perfil</a></li>
+                <li><a class="linkHeader" href="/logout"><i class='bx bx-x'></i> Salir</a></li>
+            <% } %> 
             <li class="cerraMenuBtn buttonDesktop"><i class='bx bx-x'></i></li>
         </ul>
     </nav>

@@ -24,7 +24,8 @@ const adminController = {
             let usersCreate = await User.bulkCreate([
                 {
                     user: 'admin',
-                    name: 'Admin',
+                    firstName: 'Admin',
+                    lastName: 'Odet',
                     email: 'admin@odet.com',
                     pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
                     avatarId: 1,
@@ -32,7 +33,8 @@ const adminController = {
                 },
                 {
                     user: 'player',
-                    name: 'Player',
+                    firstName: 'Player',
+                    lastName: 'Odet',
                     email: 'player@odet.com',
                     pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
                     avatarId: 1,
@@ -40,7 +42,8 @@ const adminController = {
                 },
                 {
                     user: 'referee',
-                    name: 'Referee',
+                    firstName: 'Referee',
+                    lastName: 'Odet',
                     email: 'referee@odet.com',
                     pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
                     avatarId: 1,

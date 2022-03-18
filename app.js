@@ -36,13 +36,15 @@ app.use(accessMiddleware)
 //requiero rutas
 const routesMain = require('./src/routes/mainRoutes');
 const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
-const routesNoticias = require('./src/routes/noticiasRoutes');
+const routesNews = require('./src/routes/newsRoutes');
 const routesTeam = require('./src/routes/teamRoutes');
+const routesProfile = require('./src/routes/profileRoutes');
 const routesInstall = require('./src/views/install/installRoutes');
 app.use('/',routesMain);
 app.use('/teams',routesTeam);
-app.use('/noticia',routesNoticias);
+app.use('/news',routesNews);
 app.use('/admin',routesAdm);
+app.use('/profile',routesProfile);
 app.use('/install',routesInstall)
 
 app.listen(port, () => console.log(`Sevidor en http://localhost:3030/`));
