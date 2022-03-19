@@ -14,21 +14,21 @@ module.exports = {
       suspensionId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'suspensions',
+          model: 'Suspensions',
           key: 'id'
         }
       },
       teamId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'teams',
+          model: 'Teams',
           key: 'id'
         }
       },
       userId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'users',
+          model: 'Users',
           key: 'id'
         }
       },

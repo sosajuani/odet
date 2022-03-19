@@ -17,14 +17,14 @@ module.exports = {
       ascentId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'ascents',
+          model: 'Ascents',
           key: 'id'
         }
       },
       declineId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'declines',
+          model: 'Declines',
           key: 'id'
         }
       },
@@ -37,7 +37,7 @@ module.exports = {
       typeId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'typeTournaments',
+          model: 'TypeTournaments',
           key: 'id'
         }
       },

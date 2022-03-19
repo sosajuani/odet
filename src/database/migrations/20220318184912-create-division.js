@@ -14,7 +14,7 @@ module.exports = {
       tournamentId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'tournaments',
+          model: 'Tournaments',
           key: 'id'
         }
       },

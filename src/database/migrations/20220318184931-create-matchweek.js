@@ -11,28 +11,28 @@ module.exports = {
       localTeamId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'teams',
+          model: 'Teams',
           key: 'id'
         }
       },
       visitedTeamId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'teams',
+          model: 'Teams',
           key: 'id'
         }
       },
       tournamentId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'tournaments',
+          model: 'Tournaments',
           key: 'id'
         }
       },
       divisionId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'divisions',
+          model: 'Divisions',
           key: 'id'
         }
       },

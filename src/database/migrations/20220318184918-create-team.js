@@ -14,28 +14,28 @@ module.exports = {
       avatarId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'avatars',
+          model: 'Avatars',
           key: 'id'
         }
       },
       captainId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'users',
+          model: 'Users',
           key: 'id'
         }
       },
       tournamentId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'tournaments',
+          model: 'Tournaments',
           key: 'id'
         }
       },
       divisionId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'divisions',
+          model: 'Divisions',
           key: 'id'
         }
       },
