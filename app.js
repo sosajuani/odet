@@ -49,5 +49,5 @@ app.use('/profile',routesProfile);
 app.use('/register',routesRegister);
 app.use('/install',routesInstall)
 
-app.listen(port, () => console.log(`Sevidor en http://localhost:3030/`));
+app.listen(process.env.PORT || port, () => console.log(`Sevidor funcionando`));
 
