@@ -8,7 +8,7 @@
             <li>Email: <%= userTable.email %></li>
         </ul>
         <% if(referee !== 1){ %>
-            <% if(playerTable.teams != null){ %> 
+            <% if(playerTable && playerTable.teams != null){ %> 
                 <div>
                     Tabla de Jugador
                     <ul>

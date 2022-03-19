@@ -32,6 +32,9 @@ module.exports = {
           key: 'id'
         }
       },
+      teamConfirm: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

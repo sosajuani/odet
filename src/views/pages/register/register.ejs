@@ -1,5 +1,5 @@
-<%- include("../partials/head.ejs",{title:"Registro"}) %>
-<%- include("../partials/menuHeader.ejs") %>
+<%- include("../../partials/head.ejs",{title:"Registro"}) %>
+<%- include("../../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <% if(locals.completed){ %>
         <div class="regCompleted">
@@ -32,6 +32,15 @@
         <% if (locals.emailError && locals.emailError.msg) { %>
             <p class="errForm"><%= locals.emailError.msg %></p>
         <% } %>
+        <select <% if (locals.errors && locals.errors.rol) { %> class="errFormInput" <% } %> name="rol">
+            <option value="">Seleccionar una opción </option>
+            <% for( let i = 1; i < rol.length; i++ ) { %>
+                <option value="<%= rol[i].id %>"><%= rol[i].name %></option>
+            <% } %>
+        </select>
+        <% if (locals.errors && locals.errors.rol) { %>
+            <p class="errForm"><%= locals.errors.rol.msg %></p>
+        <% } %>
         <input <% if (locals.errors && locals.errors.pass) { %> class="errFormInput" <% } %> placeholder="Ingresa tu contraseña" name="pass" type="password" >
         <input <% if (locals.errors && locals.errors.pass) { %> class="errFormInput" <% } %> placeholder="Ingresa tu contraseña nuevamente" name="pass2" type="password" >
         <% if (locals.errors && locals.errors.pass) { %>
@@ -42,4 +51,4 @@
     </form>
     <% } %> 
 </section>
-<%- include("../partials/footer.ejs") %>
+<%- include("../../partials/footer.ejs") %>

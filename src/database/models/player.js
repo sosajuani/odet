@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     goals: DataTypes.INTEGER,
     suspensionId: DataTypes.INTEGER,
     teamId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    teamConfirm:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Player',

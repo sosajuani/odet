@@ -1,0 +1,5 @@
+- cambiar perfil para que no muestre el equipo si no esta confirmado
+- crear la confirmacion del equipo
+- darle permisos al capitan de poder hacerlo
+- crear la versión "no" tengo equipo para registrarlo
+- diseño de perfil

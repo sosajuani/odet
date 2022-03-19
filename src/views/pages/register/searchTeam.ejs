@@ -1,0 +1,42 @@
+<%- include("../../partials/head.ejs",{title:"Registro"}) %>
+<%- include("../../partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <div class="contRegisMore">
+        <h3 class="loginFormTitle">Ya casi terminamos!</h3>
+    <% if (pageTeam === undefined){ %>
+        <div>
+            <h5 class="">¿Tenés equipo?</h5>
+            <div>
+                <a class="btnLink" href="/register/more?pageTeam=1">SI</a>
+                <a class="btnLink" href="/register/more?pageTeam=2">NO</a>
+            </div>
+        </div>
+    <% } %>
+    <% if (pageTeam !== undefined && pageTeam == 1) { %>
+        <form class="loginCont registerTwo" action="/register/searchTeam" method="get">
+            <input type="hidden" name="pageTeam" value="1">
+            <input class="searchInputReg searchBaseReg" type="search" name="search" placeholder="Buscar equipo">
+            <button class="searchButtonReg searchBaseReg" type="submit"><i class='bx bx-search-alt-2'></i></button>
+        </form>
+        <% if(searchResult == 1){ %> 
+            <div class="teamsViewsCont">
+                <% for( let i = 0; i < teamsConsult.length; i++ ) { %>
+                <div class="teamsViewsItem">
+                    <div class="teamViewsCrest"><img src="/img/teams/default.png" alt="teamLogo"></div>
+                    <div class="teamViewsInfo">
+                        <p><%= teamsConsult[i].name %></p>
+                        <form action="/register/regTeam/<%= teamsConsult[i].id %>" method="post">
+                            <button class="btnLink linkDisabled" type="submit">Fichar</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        <% }else{ %> 
+            <div class="infoWeb">No se encontraron resultados</div>
+        <% } %> 
+        <a class="btnLink" href="/register/more?pageTeam=1">volver</a>
+    <% } %>
+    </div>
+</section>
+<%- include("../../partials/footer.ejs") %>

@@ -26,6 +26,15 @@ const validation = {
         body('email')
          .notEmpty().withMessage("Debes colocar un email").bail()
          .isEmail().withMessage("Debes colocar un email valido"),
+        body('rol')
+         .notEmpty().withMessage('Debes seleccionar una opción')
+         .custom(value =>{
+            if(value == 2 || value == 3){
+                return true
+            }else{
+                throw new Error("Rol invalido");
+            }
+         }),
         body('pass')
          .notEmpty().withMessage("Contraseña obligatoria").bail()
          .isLength({min:5}).withMessage("La contraseña debe tener mínimo 5 caracteres")

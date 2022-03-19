@@ -62,6 +62,26 @@
 .regCompleted > :nth-child(2){
    color: #333;
 }
+.registerTwo{
+    flex-direction: row;
+}
+.searchBaseReg{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+    outline: none;
+}
+.searchInputReg{
+    border-left: 1px solid #ccc;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+}
+.searchButtonReg{
+    border-left: none;
+    border-right:  1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+}
 @media only screen and (min-width: 768px){
     .contPrinLogin{
         width: 70%;

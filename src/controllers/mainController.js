@@ -44,11 +44,13 @@ const mainController = {
         req.session.user = userConsult.dataValues;
         req.session.access = userConsult.dataValues.rolId;
         
-        let playerConsult = await Player.findOne({where:{id:userConsult.id}});
-        if(playerConsult.idTeam == null){
-            req.session.regIncomplete = false
+        if(userConsult.rolId !== 3){
+            let playerConsult = await Player.findOne({where:{id:userConsult.id}});
+            if(playerConsult.teamId == null){
+                res.redirect('/register/more')
+            }
         }
-        res.redirect("/login")
+        res.redirect('/')
     },
     logout: (req,res)=>{
         delete req.session.user

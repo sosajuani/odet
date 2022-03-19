@@ -1,5 +1,5 @@
-<%- include("../partials/head.ejs",{title:"Registro"}) %>
-<%- include("../partials/menuHeader.ejs") %>
+<%- include("../../partials/head.ejs",{title:"Registro"}) %>
+<%- include("../../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <div class="contRegisMore">
         <h3 class="loginFormTitle">Ya casi terminamos!</h3>
@@ -13,9 +13,13 @@
         </div>
     <% } %>
     <% if (pageTeam !== undefined && pageTeam == 1) { %>
-        <form action="/register/searchTeam" method="post">
-            <input type="search" placeholder="Buscar equipo">
-            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+        <form class="loginCont registerTwo" action="/register/searchTeam" method="get">
+            <input type="hidden" name="pageTeam" value="1">
+            <input class="searchInputReg searchBaseReg" type="search" name="search" placeholder="Buscar equipo">
+            <button class="searchButtonReg searchBaseReg" type="submit"><i class='bx bx-search-alt-2'></i></button>
+        </form>
+        <form action="" method="post">
+            Código de invitación: <input placeholder="Introducir código" type="text">
         </form>
         <a class="btnLink" href="/register/more">volver</a>
     <% } %>
@@ -27,4 +31,4 @@
     <p>¿Tenes cuenta?. <a href="/login">Ingresa</a></p> -->
     </div>
 </section>
-<%- include("../partials/footer.ejs") %>
+<%- include("../../partials/footer.ejs") %>

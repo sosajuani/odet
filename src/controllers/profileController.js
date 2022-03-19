@@ -6,16 +6,17 @@ const profileController = {
         let playerTable;
         let userTable;
         let referee = null;
-        if(req.params.id != 3){
+        userTable = await User.findOne({where:{id:req.params.id}});
+        if(userTable.id != 3){
             playerTable = await Player.findOne({
                 where:{userId:req.params.id},
                 include: ['teams']
             });
-            userTable = await User.findOne({where:{id:req.params.id}});
         }else{
             userTable = await User.findOne({where:{id:req.params.id}});
             referee = 1 
         }
+        // console.log(playerTable);
         res.render('user/profile.ejs',{referee,userTable,playerTable});
     }
 }
