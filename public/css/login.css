@@ -10,6 +10,7 @@
     font-size: 2rem;
     margin: 0 0 5px 0px;
     color: #15547e;
+    font-weight: bold;
 }
 .loginFormTitle::after{
     content: "";
@@ -47,13 +48,33 @@
     flex-direction: column;
     align-items: center;
 }
+.regCompleted{
+    width: 90%;
+    background: #e9e9e9;
+    border: 2px solid #c7c7c7;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+.regCompleted > :first-child{
+   font-size: 1.5rem;
+}
+.regCompleted > :nth-child(2){
+   color: #333;
+}
 @media only screen and (min-width: 768px){
     .contPrinLogin{
+        width: 70%;
+    }
+    .regCompleted{
         width: 70%;
     }
 }
 @media only screen and (min-width: 1024px){
     .contPrinLogin{
         width: 50%;
+    }
+    .regCompleted{
+        width: 40%;
     }
 }

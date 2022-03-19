@@ -7,7 +7,7 @@ const Player = db.Player;
 
 const mainController = {
     register: (req,res)=>{
-        res.render('pages/register.ejs');
+        res.render('pages/register.ejs',);
     },
     registerProcess: async(req,res)=>{
         let errors = validationResult(req);
@@ -37,7 +37,7 @@ const mainController = {
             teamId: null,
             userId: userCreate.id
         })
-        res.redirect('/register/more')
+        return res.render("pages/register.ejs",{completed:{msg:'El email ingresado ya esta en uso'}})
     },
     registerMore: (req,res)=>{
         let pageTeam = req.query.pageTeam // 1 = true | 2 = false

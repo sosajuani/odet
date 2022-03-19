@@ -123,7 +123,7 @@ report - user()
 ////////
 sequelize model:generate --name Avatar --attributes image:string
 sequelize model:generate --name Rol --attributes name:string
-sequelize model:generate --name User --attributes user:string,firstName:string,lastName:string,email:string,pass:string,avatarId:integer,rolId:integer
+sequelize model:generate --name User --attributes user:string,firstName:string,lastName:string,email:string,pass:string,avatarId:integer,rolId:integer,registerCompleted:integer
 sequelize model:generate --name Ascent --attributes type:string
 sequelize model:generate --name Decline --attributes type:string
 sequelize model:generate --name TypeTournament --attributes type:string

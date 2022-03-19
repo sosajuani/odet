@@ -41,8 +41,13 @@ const mainController = {
         if(!confirmPass){
             return res.render('pages/login.ejs',{errors:{passIncorrect: "La contraseña ingresada no es válida"},oldData:req.body})
         }
-        req.session.user = userConsult.dataValues
-        req.session.access = userConsult.dataValues.rolId
+        req.session.user = userConsult.dataValues;
+        req.session.access = userConsult.dataValues.rolId;
+        
+        let playerConsult = await Player.findOne({where:{id:userConsult.id}});
+        if(playerConsult.idTeam == null){
+            req.session.regIncomplete = false
+        }
         res.redirect("/login")
     },
     logout: (req,res)=>{
