@@ -8,6 +8,9 @@ router.get('/news',authMiddleware.logged,authMiddleware.admin,adminController.ne
 
 router.get('/news/create',authMiddleware.logged,authMiddleware.admin,adminController.newsCreate)
 router.post('/news/create',authMiddleware.logged,authMiddleware.admin,adminController.newsCreateProcess)
+router.get('/news/:id/edit',authMiddleware.logged,authMiddleware.admin,adminController.newsEdit)
+router.put('/news/:id/edit',authMiddleware.logged,authMiddleware.admin,adminController.newsEditProcess)
+router.delete('/news/:id/delete',authMiddleware.logged,authMiddleware.admin,adminController.newsDelete)
 
 router.get('/config',authMiddleware.logged,authMiddleware.admin,adminController.config)
 router.get('/players',authMiddleware.logged,authMiddleware.admin,adminController.players)

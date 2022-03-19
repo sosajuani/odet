@@ -1,9 +1,12 @@
 const {validationResult} = require('express-validator');
 const {compareSync, hashSync} = require('bcryptjs');
 const db = require('../database/models');
+const { send } = require('express/lib/response');
 const User = db.User;
 const Player = db.Player;
 const News = db.News;
+const Tournament = db.Tournament;
+const Division = db.Division;
 
 const mainController = {
     home: (req,res)=>{
@@ -17,11 +20,10 @@ const mainController = {
     tournament: (req,res)=>{
         res.render('pages/torneo.ejs');
     },
-    teams: (req,res)=>{
-        res.render('pages/teams.ejs');
-    },
-    fixture: (req,res)=>{
-        res.render('pages/fixture.ejs');
+    fixture: async(req,res)=>{
+        let tournamentConsult = await Tournament.findAll();
+        let divisionConsult =  await Division.findAll()
+        res.render('pages/fixture.ejs',{tournamentConsult,divisionConsult});
     },
     login: (req,res)=>{
         res.render('pages/login.ejs');
@@ -47,53 +49,6 @@ const mainController = {
         delete req.session.user
         delete req.session.access
         res.redirect('/login')
-    },
-    register: (req,res)=>{
-        res.render('pages/register.ejs');
-    },
-    registerProcess: async(req,res)=>{
-        let errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.render("pages/register.ejs",{errors:errors.mapped(), oldData: req.body})
-        }
-        let userConsult = await User.findOne({where:{user:req.body.user}})
-        if(userConsult !== null){
-            return res.render("pages/register.ejs",{userError:{msg:'El usuario ya existe'},oldData: req.body})
-        }
-        let emailConsult = await User.findOne({where:{email:req.body.email}})
-        if(emailConsult !== null){
-            return res.render("pages/register.ejs",{emailError:{msg:'El email ingresado ya esta en uso'},oldData: req.body})
-        }
-        let userCreate = await User.create({
-            user: req.body.user,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            pass: hashSync(req.body.pass,10),
-            avatarId: 1,
-            rolId: 2
-        });
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log(userCreate.id);
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        console.log("//////////////////////////////");
-        await Player.create({
-            goals: 0,
-            suspensionId: null,
-            teamId: 1,
-            userId: userCreate.id
-        })
-        res.redirect('/')
     }
 }
 

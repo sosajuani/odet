@@ -23,9 +23,9 @@
                             <div><%= news[i].id %></div>
                             <div><%= news[i].title %></div>
                             <div class="actionItemTable">
-                                <i class='bx bx-edit-alt actionItemTableButton linkDisabled'></i>
-                                <form action="post">
-                                    <button class="actionItemTableButton linkDisabled" type="submit"><i class='bx bxs-trash'></i></button>
+                                <a class="btnLink" href="/admin/news/<%= news[i].id %>/edit"><i class='bx bx-edit-alt'></i></a>
+                                <form action="/admin/news/<%= news[i].id %>/delete?_method=DELETE" method="post">
+                                    <button class="btnLink" type="submit"><i class='bx bxs-trash'></i></button>
                                 </form>
                             </div>
                         </div>

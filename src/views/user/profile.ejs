@@ -8,13 +8,17 @@
             <li>Email: <%= userTable.email %></li>
         </ul>
         <% if(referee !== 1){ %>
-            <div>
-                Tabla de Jugador
-                <ul>
-                    <li>Equipo: <%= playerTable.teams.name %></li>
-                    <li>Goles: <%= playerTable.goals %></li>
-                </ul>
-            </div>
+            <% if(playerTable.teams != null){ %> 
+                <div>
+                    Tabla de Jugador
+                    <ul>
+                        <li>Equipo: <%= playerTable.teams.name %></li>
+                        <li>Goles: <%= playerTable.goals %></li>
+                    </ul>
+                </div>
+            <% }else{ %> 
+                <div class="infoWeb">No estas registrado en un equipo</div>
+            <% } %> 
         <% } %> 
     </div>
 

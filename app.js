@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use(cookieParser());
 
 //usar method override
-app.use(methodOverride('__method'));
+app.use(methodOverride('_method'));
 
 //Sesiones
 app.use(session({
@@ -39,12 +39,14 @@ const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
 const routesNews = require('./src/routes/newsRoutes');
 const routesTeam = require('./src/routes/teamRoutes');
 const routesProfile = require('./src/routes/profileRoutes');
+const routesRegister = require('./src/routes/registerRoutes');
 const routesInstall = require('./src/views/install/installRoutes');
 app.use('/',routesMain);
 app.use('/teams',routesTeam);
 app.use('/news',routesNews);
 app.use('/admin',routesAdm);
 app.use('/profile',routesProfile);
+app.use('/register',routesRegister);
 app.use('/install',routesInstall)
 
 app.listen(port, () => console.log(`Sevidor en http://localhost:3030/`));

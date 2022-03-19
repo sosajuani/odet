@@ -4,6 +4,10 @@
     padding: 5px;
     border: 1px solid #c7c7c7;
 }
+.notiArt > a{
+    display: block;
+    text-align: center;
+}
 .notiArt > h4{
     font-size: 1.8rem;
     margin: 0;
@@ -19,8 +23,9 @@
 .notiArt__descrip > p{
     padding: 4px;
     border-top: 1px solid #c7c7c7;
+    white-space: pre-line;
 }
-.notiArt__button{
+/* .notiArt__button{
     background: #15547e;
     padding: 10px 5px;
     text-align: center;
@@ -28,6 +33,14 @@
 .notiArt__button > a{
     text-decoration: none;
     color: #fff;
+} */
+.contNotiHome{
+    width: 70%;
+    margin: 10px auto;
+    display: grid;
+    gap: 1rem;
+    /* grid-auto-rows: 22rem; */
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
 }
 /*Noticia vista*/
 .notiContenido{
@@ -55,14 +68,15 @@
     color: #fff;
 }
 @media only screen and (min-width: 768px){
-
-    
+    .contNotiHome{
+        width: 100%;
+    }
 }
 @media only screen and (min-width: 1024px){
     .contNotiHome{
         display: flex;
-        justify-content: space-around;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
     .notiArt{
         flex-basis: 40%;

@@ -2,7 +2,7 @@
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <form class="loginCont" method="post" action="/register">
-        <h3>Bienvenido</h3>
+        <h3 class="loginFormTitle">Bienvenido</h3>
         <input <% if (locals.errors && locals.errors.user || locals.userError && locals.userError.msg) { %> class="errFormInput" <% } %> placeholder="Ingresa tu usuario" value="<%= locals.oldData ? locals.oldData.user:null %>"  name="user" type="text" >
         <% if (locals.errors && locals.errors.user) { %>
             <p class="errForm"><%= locals.errors.user.msg %></p>

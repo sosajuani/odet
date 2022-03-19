@@ -1,0 +1,30 @@
+<%- include("../partials/head.ejs",{title:"Registro"}) %>
+<%- include("../partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <div class="contRegisMore">
+        <h3 class="loginFormTitle">Ya casi terminamos!</h3>
+    <% if (pageTeam === undefined){ %>
+        <div>
+            <h5 class="">¿Tenés equipo?</h5>
+            <div>
+                <a class="btnLink" href="/register/more?pageTeam=1">SI</a>
+                <a class="btnLink" href="/register/more?pageTeam=2">NO</a>
+            </div>
+        </div>
+    <% } %>
+    <% if (pageTeam !== undefined && pageTeam == 1) { %>
+        <form action="/register/searchTeam" method="post">
+            <input type="search" placeholder="Buscar equipo">
+            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
+        </form>
+        <a class="btnLink" href="/register/more">volver</a>
+    <% } %>
+    <% if (pageTeam !== undefined && pageTeam == 2) { %>
+        no tiene equipo
+        <a class="btnLink" href="/register/more">volver</a>
+    <% } %>
+    <!-- <input type="submit" value="Ingresar">
+    <p>¿Tenes cuenta?. <a href="/login">Ingresa</a></p> -->
+    </div>
+</section>
+<%- include("../partials/footer.ejs") %>

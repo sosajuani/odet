@@ -5,6 +5,11 @@ const Avatar = db.Avatar;
 const User = db.User;
 const Team = db.Team;
 const Player = db.Player;
+const Ascent = db.Ascent;
+const Decline = db.Decline;
+const TypeTournament = db.TypeTournament;
+const Tournament = db.Tournament;
+const Division = db.Division;
 
 const adminController = {
     registers: (req,res)=>{
@@ -51,11 +56,18 @@ const adminController = {
                 }
             ]);
             //team prueba
-            let teamCreate = await Team.create({
-                name: 'Team odet',
-                avatarId: 1,
-                captainId: 1
-            });
+            let teamCreate = await Team.bulkCreate([
+                {
+                    name: 'Team odet',
+                    avatarId: 1,
+                    captainId: 1
+                },
+                {
+                    name: 'Team rival',
+                    avatarId: 1,
+                    captainId: 1
+                },
+            ]);
             //Players create
             await Player.bulkCreate([
                 {
@@ -71,7 +83,28 @@ const adminController = {
                     userId: 2
                 }
             ]);
+            await Ascent.create({
+                type: 'Puntos'
+            });
+            await Decline.create({
+                type: 'Puntos'
+            });
+            await TypeTournament.create({
 
+            });
+            let tournamentConsult = await Tournament.create({
+                name: 'Torneo de prueba',
+                divisions: 1,
+                ascentId: 1,
+                declineId: 1,
+                startDate: Date('y'),
+                endDate: Date('y'),
+                typeId: 1
+            });
+            await Division.create({
+                name: "Primera división",
+                tournamentId: tournamentConsult.id
+            });
         }catch(e){
             console.log(e);
         }

@@ -5,9 +5,49 @@
 .teamGridHomeItem{
     border-bottom: 1px solid #c7c7c7;
 }
+.teamsViewsCont{
+    width: 50%;
+    margin: 10px auto;
+    display: grid;
+    gap: 1rem;
+    /* grid-auto-rows: 22rem; */
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+}
+.teamsViewsItem{
+    background: #c7c7c7;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.teamViewsInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.teamViewsCrest{
+    /* background: #15547e; */
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 5px solid #15547e
+}
+.teamViewsCrest > img{
+    width: 100%;
+}
 @media only screen and (min-width: 768px){
     .teamGridContHome{
         max-width: 80%;
         margin: auto;
     }
+    .teamsViewsCont{
+        width: 90%;
+    }
+    /* .teamsViewsItem{
+        background: #c7c7c7;
+        border-radius: 5px;
+        padding: 10px;
+        display: inline-block;
+        margin: auto;
+    } */
 }

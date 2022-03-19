@@ -1,17 +1,17 @@
-/******** login ************/
+/******** login y registro ************/
 .loginCont{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
-.loginCont > h3{
+.loginFormTitle{
     text-align: center;
     font-size: 2rem;
     margin: 0 0 5px 0px;
     color: #15547e;
 }
-.loginCont > h3::after{
+.loginFormTitle::after{
     content: "";
     background: linear-gradient(90deg, transparent 0%,#15547e 20%, #15547e 50%,#15547e 80%, transparent 100%);
     width: 100%;
@@ -41,6 +41,11 @@
 .loginCont > p > a{
     text-decoration: none;
     color: #15547a;
+}
+.contRegisMore{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 @media only screen and (min-width: 768px){
     .contPrinLogin{

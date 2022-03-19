@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'avatarId',
         as: 'avatars'
       });
+      Team.belongsTo(models.Tournament,{
+        foreignKey: 'tournamentId',
+        as: 'tournaments'
+      })
+      Team.belongsTo(models.Division,{
+        foreignKey: 'divisionId',
+        as: 'divisions'
+      })
       Team.belongsTo(models.User,{
         foreignKey: 'captainId',
         as: 'users'
@@ -25,10 +33,6 @@ module.exports = (sequelize, DataTypes) => {
       Team.hasMany(models.Player,{
         foreignKey: 'teamId',
         as: 'players'
-      });
-      Team.hasMany(models.Tournament,{
-        foreignKey: 'teamsId',
-        as:'tournaments'
       });
       Team.hasOne(models.Statistic,{
         foreignKey: 'teamId',
@@ -47,7 +51,9 @@ module.exports = (sequelize, DataTypes) => {
   Team.init({
     name: DataTypes.STRING,
     avatarId: DataTypes.INTEGER,
-    captainId: DataTypes.INTEGER
+    captainId: DataTypes.INTEGER,
+    tournamentId: DataTypes.INTEGER,	
+    divisionId:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Team',

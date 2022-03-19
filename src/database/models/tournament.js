@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Tournament.belongsTo(models.Team,{
-        foreignKey: 'teamsId',
+      Tournament.hasMany(models.Team,{
+        foreignKey: 'tournamentId',
         as: 'teams'
       });
       Tournament.belongsTo(models.Ascent,{
@@ -38,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tournament.init({
     name: DataTypes.STRING,
-    teamsId: DataTypes.INTEGER,
     divisions: DataTypes.INTEGER,
     ascentId: DataTypes.INTEGER,
     declineId: DataTypes.INTEGER,

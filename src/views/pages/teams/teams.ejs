@@ -1,5 +1,5 @@
-<%- include("../partials/head.ejs",{title:"Fixture"}) %>
-<%- include("../partials/menuHeader.ejs") %>
+<%- include("../../partials/head.ejs",{title:"Equipos"}) %>
+<%- include("../../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <form action="">
         <% if(tournamentConsult.length > 0){ %> 
@@ -28,34 +28,20 @@
         <% } %> 
         <button type="submit" class="btnLink">Actualizar</button>
     </form>
-    <div class="fixtureGridContHome">
-        <div class="fixtureGridHomeHead torneoTableContHead">
-            <div>Fecha 1</div>
-        </div>
-        <div class="fixtureGridHomeItem torneoTableContItem">
-            <div>Eq1</div>
-            <div>
-                <p>vs</p>
-                <p>17/8 | 20hs</p>
+    <% if(teamsConsult.length > 0){ %> 
+    <div class="teamsViewsCont">
+        <% for( let i = 0; i < teamsConsult.length; i++ ) { %>
+        <div class="teamsViewsItem">
+            <div class="teamViewsCrest"><img src="/img/teams/default.png" alt="teamLogo"></div>
+            <div class="teamViewsInfo">
+                <p><%= teamsConsult[i].name %></p>
+                <a class="btnLink" href="/teams/<%= teamsConsult[i].id %>/info">Entrar</a>
             </div>
-            <div>Eq2</div>
         </div>
-        <div class="fixtureGridHomeItem torneoTableContItem">
-            <div>Eq1</div>
-            <div>
-                <p>vs</p>
-                <p>17/8 | 20hs</p>
-            </div>
-            <div>Eq2</div>
-        </div>
-        <div class="fixtureGridHomeItem torneoTableContItem">
-            <div>Eq1</div>
-            <div>
-                <p>vs</p>
-                <p>17/8 | 20hs</p>
-            </div>
-            <div>Eq2</div>
-        </div>
+        <% } %>
     </div>
+    <% }else{ %>
+        <div class="infoWeb">No hay resultados para mostrar</div> 
+    <% } %> 
 </section>
-<%- include("../partials/footer.ejs") %>
+<%- include("../../partials/footer.ejs") %>

@@ -33,6 +33,28 @@ const adminController = {
         })
         .then(r => res.redirect('/admin/news'))
     },
+    newsEdit: async(req,res)=>{
+        let newsConsult = await News.findOne({where:{id:req.params.id}});
+        if(newsConsult === null){
+            return res.redirect('/admin/news')
+        }
+
+        res.render('admin/crud/editCreate.ejs',{newsConsult})
+    },
+    newsEditProcess: (req,res)=>{
+        News.update(
+            {
+            title: req.body.title,
+            body: req.body.body,
+            image: null,
+            },{where:{id: req.params.id}}
+        );
+        res.redirect('/admin/news')
+    },
+    newsDelete:(req,res)=>{
+        News.destroy({where:{id:req.params.id}})
+        .then(r => res.redirect('/admin/news'))
+    },
     config: (req,res)=>{
         res.render('admin/configAdm.ejs')
     },
