@@ -12,7 +12,7 @@
                 <div>
                     Tabla de Jugador
                     <ul>
-                        <li>Equipo: <%= playerTable.teams.name %></li>
+                        <li>Equipo: <%= playerTable.teamConfirm == 0 ? "Falta confirmación" : playerTable.teams.name %> </li>
                         <li>Goles: <%= playerTable.goals %></li>
                     </ul>
                 </div>
