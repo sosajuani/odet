@@ -18,7 +18,7 @@ const mainController = {
         res.render('pages/noticiaVista.ejs');
     },
     tournament: (req,res)=>{
-        res.render('pages/torneo.ejs');
+        res.render('pages/tournament.ejs');
     },
     fixture: async(req,res)=>{
         let tournamentConsult = await Tournament.findAll();
@@ -46,7 +46,7 @@ const mainController = {
         
         if(userConsult.rolId !== 3){
             let playerConsult = await Player.findOne({where:{id:userConsult.id}});
-            req.session.player = playerConsult.dataValues;
+            req.session.playerSession = playerConsult.dataValues;
             if(playerConsult.teamId == null){
                 res.redirect('/register/more');
             }
