@@ -93,6 +93,9 @@ const mainController = {
             teamId: req.params.id,
             teamConfirm: 0
         },{where:{userId:req.session.user.id}})
+        let consultPlayer = await Player.findOne({where:{userId: req.session.user.id}})
+        console.log(consultPlayer);
+        req.session.playerSession = consultPlayer
         res.redirect('/profile/'+req.session.user.id);
     }
 }

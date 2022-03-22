@@ -8,8 +8,6 @@ const accessMiddleware = (req,res,next)=>{
         user = req.session.user
         if(req.session.user.rolId !== 3){
             playerSession = req.session.playerSession;
-            console.log(playerSession);
-            console.log("entre al if");
         }else{}
     }
     res.locals.user = user;
