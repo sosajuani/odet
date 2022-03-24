@@ -8,5 +8,53 @@
             <h4>TEAM ODET</h4>
         </div>
     </div>
+    <nav class="teamCardNav">
+        <!-- <ul class="teamCardUl">
+            <li class="teamCardLi">Partidos</li>
+            <li class="teamCardLi">Posiciones</li>
+            <li class="teamCardLi">Jugadores</li>
+            <li class="teamCardLi">Informacion</li>
+        </ul> -->
+        <div class="teamCardUl">
+            <label for="radio1" class="teamCardLi">Partidos</label>
+            <label for="radio2" class="teamCardLi">Posiciones</label>
+            <label for="radio3" class="teamCardLi">Jugadores</label>
+            <label for="radio4" class="teamCardLi">Informacion</label>
+        </div>
+        <div class="teamCardContData">
+            <input type="radio" name="radio" id="radio1" checked>
+            <div class="tab1">
+                <div class="fixtureGridContHome">
+                    <div class="fixtureGridHomeHead torneoTableContHead">
+                        <div>Fecha 1</div>
+                    </div>
+                    <div class="fixtureGridHomeItem torneoTableContItem">
+                        <div class="crestGridHomeFixture">
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                        <div>
+                            <p>vs</p>
+                            <p>17/8 | 20hs</p>
+                        </div>
+                        <div class="crestGridHomeFixture">
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="radio" name="radio" id="radio2">
+            <div class="tab2">
+                <p class="desarrollo">En desarrollo</p>
+            </div>
+            <input type="radio" name="radio" id="radio3">
+            <div class="tab3">
+                <p class="desarrollo">En desarrollo</p>
+            </div>
+            <input type="radio" name="radio" id="radio4">
+            <div class="tab4">
+                <p class="desarrollo">En desarrollo</p>
+            </div>
+        </div>
+    </nav>
 </section>
 <%- include("../../partials/footer.ejs") %>

@@ -1,5 +1,4 @@
 const accessMiddleware = (req,res,next)=>{
-    console.log("access middleware");
     let access = null; //permissions
     let user = null; // user
     let playerSession = null;

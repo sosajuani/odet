@@ -2,6 +2,14 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+.crestGridHomeFixture{
+    width: 5rem;
+}
+.crestGridHomeFixture > img{
+    border-radius: 50%;
 }
 .fixtureGridHomeItem > div:nth-child(2) > p{margin: 0; }
 .fixtureGridHomeItem > div{
@@ -11,7 +19,7 @@
 }
 @media only screen and (min-width: 768px){
     .fixtureGridContHome{
-        width: 60%;
+        width: 30%;
         margin: auto;
     }
 }
