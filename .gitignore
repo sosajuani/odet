@@ -1,1 +1,4 @@
 /Node_Modules/
+.env
+.env_online
+.env_offline
