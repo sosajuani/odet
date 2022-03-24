@@ -45,7 +45,7 @@ const mainController = {
         req.session.access = userConsult.dataValues.rolId;
         
         if(userConsult.rolId !== 3){
-            let playerConsult = await Player.findOne({where:{id:userConsult.id}});
+            let playerConsult = await Player.findOne({where:{userId:userConsult.id}});
             req.session.playerSession = playerConsult.dataValues;
             if(playerConsult.teamId == null){
                 res.redirect('/register/more');

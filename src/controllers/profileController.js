@@ -16,7 +16,6 @@ const profileController = {
             userTable = await User.findOne({where:{id:req.params.id}});
             referee = 1 
         }
-        // console.log(playerTable);
         res.render('user/profile.ejs',{referee,userTable,playerTable});
     }
 }

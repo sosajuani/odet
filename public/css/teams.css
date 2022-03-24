@@ -35,6 +35,16 @@
 .teamViewsCrest > img{
     width: 100%;
 }
+.teamCardCont{
+    width: 80%;
+    background: #c7c7c7;
+}
+.teamCardHeader{
+    display: flex;
+}
+.crestTeamInfo{
+    width: 8rem;
+}
 @media only screen and (min-width: 768px){
     .teamGridContHome{
         max-width: 80%;
