@@ -95,6 +95,27 @@
     transform: scale(1);
     position: relative;
 }
+.teamDetailFixCont{
+    width: 50%;
+    margin: auto;
+    border: 5px solid #e9e9e9;
+    border-radius: 3px;
+}
+.teamDetailFixTitle{
+    border-radius: 5px 5px 0 0;
+    background-color: #15547e;
+    color: #fff;
+}
+.teamDetailFixTeams{
+    display: flex;
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+}
+.teamDetailFixTeams > div{
+    background: #ff7878;
+    padding: 10px;
+    margin: 10px;
+}
 @media only screen and (min-width: 768px){
     .teamGridContHome{
         max-width: 80%;
