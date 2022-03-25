@@ -24,7 +24,7 @@ const adminController = {
                 {name:'Referee'}
             ]);
             //avatar base
-            await Avatar.create({image:'default.jpg'});
+            await Avatar.create({image:'default.png'});
             //usuarios de prueba
             let usersCreate = await User.bulkCreate([
                 {

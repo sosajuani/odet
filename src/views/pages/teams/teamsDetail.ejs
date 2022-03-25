@@ -1,51 +1,29 @@
-<%- include("../../partials/head.ejs",{title:"Equipos"}) %>
-<%- include("../../partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <div class="infoWeb"> En desarrollo <a href="/teams">VOLVER</a></div>
-    <div class="teamCardCont">
-        <div class="teamCardHeader">
-            <img class="crestTeamInfo" src="/img/teams/default.png" alt="team avatar">
-            <h4>TEAM ODET</h4>
-        </div>
-    </div>
-    <nav class="teamCardNav">
-        <!-- <ul class="teamCardUl">
-            <li class="teamCardLi">Partidos</li>
-            <li class="teamCardLi">Posiciones</li>
-            <li class="teamCardLi">Jugadores</li>
-            <li class="teamCardLi">Informacion</li>
-        </ul> -->
-        <div class="teamCardUl">
-            <label for="radio1" class="teamCardLi">Partidos</label>
-            <label for="radio2" class="teamCardLi">Posiciones</label>
-            <label for="radio3" class="teamCardLi">Jugadores</label>
-            <label for="radio4" class="teamCardLi">Informacion</label>
-        </div>
-        <div class="teamCardContData">
-            <input type="radio" name="radio" id="radio1" checked>
-            <div class="tab1">
-                <div class="teamDetailFixCont">
-                    <div class="teamDetailFixTitle">fecha 1</div>
-                    <div class="teamDetailFixTeams">
-                        <div>asd</div>
-                        <div>asd</div>
-                        <div>asd</div>
-                    </div>
+<%- include("../../partials/head",{title:"Equipo ODET"}) %>
+<%- include("headPartialDetail",) %>
+<div class="teamInfoCont">
+     
+    <div class="teamInfoCont">
+        <% for(let i=1; i<=10;i++){ %> 
+        <div class="fixtureGridContHome">
+            <div class="fixtureGridHomeHead torneoTableContHead">
+                <div>Fecha <%= i %></div>
+            </div>
+            <div class="fixtureGridHomeItem torneoTableContItem">
+                <div>
+                    <img src="/img/teams/default.png" alt="avatar team">
+                    <p>TEAM ONE</p>
+                </div>
+                <div>
+                    <p>vs</p>
+                    <p>17/8 | 20hs</p>
+                </div>
+                <div>
+                    <img src="/img/teams/default.png" alt="avatar team">
+                    <p>TEAM TWO</p>
                 </div>
             </div>
-            <input type="radio" name="radio" id="radio2">
-            <div class="tab2">
-                <p class="desarrollo">En desarrollo</p>
-            </div>
-            <input type="radio" name="radio" id="radio3">
-            <div class="tab3">
-                <p class="desarrollo">En desarrollo</p>
-            </div>
-            <input type="radio" name="radio" id="radio4">
-            <div class="tab4">
-                <p class="desarrollo">En desarrollo</p>
-            </div>
         </div>
-    </nav>
-</section>
-<%- include("../../partials/footer.ejs") %>
+        <% } %> 
+    </div>
+</div>
+<%- include("footerPartialDetail")  %> 

@@ -133,6 +133,7 @@ body{
     border: none;
     cursor: pointer;
 }
+.link{text-decoration: none;color: #333;}
 .linkDisabled{cursor: default;}
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}

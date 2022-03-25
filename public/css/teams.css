@@ -66,55 +66,10 @@
     padding: 5px;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
-.teamCardContData{
-    background: #15547e;
-}
-.teamCardContData > div{
-    position: absolute;
-    line-height: 1.8;
-    transition: all 300ms ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.90);
-    padding: 30px;
-    background: #fff;
-    padding-bottom: 40px;
-}
-#radio1,#radio2,#radio3,#radio4{
-    display: none;
-}
-#radio1:checked ~ .tab1,
-#radio2:checked ~ .tab2,
-#radio3:checked ~ .tab3,
-#radio4:checked ~ .tab4
-{
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    position: relative;
-}
-.teamDetailFixCont{
-    width: 50%;
-    margin: auto;
-    border: 5px solid #e9e9e9;
-    border-radius: 3px;
-}
-.teamDetailFixTitle{
-    border-radius: 5px 5px 0 0;
-    background-color: #15547e;
-    color: #fff;
-}
-.teamDetailFixTeams{
+.teamInfoCont{
     display: flex;
-    border-radius: 0 0 5px 5px;
-    background: #fff;
-}
-.teamDetailFixTeams > div{
-    background: #ff7878;
-    padding: 10px;
-    margin: 10px;
+    flex-wrap: wrap;
 }
 @media only screen and (min-width: 768px){
     .teamGridContHome{
