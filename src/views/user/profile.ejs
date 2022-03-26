@@ -2,14 +2,18 @@
 <%- include("../partials/menuHeader.ejs") %>
 <section class="contPrin">
     <div class="headProfile">
-        <div class="avatarProfile"></div>
-        <h3><%= userTable.firstName+" "+userTable.lastName %></h3>
-        <ul>
-            <li>Email: <%= userTable.email %></li>
-        </ul>
+        <div class="headProfileAvatarName">
+            <div class="avatarProfile">
+                <img src="/img/users/<%= userTable.avatars.image %>" alt="user avatar"> 
+            </div>
+        <div>
+            <h3 class="headProfileName"><%= userTable.firstName+" "+userTable.lastName %></h3>
+            <p class="headProfileName">Email: <%= userTable.email %></p>
+        </div>
+        </div>
         <% if(referee !== 1){ %>
             <% if(playerTable && playerTable.teams != null){ %> 
-                <div>
+                <div class="profileTablePlayer">
                     Tabla de Jugador
                     <ul>
                         <li>Equipo: <%= playerTable.teamConfirm == 0 ? "Falta confirmación" : playerTable.teams.name %> </li>

@@ -47,7 +47,11 @@ app.use('/news',routesNews);
 app.use('/admin',routesAdm);
 app.use('/profile',routesProfile);
 app.use('/register',routesRegister);
-app.use('/install',routesInstall)
+app.use('/install',routesInstall);
+
+app.use((req,res,next)=>{
+    res.status(404).render('404.ejs')
+});
 
 app.listen(process.env.PORT || port, () => console.log(`Sevidor funcionando`));
 

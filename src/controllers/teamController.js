@@ -51,6 +51,7 @@ const teamController = {
         if(teamConsult == null){
             res.render('404.ejs');
         }else{
+            
             res.render('pages/teams/teamsDetailMore.ejs',{teamConsult})
         }
     }

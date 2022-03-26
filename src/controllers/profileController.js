@@ -6,7 +6,10 @@ const profileController = {
         let playerTable;
         let userTable;
         let referee = null;
-        userTable = await User.findOne({where:{id:req.params.id}});
+        userTable = await User.findOne({
+            where:{id:req.params.id},
+            include:['avatars']
+        });
         if(userTable.id != 3){
             playerTable = await Player.findOne({
                 where:{userId:req.params.id},
