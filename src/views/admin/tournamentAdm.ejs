@@ -2,18 +2,41 @@
     <div class="contenedorAdmin">    
         <%- include("../partials/menuAdmin.ejs")  %> 
         <div class="contAdminPrin">
-            <h3>Torneos</h3>
-            <div class="">
-                <form action="">
-                    <label for="">Nombre dlel torneo</label>
-                    <input placeholder="¿Como se va a llamar tu torneo?" type="text">
-                    <label for="">Nombre de temporada</label>
-                    <input placeholder="¿Como se va a llamar la temporada?" type="text">
-                    <label for="">Fecha de inicio</label>
-                    <input type="date">
-                    <label for="">Fecha de fin</label>
-                    <input type="date">
-                </form>
+            <h3>Lista de torneos actuales</h3>
+            <div>
+                <a class="btnLink" href="">Nuevo torneo</a>
             </div>
+            <% if(data === 0){ %> 
+                <div class="infoWeb">No hay torneos creados</div>
+            <% }else{ %> 
+            <div class="tournamentTableAdm">
+                <div class="tournamentTableAdmHead">
+                    <div>#</div>
+                    <div>Nombre</div>
+                    <div>Inicio</div>
+                    <div>Final</div>
+                    <div>Detalles</div>
+                </div>
+                <% for( let i = 0; i < consultTournament.length; i++ ) { %>
+                <%   
+                    let startDate = new Date(consultTournament[i].startDate);
+                    let startDay  = startDate.getDate();
+                    let startMonth = startDate.getMonth();
+                    let startYear = startDate.getFullYear();
+                    let endDate = new Date(consultTournament[i].endDate);
+                    let endDay  = endDate.getDate();
+                    let endMonth = endDate.getMonth();
+                    let endYear = endDate.getFullYear();
+                %> 
+                    <div class="tournamentTableAdmItem">
+                        <div><%= consultTournament[i].id  %></div>
+                        <div><%= consultTournament[i].name  %></div>
+                        <div><%= `${startDay}/${startMonth+1}/${startYear}`  %></div>
+                        <div><%= `${endDay}/${endMonth+1}/${endYear}`  %></div>
+                        <div><a class="tournamentTableAdmItemA" href="/"><i class='bx bxs-detail'></i></a></div>
+                    </div>
+                <% } %>
+            </div>
+            <% } %>
         </div>
     </div>

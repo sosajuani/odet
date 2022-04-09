@@ -17,7 +17,8 @@ router.get('/players',authMiddleware.logged,authMiddleware.admin,adminController
 router.get('/teams',authMiddleware.logged,authMiddleware.admin,adminController.teams)
 router.get('/roles',authMiddleware.logged,authMiddleware.admin,adminController.roles)
 router.get('/tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournament)
-router.get('/tournament/:tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournamentIndividual)
+router.get('/tournament/:tournament',adminController.tournamentIndividual)
+//router.get('/tournament/:tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournamentIndividual)
 router.get('/divisions',authMiddleware.logged,authMiddleware.admin,adminController.divisions)
 router.get('/info',authMiddleware.logged,authMiddleware.admin,adminController.info)
 

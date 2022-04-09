@@ -1,8 +1,16 @@
 <%- include("../partials/head.ejs",{title:"Admin - Torneo config"}) %>
     <div class="contenedorAdmin">
         <%- include("../partials/menuAdmin.ejs")  %> 
+        <% 
+            if(tournamentValid === false){
+        %> 
         <div class="contAdminPrin torneoIndividualCont">
-            <h3>Torneo: <%= torneo %> </h3>
+            <div class="infoWeb">El torneo seleccionado no pudo encontrarse</div>
+        </div>
+        <% }else{ %>  
+        
+        <div class="contAdminPrin torneoIndividualCont">
+            <h3>Torneo: <%= tournamentConsult.name  %> </h3>
             <form action="">
                 <fieldset>
                     <legend>Nueva división</legend>
@@ -66,4 +74,5 @@
                 <label for=""></label>
             </form>
         </div>
+        <% } %>
     </div>

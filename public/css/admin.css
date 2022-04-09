@@ -211,7 +211,39 @@
     display: flex;
     justify-content: space-between;
 }
-
+/*tournament*/
+.tournamentTableAdm{
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+.tournamentTableAdm > div{
+    display: grid;
+    grid-template-columns: 1rem repeat(4,1fr);
+    padding: 0.5rem ;
+}
+.tournamentTableAdmHead{
+    background: #15547e;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+}
+.tournamentTableAdmItem{
+    background: #fff;
+    border-bottom: 1px solid #e7e7e7;
+}
+.tournamentTableAdmItem > div,.tournamentTableAdmHead > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tournamentTableAdmItemA{color: #000;}
+.tournamentTableAdmItem:nth-child(odd){
+    background: #e7e7e7;
+}
+.tournamentTableAdmItem:last-child{
+    border-bottom: 1px solid #e7e7e7;
+    border-radius: 0 0 5px 5px;
+}
+/*tournament fin*/
 @media only screen and (min-width: 1024px){
     .menuAdmin{
         clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -223,5 +255,8 @@
     }
     .menuAdmin > li{
         font-size: 1rem;
+    }
+    .tournamentTableAdm{
+        width: 50%;
     }
 }

@@ -3,6 +3,7 @@ const db = require('../database/models');
 
 const User = db.User;
 const News = db.News;
+const Tournament = db.Tournament;
 
 const adminController = {
     home: (req,res)=>{
@@ -67,12 +68,19 @@ const adminController = {
     roles: (req,res)=>{
         res.render('admin/rolesAdm.ejs')
     },
-    tournament: (req,res)=>{
-        res.render('admin/tournamentAdm.ejs')
+    tournament: async(req,res)=>{
+        let consultTournament = await Tournament.findAll();
+        let data = consultTournament.length
+        res.render('admin/tournamentAdm.ejs',{consultTournament,data})
     },
-    tournamentIndividual: (req,res)=>{
+    tournamentIndividual: async(req,res)=>{
         let torneoName = req.params.tournament;
-        res.render('admin/tournamentIndividualAdm.ejs',{torneo:torneoName});
+        let tournamentConsult = await Tournament.findByPk(torneoName);
+        let tournamentValid = true;
+        if(tournamentConsult === null){
+            tournamentValid = false;
+        }
+        res.render('admin/tournamentIndividualAdm.ejs',{tournamentConsult,tournamentValid});
     },
     divisions: (req,res)=>{
         res.render('admin/divisionsAdm.ejs')
