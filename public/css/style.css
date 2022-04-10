@@ -107,6 +107,7 @@ body{
 /************************************************/
 .errForm{
     color: #b62727;
+    margin: 0.2rem;
 }
 .errFormInput{
     box-shadow: #f00 0 0 7px inset;

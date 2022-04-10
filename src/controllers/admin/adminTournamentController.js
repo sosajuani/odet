@@ -1,5 +1,6 @@
 // const express = require('express');
 const db = require('../../database/models');
+const {validationResult} = require('express-validator');
 
 const User = db.User;
 const News = db.News;
@@ -42,8 +43,39 @@ const adminController = {
             divisionsTournament
         });
     },
-    newTournament: (req,res)=>{
-        res.render('admin/tournament/tournamentAdmNew.ejs')
+    newTournament: async(req,res)=>{
+        const consultAscent = await Ascent.findAll();
+        const consultDecline = await Decline.findAll();
+        const consultType = await TypeTournament.findAll();
+        res.render('admin/tournament/tournamentAdmNew.ejs',{consultAscent,consultDecline,consultType})
+    },
+    newTournamentProcess: async(req,res)=>{
+        let errors = validationResult(req);
+        if(!errors.isEmpty()){
+            const consultAscent = await Ascent.findAll();
+            const consultDecline = await Decline.findAll();
+            const consultType = await TypeTournament.findAll();
+            return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData: req.body,consultAscent,consultDecline,consultType})
+        }
+        // Tournament.create({
+        //     name: req.body.name,
+        //     divisions: req.body.divisions,
+        //     ascentId: req.body.ascent,
+        //     declineId: req.body.decline,
+        //     startDate: req.body.startDate,
+        //     endDate: req.body.endDate,
+        //     typeId: req.body.typeTournament
+        // })
+        // .then(result => res.redirect('/admin/tournament'))
+        // console.log("inicio");
+        // console.log("inicio");
+        // console.log("inicio");
+        // console.log("inicio");
+        // console.log(req.body.startDate);
+        // console.log("inicio");
+        // console.log("inicio");
+        // console.log("inicio");
+        // console.log("inicio");
     }
 }
 

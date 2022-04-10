@@ -3,68 +3,76 @@
         <%- include("../../partials/menuAdmin.ejs")  %> 
         <div class="contAdminPrin">
             <h3>Crear un nuevo torneo</h3>
-            <form class="newTournament" action="">
+            <form class="newTournament" action="/admin/tournament/new" method="post">
                 <fieldset>
                     <legend>Información del torneo</legend>
-                    <label for="div">Nombre: </label>
-                    <input placeholder="Ingrese un nombre" class="" type="text"><br>
-                    <label for="div">Tipo de división</label><br>
-                    <label for="divPrincipal">Principal</label>
-                    <input type="radio">
-                    <label for="divsecu">Secundaria</label>
-                    <input type="radio">
+                    <label class="newTournamentLabel">
+                        Nombre:
+                        <input <% if(locals.errors && locals.errors.name) { %> class="errFormInput" <% } %> value="<%= locals.oldData ? locals.oldData.name:null %>" placeholder="Ingrese un nombre" name="name" type="text">
+                        <% if (locals.errors && locals.errors.name) { %>
+                            <p class="errForm"><%= locals.errors.name.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Cantidad de divisiones:
+                        <input <% if(locals.errors && locals.errors.divisions) { %> class="errFormInput" <% } %> value="<%= locals.oldData ? locals.oldData.divisions:null %>" placeholder="Ingrese cantidad de divisiones" name="divisions" type="number">
+                        <% if (locals.errors && locals.errors.divisions) { %>
+                            <p class="errForm"><%= locals.errors.divisions.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de ascensos:
+                        <select name="ascent" <% if(locals.errors && locals.errors.ascent) { %> class="errFormInput" <% } %>>
+                            <option value="">Seleccionar ascenso</option>
+                            <% for( let i = 0; i < consultAscent.length; i++ ) { %>
+                                <option <%= locals.oldData && locals.oldData.ascent == consultAscent[i].id ? "selected":null %> value="<%= consultAscent[i].id %>"><%= consultAscent[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.ascent) { %>
+                            <p class="errForm"><%= locals.errors.ascent.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de descensos:
+                        <select name="decline" <% if(locals.errors && locals.errors.decline) { %> class="errFormInput" <% } %>>
+                            <option value="">Seleccionar descenso</option>
+                            <% for( let i = 0; i < consultDecline.length; i++ ) {  %>
+                                <option <%= locals.oldData && locals.oldData.decline == consultDecline[i].id ? "selected":null %>  value="<%= consultDecline[i].id %>"><%= consultDecline[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.decline) { %>
+                            <p class="errForm"><%= locals.errors.decline.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Fecha de inicio:
+                        <input <% if(locals.errors && locals.errors.startDate) { %> class="errFormInput" <% } %> name="startDate" value="<%= locals.oldData ? locals.oldData.startDate:null %>" type="date" />
+                        <% if (locals.errors && locals.errors.startDate) { %>
+                            <p class="errForm"><%= locals.errors.startDate.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Fecha final:
+                        <input <% if(locals.errors && locals.errors.endDate) { %> class="errFormInput" <% } %> name="endDate" value="<%= locals.oldData ? locals.oldData.endDate:null %>" type="date" />
+                        <% if (locals.errors && locals.errors.endDate) { %>
+                            <p class="errForm"><%= locals.errors.endDate.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de torneo:
+                        <select <% if(locals.errors && locals.errors.typeTournament) { %> class="errFormInput" <% } %> name="typeTournament">
+                            <option value="">Seleccionar tipo de torneo</option>
+                            <% for( let i = 0; i < consultType.length; i++ ) { %>
+                                <option <%= locals.oldData && locals.oldData.typeTournament == consultType[i].id ? "selected":null %> value="<%= consultType[i].id %>"><%= consultType[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.typeTournament) { %>
+                            <p class="errForm"><%= locals.errors.typeTournament.msg %></p>
+                        <% } %>
+                    </label>
+                    <input class="formSubmitTournament btnLink" value="Crear torneo" type="submit" />
                 </fieldset>
-                <fieldset>
-                    <legend>División primaria</legend>
-                    <div>
-                        <label for="div">Tipo de ascenso</label><br>
-                        <label for="divPrincipal">Puntos</label>
-                        <input type="radio">
-                        <label for="divsecu">Zonas</label>
-                        <input type="radio">
-                        <label for="divsecu">Play-off</label>
-                        <input type="radio">
-                    </div>
-                    <div>
-                        <label for="div">Tipo de descenso</label><br>
-                        <label for="divPrincipal">Puntos</label>
-                        <input type="checkbox">
-                        <label for="divsecu">Descalificación</label>
-                        <input type="checkbox">
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>División Secundaria</legend>
-                    <div>
-                        <label for="">¿Esta es la división mas baja?</label><br>
-                        <label for="">Si</label>
-                        <input type="radio">
-                        <label for="">No</label>
-                        <input type="radio">
-                    </div>
-                    <div>
-                        <label for="div">Tipo de ascenso</label><br>
-                        <label for="divPrincipal">Puntos</label>
-                        <input type="radio">
-                        <label for="divsecu">Zonas</label>
-                        <input type="radio">
-                        <label for="divsecu">Play-off</label>
-                        <input type="radio">
-                    </div>
-                    <div>
-                        <label for="div">Tipo de descenso</label><br>
-                        <label for="divPrincipal">Puntos</label>
-                        <input type="checkbox">
-                        <label for="divsecu">Descalificación</label>
-                        <input type="checkbox">
-                    </div>
-                </fieldset>
+
             </form>
-            <hr>
-            <h4>Añadir equipos</h4>
-            <form action="">
-                <label for=""></label>
-            </form>
-           
         </div>
     </div>
