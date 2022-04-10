@@ -1,9 +1,14 @@
-const express = require('express');
-const db = require('../database/models');
+// const express = require('express');
+const db = require('../../database/models');
 
 const User = db.User;
 const News = db.News;
 const Tournament = db.Tournament;
+const Team = db.Team;
+const Division = db.Division;
+const TypeTournament = db.TypeTournament;
+const Ascent = db.Ascent;
+const Decline = db.Decline;
 
 const adminController = {
     home: (req,res)=>{
@@ -67,20 +72,6 @@ const adminController = {
     },
     roles: (req,res)=>{
         res.render('admin/rolesAdm.ejs')
-    },
-    tournament: async(req,res)=>{
-        let consultTournament = await Tournament.findAll();
-        let data = consultTournament.length
-        res.render('admin/tournamentAdm.ejs',{consultTournament,data})
-    },
-    tournamentIndividual: async(req,res)=>{
-        let torneoName = req.params.tournament;
-        let tournamentConsult = await Tournament.findByPk(torneoName);
-        let tournamentValid = true;
-        if(tournamentConsult === null){
-            tournamentValid = false;
-        }
-        res.render('admin/tournamentIndividualAdm.ejs',{tournamentConsult,tournamentValid});
     },
     divisions: (req,res)=>{
         res.render('admin/divisionsAdm.ejs')

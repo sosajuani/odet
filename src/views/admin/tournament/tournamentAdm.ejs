@@ -1,10 +1,10 @@
-<%- include("../partials/head.ejs",{title:"Admin - Torneo"}) %>
+<%- include("../../partials/head.ejs",{title:"Admin - Torneo"}) %>
     <div class="contenedorAdmin">    
-        <%- include("../partials/menuAdmin.ejs")  %> 
+        <%- include("../../partials/menuAdmin.ejs")  %> 
         <div class="contAdminPrin">
             <h3>Lista de torneos actuales</h3>
             <div>
-                <a class="btnLink" href="">Nuevo torneo</a>
+                <a class="btnLink" href="/admin/tournament/new">Nuevo torneo</a>
             </div>
             <% if(data === 0){ %> 
                 <div class="infoWeb">No hay torneos creados</div>
@@ -33,7 +33,7 @@
                         <div><%= consultTournament[i].name  %></div>
                         <div><%= `${startDay}/${startMonth+1}/${startYear}`  %></div>
                         <div><%= `${endDay}/${endMonth+1}/${endYear}`  %></div>
-                        <div><a class="tournamentTableAdmItemA" href="/"><i class='bx bxs-detail'></i></a></div>
+                        <div><a class="tournamentTableAdmItemA" href="/admin/tournament/<%= consultTournament[i].id %>/detail"><i class='bx bxs-detail'></i></a></div>
                     </div>
                 <% } %>
             </div>

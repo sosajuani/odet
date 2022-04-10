@@ -89,9 +89,10 @@ const adminController = {
             await Decline.create({
                 type: 'Puntos'
             });
-            await TypeTournament.create({
-
-            });
+            await TypeTournament.bulkCreate(
+                {type: 'Liga'},
+                {type: 'Copa'},
+            );
             let tournamentConsult = await Tournament.create({
                 name: 'Torneo de prueba',
                 divisions: 1,

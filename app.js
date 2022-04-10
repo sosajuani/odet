@@ -35,18 +35,23 @@ app.use(accessMiddleware)
 
 //requiero rutas
 const routesMain = require('./src/routes/mainRoutes');
-const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
 const routesNews = require('./src/routes/newsRoutes');
 const routesTeam = require('./src/routes/teamRoutes');
 const routesProfile = require('./src/routes/profileRoutes');
 const routesRegister = require('./src/routes/registerRoutes');
+const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
+const routesAdmTournament = require('./src/routes/adminRoutes/adminTournamentRoutes');
 const routesInstall = require('./src/views/install/installRoutes');
 app.use('/',routesMain);
 app.use('/teams',routesTeam);
 app.use('/news',routesNews);
-app.use('/admin',routesAdm);
 app.use('/profile',routesProfile);
 app.use('/register',routesRegister);
+//admin
+app.use('/admin',routesAdm);
+app.use('/admin/tournament',routesAdmTournament);
+
+
 app.use('/install',routesInstall);
 
 app.use((req,res,next)=>{

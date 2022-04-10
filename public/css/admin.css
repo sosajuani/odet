@@ -243,6 +243,24 @@
     border-bottom: 1px solid #e7e7e7;
     border-radius: 0 0 5px 5px;
 }
+.detailTournamentUl{
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    border: 3px solid #15547e;
+    border-radius: 5px;
+}
+.detailTournamentLi{
+    margin: 0.4rem 0;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 1s all;
+}
+.detailTournamentLi:hover{
+    background: #3282b8;
+    color: #fff;
+}
 /*tournament fin*/
 @media only screen and (min-width: 1024px){
     .menuAdmin{
@@ -257,6 +275,9 @@
         font-size: 1rem;
     }
     .tournamentTableAdm{
+        width: 50%;
+    }
+    .detailTournamentUl{
         width: 50%;
     }
 }
