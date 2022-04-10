@@ -43,7 +43,7 @@ const adminController = {
         });
     },
     newTournament: (req,res)=>{
-        res.send("nuevo torneo")
+        res.render('admin/tournament/tournamentAdmNew.ejs')
     }
 }
 

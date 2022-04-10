@@ -1,0 +1,70 @@
+<%- include("../../partials/head.ejs",{title:"Admin - Torneo"}) %>
+    <div class="contenedorAdmin">    
+        <%- include("../../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Crear un nuevo torneo</h3>
+            <form class="newTournament" action="">
+                <fieldset>
+                    <legend>Información del torneo</legend>
+                    <label for="div">Nombre: </label>
+                    <input placeholder="Ingrese un nombre" class="" type="text"><br>
+                    <label for="div">Tipo de división</label><br>
+                    <label for="divPrincipal">Principal</label>
+                    <input type="radio">
+                    <label for="divsecu">Secundaria</label>
+                    <input type="radio">
+                </fieldset>
+                <fieldset>
+                    <legend>División primaria</legend>
+                    <div>
+                        <label for="div">Tipo de ascenso</label><br>
+                        <label for="divPrincipal">Puntos</label>
+                        <input type="radio">
+                        <label for="divsecu">Zonas</label>
+                        <input type="radio">
+                        <label for="divsecu">Play-off</label>
+                        <input type="radio">
+                    </div>
+                    <div>
+                        <label for="div">Tipo de descenso</label><br>
+                        <label for="divPrincipal">Puntos</label>
+                        <input type="checkbox">
+                        <label for="divsecu">Descalificación</label>
+                        <input type="checkbox">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>División Secundaria</legend>
+                    <div>
+                        <label for="">¿Esta es la división mas baja?</label><br>
+                        <label for="">Si</label>
+                        <input type="radio">
+                        <label for="">No</label>
+                        <input type="radio">
+                    </div>
+                    <div>
+                        <label for="div">Tipo de ascenso</label><br>
+                        <label for="divPrincipal">Puntos</label>
+                        <input type="radio">
+                        <label for="divsecu">Zonas</label>
+                        <input type="radio">
+                        <label for="divsecu">Play-off</label>
+                        <input type="radio">
+                    </div>
+                    <div>
+                        <label for="div">Tipo de descenso</label><br>
+                        <label for="divPrincipal">Puntos</label>
+                        <input type="checkbox">
+                        <label for="divsecu">Descalificación</label>
+                        <input type="checkbox">
+                    </div>
+                </fieldset>
+            </form>
+            <hr>
+            <h4>Añadir equipos</h4>
+            <form action="">
+                <label for=""></label>
+            </form>
+           
+        </div>
+    </div>
