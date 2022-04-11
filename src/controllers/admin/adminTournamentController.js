@@ -3,13 +3,13 @@ const db = require('../../database/models');
 const {validationResult} = require('express-validator');
 
 const User = db.User;
-const News = db.News;
 const Tournament = db.Tournament;
 const Team = db.Team;
 const Division = db.Division;
 const TypeTournament = db.TypeTournament;
 const Ascent = db.Ascent;
 const Decline = db.Decline;
+const DivisionControl = db.DivisionControl;
 
 const adminController = {
     tournament: async(req,res)=>{
@@ -26,8 +26,7 @@ const adminController = {
         const typeTournament = await TypeTournament.findOne({where: {id: tournamentConsult.typeId}});
         const ascentTournament = await Ascent.findOne({where: {id: tournamentConsult.ascentId}});
         const declineTournament = await Decline.findOne({where: {id: tournamentConsult.declineId}});
-        const divisionsTournament = await Division.count({where: {tournamentId: torneoName}});;
-        console.log(divisionsTournament);
+        const divisionControl = await DivisionControl.findOne({where:{tournamentId: torneoName}});
         let tournamentValid = true;
         if(tournamentConsult === null){
             tournamentValid = false;
@@ -40,7 +39,7 @@ const adminController = {
             typeTournament,
             ascentTournament,
             declineTournament,
-            divisionsTournament
+            divisionControl
         });
     },
     newTournament: async(req,res)=>{
@@ -57,7 +56,7 @@ const adminController = {
             const consultType = await TypeTournament.findAll();
             return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData: req.body,consultAscent,consultDecline,consultType})
         }
-        Tournament.create({
+        let newTournament = await Tournament.create({
             name: req.body.name,
             divisions: req.body.divisions,
             ascentId: req.body.ascent,
@@ -66,7 +65,13 @@ const adminController = {
             endDate: req.body.endDate,
             typeId: req.body.typeTournament
         })
-        .then(result => res.redirect('/admin/tournament'))
+        await DivisionControl.create({
+            tournamentDivisions: newTournament.divisions,
+            divisionsCreated: 0,
+            tournamentId: newTournament.id,
+            tournamentCompleted: 0
+        })
+        res.redirect('/admin/tournament')
     }
 }
 

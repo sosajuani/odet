@@ -77,8 +77,10 @@ const adminController = {
         res.render('admin/divisions/divisionsAdm.ejs')
     },
     divisionsNew: async(req,res)=>{
-        
-        res.render('admin/divisions/newDivisionAdm.ejs',{consultTournament,consultDivisions})
+        res.render('admin/divisions/newDivisionAdm.ejs')
+    },
+    divisionsNewProcess: async(req,res)=>{
+
     },
     info: (req,res)=>{
         res.render('admin/infoAdm.ejs')

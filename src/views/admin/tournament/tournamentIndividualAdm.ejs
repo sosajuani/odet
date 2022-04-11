@@ -10,7 +10,7 @@
         <% }else{ %>  
             <div class="contAdminPrin torneoIndividualCont">
                 <h3>Torneo: <%= tournamentConsult.name  %> </h3>
-                <div class="alertDanger">Tu torneo tiene <%= divisionsTournament %> divisiones y faltan crear <%= tournamentConsult.divisions-divisionsTournament %> divisiones</div>
+                <div class="alertDanger">Tu torneo tiene <%= divisionControl.divisionsCreated %> divisiones y faltan crear <%= divisionControl.tournamentDivisions - divisionControl.divisionsCreated %> divisiones</div>
             <div>
                 <a href="/admin/tournament" class="btnLink" rel="noopener noreferrer">Volver</a>
             </div>
@@ -27,7 +27,7 @@
                 %> 
                 <ul class="detailTournamentUl">
                     <li class="detailTournamentLi">Cantidad de equipos: <%= teamsTournament %></li>
-                    <li class="detailTournamentLi">Cantidad de divisiones: <%= teamsTournament %></li>
+                    <li class="detailTournamentLi">Cantidad de divisiones: <%= divisionControl.divisionsCreated %></li>
                     <li class="detailTournamentLi">Inicio: <%= `${startDay}/${startMonth+1}/${startYear}` %></li>
                     <li class="detailTournamentLi">Final: <%= `${endDay}/${endMonth+1}/${endYear}` %></li>
                     <li class="detailTournamentLi">Temporada: --- </li>
