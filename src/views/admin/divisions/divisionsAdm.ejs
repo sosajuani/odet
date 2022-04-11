@@ -1,0 +1,16 @@
+<%- include("../../partials/head.ejs",{title:"Admin - Divisiones"}) %>
+    <section class="contenedorAdmin">    
+        <%- include("../../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Divisiones</h3>
+            <div class="divisionsCont">
+                <div>
+                    <a class="btnLink" href="/admin/divisions/new">Crear división</a>
+                </div>
+                <ul class="divisionList ulBasic">
+                    <li><span>Torneo 1:</span> 2 divisiones</li>
+                    <li><span>Torneo 2:</span> 0 divisiones - faltan 4 divisiones</li>
+                </ul>
+            </div>
+        </div>
+    </section>

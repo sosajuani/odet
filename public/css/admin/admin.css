@@ -296,6 +296,17 @@
     display: block;
 }
 /*tournament fin*/
+/*divisions*/
+.divisionList > li{
+    margin-top: 1rem;
+}
+.divisionList > li > span{
+    background-color: #15547e;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+/*divisions*/
 @media only screen and (min-width: 1024px){
     .menuAdmin{
         clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);

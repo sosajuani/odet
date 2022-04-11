@@ -137,3 +137,4 @@ sequelize model:generate --name Player --attributes goals:integer,suspensionId:i
 sequelize model:generate --name Statistic --attributes teamId:integer,played:integer,win:integer,drawn:integer,lost:integer,gf:integer,ga:integer,gd:integer,pts:integer,tournamentId:integer,divisionId:integer
 sequelize model:generate --name Report --attributes userId:integer,msg:string
 sequelize model:generate --name News --attributes title:string,body:text,authorId:integer,image:string,date:date
+sequelize model:generate --name divisionsControl --attributes tournamentDivisions:integer,divisionsCreated:integer,tournamentCompleted:integer

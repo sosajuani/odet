@@ -26,8 +26,8 @@ const adminController = {
         const typeTournament = await TypeTournament.findOne({where: {id: tournamentConsult.typeId}});
         const ascentTournament = await Ascent.findOne({where: {id: tournamentConsult.ascentId}});
         const declineTournament = await Decline.findOne({where: {id: tournamentConsult.declineId}});
-        const divisionsTournament = await Division.count();;
-        console.log(typeTournament);
+        const divisionsTournament = await Division.count({where: {tournamentId: torneoName}});;
+        console.log(divisionsTournament);
         let tournamentValid = true;
         if(tournamentConsult === null){
             tournamentValid = false;
@@ -57,25 +57,16 @@ const adminController = {
             const consultType = await TypeTournament.findAll();
             return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData: req.body,consultAscent,consultDecline,consultType})
         }
-        // Tournament.create({
-        //     name: req.body.name,
-        //     divisions: req.body.divisions,
-        //     ascentId: req.body.ascent,
-        //     declineId: req.body.decline,
-        //     startDate: req.body.startDate,
-        //     endDate: req.body.endDate,
-        //     typeId: req.body.typeTournament
-        // })
-        // .then(result => res.redirect('/admin/tournament'))
-        // console.log("inicio");
-        // console.log("inicio");
-        // console.log("inicio");
-        // console.log("inicio");
-        // console.log(req.body.startDate);
-        // console.log("inicio");
-        // console.log("inicio");
-        // console.log("inicio");
-        // console.log("inicio");
+        Tournament.create({
+            name: req.body.name,
+            divisions: req.body.divisions,
+            ascentId: req.body.ascent,
+            declineId: req.body.decline,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            typeId: req.body.typeTournament
+        })
+        .then(result => res.redirect('/admin/tournament'))
     }
 }
 

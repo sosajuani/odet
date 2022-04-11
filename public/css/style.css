@@ -123,6 +123,11 @@ body{
     color: #523e02;
     font-weight: bold;
 }
+.alertDanger{
+    color: #60191f;
+    background: #fde0e3;
+    padding: 0.5rem;
+}
 .btnLink{
     background:#15547a;
     padding: 10px;
@@ -136,6 +141,11 @@ body{
 }
 .link{text-decoration: none;color: #333;}
 .linkDisabled{cursor: default;}
+.ulBasic{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}
 }

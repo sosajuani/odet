@@ -19,6 +19,8 @@ router.get('/teams',adminController.teams)
 router.get('/roles',adminController.roles)
 
 router.get('/divisions',adminController.divisions)
+router.get('/divisions/new',adminController.divisionsNew)
+
 router.get('/info',adminController.info)
 
 
@@ -43,6 +45,7 @@ router.get('/info',adminController.info)
 // router.get('/tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournament)
 // router.get('/tournament/:tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournamentIndividual)
 // router.get('/divisions',authMiddleware.logged,authMiddleware.admin,adminController.divisions)
+// router.get('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
 // router.get('/info',authMiddleware.logged,authMiddleware.admin,adminController.info)
 
 module.exports = router;
