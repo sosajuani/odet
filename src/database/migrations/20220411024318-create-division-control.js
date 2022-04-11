@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('divisionsControls', {
+    await queryInterface.createTable('DivisionControls', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,6 +13,13 @@ module.exports = {
       },
       divisionsCreated: {
         type: Sequelize.INTEGER
+      },
+      tournamentId: {
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'Tournaments',
+          key: 'id'
+        }
       },
       tournamentCompleted: {
         type: Sequelize.INTEGER
@@ -28,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('divisionsControls');
+    await queryInterface.dropTable('DivisionControls');
   }
 };

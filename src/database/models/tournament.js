@@ -34,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'tournamentId',
         as:'matchweeks'
       })
+      Tournament.hasMany(models.Division,{
+        foreignKey: 'tournamentId',
+        as: 'Divisions'
+      })
+      Tournament.hasOne(models.DivisionControl,{
+        foreignKey: 'tournamentId',
+        as: 'divisionControls'
+      })
     }
   }
   Tournament.init({

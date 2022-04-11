@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'divisionId',
         as:'teams'
       })
+      Division.belongsTo(models.Tournament,{
+        foreignKey: 'tournamentId',
+        as: 'tournaments'
+      })
     }
   }
   Division.init({

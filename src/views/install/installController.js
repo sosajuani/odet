@@ -10,6 +10,7 @@ const Decline = db.Decline;
 const TypeTournament = db.TypeTournament;
 const Tournament = db.Tournament;
 const Division = db.Division;
+const DivisionControl = db.DivisionControl;
 
 const adminController = {
     registers: (req,res)=>{
@@ -89,10 +90,11 @@ const adminController = {
             await Decline.create({
                 type: 'Puntos'
             });
-            await TypeTournament.bulkCreate(
+            await TypeTournament.bulkCreate([
                 {type: 'Liga'},
-                {type: 'Copa'},
-            );
+                {type: 'Copa'}
+            ]);
+            
             let tournamentConsult = await Tournament.create({
                 name: 'Torneo de prueba',
                 divisions: 1,
@@ -106,6 +108,12 @@ const adminController = {
                 name: "Primera división",
                 tournamentId: tournamentConsult.id
             });
+            await DivisionControl.create({
+                tournamentDivisions: 1,
+                divisionsCreated: 1,
+                tournamentId: 1,
+                tournamentCompleted: 1
+            })
         }catch(e){
             console.log(e);
         }
