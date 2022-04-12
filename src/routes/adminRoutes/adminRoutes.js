@@ -20,6 +20,7 @@ router.get('/roles',adminController.roles)
 
 router.get('/divisions',adminController.divisions)
 router.get('/divisions/new',adminController.divisionsNew)
+router.post('/divisions/new',adminController.divisionsNewProcess)
 
 router.get('/info',adminController.info)
 

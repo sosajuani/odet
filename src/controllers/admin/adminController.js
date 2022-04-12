@@ -9,6 +9,7 @@ const Division = db.Division;
 const TypeTournament = db.TypeTournament;
 const Ascent = db.Ascent;
 const Decline = db.Decline;
+const DivisionControl = db.DivisionControl;
 
 const adminController = {
     home: (req,res)=>{
@@ -77,11 +78,34 @@ const adminController = {
         res.render('admin/divisions/divisionsAdm.ejs')
     },
     divisionsNew: async(req,res)=>{
-        res.render('admin/divisions/newDivisionAdm.ejs')
+        consultTournament = await DivisionControl.findAll({
+            where: {tournamentCompleted:0},
+            include: ['tournaments']
+        })
+        //console.log(consultTournament[0].tournaments);
+        res.render('admin/divisions/newDivisionAdm.ejs',{consultTournament})
     },
     divisionsNewProcess: async(req,res)=>{
+        const tournamentId = req.body.tournament
+        const tournamentConsult = await Tournament.findByPk(tournamentId);
+        const divisionControlConsult = await DivisionControl.findOne({ where:{ tournamentId: tournamentId}})
 
-    },
+        if(divisionControlConsult.divisionsCreated == tournamentConsult.divisions){
+            console.log("maximo de divisiones alcanzado");
+        }else{
+            console.log("faltan crear "+parseInt(tournamentConsult.divisions - divisionControlConsult.divisionsCreated));
+        }
+        await Division.create({
+            name: req.body.name,
+            tournamentId: tournamentId
+        })
+        let divisionCount = parseInt(divisionControlConsult.divisionsCreated + 1)
+        await DivisionControl.update({
+            divisionsCreated: divisionCount,
+            tournamentCompleted: divisionCount === parseInt(tournamentConsult.divisions) ? 1 : 0
+        },{where: {tournamentId:tournamentId}})
+        res.redirect('/admin/divisions')
+    },  
     info: (req,res)=>{
         res.render('admin/infoAdm.ejs')
     }
