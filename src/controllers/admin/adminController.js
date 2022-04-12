@@ -74,8 +74,9 @@ const adminController = {
     roles: (req,res)=>{
         res.render('admin/rolesAdm.ejs')
     },
-    divisions: (req,res)=>{
-        res.render('admin/divisions/divisionsAdm.ejs')
+    divisions: async(req,res)=>{
+        divisionControlConsult = await DivisionControl.findAll({include:['tournaments']})
+        res.render('admin/divisions/divisionsAdm.ejs',{divisionControlConsult})
     },
     divisionsNew: async(req,res)=>{
         consultTournament = await DivisionControl.findAll({

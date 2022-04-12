@@ -8,8 +8,9 @@
                     <a class="btnLink" href="/admin/divisions/new">Crear división</a>
                 </div>
                 <ul class="divisionList ulBasic">
-                    <li><span>Torneo 1:</span> 2 divisiones</li>
-                    <li><span>Torneo 2:</span> 0 divisiones - faltan 4 divisiones</li>
+                    <% for( let i = 0; i < divisionControlConsult.length; i++ ) { %>
+                        <li><span><%= divisionControlConsult[i].tournaments.name %></span> <%= divisionControlConsult[i].tournamentCompleted === 1 ? divisionControlConsult[i].divisionsCreated+" div." : `${divisionControlConsult[i].divisionsCreated} div. faltan ${divisionControlConsult[i].tournamentDivisions - divisionControlConsult[i].divisionsCreated}`  %>  <i class='bx bxs-plus-circle'></i></li>
+                    <% } %>
                 </ul>
             </div>
         </div>
