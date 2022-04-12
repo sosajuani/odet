@@ -49,8 +49,8 @@ module.exports = (sequelize, DataTypes) => {
     divisions: DataTypes.INTEGER,
     ascentId: DataTypes.INTEGER,
     declineId: DataTypes.INTEGER,
-    startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE,
+    startDate: DataTypes.DATEONLY,
+    endDate: DataTypes.DATEONLY,
     typeId: DataTypes.INTEGER
   }, {
     sequelize,

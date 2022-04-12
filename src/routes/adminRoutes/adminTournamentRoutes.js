@@ -9,6 +9,8 @@ router.get('/',adminTournamentController.tournament)
 router.get('/:tournament/detail',adminTournamentController.tournamentIndividual)
 router.get('/new',adminTournamentController.newTournament)
 router.post('/new',validationTournament.validationCreate,adminTournamentController.newTournamentProcess)
+router.get('/:tournament/edit',adminTournamentController.editTournament)
+router.put('/:id/edit',validationTournament.validationCreate,adminTournamentController.editTournamentProcess)
 
 
 //admin con permisos
@@ -17,6 +19,8 @@ router.post('/new',validationTournament.validationCreate,adminTournamentControll
 // router.get('/tournament/:tournament',authMiddleware.logged,authMiddleware.admin,adminTournamentController.tournamentIndividual)
 //router.get('/new',authMiddleware.logged,authMiddleware.admin,adminTournamentController.newTournament)
 //router.post('/new',validationTournament.validationCreate,authMiddleware.logged,authMiddleware.admin,adminTournamentController.newTournament)
+//router.get('/:tournament/edit',authMiddleware.logged,authMiddleware.admin,adminTournamentController.newTournament)
+//router.update('/:tournament/edit',validationTournament.validationCreate,authMiddleware.logged,authMiddleware.admin,adminTournamentController.newTournament)
 
 
 module.exports = router;

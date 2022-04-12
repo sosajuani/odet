@@ -1,0 +1,81 @@
+<%- include("../../partials/head.ejs",{title:"Admin - Torneo"}) %>
+    <div class="contenedorAdmin">    
+        <%- include("../../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Edicion de torneo</h3>
+            <form class="newTournament" action="/admin/tournament/<%= consultTournament.id %>/edit?_method=PUT" method="post">
+                <fieldset>
+                    <legend>Editando torneo: <%= consultTournament.name %></legend>
+                    <label class="newTournamentLabel">
+                        Nombre:
+                        <input <% if(locals.errors && locals.errors.name) { %> class="errFormInput" <% } %> value="<%= locals.oldData ? locals.oldData.name:consultTournament.name %>" placeholder="Ingrese un nombre" name="name" type="text">
+                        <% if (locals.errors && locals.errors.name) { %>
+                            <p class="errForm"><%= locals.errors.name.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Cantidad de divisiones:
+                        <input <% if(locals.errors && locals.errors.divisions) { %> class="errFormInput" <% } %> value="<%= locals.oldData ? locals.oldData.divisions:consultTournament.divisions %>" placeholder="Ingrese cantidad de divisiones" name="divisions" type="number">
+                        <% if (locals.errors && locals.errors.divisions) { %>
+                            <p class="errForm"><%= locals.errors.divisions.msg %></p>
+                        <% } %>
+                        <% if (locals.errors && locals.errors.divisionError) { %>
+                            <p class="errForm"><%= locals.errors.divisionError.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de ascensos:
+                        <select name="ascent" <% if(locals.errors && locals.errors.ascent) { %> class="errFormInput" <% } %>>
+                            <option value="">Seleccionar ascenso</option>
+                            <% for( let i = 0; i < consultAscent.length; i++ ) { %>
+                                <option <%= locals.oldData && locals.oldData.ascent == consultAscent[i].id || consultAscent[i].id == consultTournament.ascentId ? "selected":null %> value="<%= consultAscent[i].id %>"><%= consultAscent[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.ascent) { %>
+                            <p class="errForm"><%= locals.errors.ascent.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de descensos:
+                        <select name="decline" <% if(locals.errors && locals.errors.decline) { %> class="errFormInput" <% } %>>
+                            <option value="">Seleccionar descenso</option>
+                            <% for( let i = 0; i < consultDecline.length; i++ ) {  %>
+                                <option <%= locals.oldData && locals.oldData.decline == consultDecline[i].id || consultDecline[i].id == consultTournament.declineId ? "selected":null %>  value="<%= consultDecline[i].id %>"><%= consultDecline[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.decline) { %>
+                            <p class="errForm"><%= locals.errors.decline.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Fecha de inicio:
+                        <input <% if(locals.errors && locals.errors.startDate) { %> class="errFormInput" <% } %> name="startDate" value="<%= locals.oldData ? locals.oldData.startDate:consultTournament.startDate %>" type="date" />
+                        <% if (locals.errors && locals.errors.startDate) { %>
+                            <p class="errForm"><%= locals.errors.startDate.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Fecha final:
+                        <input <% if(locals.errors && locals.errors.endDate) { %> class="errFormInput" <% } %> name="endDate" value="<%= locals.oldData ? locals.oldData.endDate:consultTournament.endDate %>" type="date" />
+                        <% if (locals.errors && locals.errors.endDate) { %>
+                            <p class="errForm"><%= locals.errors.endDate.msg %></p>
+                        <% } %>
+                    </label>
+                    <label class="newTournamentLabel">
+                        Tipo de torneo:
+                        <select <% if(locals.errors && locals.errors.typeTournament) { %> class="errFormInput" <% } %> name="typeTournament">
+                            <option value="">Seleccionar tipo de torneo</option>
+                            <% for( let i = 0; i < consultType.length; i++ ) { %>
+                                <option <%= locals.oldData && locals.oldData.typeTournament == consultType[i].id || consultTournament.typeId == consultType[i].id ? "selected":null %> value="<%= consultType[i].id %>"><%= consultType[i].type %></option>
+                            <% } %>
+                        </select>
+                        <% if (locals.errors && locals.errors.typeTournament) { %>
+                            <p class="errForm"><%= locals.errors.typeTournament.msg %></p>
+                        <% } %>
+                    </label>
+                    <input class="formSubmitTournament btnLink" value="Crear torneo" type="submit" />
+                </fieldset>
+
+            </form>
+        </div>
+    </div>

@@ -72,6 +72,49 @@ const adminController = {
             tournamentCompleted: 0
         })
         res.redirect('/admin/tournament')
+    },
+    editTournament: async(req,res)=>{
+        const consultAscent = await Ascent.findAll();
+        const consultDecline = await Decline.findAll();
+        const consultType = await TypeTournament.findAll();
+        const consultTournament = await Tournament.findByPk(req.params.tournament)
+        res.render("admin/tournament/tournamentAdmEdit.ejs",{consultAscent,consultDecline,consultType,consultTournament})
+    },
+    editTournamentProcess: async(req,res)=>{      
+        let errors = validationResult(req);
+        const consultTournament = await Tournament.findByPk(req.params.id)
+        const consultDivControl = await DivisionControl.findOne({where:{tournamentId:req.params.id}})
+        const consultAscent = await Ascent.findAll();
+        const consultDecline = await Decline.findAll();
+        const consultType = await TypeTournament.findAll();
+        if(!errors.isEmpty()){
+            return res.render("admin/tournament/tournamentAdmEdit.ejs",{errors:errors.mapped(), oldData: req.body,consultAscent,consultDecline,consultType,consultTournament})
+        }
+        //tengo mas divisiones de las que quiero actualizar
+        // quiero poner 2 divisiones y tengo 4
+        if(consultDivControl.divisionsCreated > req.body.divisions){
+            let errorDivision = "Tiene mas divisiones registradas, elimine previamente las que quiera quitar";
+            return res.render("admin/tournament/tournamentAdmEdit.ejs",{errors:{divisionError:{msg:errorDivision}}, oldData: req.body,consultAscent,consultDecline,consultType,consultTournament})
+        }
+
+        await Tournament.update({
+            name: req.body.name,
+            divisions: consultTournament.divisions !== req.body.divisions ? req.body.divisions : consultTournament.divisions,
+            ascentId: req.body.ascent,
+            declineId: req.body.decline,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            typeId: req.body.typeTournament
+        },{where:{
+            id: req.params.id
+        }})
+        if(consultTournament.divisions !== req.body.divisions){
+            await DivisionControl.update({
+                tournamentDivisions: req.body.divisions,
+                tournamentCompleted: req.body.divisions == consultDivControl.divisionsCreated ? 1 : 0
+            },{where:{tournamentId: req.params.id}})
+        }
+        res.redirect('/admin/tournament')
     }
 }
 

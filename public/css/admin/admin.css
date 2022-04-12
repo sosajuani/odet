@@ -235,7 +235,17 @@
     justify-content: center;
     align-items: center;
 }
-.tournamentTableAdmItemA{color: #000;}
+.tournamentTableAdmItemA{
+    background: #15547e;
+    color: #fff;
+    margin: 0 1rem;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
 .tournamentTableAdmItem:nth-child(odd){
     background: #e7e7e7;
 }

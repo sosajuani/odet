@@ -127,7 +127,7 @@ sequelize model:generate --name User --attributes user:string,firstName:string,l
 sequelize model:generate --name Ascent --attributes type:string
 sequelize model:generate --name Decline --attributes type:string
 sequelize model:generate --name TypeTournament --attributes type:string
-sequelize model:generate --name Tournament --attributes name:string,divisions:integer,ascentId:integer,declineId:integer,startDate:date,endDate:date,typeId:integer
+sequelize model:generate --name Tournament --attributes name:string,divisions:integer,ascentId:integer,declineId:integer,startDate:dateonly,endDate:dateonly,typeId:integer
 sequelize model:generate --name Division --attributes name:string,tournamentId:integer
 sequelize model:generate --name Team --attributes name:string,avatarId:integer,captainId:integer,tournamentId:integer,divisionId:integer
 sequelize model:generate --name Goal --attributes userId:integer,rivalTeamId:integer,goalsCount:integer

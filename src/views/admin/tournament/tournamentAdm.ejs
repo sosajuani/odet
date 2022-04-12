@@ -33,7 +33,10 @@
                         <div><%= consultTournament[i].name  %></div>
                         <div><%= `${startDay}/${startMonth+1}/${startYear}`  %></div>
                         <div><%= `${endDay}/${endMonth+1}/${endYear}`  %></div>
-                        <div><a class="tournamentTableAdmItemA" href="/admin/tournament/<%= consultTournament[i].id %>/detail"><i class='bx bxs-detail'></i></a></div>
+                        <div>
+                            <a class="tournamentTableAdmItemA" href="/admin/tournament/<%= consultTournament[i].id %>/detail"><i class='bx bxs-detail'></i></a>
+                            <a class="tournamentTableAdmItemA" href="/admin/tournament/<%= consultTournament[i].id %>/edit"><i class='bx bx-edit'></i></a>
+                        </div>
                     </div>
                 <% } %>
             </div>
