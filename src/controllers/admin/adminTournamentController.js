@@ -10,6 +10,8 @@ const TypeTournament = db.TypeTournament;
 const Ascent = db.Ascent;
 const Decline = db.Decline;
 const DivisionControl = db.DivisionControl;
+const MatchWeek = db.Matchweek;
+const Statistic = db.Statistic;
 
 const adminController = {
     tournament: async(req,res)=>{
@@ -114,6 +116,19 @@ const adminController = {
                 tournamentCompleted: req.body.divisions == consultDivControl.divisionsCreated ? 1 : 0
             },{where:{tournamentId: req.params.id}})
         }
+        res.redirect('/admin/tournament')
+    },
+    deleteTournament: async(req,res)=>{
+        const tournament = req.body.id;
+        //let prueba = await MatchWeek.findAll({where:{tournamentId:tournament}})
+         await DivisionControl.destroy({where:{tournamentId:tournament}})
+         await Division.destroy({where:{tournamentId: tournament}})
+         await Team.update({
+            tournamentId: null
+         },{where:{tournamentId: tournament}});
+         await MatchWeek.destroy({where:{tournamentId:tournament}});
+         await Statistic.destroy({where:{tournamentId:tournament}});
+         await Tournament.destroy({where:{id:tournament}});
         res.redirect('/admin/tournament')
     }
 }

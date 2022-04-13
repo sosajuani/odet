@@ -1,6 +1,14 @@
-let buttonMenu = document.querySelector('.buttonMovilMenu');
-let menuHeader = document.querySelector('.menuHeader');
-let buttonClose = document.querySelector('.cerraMenuBtn');
+window.addEventListener('load',()=>{
+    let buttonMenu = document.querySelector('.buttonMovilMenu');
+    let menuHeader = document.querySelector('.menuHeader');
+    let buttonClose = document.querySelector('.cerraMenuBtn');
+    
+    //modal
+    const deleteButton = document.querySelectorAll('.deleteModal');
+    const buttonCloseModal = document.querySelector('.closeModal');
+    const modalCont = document.querySelector('.modalCont');
+    const inputModal = document.querySelector('.idButton');
+    const titleModal = document.querySelector('.titleModal')
 
 buttonMenu.addEventListener('click',()=>{
     menuHeader.classList.toggle('mostrarMobile');
@@ -13,6 +21,24 @@ buttonClose.addEventListener('click',()=>{
     buttonMenu.classList.toggle('ocultarMobile');
 })
 
+if(deleteButton){
+    console.log(deleteButton);
+
+    deleteButton.forEach(element =>{
+        element.addEventListener('click',(e)=>{
+            e.preventDefault();
+            modalCont.classList.add('mostrarModal');
+            inputModal.value=e.currentTarget.id;
+            titleModal.innerHTML= `¿Seguro quiere eliminar el torneo? ${e.currentTarget.id}`
+        })
+    })
+    buttonCloseModal.addEventListener('click',()=>{
+        modalCont.classList.remove('mostrarModal');
+        inputModal.value=""
+        titleModal.innerHTML= `¿Seguro quiere eliminar el torneo?`
+    })
+}
+})
 
 // let seleccion = (item)=>{
 //     const vari = document.querySelector(item);

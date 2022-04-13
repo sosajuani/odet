@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 *{ box-sizing: border-box; }
+:root{
+    --colorBlue: #15547e
+}
 body{
     background: #fff;
     font-family: 'Roboto',sans-serif;
@@ -13,7 +16,7 @@ body{
 }
 /*HEADER HOME*/
 .header{
-    background: #15547e;
+    background: var(--colorBlue);
     width: 100%;
     height: 100px;
     position: sticky;
@@ -42,7 +45,7 @@ body{
     left: 0;
 }
 .menuHeader{
-    background: #15547e;
+    background: var(--colorBlue);
     height: 100vh;
     list-style: none;
     margin: 0;
@@ -86,7 +89,7 @@ body{
 /********************** individual torneo fin*****************/
 /********************** footer inicio*****************/
 .footer{
-    background: #15547a;
+    background: var(--colorBlue);
     color: #fff;
     padding: 3px;
     font-size: 12px;
@@ -129,7 +132,7 @@ body{
     padding: 0.5rem;
 }
 .btnLink{
-    background:#15547a;
+    background:var(--colorBlue);
     padding: 10px;
     display: inline-block;
     color: #fff;
@@ -145,6 +148,55 @@ body{
     padding: 0;
     margin: 0;
     list-style: none;
+}
+.modalCont{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path ease-in .2s;
+}
+.modalView{
+    background: #e7e7e7;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid var(--colorBlue);
+    border-radius: 5px;
+}
+.modalView > h4{
+    margin: 5px 0;
+    color: var(--colorBlue);
+    font-size: 1.3rem;
+}
+.modalButtonCont{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.modalButton{
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.modalButtonAccept{
+    background: #3282b8;
+}
+.modalButtonDecline{
+    background: #1b262c;
+}
+.mostrarModal{
+    clip-path: circle(71.0% at 50% 50%);
 }
 @media only screen and (min-width: 768px){
     .ocultarMobileTorneo{ display: block;}
