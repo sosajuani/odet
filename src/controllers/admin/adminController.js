@@ -107,6 +107,13 @@ const adminController = {
         },{where: {tournamentId:tournamentId}})
         res.redirect('/admin/divisions')
     },  
+    divisionDetail: async(req,res)=>{
+        const consultDivision = await Division.findAll({
+            where:{tournamentId:req.params.id},
+            include: ['tournaments']
+        })
+        res.render('admin/divisions/divisionDetail.ejs',{consultDivision})
+    },
     info: (req,res)=>{
         res.render('admin/infoAdm.ejs')
     }

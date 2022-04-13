@@ -21,6 +21,7 @@ router.get('/roles',adminController.roles)
 router.get('/divisions',adminController.divisions)
 router.get('/divisions/new',adminController.divisionsNew)
 router.post('/divisions/new',adminController.divisionsNewProcess)
+router.get('/division/:id/detail',adminController.divisionDetail)
 
 router.get('/info',adminController.info)
 
@@ -43,11 +44,10 @@ router.get('/info',adminController.info)
 // router.get('/players',authMiddleware.logged,authMiddleware.admin,adminController.players)
 // router.get('/teams',authMiddleware.logged,authMiddleware.admin,adminController.teams)
 // router.get('/roles',authMiddleware.logged,authMiddleware.admin,adminController.roles)
-// router.get('/tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournament)
-// router.get('/tournament/:tournament',authMiddleware.logged,authMiddleware.admin,adminController.tournamentIndividual)
 // router.get('/divisions',authMiddleware.logged,authMiddleware.admin,adminController.divisions)
 // router.get('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
 //router.post('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
+// router.get('/division/:id/detail',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
 
 // router.get('/info',authMiddleware.logged,authMiddleware.admin,adminController.info)
 

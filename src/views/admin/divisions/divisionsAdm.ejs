@@ -9,7 +9,7 @@
                 </div>
                 <ul class="divisionList ulBasic">
                     <% for( let i = 0; i < divisionControlConsult.length; i++ ) { %>
-                        <li><span><%= divisionControlConsult[i].tournaments.name %></span> <%= divisionControlConsult[i].tournamentCompleted === 1 ? divisionControlConsult[i].divisionsCreated+" div." : `${divisionControlConsult[i].divisionsCreated} div. faltan ${divisionControlConsult[i].tournamentDivisions - divisionControlConsult[i].divisionsCreated}`  %>  <i class='bx bxs-plus-circle'></i></li>
+                        <li><span><%= divisionControlConsult[i].tournaments.name %></span> <%= divisionControlConsult[i].tournamentCompleted === 1 ? divisionControlConsult[i].divisionsCreated+" div." : `${divisionControlConsult[i].divisionsCreated} div. faltan ${divisionControlConsult[i].tournamentDivisions - divisionControlConsult[i].divisionsCreated}`  %>  <a class="btnLink" href="/admin/division/<%= divisionControlConsult[i].id %>/detail"><i class='bx bxs-plus-circle'></a></i></li>
                     <% } %>
                 </ul>
             </div>

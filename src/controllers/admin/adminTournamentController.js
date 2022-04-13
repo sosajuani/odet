@@ -73,6 +73,7 @@ const adminController = {
             tournamentId: newTournament.id,
             tournamentCompleted: 0
         })
+        
         res.redirect('/admin/tournament')
     },
     editTournament: async(req,res)=>{

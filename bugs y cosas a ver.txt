@@ -1,5 +1,0 @@
-- redireccionar a /register/more si idTeam es null
-- crear la confirmacion del equipo
-- darle permisos al capitan de poder hacerlo
-- crear la versión "no" tengo equipo para registrarlo
-- diseño de perfil

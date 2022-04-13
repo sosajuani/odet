@@ -1,0 +1,17 @@
+<%- include("../../partials/head.ejs",{title:"Admin - Divisiones"}) %>
+    <section class="contenedorAdmin">    
+        <%- include("../../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Divisiones </h3>
+            <div class="divisionsCont">
+                <div>
+                    <a class="btnLink" href="/admin/divisions">Volver</a>
+                </div>
+                <ul class="divisionList ulBasic">
+                    <% for( let i=0;i<consultDivision.length;i++ ){ %>
+                        <li><%= consultDivision[i].name %></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </section>
