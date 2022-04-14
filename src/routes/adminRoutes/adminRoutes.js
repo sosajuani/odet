@@ -22,6 +22,7 @@ router.get('/divisions',adminController.divisions)
 router.get('/divisions/new',adminController.divisionsNew)
 router.post('/divisions/new',adminController.divisionsNewProcess)
 router.get('/division/:id/detail',adminController.divisionDetail)
+router.delete('/division/:id/delete',adminController.deleteDivision)
 
 router.get('/info',adminController.info)
 
@@ -48,6 +49,7 @@ router.get('/info',adminController.info)
 // router.get('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
 //router.post('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
 // router.get('/division/:id/detail',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
+//router.delete('/division/:id/delete',authMiddleware.logged,authMiddleware.admin,adminTournamentController.deleteTournament)
 
 // router.get('/info',authMiddleware.logged,authMiddleware.admin,adminController.info)
 

@@ -9,7 +9,7 @@
                 </div>
                 <ul class="divisionList ulBasic">
                     <% for( let i=0;i<consultDivision.length;i++ ){ %>
-                        <li><%= consultDivision[i].name %></li>
+                        <li><%= consultDivision[i].name %> <form action="/admin/division/<%= consultDivision[i].id %>/delete?_method=DELETE" method="post"><button class="btnLink" type="submit"><i class='bx bxs-trash'></i></button></form></li>
                     <% } %>
                 </ul>
             </div>

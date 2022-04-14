@@ -10,6 +10,8 @@ const TypeTournament = db.TypeTournament;
 const Ascent = db.Ascent;
 const Decline = db.Decline;
 const DivisionControl = db.DivisionControl;
+const MatchWeek = db.Matchweek;
+const Statistic = db.Statistic;
 
 const adminController = {
     home: (req,res)=>{
@@ -113,6 +115,36 @@ const adminController = {
             include: ['tournaments']
         })
         res.render('admin/divisions/divisionDetail.ejs',{consultDivision})
+    },
+    deleteDivision: async(req,res)=>{
+        const id = req.params.id;
+        const consultDivision = await Division.findByPk(id,{
+            include: [{association:'tournaments'}]
+        });
+        const consultDivisionControl = await DivisionControl.findOne({
+            where: { tournamentId: consultDivision.tournaments.id}
+        })
+        console.log(consultDivision.tournaments.id);
+        
+        await MatchWeek.destroy({
+            where: {divisionId:id}
+        })
+        await Statistic.destroy({
+            where: {
+                divisionId: id,
+                tournamentId: consultDivision.tournaments.id
+            }
+        })
+        await DivisionControl.update({
+            divisionsCreated: parseInt(consultDivisionControl.divisionsCreated - 1),
+            tournamentCompleted: 0 
+        },{where:{ tournamentId: consultDivision.tournaments.id }})
+        //mirar el tema de suspensiones
+        // await Suspension.destroy({
+        //     where: {matchId: }
+        // })
+        await Division.destroy({where: {id: id}});
+        res.redirect('/admin/division/'+consultDivision.tournaments.id+'/detail')
     },
     info: (req,res)=>{
         res.render('admin/infoAdm.ejs')
