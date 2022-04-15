@@ -320,6 +320,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.divisionList > li > div{
+    display: flex;
+    padding: 5px 0;
+}
+.btnDivision{
+    margin: 0 5px;
+}
 .divisionList > li > span{
     background-color: var(--colorBlue);
     padding: 5px;

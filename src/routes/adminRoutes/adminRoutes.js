@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../../controllers/admin/adminController');
 const authMiddleware = require('../../middleware/authMiddleware')
+const validation = require('../../middleware/validation')
 
 //admin desarrollo
 router.get('/',adminController.home)
@@ -23,6 +24,8 @@ router.get('/divisions/new',adminController.divisionsNew)
 router.post('/divisions/new',adminController.divisionsNewProcess)
 router.get('/division/:id/detail',adminController.divisionDetail)
 router.delete('/division/:id/delete',adminController.deleteDivision)
+router.get('/division/:id/edit',adminController.divisionEdit)
+router.put('/division/:id/edit',validation.divisionEdit,adminController.divisionsEditProcess)
 
 router.get('/info',adminController.info)
 
@@ -47,9 +50,11 @@ router.get('/info',adminController.info)
 // router.get('/roles',authMiddleware.logged,authMiddleware.admin,adminController.roles)
 // router.get('/divisions',authMiddleware.logged,authMiddleware.admin,adminController.divisions)
 // router.get('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
-//router.post('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
+// router.post('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
 // router.get('/division/:id/detail',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
-//router.delete('/division/:id/delete',authMiddleware.logged,authMiddleware.admin,adminTournamentController.deleteTournament)
+// router.get('/division/:id/edit',authMiddleware.logged,authMiddleware.admin,adminController.divisionEdit)
+// router.put('/division/:id/edit',validation.divisionEdit,authMiddleware.logged,authMiddleware.admin,adminController.divisionsEditProcess)
+// router.delete('/division/:id/delete',authMiddleware.logged,authMiddleware.admin,adminTournamentController.deleteTournament)
 
 // router.get('/info',authMiddleware.logged,authMiddleware.admin,adminController.info)
 

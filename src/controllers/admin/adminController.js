@@ -1,5 +1,6 @@
 // const express = require('express');
 const db = require('../../database/models');
+const {validationResult} = require('express-validator');
 
 const User = db.User;
 const News = db.News;
@@ -85,7 +86,6 @@ const adminController = {
             where: {tournamentCompleted:0},
             include: ['tournaments']
         })
-        //console.log(consultTournament[0].tournaments);
         res.render('admin/divisions/newDivisionAdm.ejs',{consultTournament})
     },
     divisionsNewProcess: async(req,res)=>{
@@ -115,6 +115,22 @@ const adminController = {
             include: ['tournaments']
         })
         res.render('admin/divisions/divisionDetail.ejs',{consultDivision})
+    },
+    divisionEdit: async(req,res)=>{
+        const consultDivision = await Division.findByPk(req.params.id,{include:['tournaments']});
+        res.render("admin/divisions/editDivisionAdm.ejs",{consultDivision})
+    },
+    divisionsEditProcess: async(req,res)=>{
+        let errors = validationResult(req);
+        const consultDivision = await Division.findByPk(req.params.id,{include:['tournaments']})
+        if(!errors.isEmpty()){
+            return res.render("admin/divisions/editDivisionAdm.ejs",{errors:errors.mapped(), oldData: req.body,consultDivision})
+        }
+        console.log(consultDivision);
+        await Division.update({
+            name: req.body.name
+        },{where: {id: req.params.id}});
+        res.redirect('/admin/division/'+consultDivision.tournaments.id+'/detail')
     },
     deleteDivision: async(req,res)=>{
         const id = req.params.id;

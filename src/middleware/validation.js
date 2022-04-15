@@ -44,6 +44,10 @@ const validation = {
              }
              return true;
          })
+    ],
+    divisionEdit:[
+        body('name').notEmpty().withMessage("El nombre de la división no puede estar vacío")
+         .isLength({min:4}).withMessage("Debe contener al menos 4 caracteres")
     ]
 }
 module.exports = validation;

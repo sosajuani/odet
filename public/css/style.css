@@ -131,6 +131,10 @@ body{
     background: #fde0e3;
     padding: 0.5rem;
 }
+.alertInfo{
+    background: #cce5ff;
+    color: #004085;
+}
 .btnLink{
     background:var(--colorBlue);
     padding: 10px;

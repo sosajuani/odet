@@ -9,7 +9,15 @@
                 </div>
                 <ul class="divisionList ulBasic">
                     <% for( let i=0;i<consultDivision.length;i++ ){ %>
-                        <li><%= consultDivision[i].name %> <form action="/admin/division/<%= consultDivision[i].id %>/delete?_method=DELETE" method="post"><button class="btnLink" type="submit"><i class='bx bxs-trash'></i></button></form></li>
+                        <li>
+                            <%= consultDivision[i].name %>
+                            <div>
+                                <form action="/admin/division/<%= consultDivision[i].id %>/delete?_method=DELETE" method="post">
+                                    <button class="btnLink btnDivision" type="submit"><i class='bx bxs-trash'></i></button>
+                                </form>
+                                <a class="btnLink btnDivision" href="/admin/division/<%= consultDivision[i].id %>/edit"><i class='bx bx-edit'></i></a>
+                            </div> 
+                        </li>
                     <% } %>
                 </ul>
             </div>
