@@ -16,6 +16,15 @@ const validationTournament = {
                     throw new Error('La fecha de inicio no puede ser mayor a la fecha final')
                 }
                 return true
+             })
+             .custom((value)=>{
+                let dateConfirm =new Date()
+                let [yearDate, monthDate, dayDate] =[dateConfirm.getFullYear(),dateConfirm.getMonth() + 1, dateConfirm.getDate()]
+                let confirm = `${yearDate}-${monthDate < 10 ? '0'+monthDate:monthDate}-${dayDate}`
+                 if(value < confirm){
+                    throw new Error('La fecha de inicio no puede ser ser menor a la actual')
+                 }
+                 return true
              }),
             body('endDate')
              .notEmpty().withMessage("Debes seleccionar una fecha final"),
