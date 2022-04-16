@@ -1,30 +1,17 @@
-<%- include("../../src/views/partials/head.ejs",{title:"Fixture"}) %>
+<%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
 <%- include("../../src/views/partials/menuHeader.ejs") %>
 <section class="contPrin">
-    <h2>Registros de prueba</h2>
-    <ul>
-        Roles
-        <ul>
-            <li>Admin</li>
-            <li>Player</li>
-            <li>Referee</li>
-        </ul>
-    </ul>
-    <ul>
-        Avatar
-        <ul>
-            <li>avatar por defecto</li>
-        </ul>
-    </ul>
-    <ul>
-        <li>Tipo de torneo: 2 registro</li>
-        <li>Tipo de ascenso del torneo: 1 registro</li>
-        <li>Tipo de descenso del torneo: 1 registro</li>
-        <li>Torneo de prueba: 1 registro</li>
-        <li>División de prueba: 1 registro</li>
-    </ul>
-    <form action="/install/registers" method="post">
-        <input type="submit" value="Crear registros">
-    </form>
+    <% if(!install){ %>
+        tiene que elegir una instalación demo o base
+    <% } %> 
+    <% if(install !== "demo" && install && install !== "base" || install !== "base" && install && install !== "demo"){ %>
+        Valor incorrecto, los valores a seleccionar son "demo" o "base"
+    <% } %> 
+    <% if(install === "demo" && install ){ %>
+        <%- include('install/step_1_demo.ejs')  %> 
+    <% } %> 
+    <% if(install === "base" && install ){ %>
+        <%- include('install/step_1_base.ejs')  %> 
+    <% } %> 
 </section>
 <%- include("../../src/views/partials/footer.ejs") %>

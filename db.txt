@@ -140,6 +140,6 @@ sequelize model:generate --name News --attributes title:string,body:text,authorI
 sequelize model:generate --name DivisionControl --attributes tournamentDivisions:integer,divisionsCreated:integer,tournamentId:integer,tournamentCompleted:integer
 
 sequelize model:generate --name FaseCup --attributes name:string
-sequelize model:generate --name Cup --attributes name:string,initialFaseId:integer
+sequelize model:generate --name Cup --attributes name:string,initialFaseId:integer,thereAndBack:integer
 sequelize model:generate --name ControlTeamCup --attributes team:string,cupId:integer,eliminated:integer
 sequelize model:generate --name AwardStatistics --attributes bestPlayer:integer,bestScorer:integer,bestGoalAssist:integer,bestGoalKeeper:integer,tournamentId:integer

@@ -1,0 +1,11 @@
+<%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
+<%- include("../../src/views/partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <% if (!step || step && step !== 2) { %>
+     <%- include("config/home.ejs") %> 
+    <% } %>
+    <% if (step && step === 2) { %>
+     <%- include("config/finalInstall.ejs") %> 
+    <% } %>
+</section>
+<%- include("../../src/views/partials/footer.ejs") %>

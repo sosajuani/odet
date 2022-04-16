@@ -1,5 +1,9 @@
-const express = require('express');
 const db = require('../src/database/models')
+const fs = require('fs')
+const path = require('path');
+const express = require('express');
+const server = express()
+
 const Rol = db.Rol;
 const Avatar = db.Avatar;
 const User = db.User;
@@ -18,14 +22,61 @@ const adminController = {
     },
     setup: (req,res)=>{
         let step = parseInt(req.query.step);
-        if(!step){
-            console.log("no existe");
-        }
-        res.render("../../install/views/setup.ejs",{step})
+        let errQuery = req.query.err;
+        res.render("../../install/views/setup.ejs",{step,errQuery})
+        
     },
-    registers: (req,res)=>{
-        res.render('../../install/views/install.ejs')
+    install: (req,res)=>{
+        let install = req.query.type
+        res.render('../../install/views/install.ejs',{install})
     },
+    config: (req,res)=>{
+        let step = parseInt(req.query.step);
+        res.render('../../install/views/config.ejs',{step})
+    },
+    connectDbProcess: async(req,res)=>{
+        const nameDb = req.body.name;
+        const userDb = req.body.user;
+        const passDb = req.body.pass;
+        const serverDb = req.body.server;
+        const archive = path.resolve(__dirname,`../.env`);
+        const Sequelize  = require('sequelize');
+        const sequelize = new Sequelize(nameDb,userDb,passDb,{
+            host: serverDb,
+            dialect: 'mysql'
+        });
+        let connectDb = `DB_USERNAME= ${userDb}
+DB_PASSWORD= ${passDb}
+DB_HOST= ${serverDb}
+DB_DATABASE=${nameDb}
+DB_PORT=3306
+DB_DIALECT=mysql`;
+        fs.readFileSync(archive,'UTF-8')
+        fs.writeFileSync(archive,connectDb);
+
+        sequelize.authenticate()
+        .then(()=>{
+            return res.redirect('/install/setup?step=2')
+        })
+        .catch(e =>{   
+            return res.redirect('/install/setup?step=1&err=true')
+        })
+    },
+    // testConnection: ()=>{
+    //     require('dotenv').config()
+    //     const Sequelize  = require('sequelize');
+    //     const sequelize = new Sequelize(process.env.DB_DATABASE,process.env.DB_USERNAME,process.env.DB_PASSWORD,{
+    //         host: process.env.DB_HOST,
+    //         dialect: 'mysql'
+    //     });
+    //     sequelize.authenticate()
+    //      .then(()=>{
+    //          console.log("correcto");
+    //      })
+    //      .catch(()=>{
+    //          console.log("ios");
+    //      })
+    // },
     registersProcess: async(req,res)=>{
         //creo roles
         try{

@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Cups', {
@@ -17,6 +20,9 @@ module.exports = {
           model: 'faseCups',
           key: 'id'
         }
+      },
+      thereAndBack: {
+        type: sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

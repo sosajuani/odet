@@ -1,1 +1,37 @@
-primer paso
+<p>
+    En el siguiente formulario debera introducir los datos para la conexión a la base de datos.
+    Si no sabe esta información deberá contactarse con su proveedor de hosting
+</p>
+<form action="/install/setupDb" method="post">
+    <% if (errQuery) { %>
+        <div class="alertDanger">
+            Lo siento, hubo un problema al intentar conectar la base de datos <br> 
+            verifique sus datos. Si piensa que no es su error puede intentar editar el archivo ".env" manualmente. <br>
+        </div>
+    <% } %>
+    <div>
+        <label for="nameDB">
+            Nombre de la base de datos
+        </label>
+        <input type="text" name="name" id="nameDB">
+    </div>
+    <div>
+        <label for="userDB">
+            Nombre de usuario de la base de datos
+        </label>
+        <input type="text" name="user" id="userDB">
+    </div>
+    <div>
+        <label for="passDB">
+            Contraseña de la base de datos
+        </label>
+        <input type="password" name="pass" id="passDB">
+    </div>
+    <div>
+        <label for="serverDB">
+            Servidor de la base de datos
+        </label>
+        <input type="text" name="server" id="serverDB">
+    </div>
+    <input class="btnLink" type="submit" value="Continuar">
+</form>

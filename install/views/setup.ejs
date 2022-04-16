@@ -7,8 +7,8 @@
     <% if(step === 2){ %>
         <%- include('step/step_2.ejs') %>   
     <% } %>  
-    <% if(!step){ %>
-        <div class="webInfo">Oops tiene que seguir los pasos. <a class="buttonBack">Volver</a></div>
+    <% if(!step || step && step !== 1 && step !== 2 ){ %>
+        <div class="infoWeb">Oops tiene que seguir los pasos. <a class="buttonBack">Volver</a></div>
     <% } %>  
 </section>
 <script src="/js/install.js"></script>

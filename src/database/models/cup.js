@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Cup.init({
     name: DataTypes.STRING,
-    initialFaseId: DataTypes.INTEGER
+    initialFaseId: DataTypes.INTEGER,
+    thereAndBack: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Cup',
