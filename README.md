@@ -24,8 +24,8 @@ Facilitar el trabajo a los organizadores de torneos para que puedan ser mas efic
 - Fase inicial eliminatoria o grupos
 - Fase de grupos: contiene el sistema de puntos tradicional, primer y segundo puesto avanzan a la segunda fase
 - Fase eliminatoria: 
- - Equipo perdedor queda eliminado
- - Equipo perdedor de semifinal juega 3er y 4to puesto
+   - Equipo perdedor queda eliminado
+   - Equipo perdedor de semifinal juega 3er y 4to puesto
 
 #### Características compartidas
 - Contador de asistencias
@@ -33,10 +33,10 @@ Facilitar el trabajo a los organizadores de torneos para que puedan ser mas efic
 - Contador de faltas
 - Contador de tarjetas
 - Premiación al finalizar el torneo
- - Mejor jugador
- - Maximo goleador
- - Maximo asistidor
- - Mejor arquero
+  - Mejor jugador
+  - Maximo goleador
+  - Maximo asistidor
+  - Mejor arquero
 
 ------------
 ###### Algunas de las características mencionada pueden seguir en desarrollo
