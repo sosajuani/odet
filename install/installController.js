@@ -62,21 +62,29 @@ DB_DIALECT=mysql`;
             return res.redirect('/install/setup?step=1&err=true')
         })
     },
-    // testConnection: ()=>{
-    //     require('dotenv').config()
-    //     const Sequelize  = require('sequelize');
-    //     const sequelize = new Sequelize(process.env.DB_DATABASE,process.env.DB_USERNAME,process.env.DB_PASSWORD,{
-    //         host: process.env.DB_HOST,
-    //         dialect: 'mysql'
-    //     });
-    //     sequelize.authenticate()
-    //      .then(()=>{
-    //          console.log("correcto");
-    //      })
-    //      .catch(()=>{
-    //          console.log("ios");
-    //      })
-    // },
+    odetBaseProcess: (req,res)=>{
+        require('dotenv').config();
+        const mysql = require('mysql2');
+        const archive = path.resolve(__dirname,`./sql/prueba2.sql`);
+        let connect = mysql.createConnection({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USERNAME,
+            password:process.env.DB_PASSWORD,
+            database: process.env.DB_DATABASE
+        })
+        connect.connect((e)=>{
+            if(!!e){
+                console.log("error");
+            }else{
+                console.log("connected");
+            }
+        })
+        let prueba = fs.readFileSync(archive,'utf-8')
+        
+        connect.query(`${prueba}`,(err,result)=>{
+           console.log(err);
+        })
+    },
     registersProcess: async(req,res)=>{
         //creo roles
         try{
@@ -179,7 +187,22 @@ DB_DIALECT=mysql`;
             console.log(e);
         }
         res.redirect('/install/registers')
-    }
+    }    
+    // testConnection: ()=>{
+        //     require('dotenv').config()
+        //     const Sequelize  = require('sequelize');
+        //     const sequelize = new Sequelize(process.env.DB_DATABASE,process.env.DB_USERNAME,process.env.DB_PASSWORD,{
+        //         host: process.env.DB_HOST,
+        //         dialect: 'mysql'
+        //     });
+        //     sequelize.authenticate()
+        //      .then(()=>{
+        //          console.log("correcto");
+        //      })
+        //      .catch(()=>{
+        //          console.log("ios");
+        //      })
+        // },
 }
 
 module.exports = adminController;

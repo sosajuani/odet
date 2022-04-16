@@ -7,6 +7,7 @@ router.get('/setup',installController.setup);
 router.get('/odet-version',installController.install);
 router.get('/config',installController.config);
 router.post('/setupDb',installController.connectDbProcess);
+router.post('/odet-base',installController.odetBaseProcess);
 
 //crear registros
 router.post('/registers',installController.registersProcess);
