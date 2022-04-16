@@ -5,6 +5,7 @@ const validatorMiddleware = require("../middleware/validation");
 const authMiddleware = require("../middleware/authMiddleware")
 
 router.get('/',mainController.home);
+router.get('/pruebas',mainController.pruebas);
 router.get('/tournament',mainController.tournament);
 
 router.get('/fixture',mainController.fixture);

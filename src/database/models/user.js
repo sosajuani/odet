@@ -40,7 +40,23 @@ module.exports = (sequelize, DataTypes) => {
       });
       User.hasMany(models.News,{
         foreignKey: 'authorId',
-        as: 'newses'
+        as: 'news'
+      });
+      User.hasOne(models.AwardStatistics,{
+        foreignKey: 'bestPlayer',
+        as: 'bestPlayerConsult'
+      });
+      User.hasOne(models.AwardStatistics,{
+        foreignKey: 'bestScorer',
+        as: 'bestScorerConsult'
+      })
+      User.hasOne(models.AwardStatistics,{
+        foreignKey: 'bestGoalAssist',
+        as: 'bestGoalAssistConsult'
+      })
+      User.hasOne(models.AwardStatistics,{
+        foreignKey: 'bestGoalKeeper',
+        as: 'bestGoalKeeperConsult'
       })
     }
   }

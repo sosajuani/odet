@@ -52,28 +52,39 @@ const adminController = {
     },
     newTournamentProcess: async(req,res)=>{
         let errors = validationResult(req);
+        const consultAscent = await Ascent.findAll();
+        const consultDecline = await Decline.findAll();
+        const consultType = await TypeTournament.findAll();
         if(!errors.isEmpty()){
-            const consultAscent = await Ascent.findAll();
-            const consultDecline = await Decline.findAll();
-            const consultType = await TypeTournament.findAll();
-            return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData: req.body,consultAscent,consultDecline,consultType})
+            return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData:req.body,consultAscent,consultDecline,consultType})
         }
-        let newTournament = await Tournament.create({
-            name: req.body.name,
-            divisions: req.body.divisions,
-            ascentId: req.body.ascent,
-            declineId: req.body.decline,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
-            typeId: req.body.typeTournament
-        })
-        await DivisionControl.create({
-            tournamentDivisions: newTournament.divisions,
-            divisionsCreated: 0,
-            tournamentId: newTournament.id,
-            tournamentCompleted: 0
-        })
-        
+        if(req.body.typeTournament !== 1 || req.body.typeTournament !== 2){
+            let errorTypeTournament = "El tipo de torneo seleccionado no es valido";
+            return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:{typeTournament:{msg:errorTypeTournament}},oldData:req.body,consultAscent,consultDecline,consultType})           
+        }
+        //modo liga
+        if(req.body.typeTournament === 1){
+            let newTournament = await Tournament.create({
+                    name: req.body.name,
+                    divisions: req.body.divisions,
+                    ascentId: req.body.ascent,
+                    declineId: req.body.decline,
+                    startDate: req.body.startDate,
+                    endDate: req.body.endDate,
+                    typeId: req.body.typeTournament
+                })
+                await DivisionControl.create({
+                    tournamentDivisions: newTournament.divisions,
+                    divisionsCreated: 0,
+                    tournamentId: newTournament.id,
+                    tournamentCompleted: 0
+                })            
+        }
+        //modo copa
+        if(req.body.typeTournament === 2){
+            
+            return('/admin/tournament')
+        }
         res.redirect('/admin/tournament')
     },
     editTournament: async(req,res)=>{

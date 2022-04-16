@@ -45,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
       Team.hasOne(models.Matchweek,{
         foreignKey: 'visitedTeamId',
         as: 'visitedTeam'
+      });
+      Team.hasOne(models.ControlTeamCup,{
+        foreignKey: 'team',
+        as: 'controlteamcups'
       })
     }
   }

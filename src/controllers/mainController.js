@@ -57,6 +57,28 @@ const mainController = {
         delete req.session.user
         delete req.session.access
         res.redirect('/login')
+    },
+    pruebas: async(req,res)=>{
+        let consulta = await db.AwardStatistics.findOne({
+            include:[
+                {model: User,as: 'bestPlayer1',include:[{association:'players',include:['teams']}]},
+                {model: User,as: 'bestScorer1'},
+            ]
+        },{where: {id:1}})
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log(consulta.bestPlayer1.players.teams);
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+            console.log("##############");
+        res.send("hola")
     }
 }
 

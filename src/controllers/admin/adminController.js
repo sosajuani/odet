@@ -93,11 +93,11 @@ const adminController = {
         const tournamentConsult = await Tournament.findByPk(tournamentId);
         const divisionControlConsult = await DivisionControl.findOne({ where:{ tournamentId: tournamentId}})
 
-        if(divisionControlConsult.divisionsCreated == tournamentConsult.divisions){
-            console.log("maximo de divisiones alcanzado");
-        }else{
-            console.log("faltan crear "+parseInt(tournamentConsult.divisions - divisionControlConsult.divisionsCreated));
-        }
+        // if(divisionControlConsult.divisionsCreated == tournamentConsult.divisions){
+        //     console.log("maximo de divisiones alcanzado");
+        // }else{
+        //     console.log("faltan crear "+parseInt(tournamentConsult.divisions - divisionControlConsult.divisionsCreated));
+        // }
         await Division.create({
             name: req.body.name,
             tournamentId: tournamentId
@@ -139,9 +139,7 @@ const adminController = {
         });
         const consultDivisionControl = await DivisionControl.findOne({
             where: { tournamentId: consultDivision.tournaments.id}
-        })
-        console.log(consultDivision.tournaments.id);
-        
+        })  
         await MatchWeek.destroy({
             where: {divisionId:id}
         })

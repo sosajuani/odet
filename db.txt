@@ -134,7 +134,12 @@ sequelize model:generate --name Goal --attributes userId:integer,rivalTeamId:int
 sequelize model:generate --name Matchweek --attributes localTeamId:integer,visitedTeamId:integer,tournamentId:integer,divisionId:integer,date:date
 sequelize model:generate --name Suspension --attributes userId:integer,matchTime:date,matchId:integer,description:string
 sequelize model:generate --name Player --attributes goals:integer,suspensionId:integer,teamId:integer,userId:integer,teamConfirm:integer
-sequelize model:generate --name Statistic --attributes teamId:integer,played:integer,win:integer,drawn:integer,lost:integer,gf:integer,ga:integer,gd:integer,pts:integer,tournamentId:integer,divisionId:integer
+sequelize model:generate --name Statistics --attributes teamId:integer,played:integer,win:integer,drawn:integer,lost:integer,gf:integer,ga:integer,gd:integer,pts:integer,tournamentId:integer,divisionId:integer
 sequelize model:generate --name Report --attributes userId:integer,msg:string
 sequelize model:generate --name News --attributes title:string,body:text,authorId:integer,image:string,date:date
 sequelize model:generate --name DivisionControl --attributes tournamentDivisions:integer,divisionsCreated:integer,tournamentId:integer,tournamentCompleted:integer
+
+sequelize model:generate --name FaseCup --attributes name:string
+sequelize model:generate --name Cup --attributes name:string,initialFaseId:integer
+sequelize model:generate --name ControlTeamCup --attributes team:string,cupId:integer,eliminated:integer
+sequelize model:generate --name AwardStatistics --attributes bestPlayer:integer,bestScorer:integer,bestGoalAssist:integer,bestGoalKeeper:integer,tournamentId:integer
