@@ -41,7 +41,7 @@ const routesProfile = require('./src/routes/profileRoutes');
 const routesRegister = require('./src/routes/registerRoutes');
 const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
 const routesAdmTournament = require('./src/routes/adminRoutes/adminTournamentRoutes');
-const routesInstall = require('./src/views/install/installRoutes');
+const routesInstall = require('./install/installRoutes');
 app.use('/',routesMain);
 app.use('/teams',routesTeam);
 app.use('/news',routesNews);

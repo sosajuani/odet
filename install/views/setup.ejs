@@ -1,0 +1,15 @@
+<%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
+<%- include("../../src/views/partials/menuHeader.ejs") %>
+<section class="contPrin">
+    <% if(step === 1){ %>
+        <%- include('step/step_1.ejs') %>   
+    <% } %>  
+    <% if(step === 2){ %>
+        <%- include('step/step_2.ejs') %>   
+    <% } %>  
+    <% if(!step){ %>
+        <div class="webInfo">Oops tiene que seguir los pasos. <a class="buttonBack">Volver</a></div>
+    <% } %>  
+</section>
+<script src="/js/install.js"></script>
+<%- include("../../src/views/partials/footer.ejs") %>

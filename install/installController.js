@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../../database/models');
+const db = require('../src/database/models')
 const Rol = db.Rol;
 const Avatar = db.Avatar;
 const User = db.User;
@@ -13,8 +13,18 @@ const Division = db.Division;
 const DivisionControl = db.DivisionControl;
 
 const adminController = {
+    home: (req,res)=>{
+        res.render("../../install/views/home.ejs")
+    },
+    setup: (req,res)=>{
+        let step = parseInt(req.query.step);
+        if(!step){
+            console.log("no existe");
+        }
+        res.render("../../install/views/setup.ejs",{step})
+    },
     registers: (req,res)=>{
-        res.render('install/install.ejs')
+        res.render('../../install/views/install.ejs')
     },
     registersProcess: async(req,res)=>{
         //creo roles

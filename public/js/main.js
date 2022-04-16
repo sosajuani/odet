@@ -21,7 +21,7 @@ buttonClose.addEventListener('click',()=>{
     buttonMenu.classList.toggle('ocultarMobile');
 })
 
-if(deleteButton){
+if(deleteButton && buttonCloseModal){
     console.log(deleteButton);
 
     deleteButton.forEach(element =>{
