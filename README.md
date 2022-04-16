@@ -33,10 +33,10 @@ Facilitar el trabajo a los organizadores de torneos para que puedan ser mas efic
 - Contador de faltas
 - Contador de tarjetas
 - Premiación al finalizar el torneo
- - Mejor jugador
- - Maximo goleador
- - Maximo asistidor
- - Mejor arquero
+  - Mejor jugador
+  - Maximo goleador
+  - Maximo asistidor
+  - Mejor arquero
 
 ------------
 ###### Algunas de las características mencionada pueden seguir en desarrollo
