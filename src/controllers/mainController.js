@@ -18,6 +18,7 @@ const mainController = {
         res.render('pages/noticiaVista.ejs');
     },
     tournament: (req,res)=>{
+        console.log("toy");
         res.render('pages/tournament.ejs');
     },
     fixture: async(req,res)=>{

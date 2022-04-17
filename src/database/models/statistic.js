@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       Statistic.belongsTo(models.Tournament,{
         foreignKey: 'tournamentId',
         as: 'tournaments'
+      });
+      Statistic.belongsTo(models.Division,{
+        foreignKey: 'divisionId',
+        as: 'divisions'
       })
     }
   }
@@ -30,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
     ga: DataTypes.INTEGER,
     gd: DataTypes.INTEGER,
     pts: DataTypes.INTEGER,
-    tournamentId: DataTypes.INTEGER
+    tournamentId: DataTypes.INTEGER,
+    divisionId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Statistic',

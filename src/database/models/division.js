@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'tournamentId',
         as: 'tournaments'
       })
+      Division.belongsTo(models.Statistic,{
+        foreignKey: 'divisionId',
+        as: 'statistics'
+      })
     }
   }
   Division.init({
