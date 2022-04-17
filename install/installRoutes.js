@@ -11,8 +11,10 @@ router.post('/odet-demo',installController.odetDemoProcess);
 router.post('/odet-base',installController.odetBaseProcess);
 router.post('/odet-admin',installController.odetBaseAdminProcess);
 
-//crear registros
-router.get('/registers',installController.registersProcess);
+//dev
+router.get('/demodev',installController.registersProcess);
+router.get('/basedev',installController.devBaseProcess);
+
 
 
 module.exports = router;

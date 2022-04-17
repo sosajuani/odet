@@ -111,6 +111,27 @@ DB_DIALECT=mysql`;
     odetDemoProcess: (req,res)=>{
 
     },
+    devBaseProcess: async(req,res)=>{
+        await Rol.bulkCreate([
+            {name:'Admin'},
+            {name:'Player'},
+            {name:'Referee'}
+        ]);
+        
+        await Avatar.create({image:'default.png'});
+
+        await Ascent.create({
+            type: 'Puntos'
+        });
+        await Decline.create({
+            type: 'Puntos'
+        });
+        await TypeTournament.bulkCreate([
+            {type: 'Liga'},
+            {type: 'Copa'}
+        ]);  
+        res.redirect('/')
+    },
     registersProcess: async(req,res)=>{
         //creo roles
         try{
@@ -151,17 +172,258 @@ DB_DIALECT=mysql`;
                     rolId: 3
                 }
             ]);
+            await Ascent.create({
+                type: 'Puntos'
+            });
+            await Decline.create({
+                type: 'Puntos'
+            });
+            await TypeTournament.bulkCreate([
+                {type: 'Liga'},
+                {type: 'Copa'}
+            ]);  
+            //creo liga      
+            let tournamentConsult = await Tournament.create({
+                name: 'Torneo de prueba',
+                divisions: 3,
+                ascentId: 1,
+                declineId: 1,
+                startDate: Date('y'),
+                endDate: Date('y'),
+                typeId: 1,
+                season: 1
+            });
+            await Division.bulkCreate([
+                {
+                    name: "Primera división",
+                    tournamentId: tournamentConsult.id
+                },
+                {
+                    name: "Segunda división",
+                    tournamentId: tournamentConsult.id
+                },
+                {
+                    name: "Tercera división",
+                    tournamentId: tournamentConsult.id
+                },
+            ]);
+            await DivisionControl.create({
+                tournamentDivisions: 3,
+                divisionsCreated: 3,
+                tournamentId: 1,
+                tournamentCompleted: 1
+            })
             //team prueba
             let teamCreate = await Team.bulkCreate([
                 {
                     name: 'Team odet',
                     avatarId: 1,
-                    captainId: 1
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
                 },
                 {
                     name: 'Team rival',
                     avatarId: 1,
-                    captainId: 1
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Ultimate Raiders',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Colossal Friars',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Strong Fusion',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Steel Hornets',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Bizarre Pride',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Atlantic Bulls',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Sugar Explorers',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Basket Bandits',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Valiant Miracles',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Killer Crocodiles',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Net Foxes',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Legendary Lightning',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Merry Commodores',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Mighty Ravens',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Daring Explorers',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Phenomenal Bandits',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Disturbed Anteaters',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Platinum Huskies',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:1
+                },
+                {
+                    name: 'Phenomenal Flash',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:2
+                },
+                {
+                    name: 'Wise Hornets',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:2
+                },
+                {
+                    name: 'Legendary Pride',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:2
+                },
+                {
+                    name: 'Platinum Aztecs',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:2
+                },
+                {
+                    name: 'Atlantic Brigade',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:2
+                },
+                {
+                    name: 'Voodoo Preachers',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:3
+                },
+                {
+                    name: 'Strong Minutemen',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:3
+                },
+                {
+                    name: 'Abandoned Blackflies',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:3
+                },
+                {
+                    name: 'Silly Pros',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:3
+                },
+                {
+                    name: 'Careless Blugolds',
+                    avatarId: 1,
+                    captainId: null,
+                    tournamentId: 1,
+                    divisionId:3
                 },
             ]);
             //Players create
@@ -179,39 +441,10 @@ DB_DIALECT=mysql`;
                     userId: 2
                 }
             ]);
-            await Ascent.create({
-                type: 'Puntos'
-            });
-            await Decline.create({
-                type: 'Puntos'
-            });
-            await TypeTournament.bulkCreate([
-                {type: 'Liga'},
-                {type: 'Copa'}
-            ]);        
-            let tournamentConsult = await Tournament.create({
-                name: 'Torneo de prueba',
-                divisions: 1,
-                ascentId: 1,
-                declineId: 1,
-                startDate: Date('y'),
-                endDate: Date('y'),
-                typeId: 1
-            });
-            await Division.create({
-                name: "Primera división",
-                tournamentId: tournamentConsult.id
-            });
-            await DivisionControl.create({
-                tournamentDivisions: 1,
-                divisionsCreated: 1,
-                tournamentId: 1,
-                tournamentCompleted: 1
-            })
         }catch(e){
             console.log(e);
         }
-        res.redirect('/install/')
+        res.redirect('/')
     }    
     // testConnection: ()=>{
         //     require('dotenv').config()

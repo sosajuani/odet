@@ -1,11 +1,13 @@
 <%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
-<%- include("../../src/views/partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <% if (!step || step && step !== 2) { %>
-     <%- include("config/home.ejs") %> 
-    <% } %>
-    <% if (step && step === 2) { %>
-     <%- include("config/finalInstall.ejs") %> 
-    <% } %>
+<link rel="stylesheet" href="/css/install.css">
+<section class="installCont">
+    <div class="contPrin">
+        <h4 class="titleInstall">Crear usuario administrador</h4>
+        <% if (!step || step && step !== 2) { %>
+        <%- include("config/home.ejs") %> 
+        <% } %>
+        <% if (step && step === 2) { %>
+        <%- include("config/finalInstall.ejs") %> 
+        <% } %>
+    </div>
 </section>
-<%- include("../../src/views/partials/footer.ejs") %>
