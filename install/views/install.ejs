@@ -1,17 +1,18 @@
 <%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
-<%- include("../../src/views/partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <% if(!install){ %>
-        tiene que elegir una instalación demo o base
-    <% } %> 
-    <% if(install !== "demo" && install && install !== "base" || install !== "base" && install && install !== "demo"){ %>
-        Valor incorrecto, los valores a seleccionar son "demo" o "base"
-    <% } %> 
-    <% if(install === "demo" && install ){ %>
-        <%- include('install/step_1_demo.ejs')  %> 
-    <% } %> 
-    <% if(install === "base" && install ){ %>
-        <%- include('install/step_1_base.ejs')  %> 
-    <% } %> 
+<link rel="stylesheet" href="/css/install.css">
+<section class="installCont">
+    <div class="contPrin">
+        <% if(!install){ %>
+            tiene que elegir una instalación demo o base
+        <% } %> 
+        <% if(install !== "demo" && install && install !== "base" || install !== "base" && install && install !== "demo"){ %>
+            Valor incorrecto, los valores a seleccionar son "demo" o "base"
+        <% } %> 
+        <% if(install === "demo" && install ){ %>
+            <%- include('install/step_1_demo.ejs')  %> 
+        <% } %> 
+        <% if(install === "base" && install ){ %>
+            <%- include('install/step_1_base.ejs')  %> 
+        <% } %> 
+    </div>
 </section>
-<%- include("../../src/views/partials/footer.ejs") %>

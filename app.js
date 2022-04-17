@@ -16,6 +16,7 @@ app.use(express.urlencoded({extended:false}))
 
 //ruta estatica
 app.use(express.static('public'));
+app.use(express.static('./install/public'));
 
 //Cookie parser
 app.use(cookieParser());

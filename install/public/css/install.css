@@ -1,0 +1,49 @@
+:root{
+    --colorBlue: #15547e
+}
+.installCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.footerInstall{
+    width: 100%;
+}
+.titleInstall{
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--colorBlue);
+    border-bottom: 1px solid #c7c7c7;
+}
+.pInstall{
+    padding: 5px;
+    margin: 0;
+}
+.formInstall{
+    width: 50%;
+    padding-left: 1rem;
+}
+.divForm{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.divForm > input{
+    outline: none;
+    border: 3px solid var(--colorBlue);
+    border-radius: 10px;
+}
+.titleDBConfirm{
+    background: #f5f5f5;
+    text-align: center;
+    border-bottom: 1px solid #c7c7c7;
+    color: #c7c7c7;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}

@@ -1,15 +1,17 @@
 <%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
-<%- include("../../src/views/partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <% if(step === 1){ %>
-        <%- include('step/step_1.ejs') %>   
-    <% } %>  
-    <% if(step === 2){ %>
-        <%- include('step/step_2.ejs') %>   
-    <% } %>  
-    <% if(!step || step && step !== 1 && step !== 2 ){ %>
-        <div class="infoWeb">Oops tiene que seguir los pasos. <a class="buttonBack">Volver</a></div>
-    <% } %>  
+<link rel="stylesheet" href="/css/install.css">
+<section class="installCont">
+    <div class="contPrin">
+        <h4 class="titleInstall">Configuración de base de datos</h4>
+        <% if(step === 1){ %>
+            <%- include('step/step_1.ejs') %>   
+        <% } %>  
+        <% if(step === 2){ %>
+            <%- include('step/step_2.ejs') %>   
+        <% } %>  
+        <% if(!step || step && step !== 1 && step !== 2 ){ %>
+            <div class="infoWeb">Oops tiene que seguir los pasos. <a class="buttonBack">Volver</a></div>
+        <% } %>  
+    </div>
 </section>
 <script src="/js/install.js"></script>
-<%- include("../../src/views/partials/footer.ejs") %>

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require('../src/database/models')
 const fs = require('fs')
 const path = require('path');
@@ -19,13 +20,16 @@ const DivisionControl = db.DivisionControl;
 
 const adminController = {
     home: (req,res)=>{
+        const archive = path.resolve(__dirname,`../.env`);
+        const leer = fs.readFileSync(archive,'UTF-8')
+        console.log("trae "+process.env.DB_DATABASE);
         res.render("../../install/views/home.ejs")
     },
     setup: (req,res)=>{
         let step = parseInt(req.query.step);
         let errQuery = req.query.err;
         res.render("../../install/views/setup.ejs",{step,errQuery})
-        
+        console.log(process.env.DB_DATABASE);
     },
     install: (req,res)=>{
         let install = req.query.type
@@ -52,9 +56,14 @@ DB_HOST= ${serverDb}
 DB_DATABASE=${nameDb}
 DB_PORT=3306
 DB_DIALECT=mysql`;
-        fs.readFileSync(archive,'UTF-8')
-        fs.writeFileSync(archive,connectDb);
-
+        fs.writeFileSync(archive,connectDb)
+        
+        process.env.DB_USERNAME = `${userDb}`
+        process.env.DB_PASSWORD = `${passDb}`
+        process.env.DB_DATABASE = `${nameDb}`
+        process.env.DB_HOST = `${serverDb}`
+        process.env.DB_PORT = `3306`
+        process.env.DB_DIALECT = `mysql`
         sequelize.authenticate()
         .then(()=>{
             return res.redirect('/install/setup?step=2')
@@ -81,9 +90,8 @@ DB_DIALECT=mysql`;
                 console.log("connected");
             }
         })
-        let prueba = fs.readFileSync(archive,'utf-8')
-        console.log(prueba);
-        connect.query(prueba,(err,result)=>{
+        const sql = fs.readFileSync(archive,'utf-8')
+        connect.query(sql,(err,result)=>{
            console.log(err);
         });    
         res.redirect('/install/config')
@@ -99,6 +107,9 @@ DB_DIALECT=mysql`;
             rolId: 1
         })
         res.redirect('/install/config?step=2')
+    },
+    odetDemoProcess: (req,res)=>{
+
     },
     registersProcess: async(req,res)=>{
         //creo roles
@@ -177,27 +188,26 @@ DB_DIALECT=mysql`;
             await TypeTournament.bulkCreate([
                 {type: 'Liga'},
                 {type: 'Copa'}
-            ]);
-            
-            // let tournamentConsult = await Tournament.create({
-            //     name: 'Torneo de prueba',
-            //     divisions: 1,
-            //     ascentId: 1,
-            //     declineId: 1,
-            //     startDate: Date('y'),
-            //     endDate: Date('y'),
-            //     typeId: 1
-            // });
-            // await Division.create({
-            //     name: "Primera división",
-            //     tournamentId: tournamentConsult.id
-            // });
-            // await DivisionControl.create({
-            //     tournamentDivisions: 1,
-            //     divisionsCreated: 1,
-            //     tournamentId: 1,
-            //     tournamentCompleted: 1
-            // })
+            ]);        
+            let tournamentConsult = await Tournament.create({
+                name: 'Torneo de prueba',
+                divisions: 1,
+                ascentId: 1,
+                declineId: 1,
+                startDate: Date('y'),
+                endDate: Date('y'),
+                typeId: 1
+            });
+            await Division.create({
+                name: "Primera división",
+                tournamentId: tournamentConsult.id
+            });
+            await DivisionControl.create({
+                tournamentDivisions: 1,
+                divisionsCreated: 1,
+                tournamentId: 1,
+                tournamentCompleted: 1
+            })
         }catch(e){
             console.log(e);
         }

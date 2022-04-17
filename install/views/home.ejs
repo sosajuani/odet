@@ -1,20 +1,21 @@
 <%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
-<%- include("../../src/views/partials/menuHeader.ejs") %>
-<section class="contPrin">
-    <h2>ODET</h2>
-    <p>Bienvenido al organizador de torneos. Para esto vamos a necesitar de una serie de datos</p>
+<link rel="stylesheet" href="/css/install.css">
+<section class="installCont">
+    <div class="contPrin"> 
+    <h4 class="titleInstall">ODET</h4>
+    <p class="pInstall">Bienvenido al organizador de torneos. Para esto vamos a necesitar de una serie de datos</p>
     <ul>
         <li>Nombre de la base de datos</li>
         <li>Usuario de la base de datos</li>
         <li>Contraseña de la base de datos</li>
         <li>Servidor de la base de datos</li>
     </ul>
-    <p>
+    <p class="pInstall">
         Con esta información vamos a crear el archivo ".env" que va a permitir controlar la conexión a la base de datos. 
         <b>Si por algún motivo no funciona la creación automatica podes editar el archivo ".env" de manera manual</b>
     </p>
-    <p>Estos datos son proporcionados por tu proveedor de hosting. De no contar con esta información necesitás contactarte con ellos.</p>
-    <p>Si estas listo presiona el botón</p>
+    <p class="pInstall">Estos datos son proporcionados por tu proveedor de hosting. De no contar con esta información necesitás contactarte con ellos.</p>
+    <p class="pInstall">Si estas listo presiona el botón</p>
     <a class="btnLink" href="/install/setup?step=1">¡Vamos!</a>
+    </div>
 </section>
-<%- include("../../src/views/partials/footer.ejs") %>
