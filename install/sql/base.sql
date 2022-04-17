@@ -37,7 +37,7 @@ CREATE TABLE `ascents` (
 
 LOCK TABLES `ascents` WRITE;
 /*!40000 ALTER TABLE `ascents` DISABLE KEYS */;
-INSERT INTO `ascents` VALUES (1,'Puntos','2022-04-12 19:43:03','2022-04-12 19:43:03');
+INSERT INTO `ascents` VALUES (1,'Puntos','2022-04-17 01:59:44','2022-04-17 01:59:44');
 /*!40000 ALTER TABLE `ascents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `avatars` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,6 @@ CREATE TABLE `avatars` (
 
 LOCK TABLES `avatars` WRITE;
 /*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
-INSERT INTO `avatars` VALUES (1,'default.png','2022-04-12 19:43:03','2022-04-12 19:43:03');
 /*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,9 +85,15 @@ CREATE TABLE `awardstatistics` (
   PRIMARY KEY (`id`),
   KEY `bestPlayer` (`bestPlayer`),
   KEY `bestScorer` (`bestScorer`),
+  KEY `bestGoalAssist` (`bestGoalAssist`),
+  KEY `bestGoalKeeper` (`bestGoalKeeper`),
+  KEY `tournamentId` (`tournamentId`),
   CONSTRAINT `awardstatistics_ibfk_1` FOREIGN KEY (`bestPlayer`) REFERENCES `users` (`id`),
-  CONSTRAINT `awardstatistics_ibfk_2` FOREIGN KEY (`bestScorer`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `awardstatistics_ibfk_2` FOREIGN KEY (`bestScorer`) REFERENCES `users` (`id`),
+  CONSTRAINT `awardstatistics_ibfk_3` FOREIGN KEY (`bestGoalAssist`) REFERENCES `users` (`id`),
+  CONSTRAINT `awardstatistics_ibfk_4` FOREIGN KEY (`bestGoalKeeper`) REFERENCES `users` (`id`),
+  CONSTRAINT `awardstatistics_ibfk_5` FOREIGN KEY (`tournamentId`) REFERENCES `tournaments` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +102,6 @@ CREATE TABLE `awardstatistics` (
 
 LOCK TABLES `awardstatistics` WRITE;
 /*!40000 ALTER TABLE `awardstatistics` DISABLE KEYS */;
-INSERT INTO `awardstatistics` VALUES (1,2,1,1,NULL,NULL,'2022-04-16 03:33:49','2022-04-16 03:33:49');
 /*!40000 ALTER TABLE `awardstatistics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,12 +114,16 @@ DROP TABLE IF EXISTS `controlteamcups`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `controlteamcups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `team` varchar(255) DEFAULT NULL,
+  `team` int(11) DEFAULT NULL,
   `cupId` int(11) DEFAULT NULL,
   `eliminated` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `team` (`team`),
+  KEY `cupId` (`cupId`),
+  CONSTRAINT `controlteamcups_ibfk_1` FOREIGN KEY (`team`) REFERENCES `teams` (`id`),
+  CONSTRAINT `controlteamcups_ibfk_2` FOREIGN KEY (`cupId`) REFERENCES `cups` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -139,9 +147,12 @@ CREATE TABLE `cups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `initialFaseId` int(11) DEFAULT NULL,
+  `thereAndBack` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `initialFaseId` (`initialFaseId`),
+  CONSTRAINT `cups_ibfk_1` FOREIGN KEY (`initialFaseId`) REFERENCES `fasecups` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -176,7 +187,7 @@ CREATE TABLE `declines` (
 
 LOCK TABLES `declines` WRITE;
 /*!40000 ALTER TABLE `declines` DISABLE KEYS */;
-INSERT INTO `declines` VALUES (1,'Puntos','2022-04-12 19:43:03','2022-04-12 19:43:03');
+INSERT INTO `declines` VALUES (1,'Puntos','2022-04-17 01:59:44','2022-04-17 01:59:44');
 /*!40000 ALTER TABLE `declines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +209,7 @@ CREATE TABLE `divisioncontrols` (
   PRIMARY KEY (`id`),
   KEY `tournamentId` (`tournamentId`),
   CONSTRAINT `divisioncontrols_ibfk_1` FOREIGN KEY (`tournamentId`) REFERENCES `tournaments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +218,6 @@ CREATE TABLE `divisioncontrols` (
 
 LOCK TABLES `divisioncontrols` WRITE;
 /*!40000 ALTER TABLE `divisioncontrols` DISABLE KEYS */;
-INSERT INTO `divisioncontrols` VALUES (3,4,4,3,1,'2022-04-12 20:11:02','2022-04-15 01:32:24'),(4,2,2,4,1,'2022-04-13 19:50:08','2022-04-15 01:31:32');
 /*!40000 ALTER TABLE `divisioncontrols` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +237,7 @@ CREATE TABLE `divisions` (
   PRIMARY KEY (`id`),
   KEY `tournamentId` (`tournamentId`),
   CONSTRAINT `divisions_ibfk_1` FOREIGN KEY (`tournamentId`) REFERENCES `tournaments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +246,6 @@ CREATE TABLE `divisions` (
 
 LOCK TABLES `divisions` WRITE;
 /*!40000 ALTER TABLE `divisions` DISABLE KEYS */;
-INSERT INTO `divisions` VALUES (6,'div 4',3,'2022-04-12 20:12:23','2022-04-15 02:00:47'),(7,'Nueva division',4,'2022-04-13 19:51:15','2022-04-13 19:51:15'),(8,'otra div',4,'2022-04-13 19:51:21','2022-04-13 19:51:21'),(11,'Nuevo torneo div',4,'2022-04-15 01:31:32','2022-04-15 01:31:32'),(12,'div 1',3,'2022-04-15 01:31:42','2022-04-15 01:31:42'),(13,'div 4',3,'2022-04-15 01:32:12','2022-04-15 01:32:12'),(14,'1111',3,'2022-04-15 01:32:24','2022-04-15 01:32:24');
 /*!40000 ALTER TABLE `divisions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +396,7 @@ CREATE TABLE `players` (
   CONSTRAINT `players_ibfk_1` FOREIGN KEY (`suspensionId`) REFERENCES `suspensions` (`id`),
   CONSTRAINT `players_ibfk_2` FOREIGN KEY (`teamId`) REFERENCES `teams` (`id`),
   CONSTRAINT `players_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +405,6 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,10,NULL,1,1,NULL,'2022-04-12 19:43:03','2022-04-12 19:43:03'),(2,10,NULL,1,2,NULL,'2022-04-12 19:43:03','2022-04-12 19:43:03');
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,7 +458,7 @@ CREATE TABLE `rols` (
 
 LOCK TABLES `rols` WRITE;
 /*!40000 ALTER TABLE `rols` DISABLE KEYS */;
-INSERT INTO `rols` VALUES (1,'Admin','2022-04-12 19:43:03','2022-04-12 19:43:03'),(2,'Player','2022-04-12 19:43:03','2022-04-12 19:43:03'),(3,'Referee','2022-04-12 19:43:03','2022-04-12 19:43:03');
+INSERT INTO `rols` VALUES (1,'Admin','2022-04-17 01:59:44','2022-04-17 01:59:44'),(2,'Player','2022-04-17 01:59:44','2022-04-17 01:59:44'),(3,'Referee','2022-04-17 01:59:44','2022-04-17 01:59:44');
 /*!40000 ALTER TABLE `rols` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -474,7 +482,6 @@ CREATE TABLE `sequelizemeta` (
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
-INSERT INTO `sequelizemeta` VALUES ('20220318184801-create-avatar.js'),('20220318184807-create-rol.js'),('20220318184814-create-user.js'),('20220318184825-create-ascent.js'),('20220318184832-create-decline.js'),('20220318184839-create-type-tournament.js'),('20220318184848-create-tournament.js'),('20220318184912-create-division.js'),('20220318184918-create-team.js'),('20220318184924-create-goal.js'),('20220318184931-create-matchweek.js'),('20220318184938-create-suspension.js'),('20220318185005-create-player.js'),('20220318185022-create-statistic.js'),('20220318185029-create-report.js'),('20220318185037-create-news.js'),('20220411024318-create-division-control.js'),('20220416010718-create-fase-cup.js'),('20220416010724-create-cup.js'),('20220416010730-create-control-team-cup.js'),('20220416010740-create-award-statistics.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -576,7 +583,7 @@ CREATE TABLE `teams` (
   CONSTRAINT `teams_ibfk_2` FOREIGN KEY (`captainId`) REFERENCES `users` (`id`),
   CONSTRAINT `teams_ibfk_3` FOREIGN KEY (`tournamentId`) REFERENCES `tournaments` (`id`),
   CONSTRAINT `teams_ibfk_4` FOREIGN KEY (`divisionId`) REFERENCES `divisions` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -585,7 +592,6 @@ CREATE TABLE `teams` (
 
 LOCK TABLES `teams` WRITE;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
-INSERT INTO `teams` VALUES (1,'Team odet',1,1,NULL,NULL,'2022-04-12 19:43:03','2022-04-12 19:43:03'),(2,'Team rival',1,1,NULL,NULL,'2022-04-12 19:43:03','2022-04-12 19:43:03');
 /*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -614,7 +620,7 @@ CREATE TABLE `tournaments` (
   CONSTRAINT `tournaments_ibfk_1` FOREIGN KEY (`ascentId`) REFERENCES `ascents` (`id`),
   CONSTRAINT `tournaments_ibfk_2` FOREIGN KEY (`declineId`) REFERENCES `declines` (`id`),
   CONSTRAINT `tournaments_ibfk_3` FOREIGN KEY (`typeId`) REFERENCES `typetournaments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,7 +629,6 @@ CREATE TABLE `tournaments` (
 
 LOCK TABLES `tournaments` WRITE;
 /*!40000 ALTER TABLE `tournaments` DISABLE KEYS */;
-INSERT INTO `tournaments` VALUES (3,'torneo prueba3',4,1,1,'2018-11-20','2022-09-09',1,'2022-04-12 20:11:02','2022-04-12 20:37:10'),(4,'Nuevo torneo',2,1,1,'2022-04-13','2023-01-08',1,'2022-04-13 19:50:08','2022-04-13 19:50:08');
 /*!40000 ALTER TABLE `tournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -649,7 +654,7 @@ CREATE TABLE `typetournaments` (
 
 LOCK TABLES `typetournaments` WRITE;
 /*!40000 ALTER TABLE `typetournaments` DISABLE KEYS */;
-INSERT INTO `typetournaments` VALUES (1,'Liga','2022-04-12 19:43:03','2022-04-12 19:43:03'),(2,'Copa','2022-04-12 19:43:03','2022-04-12 19:43:03');
+INSERT INTO `typetournaments` VALUES (1,'Liga','2022-04-17 01:59:44','2022-04-17 01:59:44'),(2,'Copa','2022-04-17 01:59:44','2022-04-17 01:59:44');
 /*!40000 ALTER TABLE `typetournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -676,7 +681,7 @@ CREATE TABLE `users` (
   KEY `rolId` (`rolId`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`avatarId`) REFERENCES `avatars` (`id`),
   CONSTRAINT `users_ibfk_2` FOREIGN KEY (`rolId`) REFERENCES `rols` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -685,7 +690,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','Admin','Odet','admin@odet.com','$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',1,1,'2022-04-12 19:43:03','2022-04-12 19:43:03'),(2,'player','Player','Odet','player@odet.com','$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',1,2,'2022-04-12 19:43:03','2022-04-12 19:43:03'),(3,'referee','Referee','Odet','referee@odet.com','$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',1,3,'2022-04-12 19:43:03','2022-04-12 19:43:03');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -698,4 +702,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 20:35:07
+-- Dump completed on 2022-04-16 23:00:27

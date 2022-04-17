@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ControlTeamCup.init({
-    team: DataTypes.STRING,
+    team: DataTypes.INTEGER,
     cupId: DataTypes.INTEGER,
     eliminated: DataTypes.INTEGER
   }, {

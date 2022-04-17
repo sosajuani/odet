@@ -1,7 +1,4 @@
 'use strict';
-
-const { sequelize } = require("../models");
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Cups', {
@@ -22,7 +19,7 @@ module.exports = {
         }
       },
       thereAndBack: {
-        type: sequelize.INTEGER
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

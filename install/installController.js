@@ -65,12 +65,13 @@ DB_DIALECT=mysql`;
     odetBaseProcess: (req,res)=>{
         require('dotenv').config();
         const mysql = require('mysql2');
-        const archive = path.resolve(__dirname,`./sql/prueba2.sql`);
+         const archive = path.resolve(__dirname,`./sql/pruebas.sql`);
         let connect = mysql.createConnection({
             host: process.env.DB_HOST,
             user: process.env.DB_USERNAME,
             password:process.env.DB_PASSWORD,
-            database: process.env.DB_DATABASE
+            database: process.env.DB_DATABASE,
+            multipleStatements: true
         })
         connect.connect((e)=>{
             if(!!e){
@@ -80,10 +81,11 @@ DB_DIALECT=mysql`;
             }
         })
         let prueba = fs.readFileSync(archive,'utf-8')
-        
-        connect.query(`${prueba}`,(err,result)=>{
+        console.log(prueba);
+        connect.query(prueba,(err,result)=>{
            console.log(err);
-        })
+        });    
+        res.redirect('/install/config')
     },
     registersProcess: async(req,res)=>{
         //creo roles
@@ -93,66 +95,66 @@ DB_DIALECT=mysql`;
                 {name:'Player'},
                 {name:'Referee'}
             ]);
-            //avatar base
-            await Avatar.create({image:'default.png'});
+            //avatar base hacer subir avatar base
+            //await Avatar.create({image:'default.png'});
             //usuarios de prueba
-            let usersCreate = await User.bulkCreate([
-                {
-                    user: 'admin',
-                    firstName: 'Admin',
-                    lastName: 'Odet',
-                    email: 'admin@odet.com',
-                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-                    avatarId: 1,
-                    rolId: 1
-                },
-                {
-                    user: 'player',
-                    firstName: 'Player',
-                    lastName: 'Odet',
-                    email: 'player@odet.com',
-                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-                    avatarId: 1,
-                    rolId: 2
-                },
-                {
-                    user: 'referee',
-                    firstName: 'Referee',
-                    lastName: 'Odet',
-                    email: 'referee@odet.com',
-                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-                    avatarId: 1,
-                    rolId: 3
-                }
-            ]);
+            // let usersCreate = await User.bulkCreate([
+            //     {
+            //         user: 'admin',
+            //         firstName: 'Admin',
+            //         lastName: 'Odet',
+            //         email: 'admin@odet.com',
+            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+            //         avatarId: 1,
+            //         rolId: 1
+            //     },
+            //     {
+            //         user: 'player',
+            //         firstName: 'Player',
+            //         lastName: 'Odet',
+            //         email: 'player@odet.com',
+            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+            //         avatarId: 1,
+            //         rolId: 2
+            //     },
+            //     {
+            //         user: 'referee',
+            //         firstName: 'Referee',
+            //         lastName: 'Odet',
+            //         email: 'referee@odet.com',
+            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+            //         avatarId: 1,
+            //         rolId: 3
+            //     }
+            // ]);
             //team prueba
-            let teamCreate = await Team.bulkCreate([
-                {
-                    name: 'Team odet',
-                    avatarId: 1,
-                    captainId: 1
-                },
-                {
-                    name: 'Team rival',
-                    avatarId: 1,
-                    captainId: 1
-                },
-            ]);
+            // let teamCreate = await Team.bulkCreate([
+            //     {
+            //         name: 'Team odet',
+            //         avatarId: 1,
+            //         captainId: 1
+            //     },
+            //     {
+            //         name: 'Team rival',
+            //         avatarId: 1,
+            //         captainId: 1
+            //     },
+            // ]);
             //Players create
-            await Player.bulkCreate([
-                {
-                    goals: 10,
-                    suspensionId: null,
-                    teamId: 1,
-                    userId: 1
-                },
-                {
-                    goals: 10,
-                    suspensionId: null,
-                    teamId: 1,
-                    userId: 2
-                }
-            ]);
+            // await Player.bulkCreate([
+            //     {
+            //         goals: 10,
+            //         suspensionId: null,
+            //         teamId: 1,
+            //         userId: 1
+            //     },
+            //     {
+            //         goals: 10,
+            //         suspensionId: null,
+            //         teamId: 1,
+            //         userId: 2
+            //     }
+            // ]);
             await Ascent.create({
                 type: 'Puntos'
             });
@@ -164,25 +166,25 @@ DB_DIALECT=mysql`;
                 {type: 'Copa'}
             ]);
             
-            let tournamentConsult = await Tournament.create({
-                name: 'Torneo de prueba',
-                divisions: 1,
-                ascentId: 1,
-                declineId: 1,
-                startDate: Date('y'),
-                endDate: Date('y'),
-                typeId: 1
-            });
-            await Division.create({
-                name: "Primera división",
-                tournamentId: tournamentConsult.id
-            });
-            await DivisionControl.create({
-                tournamentDivisions: 1,
-                divisionsCreated: 1,
-                tournamentId: 1,
-                tournamentCompleted: 1
-            })
+            // let tournamentConsult = await Tournament.create({
+            //     name: 'Torneo de prueba',
+            //     divisions: 1,
+            //     ascentId: 1,
+            //     declineId: 1,
+            //     startDate: Date('y'),
+            //     endDate: Date('y'),
+            //     typeId: 1
+            // });
+            // await Division.create({
+            //     name: "Primera división",
+            //     tournamentId: tournamentConsult.id
+            // });
+            // await DivisionControl.create({
+            //     tournamentDivisions: 1,
+            //     divisionsCreated: 1,
+            //     tournamentId: 1,
+            //     tournamentCompleted: 1
+            // })
         }catch(e){
             console.log(e);
         }
