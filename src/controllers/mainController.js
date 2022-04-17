@@ -37,18 +37,18 @@ const mainController = {
         if(userConsult === null){
             return res.render('pages/login.ejs',{errors:{userNull:"El usuario no existe"},oldData:req.body})
         }
-        let confirmPass = compareSync(req.body.pass,userConsult.pass);
+         let confirmPass = compareSync(req.body.pass,userConsult.pass);
         if(!confirmPass){
             return res.render('pages/login.ejs',{errors:{passIncorrect: "La contraseña ingresada no es válida"},oldData:req.body})
         }
         req.session.user = userConsult.dataValues;
         req.session.access = userConsult.dataValues.rolId;
         
-        if(userConsult.rolId !== 3){
+        if(userConsult.rolId == 2){
             let playerConsult = await Player.findOne({where:{userId:userConsult.id}});
             req.session.playerSession = playerConsult.dataValues;
             if(playerConsult.teamId == null){
-                res.redirect('/register/more');
+                return res.redirect('/register/more');
             }
         }
         res.redirect('/')

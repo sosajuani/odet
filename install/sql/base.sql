@@ -37,7 +37,7 @@ CREATE TABLE `ascents` (
 
 LOCK TABLES `ascents` WRITE;
 /*!40000 ALTER TABLE `ascents` DISABLE KEYS */;
-INSERT INTO `ascents` VALUES (1,'Puntos','2022-04-17 01:59:44','2022-04-17 01:59:44');
+INSERT INTO `ascents` VALUES (1,'Puntos','2022-04-17 02:34:17','2022-04-17 02:34:17');
 /*!40000 ALTER TABLE `ascents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ CREATE TABLE `avatars` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `avatars` (
 
 LOCK TABLES `avatars` WRITE;
 /*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
+INSERT INTO `avatars` VALUES (1,'default.png','2022-04-17 02:34:17','2022-04-17 02:34:17');
 /*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +188,7 @@ CREATE TABLE `declines` (
 
 LOCK TABLES `declines` WRITE;
 /*!40000 ALTER TABLE `declines` DISABLE KEYS */;
-INSERT INTO `declines` VALUES (1,'Puntos','2022-04-17 01:59:44','2022-04-17 01:59:44');
+INSERT INTO `declines` VALUES (1,'Puntos','2022-04-17 02:34:17','2022-04-17 02:34:17');
 /*!40000 ALTER TABLE `declines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +459,7 @@ CREATE TABLE `rols` (
 
 LOCK TABLES `rols` WRITE;
 /*!40000 ALTER TABLE `rols` DISABLE KEYS */;
-INSERT INTO `rols` VALUES (1,'Admin','2022-04-17 01:59:44','2022-04-17 01:59:44'),(2,'Player','2022-04-17 01:59:44','2022-04-17 01:59:44'),(3,'Referee','2022-04-17 01:59:44','2022-04-17 01:59:44');
+INSERT INTO `rols` VALUES (1,'Admin','2022-04-17 02:34:17','2022-04-17 02:34:17'),(2,'Player','2022-04-17 02:34:17','2022-04-17 02:34:17'),(3,'Referee','2022-04-17 02:34:17','2022-04-17 02:34:17');
 /*!40000 ALTER TABLE `rols` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -482,6 +483,7 @@ CREATE TABLE `sequelizemeta` (
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
+INSERT INTO `sequelizemeta` VALUES ('20220318184801-create-avatar.js'),('20220318184807-create-rol.js'),('20220318184814-create-user.js'),('20220318184825-create-ascent.js'),('20220318184832-create-decline.js'),('20220318184839-create-type-tournament.js'),('20220318184848-create-tournament.js'),('20220318184912-create-division.js'),('20220318184918-create-team.js'),('20220318184924-create-goal.js'),('20220318184931-create-matchweek.js'),('20220318184938-create-suspension.js'),('20220318185005-create-player.js'),('20220318185022-create-statistic.js'),('20220318185029-create-report.js'),('20220318185037-create-news.js'),('20220411024318-create-division-control.js'),('20220416010718-create-fase-cup.js'),('20220416010724-create-cup.js'),('20220416010730-create-control-team-cup.js'),('20220416010740-create-award-statistics.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -654,7 +656,7 @@ CREATE TABLE `typetournaments` (
 
 LOCK TABLES `typetournaments` WRITE;
 /*!40000 ALTER TABLE `typetournaments` DISABLE KEYS */;
-INSERT INTO `typetournaments` VALUES (1,'Liga','2022-04-17 01:59:44','2022-04-17 01:59:44'),(2,'Copa','2022-04-17 01:59:44','2022-04-17 01:59:44');
+INSERT INTO `typetournaments` VALUES (1,'Liga','2022-04-17 02:34:17','2022-04-17 02:34:17'),(2,'Copa','2022-04-17 02:34:17','2022-04-17 02:34:17');
 /*!40000 ALTER TABLE `typetournaments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -702,4 +704,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 23:00:27
+-- Dump completed on 2022-04-16 23:34:35

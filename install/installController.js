@@ -2,7 +2,8 @@ const db = require('../src/database/models')
 const fs = require('fs')
 const path = require('path');
 const express = require('express');
-const server = express()
+const server = express();
+const {hashSync} = require('bcryptjs');
 
 const Rol = db.Rol;
 const Avatar = db.Avatar;
@@ -65,7 +66,7 @@ DB_DIALECT=mysql`;
     odetBaseProcess: (req,res)=>{
         require('dotenv').config();
         const mysql = require('mysql2');
-         const archive = path.resolve(__dirname,`./sql/pruebas.sql`);
+         const archive = path.resolve(__dirname,`./sql/base.sql`);
         let connect = mysql.createConnection({
             host: process.env.DB_HOST,
             user: process.env.DB_USERNAME,
@@ -87,6 +88,18 @@ DB_DIALECT=mysql`;
         });    
         res.redirect('/install/config')
     },
+    odetBaseAdminProcess: async(req,res)=>{
+        const userCreate = await User.create({
+            user: req.body.user,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            pass: hashSync(req.body.pass,10),
+            avatarId: 1,
+            rolId: 1
+        })
+        res.redirect('/install/config?step=2')
+    },
     registersProcess: async(req,res)=>{
         //creo roles
         try{
@@ -95,66 +108,66 @@ DB_DIALECT=mysql`;
                 {name:'Player'},
                 {name:'Referee'}
             ]);
-            //avatar base hacer subir avatar base
-            //await Avatar.create({image:'default.png'});
+            //avatar base
+            await Avatar.create({image:'default.png'});
             //usuarios de prueba
-            // let usersCreate = await User.bulkCreate([
-            //     {
-            //         user: 'admin',
-            //         firstName: 'Admin',
-            //         lastName: 'Odet',
-            //         email: 'admin@odet.com',
-            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-            //         avatarId: 1,
-            //         rolId: 1
-            //     },
-            //     {
-            //         user: 'player',
-            //         firstName: 'Player',
-            //         lastName: 'Odet',
-            //         email: 'player@odet.com',
-            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-            //         avatarId: 1,
-            //         rolId: 2
-            //     },
-            //     {
-            //         user: 'referee',
-            //         firstName: 'Referee',
-            //         lastName: 'Odet',
-            //         email: 'referee@odet.com',
-            //         pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
-            //         avatarId: 1,
-            //         rolId: 3
-            //     }
-            // ]);
+            let usersCreate = await User.bulkCreate([
+                {
+                    user: 'admin',
+                    firstName: 'Admin',
+                    lastName: 'Odet',
+                    email: 'admin@odet.com',
+                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+                    avatarId: 1,
+                    rolId: 1
+                },
+                {
+                    user: 'player',
+                    firstName: 'Player',
+                    lastName: 'Odet',
+                    email: 'player@odet.com',
+                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+                    avatarId: 1,
+                    rolId: 2
+                },
+                {
+                    user: 'referee',
+                    firstName: 'Referee',
+                    lastName: 'Odet',
+                    email: 'referee@odet.com',
+                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+                    avatarId: 1,
+                    rolId: 3
+                }
+            ]);
             //team prueba
-            // let teamCreate = await Team.bulkCreate([
-            //     {
-            //         name: 'Team odet',
-            //         avatarId: 1,
-            //         captainId: 1
-            //     },
-            //     {
-            //         name: 'Team rival',
-            //         avatarId: 1,
-            //         captainId: 1
-            //     },
-            // ]);
+            let teamCreate = await Team.bulkCreate([
+                {
+                    name: 'Team odet',
+                    avatarId: 1,
+                    captainId: 1
+                },
+                {
+                    name: 'Team rival',
+                    avatarId: 1,
+                    captainId: 1
+                },
+            ]);
             //Players create
-            // await Player.bulkCreate([
-            //     {
-            //         goals: 10,
-            //         suspensionId: null,
-            //         teamId: 1,
-            //         userId: 1
-            //     },
-            //     {
-            //         goals: 10,
-            //         suspensionId: null,
-            //         teamId: 1,
-            //         userId: 2
-            //     }
-            // ]);
+            await Player.bulkCreate([
+                {
+                    goals: 10,
+                    suspensionId: null,
+                    teamId: 1,
+                    userId: 1
+                },
+                {
+                    goals: 10,
+                    suspensionId: null,
+                    teamId: 1,
+                    userId: 2
+                }
+            ]);
             await Ascent.create({
                 type: 'Puntos'
             });
@@ -188,7 +201,7 @@ DB_DIALECT=mysql`;
         }catch(e){
             console.log(e);
         }
-        res.redirect('/install/registers')
+        res.redirect('/install/')
     }    
     // testConnection: ()=>{
         //     require('dotenv').config()

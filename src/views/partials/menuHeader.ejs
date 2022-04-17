@@ -1,10 +1,10 @@
 <header class="header">
     <div class="LOGO">
         
-        <h3><a href="<%= user && access !== 3 && playerSession.teamId === null ? "#" : "/" %>">ODET</a></h3>
+        <h3><a href="<%= user && access === 2 && playerSession.teamId === null ? "#" : "/" %>">ODET</a></h3>
     </div>
     <nav>
-        <% if(user && access !== 3 && playerSession.teamId === null){%> 
+        <% if(user && access === 2 && playerSession.teamId === null){%> 
             <ul class="menuHeader">
                 <li><a class="linkHeader" href="/logout"><i class='bx bx-x'></i> Salir</a></li>
             </ul>
