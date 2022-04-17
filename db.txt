@@ -145,5 +145,9 @@ sequelize model:generate --name ControlTeamCup --attributes team:integer,cupId:i
 sequelize model:generate --name AwardStatistics --attributes bestPlayer:integer,bestScorer:integer,bestGoalAssist:integer,bestGoalKeeper:integer,tournamentId:integer
 
 
+sequelize model:generate --name LogoType --attributes type:string
+sequelize model:generate --name Maintenance --attributes type:string
+sequelize model:generate --name Config --attributes logoType:integer,logoText:string,logoImg:string,maintenance:integer
+
 
 mysqldump -u root -p odet > C:\Users\guns-\Documents\db\pruebas.sql

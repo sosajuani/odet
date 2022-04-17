@@ -4,8 +4,41 @@
         <div class="contAdminPrin">
             <h3>ADMIN</h3>
             <div>
-                <p>Bienvenido <%= user.firstName %>, este es tu panel de administración. Acá vas a poder modificar todos los aspectos del torneo.</p>
+                <!-- <p>Bienvenido <%= user.firstName %>, este es tu panel de administración. Acá vas a poder modificar todos los aspectos de la página.</p> -->
                 <p>¿Dudas?. Visita la páginas de ayuda: http://www.odet.ar/help</p>
             </div>
+            <form class="newTournament" action="/admin/tournament/new" method="post">
+                <fieldset>
+                    <legend>Configuración</legend>
+                    <label class="newTournamentLabel">
+                        Tipo de logo:
+                        <select name="logo" id="logo">
+                            <option value="img">Imagen</option>
+                            <option value="text" selected>Texto</option>
+                        </select>
+                    </label>
+                    <label class="newTournamentLabel inputText">
+                        Logo:
+                        <input value="" placeholder="Escriba el texto a mostrar" name="logo" type="text">
+                    </label>
+                    <label class="newTournamentLabel ocultarInput inputImg">
+                        Seleccionar logo:
+                        <input type="file">
+                    </label>
+                    <label class="newTournamentLabel">
+                        Cambiar avatar por defecto:
+                        <input type="file">
+                    </label>
+                    <label class="newTournamentLabel">
+                        Modo mantenimiento:
+                        <select name="logo" id="logo">
+                            <option value="img">Si</option>
+                            <option value="text" selected>No</option>
+                        </select>
+                    </label>
+                    <input class="formSubmitTournament btnLink" value="Confirmar configuración" type="submit" />
+                </fieldset>
+                
+            </form>
         </div>
     </div>

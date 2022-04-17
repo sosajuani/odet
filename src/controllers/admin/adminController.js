@@ -16,13 +16,14 @@ const Statistic = db.Statistic;
 
 const adminController = {
     home: (req,res)=>{
-        User.findOne({
-            where:{
-                id: req.session.user.id
-            }
-        })
-        .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
-        .catch(e => console.log(e))
+        // User.findOne({
+        //     where:{
+        //         id: req.session.user.id
+        //     }
+        // })
+        // .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
+        // .catch(e => console.log(e))
+        res.render('admin/indexAdm.ejs',{user:"juan"})
     },
     news: (req,res)=>{
         News.findAll()

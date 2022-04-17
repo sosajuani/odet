@@ -10,6 +10,9 @@ window.addEventListener('load',()=>{
     const inputModal = document.querySelector('.idButton');
     const titleModal = document.querySelector('.titleModal')
 
+    //admin
+    const selectLogo = document.querySelector("#logo")
+
 buttonMenu.addEventListener('click',()=>{
     menuHeader.classList.toggle('mostrarMobile');
     buttonMenu.classList.toggle('ocultarMobile');
@@ -38,6 +41,26 @@ if(deleteButton && buttonCloseModal){
         titleModal.innerHTML= `¿Seguro quiere eliminar el torneo?`
     })
 }
+if(selectLogo){
+    const inputText = document.querySelector(".inputText");
+    const inputImg = document.querySelector(".inputImg");
+    selectLogo.addEventListener("change",(e)=>{
+        console.log(e);
+        if(selectLogo.value === "text"){
+            inputText.classList.add("mostrarInput");
+            inputText.classList.remove("ocultarInput");
+            inputImg.classList.remove("mostrarInput");
+            inputImg.classList.add("ocultarInput");
+        }
+        if(selectLogo.value === "img"){
+            inputText.classList.add("ocultarInput")
+            inputText.classList.remove("mostrarInput")
+            inputImg.classList.add("mostrarInput");
+            inputImg.classList.remove("ocultarInput");
+        }
+    })
+}
+
 })
 
 // let seleccion = (item)=>{
