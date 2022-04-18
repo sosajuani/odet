@@ -61,18 +61,40 @@ if(selectLogo){
 
 const selectTournamentChange = document.querySelector("#selectTournament")
 if(selectTournamentChange){
-    const divisionDiv = document.querySelector(".divisionDiv");
+    const divisionSelect = document.querySelector(".divisionSelect");
     const filterSubmit = document.querySelector(".filterSubmit");
     const valueSelect = selectTournamentChange.value;
 
     selectTournamentChange.addEventListener("change",()=>{
+        fetch('/tournament/api/change/'+selectTournamentChange.value)
+        .then(result => result.json())
+        .then(result => {
+            console.log(result.divisions.data);
+            divisionSelect.innerHTML=""
+            for(let i = 0; i<result.divisions.data.length;i++){
+                divisionSelect.innerHTML+=`
+                    <option value="${result.divisions.data[i].id}">${result.divisions.data[i].name}</option>
+                `
+            }
+            // divisionDiv.innerHTML = `
+            // <div class="formFilterTournament divisionDiv">
+            //     <label for="divsionTournament">División</label>
+            //     <select name="divisionId" id="divsionTournament">
+            //         for( let i=0;i<result.length;i++ ) {
+            //             <option   value="<%= divisionConsult[i].id %>"><%= divisionConsult[i].name %></option>
+            //         }
+            //     </select>
+            // </div>
+            // `;
+        })
         //console.log(selectTournamentChange.value);
         // divisionDiv.innerHTML = ""
         // filterSubmit.value = "Cambiar de torneo"
-        divisionDiv.classList.add("hiddenBlock")
-        divisionDiv.innerHTML+=`
-            <input name="change" value="hola" type="hidden"/>
-        `
+        // divisionDiv.classList.add("hiddenBlock")
+        // divisionDiv.innerHTML+=`
+        //     <input name="change" value="hola" type="hidden"/>
+        // `
+
         if(valueSelect == selectTournamentChange.value){
             
         }

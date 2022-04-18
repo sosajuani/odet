@@ -8,6 +8,7 @@ router.get('/',mainController.home);
 router.get('/pruebas',mainController.pruebas);
 router.get('/tournament',mainController.tournament);
 router.post('/tournament/filter',mainController.tournamentFilter);
+router.get('/tournament/api/change/:id',mainController.apiTournamentChange);
 
 router.get('/fixture',mainController.fixture);
 router.get('/login',authMiddleware.visited,mainController.login);
