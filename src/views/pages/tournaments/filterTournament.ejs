@@ -7,13 +7,14 @@
             <% } %>
         </select><br>
     </div>
-    <div class="formFilterTournament">
+    <% console.log(statisticsConsult) %> 
+    <div class="formFilterTournament divisionDiv">
         <label for="divsionTournament">División</label>
         <select name="divisionId" id="divsionTournament">
             <% for( let i=0;i<divisionConsult.length;i++ ) { %>
-                <option <%= divisionConsult[i].id === statisticsConsult[0].divisionId ? "selected" : null  %>  value="<%= divisionConsult[i].id %>"><%= divisionConsult[i].name %></option>
+                <option   value="<%= divisionConsult[i].id %>"><%= divisionConsult[i].name %></option>
             <% } %>
         </select>
     </div>
-    <input class="btnLink" type="submit" value="Filtrar">
+    <input class="btnLink filterSubmit" type="submit" value="Filtrar">
 </form>

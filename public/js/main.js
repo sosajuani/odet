@@ -17,13 +17,11 @@ buttonMenu.addEventListener('click',()=>{
     menuHeader.classList.toggle('mostrarMobile');
     buttonMenu.classList.toggle('ocultarMobile');
 });
-
 buttonClose.addEventListener('click',()=>{
     
     menuHeader.classList.remove('mostrarMobile')
     buttonMenu.classList.toggle('ocultarMobile');
 })
-
 if(deleteButton && buttonCloseModal){
     console.log(deleteButton);
 
@@ -57,6 +55,26 @@ if(selectLogo){
             inputText.classList.remove("mostrarInput")
             inputImg.classList.add("mostrarInput");
             inputImg.classList.remove("ocultarInput");
+        }
+    })
+}
+
+const selectTournamentChange = document.querySelector("#selectTournament")
+if(selectTournamentChange){
+    const divisionDiv = document.querySelector(".divisionDiv");
+    const filterSubmit = document.querySelector(".filterSubmit");
+    const valueSelect = selectTournamentChange.value;
+
+    selectTournamentChange.addEventListener("change",()=>{
+        //console.log(selectTournamentChange.value);
+        // divisionDiv.innerHTML = ""
+        // filterSubmit.value = "Cambiar de torneo"
+        divisionDiv.classList.add("hiddenBlock")
+        divisionDiv.innerHTML+=`
+            <input name="change" value="hola" type="hidden"/>
+        `
+        if(valueSelect == selectTournamentChange.value){
+            
         }
     })
 }

@@ -21,8 +21,11 @@ const mainController = {
         let tournamentConsult = await Tournament.findAll();
         let firstTournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]})
         const firstTournament = firstTournamentConsult.shift()
-        let divisionConsult = await Division.findAll();
-        
+        let divisionConsult = await Division.findAll({
+            where:{
+                tournamentId: firstTournament.id
+            }
+        });
         let firstDivisionConsult = await Division.findAll({
             where:{
                 tournamentId: firstTournament.id
@@ -45,20 +48,55 @@ const mainController = {
     tournamentFilter: async(req,res)=>{
         const tournamentId = req.body.tournamentId;
         const divisionId = req.body.divisionId;
+        //<%= divisionConsult[i].id === statisticsConsult[0].divisions.id ? "selected" : null  %>
         let tournamentConsult = await Tournament.findAll();
-        let divisionConsult = await Division.findAll();
+        let divisionConsult = await Division.findAll({
+            where:{
+                tournamentId: tournamentId
+            }
+        });
         let errorConsult = false;
         if(tournamentConsult.length === 0 || divisionConsult.length === 0 || divisionConsult.length !== 0 && tournamentConsult.length === 0 || divisionConsult.length === 0 && tournamentConsult.length !== 0){
             errorConsult = true;
         }
-        let statisticsConsult = await Statistic.findAll({
-            where:{
-                tournamentId: tournamentId,
-                divisionId: divisionId
-            },
-            include: ['divisions','teams']
-        })
-        res.render('pages/tournaments/filterTournamentSearch.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult});
+        let statisticsConsult;
+        if(req.body.change){
+            let firstDivisionConsult = await Division.findAll({
+                where:{
+                    tournamentId: tournamentId
+                }
+            });
+            const firstDivision = firstDivisionConsult.shift()
+            statisticsConsult = await Statistic.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: firstDivision.id
+                },
+                include: ['divisions','teams']
+            })
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log(statisticsConsult);
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+            console.log("dentro");
+        }else{
+            statisticsConsult = await Statistic.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: divisionId
+                },
+                include: ['divisions','teams']
+            })
+        }
+        return res.render('pages/tournaments/filterTournamentSearch.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult});
     },
     fixture: async(req,res)=>{
         let tournamentConsult = await Tournament.findAll();

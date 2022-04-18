@@ -43,6 +43,12 @@
 .ocultarMobileTorneo{
     display: none;
 }
+.hiddenBlock{
+    display: none;
+}
+.showBlock{
+    display: block;
+}
 @media only screen and (min-width: 768px){
     .torneoTableContHome > div{
         grid-template-columns: 20px min(100%,5rem) repeat(8,1fr);
