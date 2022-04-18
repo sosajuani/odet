@@ -21,17 +21,13 @@ router.get('/roles',adminController.roles)
 
 router.get('/divisions',adminController.divisions)
 router.get('/divisions/new',adminController.divisionsNew)
-router.post('/divisions/new',adminController.divisionsNewProcess)
+router.post('/divisions/new',validation.divisionCreate,adminController.divisionsNewProcess)
 router.get('/division/:id/detail',adminController.divisionDetail)
 router.delete('/division/:id/delete',adminController.deleteDivision)
 router.get('/division/:id/edit',adminController.divisionEdit)
 router.put('/division/:id/edit',validation.divisionEdit,adminController.divisionsEditProcess)
 
 router.get('/info',adminController.info)
-
-
-
-
 
 //admin con permisos
 
@@ -48,9 +44,10 @@ router.get('/info',adminController.info)
 // router.get('/players',authMiddleware.logged,authMiddleware.admin,adminController.players)
 // router.get('/teams',authMiddleware.logged,authMiddleware.admin,adminController.teams)
 // router.get('/roles',authMiddleware.logged,authMiddleware.admin,adminController.roles)
+
 // router.get('/divisions',authMiddleware.logged,authMiddleware.admin,adminController.divisions)
 // router.get('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
-// router.post('/divisions/new',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
+// router.post('/divisions/new',validation.divisionCreate,authMiddleware.logged,authMiddleware.admin,adminController.divisionsNewProcess)
 // router.get('/division/:id/detail',authMiddleware.logged,authMiddleware.admin,adminController.divisionsNew)
 // router.get('/division/:id/edit',authMiddleware.logged,authMiddleware.admin,adminController.divisionEdit)
 // router.put('/division/:id/edit',validation.divisionEdit,authMiddleware.logged,authMiddleware.admin,adminController.divisionsEditProcess)

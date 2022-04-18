@@ -48,6 +48,11 @@ const validation = {
     divisionEdit:[
         body('name').notEmpty().withMessage("El nombre de la división no puede estar vacío")
          .isLength({min:4}).withMessage("Debe contener al menos 4 caracteres")
+    ],
+    divisionCreate:[
+        body('name').notEmpty().withMessage("El nombre de la división no puede estar vacío")
+         .isLength({min:4}).withMessage("Debe contener al menos 4 caracteres"),
+        body('tournament').notEmpty().withMessage("Debe seleccionar un torneo")
     ]
 }
 module.exports = validation;

@@ -11,16 +11,22 @@
                     <legend>Información del torneo</legend>
                     <label class="newTournamentLabel">
                         Nombre:
-                        <input  placeholder="Ingrese un nombre" name="name" type="text">
+                        <input  placeholder="Ingrese un nombre" value="<%= locals.oldData ? locals.oldData.name:null %>" name="name" type="text">
+                        <% if (locals.errors && locals.errors.name) { %>
+                            <p class="errForm"><%= locals.errors.name.msg %></p>
+                        <% } %>
                     </label>
                     <label class="newTournamentLabel">
                         Torneo:
                         <select name="tournament"> 
                             <option value="">Seleccionar torneo</option>
                             <% for( let i = 0; i < consultTournament.length; i++ ) { %>
-                                <option value="<%= consultTournament[i].tournaments.id %>"><%= consultTournament[i].tournaments.name %></option>
+                                <option <%= locals.oldData && locals.oldData.tournament == consultTournament[i].id ? "selected":null %> value="<%= consultTournament[i].tournaments.id %>"><%= consultTournament[i].tournaments.name %></option>
                             <% } %>
                         </select>
+                        <% if (locals.errors && locals.errors.tournament) { %>
+                            <p class="errForm"><%= locals.errors.tournament.msg %></p>
+                        <% } %>
                     </label>
                     <input class="formSubmitTournament btnLink" value="Crear torneo" type="submit" />
                 </fieldset>

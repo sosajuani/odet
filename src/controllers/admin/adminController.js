@@ -90,15 +90,23 @@ const adminController = {
         res.render('admin/divisions/newDivisionAdm.ejs',{consultTournament})
     },
     divisionsNewProcess: async(req,res)=>{
+        let errors = validationResult(req);
+        if(!errors.isEmpty()){
+            consultTournament = await DivisionControl.findAll({
+                where: {tournamentCompleted:0},
+                include: ['tournaments']
+            });
+            return res.render("admin/divisions/newDivisionAdm.ejs",{errors:errors.mapped(), oldData: req.body,consultTournament})
+        }
         const tournamentId = req.body.tournament
         const tournamentConsult = await Tournament.findByPk(tournamentId);
         const divisionControlConsult = await DivisionControl.findOne({ where:{ tournamentId: tournamentId}})
-
-        // if(divisionControlConsult.divisionsCreated == tournamentConsult.divisions){
-        //     console.log("maximo de divisiones alcanzado");
-        // }else{
-        //     console.log("faltan crear "+parseInt(tournamentConsult.divisions - divisionControlConsult.divisionsCreated));
-        // }
+        console.log("trae "+tournamentId);
+        if(divisionControlConsult.divisionsCreated == tournamentConsult.divisions){
+            console.log("maximo de divisiones alcanzado");
+        }else{
+            console.log("faltan crear "+parseInt(tournamentConsult.divisions - divisionControlConsult.divisionsCreated));
+        }
         await Division.create({
             name: req.body.name,
             tournamentId: tournamentId
@@ -127,7 +135,6 @@ const adminController = {
         if(!errors.isEmpty()){
             return res.render("admin/divisions/editDivisionAdm.ejs",{errors:errors.mapped(), oldData: req.body,consultDivision})
         }
-        console.log(consultDivision);
         await Division.update({
             name: req.body.name
         },{where: {id: req.params.id}});
