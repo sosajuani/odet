@@ -58,12 +58,17 @@ const adminController = {
         if(!errors.isEmpty()){
             return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:errors.mapped(), oldData:req.body,consultAscent,consultDecline,consultType})
         }
-        if(req.body.typeTournament !== 1 || req.body.typeTournament !== 2){
+        let tournamentId = parseInt(req.body.typeTournament)
+
+        if(tournamentId != 1){
+            console.log("entro");
+        }
+        if(tournamentId !== 1 && tournamentId !== 2){
             let errorTypeTournament = "El tipo de torneo seleccionado no es valido";
             return res.render("admin/tournament/tournamentAdmNew.ejs",{errors:{typeTournament:{msg:errorTypeTournament}},oldData:req.body,consultAscent,consultDecline,consultType})           
         }
         //modo liga
-        if(req.body.typeTournament === 1){
+        if(tournamentId === 1){
             let newTournament = await Tournament.create({
                     name: req.body.name,
                     divisions: req.body.divisions,
@@ -81,8 +86,7 @@ const adminController = {
                 })            
         }
         //modo copa
-        if(req.body.typeTournament === 2){
-            
+        if(tournamentId === 2){    
             return('/admin/tournament')
         }
         res.redirect('/admin/tournament')

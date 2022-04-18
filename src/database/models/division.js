@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'tournamentId',
         as: 'tournaments'
       })
-      Division.belongsTo(models.Statistic,{
+      Division.hasMany(models.Statistic,{
         foreignKey: 'divisionId',
         as: 'statistics'
       })

@@ -1,12 +1,12 @@
 const {validationResult} = require('express-validator');
 const {compareSync, hashSync} = require('bcryptjs');
 const db = require('../database/models');
-const { send } = require('express/lib/response');
 const User = db.User;
 const Player = db.Player;
 const News = db.News;
 const Tournament = db.Tournament;
 const Division = db.Division;
+const Statistic = db.Statistic;
 
 const mainController = {
     home: (req,res)=>{
@@ -17,9 +17,48 @@ const mainController = {
     noticiaVista: (req,res)=>{
         res.render('pages/noticiaVista.ejs');
     },
-    tournament: (req,res)=>{
-        console.log("toy");
-        res.render('pages/tournament.ejs');
+    tournament: async(req,res)=>{
+        let tournamentConsult = await Tournament.findAll();
+        let firstTournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]})
+        const firstTournament = firstTournamentConsult.shift()
+        let divisionConsult = await Division.findAll();
+        
+        let firstDivisionConsult = await Division.findAll({
+            where:{
+                tournamentId: firstTournament.id
+            }
+        });
+        const firstDivision = firstDivisionConsult.shift()
+        let errorConsult = false;
+        if(tournamentConsult.length === 0 || divisionConsult.length === 0 || divisionConsult.length !== 0 && tournamentConsult.length === 0 || divisionConsult.length === 0 && tournamentConsult.length !== 0){
+            errorConsult = true;
+        }
+        let statisticsConsult = await Statistic.findAll({
+            where:{
+                tournamentId: firstTournament.id,
+                divisionId: firstDivision.id
+            },
+            include: ['divisions','teams']
+        })
+        res.render('pages/tournaments/tournament.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult});
+    },
+    tournamentFilter: async(req,res)=>{
+        const tournamentId = req.body.tournamentId;
+        const divisionId = req.body.divisionId;
+        let tournamentConsult = await Tournament.findAll();
+        let divisionConsult = await Division.findAll();
+        let errorConsult = false;
+        if(tournamentConsult.length === 0 || divisionConsult.length === 0 || divisionConsult.length !== 0 && tournamentConsult.length === 0 || divisionConsult.length === 0 && tournamentConsult.length !== 0){
+            errorConsult = true;
+        }
+        let statisticsConsult = await Statistic.findAll({
+            where:{
+                tournamentId: tournamentId,
+                divisionId: divisionId
+            },
+            include: ['divisions','teams']
+        })
+        res.render('pages/tournaments/filterTournamentSearch.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult});
     },
     fixture: async(req,res)=>{
         let tournamentConsult = await Tournament.findAll();
