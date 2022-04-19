@@ -114,13 +114,14 @@
     box-shadow: inset 0 -1px 0 #fff;
     cursor: pointer;
  }
-.listaJugadoresAdmin{
-    margin-bottom: 100px;
-}
+/* .listaJugadoresAdmin{
+    margin-bottom: 0;
+} */
 .listaJugadoresAdminHead > div{
     background: #c7c7c7;
     border-bottom: 1px solid #333;
     padding: 5px 10px;
+    text-align: center;
 }
 .listaJugadoresAdminItem > div{
     border-top: 1px solid #333;
@@ -128,6 +129,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.actionListPlayerItem > i{
+    background: var(--colorBlue);
+    border-radius: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-left: 5px;
+    color: #fff;
+}
+.listaJugadoresAdmin{
+    border: 1px solid #c7c7c7;
+    border-radius: 5px;
 }
 .listaJugadoresAdminItem:nth-child(2n+3){
     border-top: 1px solid #333;
@@ -160,8 +173,9 @@
     justify-content: center;
     align-items: center;
 }
+
 .listEquiposAdmHead, .listEquiposAdmItem{
-    grid-template-columns: 16px repeat(1,1fr) 5rem;
+    grid-template-columns: 2rem repeat(1,1fr) 5rem;
 }
 /*create news*/
 .createNewsForm{
@@ -349,6 +363,27 @@
     display: block;
 }
 /*divisions*/
+/*pag*/
+.pagCont{
+    display: flex;
+    justify-content: space-evenly;
+}
+.pagItem{
+    background: var(--colorBlue);
+    padding: 0.5rem;
+}
+.pagItem > a{
+    color: #fff;
+    text-decoration: none;
+}
+/*pag*/
+/*teams*/
+.queryBtnCont{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+/*teams*/
 @media only screen and (min-width: 1024px){
     .menuAdmin{
         clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -372,5 +407,16 @@
     }
     .divisionList{
         width: 50%;
+    }
+    .listaJugadoresAdmin{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .pagCont{
+        margin: 0 auto;
+        justify-content: center;
+    }
+    .pagItem{
+        margin-left: 1rem;
     }
 }

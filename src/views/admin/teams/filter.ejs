@@ -1,0 +1,15 @@
+<div class="queryBtnCont">
+    <a class="btnLink" href="/admin/teams/new">Crear nuevo equipo</a>
+</div>
+<form class="filterPlayerAdmin" action="/admin/teams/search" method="get">
+    <div>
+        <label for="filterName">Buscar</label>
+        <input placeholder="Nombre del Equipo" name="name" id="filterName" type="search">
+        <button class="searchFilterAdmin" type="submit">Filtrar</button>
+    </div>
+</form>
+<% if(query){ %> 
+    <div class="queryBtnCont">
+        <a class="btnLink" href="/admin/teams">Ver todos los equipos</a>
+    </div>
+<% } %> 

@@ -1,6 +1,7 @@
 // const express = require('express');
 const db = require('../../database/models');
 const {validationResult} = require('express-validator');
+const { Op } = require("sequelize");
 
 const User = db.User;
 const News = db.News;
@@ -16,20 +17,13 @@ const Statistic = db.Statistic;
 
 const teamsController = {
     home: async(req,res)=>{
-        const consultTournament = await Tournament.findAll();
-        const consultFirstTournament = await Tournament.findAll();
-        const consultDivision = await Division.findAll({
-            where:{
-                tournamentId: consultFirstTournament.shift().id
-            }
-        });
         const countTeams = await Team.count()
         let pages;
         let pagesCount=0;
         const limit= 10;
         if(countTeams > limit){
             pages = true;
-            pagesCount = countTeams / 10
+            pagesCount = Math.ceil(countTeams / 10)
         }else{
             pages = false
         }
@@ -49,8 +43,52 @@ const teamsController = {
                 limit: 10
             })
         }
-        //console.log(countTeams);
-        res.render("admin/teams/teamsAdm.ejs",{consultTournament,consultDivision,consultTeams,pages,pagesCount})
+        let query = null
+        res.render("admin/teams/teamsAdm.ejs",{consultTeams,pages,pagesCount,pageQuery,query})
+    },
+    search: async(req,res)=>{
+        let query = req.query.name
+        console.log(query);
+        const countTeams = await Team.count({
+            where:{
+                name: { [Op.like]: `%${query}%` }
+            }
+        })
+        let pages;
+        let pagesCount=0;
+        const limit= 10;
+        if(countTeams > limit){
+            pages = true;
+            pagesCount = Math.ceil(countTeams / 10)
+        }else{
+            pages = false
+        }
+        let consultTeams;
+        let pageQuery = parseInt(req.query.page);
+        const pageSize = 10
+        let offset;
+        if(pageQuery){
+            pageQuery > pagesCount ? res.redirect("/admin/teams/search?name="+query) : null
+            offset= (pageQuery - 1)* pageSize
+            consultTeams = await Team.findAll({
+                limit: 10,  
+                offset: offset,
+                where:{
+                    name: { [Op.like]: `%${query}%` }
+                }
+            })
+        }else{
+            consultTeams = await Team.findAll({
+                limit: 10,
+                where:{
+                    name: { [Op.like]: `%${query}%` }
+                }
+            })
+        }
+        res.render("admin/teams/filterName.ejs",{consultTeams,pages,pagesCount,pageQuery,query})
+    },
+    create: (req,res)=>{
+        res.render("admin/teams/newTeam.ejs")
     }
 }
 
