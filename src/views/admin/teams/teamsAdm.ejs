@@ -1,0 +1,56 @@
+<%- include("../../partials/head.ejs",{title:"Admin - Equipos"}) %>
+    <div class="contenedorAdmin">    
+        <%- include("../../partials/menuAdmin.ejs")  %> 
+        <div class="contAdminPrin">
+            <h3>Equipos</h3>
+            <div>
+                <form class="filterPlayerAdmin" action="">
+                    <div>
+                        <label for="">Buscar</label>
+                        <input placeholder="Nombre del Equipo" type="search">
+                        <button class="searchFilterAdmin" type="submit">Buscar</button>
+                    </div>
+                    <div>
+                        <label for="">Torneo</label>
+                        <select name="" id="">
+                            <% for( let i = 0; i < consultTournament.length; i++ ) { %>
+                                <option value="<%= consultTournament[i].id %>"><%= consultTournament[i].name %></option>
+                            <% } %>
+                        </select>
+                        <button class="searchFilterAdmin" type="submit">Buscar</button>
+                    </div>
+                    <div>
+                        <label for="">División</label>
+                        <select name="" id="">
+                            <% for( let i = 0; i < consultDivision.length; i++ ) { %>
+                                <option value="<%= consultDivision[i].id %>"><%= consultDivision[i].name %></option>
+                            <% } %>
+                        </select>
+                        <button class="searchFilterAdmin" type="submit">Buscar</button>
+                    </div>
+                </form>
+                <div class="listaJugadoresAdmin">
+                    <div class="listaJugadoresAdminHead listEquiposAdmHead">
+                        <div>#</div>
+                        <div>Equipo</div>
+                        <div>Accion</div>
+                    </div>
+                    <% consultTeams.forEach(team => { %>  
+                    <div class="listaJugadoresAdminItem listEquiposAdmItem">
+                        <div><%= team.id %></div>
+                        <div><%= team.name %></div>
+                        <div>
+                            <i class='bx bx-edit-alt'></i>
+                            
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+            <% if(pages == true){ %>
+                <% for(let i=0;i<pagesCount;i++){ %> 
+                    <a href="/admin/teams?page=<%= i+1 %>"><%= i+1 %> </a> 
+                <% } %>  
+            <% } %> 
+        </div>
+    </div>

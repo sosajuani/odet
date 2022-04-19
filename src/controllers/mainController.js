@@ -43,7 +43,10 @@ const mainController = {
             },
             include: ['divisions','teams']
         })
-        res.render('pages/tournaments/tournament.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult});
+        let divisionEmpty
+        const tournamentId = firstTournament.id
+        statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
+        res.render('pages/tournaments/tournament.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty});
     },
     tournamentFilter: async(req,res)=>{
         const tournamentId = req.body.tournamentId;
@@ -67,10 +70,6 @@ const mainController = {
                 include: ['divisions','teams']
         })
         statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
-        //console.log(statisticsConsult.length);
-        //  for( let i=0;i<tournamentConsult.length;i++ ) { 
-        //      tournamentConsult[i].id == tournamentId ? console.log("selected - "+ tournamentConsult[i].name) : console.log(tournamentConsult[i].name) 
-        //  } 
         return res.render('pages/tournaments/filterTournamentSearch.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,divisionEmpty,tournamentId});
     },
     apiTournamentChange: async(req,res)=>{

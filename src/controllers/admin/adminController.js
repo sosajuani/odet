@@ -72,9 +72,6 @@ const adminController = {
     players: (req,res)=>{
         res.render('admin/playersAdm.ejs')
     },
-    teams: (req,res)=>{
-        res.render('admin/teamsAdm.ejs')
-    },
     roles: (req,res)=>{
         res.render('admin/rolesAdm.ejs')
     },

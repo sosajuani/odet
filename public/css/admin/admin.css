@@ -86,7 +86,7 @@
     flex-direction: column;
     align-items: center;
 }
-.filterPlayerAdmin > div > label{
+.filterPlayerAdmin > div > label, .filterPlayerAdmin > div > button{
     background: var(--colorBlue);
     padding: 5px 10px;
     color: #fff;
@@ -106,6 +106,14 @@
 .filterPlayerAdmin > div > input::placeholder{
     color: inherit;
 }
+.filterPlayerAdmin > div > button{
+    background: var(--colorBlue);
+    padding: 5px;
+    color: #fff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: inset 0 -1px 0 #fff;
+    cursor: pointer;
+ }
 .listaJugadoresAdmin{
     margin-bottom: 100px;
 }
@@ -119,6 +127,7 @@
     padding: 5px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .listaJugadoresAdminItem:nth-child(2n+3){
     border-top: 1px solid #333;
@@ -152,7 +161,7 @@
     align-items: center;
 }
 .listEquiposAdmHead, .listEquiposAdmItem{
-    grid-template-columns: 16px repeat(2,1fr);
+    grid-template-columns: 16px repeat(1,1fr) 5rem;
 }
 /*create news*/
 .createNewsForm{

@@ -16,7 +16,6 @@ router.delete('/news/:id/delete',adminController.newsDelete)
 
 router.get('/config',adminController.config)
 router.get('/players',adminController.players)
-router.get('/teams',adminController.teams)
 router.get('/roles',adminController.roles)
 
 router.get('/divisions',adminController.divisions)

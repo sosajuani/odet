@@ -3,7 +3,7 @@
         <label for="selectTournament">Seleccionar torneo</label>
         <select name="tournamentId" id="selectTournament">
             <% for( let i=0;i<tournamentConsult.length;i++ ) { %>
-                <option <%= tournamentConsult[i].id == tournamentId ? "selected" : null  %> value="<%= tournamentConsult[i].id %>"><%= tournamentConsult[i].name %></option>
+                    <option <%= tournamentConsult[i].id == tournamentId ? "selected" : null  %> value="<%= tournamentConsult[i].id %>"><%= tournamentConsult[i].name %></option>
             <% } %>
         </select><br>
     </div>
