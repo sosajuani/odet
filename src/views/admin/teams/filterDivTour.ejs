@@ -16,15 +16,15 @@
                 <% if(pages == true){ %>
                     <div class="pagCont">
                         <div class="pagItem">
-                            <a href="<%= pageQuery ? `/admin/teams/search?page=${pageQuery-1}&name=${query}` : `/admin/teams` %>"><i class='bx bx-left-arrow-alt'></i></a>
+                            <a href="<%= pageQuery ? `/admin/teams/search/div?page=${pageQuery-1}&tournamentSelect=${tournamentId}&divisionSelect=${divId}` : `/admin/teams/search/div?tournamentSelect=${tournamentId}&divisionSelect=${divId}` %>"><i class='bx bx-left-arrow-alt'></i></a>
                         </div>
                         <% for(let i=0;i<pagesCount;i++){ %> 
                             <div class="pagItem">
-                                <a href="/admin/teams/search?page=<%= i+1 %>&name=<%= query %>"><%= i+1 %></a>
+                                <a href="/admin/teams/search/div?page=<%= i+1 %>&tournamentSelect=<%=tournamentId %>&divisionSelect=<%=divId %>"><%= i+1 %></a>
                             </div>
                         <% } %>
                         <div class="pagItem">
-                            <a href="<%= pageQuery ? `/admin/teams/search?page=${pageQuery+1}&name=${query}` : `/admin/teams/search?name=${query}` %>"><i class='bx bx-right-arrow-alt' ></i></a>
+                            <a href="<%= pageQuery ? `/admin/teams/search/div?page=${pageQuery+1}&tournamentSelect=${tournamentId}&divisionSelect=${divId}` : `/admin/teams/search/div?tournamentSelect=${tournamentId}&divisionSelect=${divId}` %>"><i class='bx bx-right-arrow-alt' ></i></a>
                         </div>
                     </div>
                 </div>

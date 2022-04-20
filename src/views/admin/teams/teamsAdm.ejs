@@ -4,23 +4,14 @@
         <div class="contAdminPrin">
             <h3>Equipos</h3>
             <div>
-                <%- include("filter.ejs") %> 
+                <%- include("partials/filter.ejs") %> 
                 <div class="listaJugadoresAdmin">
                     <div class="listaJugadoresAdminHead listEquiposAdmHead tournamentTableAdmHead">
                         <div>#</div>
                         <div>Equipo</div>
                         <div>Accion</div>
                     </div>
-                    <% consultTeams.forEach(team => { %>  
-                    <div class="listaJugadoresAdminItem listEquiposAdmItem">
-                        <div><%= team.id %></div>
-                        <div><%= team.name %></div>
-                        <div class="actionListPlayerItem">
-                            <i class='bx bx-edit-alt'></i>
-                            <i class='bx bxs-detail' ></i>
-                        </div>
-                    </div>
-                    <% }) %>
+                    <%- include("partials/resultsTeams.ejs") %> 
                 </div>
                 <% if(pages == true){ %>
                     <div class="pagCont">

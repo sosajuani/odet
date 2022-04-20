@@ -7,12 +7,14 @@ const validationTournament = require('../../middleware/tournamentValidation')
 //admin desarrollo
 router.get('/',adminTeamsController.home)
 router.get('/search',adminTeamsController.search)
+router.get('/search/div',adminTeamsController.searchDivTour)
 router.get('/new',adminTeamsController.create)
 
 //admin con permisos
-//router.get('/',validationTournament.validationCreate,authMiddleware.logged,adminTeamsController.home)
-// router.get('/search',validationTournament.validationCreate,authMiddleware.logged,adminTeamsController.search)
-// router.get('/new',validationTournament.validationCreate,authMiddleware.logged,adminTeamsController.create)
+//router.get('/',authMiddleware.logged,authMiddleware.admin,adminTeamsController.home)
+// router.get('/search',authMiddleware.logged,authMiddleware.admin,adminTeamsController.search)
+// router.get('/search/div',authMiddleware.logged,authMiddleware.admin,adminTeamsController.search)
+// router.get('/new',authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
 
 
 
