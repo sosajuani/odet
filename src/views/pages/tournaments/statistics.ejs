@@ -16,6 +16,8 @@
             <div class="ocultarMobileTorneo">DG</div>
             <div>Pts</div>
         </div>
+        <% if(erroDiv === true){} %> 
+        <% }else{} %>  
         <% for( let i = 0; i < statisticsConsult.length; i++ ) { %>
             <div class="torneoTableContItem">
                 <div><%= i +1  %></div>
@@ -29,6 +31,7 @@
                 <div class="ocultarMobileTorneo"><%= statisticsConsult[i].gd %></div>
                 <div><%= statisticsConsult[i].pts %></div>
             </div>
+        <% } %>
         <% } %>
     </div>
     <% } %>

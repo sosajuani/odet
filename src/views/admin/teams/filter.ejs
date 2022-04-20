@@ -1,10 +1,35 @@
 <div class="queryBtnCont">
     <a class="btnLink" href="/admin/teams/new">Crear nuevo equipo</a>
+    <div class="filterOpt">
+        <label for="filterOpt">Filtrar por</label>
+        <select name="" id="filterOpt">
+            <option value="" selected>Nombre</option>
+            <option value="">Torneo y división</option>
+        </select>
+    </div>
 </div>
-<form class="filterPlayerAdmin" action="/admin/teams/search" method="get">
+<form class="filterPlayerAdmin filterNameTeam" action="/admin/teams/search" method="get">
     <div>
-        <label for="filterName">Buscar</label>
+        <label for="filterName">Buscar por nombre</label>
         <input placeholder="Nombre del Equipo" name="name" id="filterName" type="search">
+        <input type="hidden" name="queryType" value="filterName">
+        <button class="searchFilterAdmin" type="submit">Filtrar</button>
+    </div>
+</form>
+<form class="filterPlayerAdmin filterDivTourTeam ocultarInput" action="/admin/teams/search" method="get">
+    <div>
+        <label for="filterName">Buscar por división y torneo</label>
+        <select name="" id="selectTournament">
+            <% for( let i = 0; i < consultTournament.length; i++ ) { %>
+                <option value="<%= consultTournament[i].id %>"><%= consultTournament[i].name %></option>
+            <% } %>
+        </select>
+        <select name="" class="divisionSelect" id="">
+            <% for( let i = 0; i < firstDivisionTour.length; i++ ) { %>
+                <option value="<%= firstDivisionTour[i].id  %>"><%= firstDivisionTour[i].name  %></option>
+            <% } %>
+        </select>
+        <input type="hidden" name="queryType" value="filterDivTour">
         <button class="searchFilterAdmin" type="submit">Filtrar</button>
     </div>
 </form>

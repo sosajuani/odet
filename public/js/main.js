@@ -58,7 +58,6 @@ if(selectLogo){
         }
     })
 }
-
 const selectTournamentChange = document.querySelector("#selectTournament")
 if(selectTournamentChange){
     const divisionSelect = document.querySelector(".divisionSelect");
@@ -76,28 +75,16 @@ if(selectTournamentChange){
                     <option value="${result.divisions.data[i].id}">${result.divisions.data[i].name}</option>
                 `
             }
-            // divisionDiv.innerHTML = `
-            // <div class="formFilterTournament divisionDiv">
-            //     <label for="divsionTournament">División</label>
-            //     <select name="divisionId" id="divsionTournament">
-            //         for( let i=0;i<result.length;i++ ) {
-            //             <option   value="<%= divisionConsult[i].id %>"><%= divisionConsult[i].name %></option>
-            //         }
-            //     </select>
-            // </div>
-            // `;
         })
-        //console.log(selectTournamentChange.value);
-        // divisionDiv.innerHTML = ""
-        // filterSubmit.value = "Cambiar de torneo"
-        // divisionDiv.classList.add("hiddenBlock")
-        // divisionDiv.innerHTML+=`
-        //     <input name="change" value="hola" type="hidden"/>
-        // `
-
-        if(valueSelect == selectTournamentChange.value){
-            
-        }
+    })
+}
+const filterOptAdm = document.querySelector(".filterOpt");
+if(filterOptAdm){
+    const filterNameTeam = document.querySelector(".filterNameTeam");
+    const filterDivTourTeam = document.querySelector(".filterDivTourTeam");
+    filterOptAdm.addEventListener("change",()=>{
+        filterNameTeam.classList.toggle("ocultarInput")
+        filterDivTourTeam.classList.toggle("mostrarInput")
     })
 }
 

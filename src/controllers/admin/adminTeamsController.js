@@ -17,7 +17,15 @@ const Statistic = db.Statistic;
 
 const teamsController = {
     home: async(req,res)=>{
-        const countTeams = await Team.count()
+        const consultTournament = await Tournament.findAll();
+        const firstTournamentConsult = await Tournament.findAll();
+        const firstTournament = firstTournamentConsult.shift();
+        const firstDivisionTour = await Division.findAll({
+            where:{
+                tournamentId: firstTournament.id
+            }
+        })
+        const countTeams = await Team.count();
         let pages;
         let pagesCount=0;
         const limit= 10;
@@ -44,11 +52,21 @@ const teamsController = {
             })
         }
         let query = null
-        res.render("admin/teams/teamsAdm.ejs",{consultTeams,pages,pagesCount,pageQuery,query})
+        res.render("admin/teams/teamsAdm.ejs",{consultTeams,pages,pagesCount,pageQuery,query,consultTournament,firstDivisionTour})
     },
     search: async(req,res)=>{
         let query = req.query.name
-        console.log(query);
+        const consultTournament = await Tournament.findAll();
+        const firstTournamentConsult = await Tournament.findAll();
+        const firstTournament = firstTournamentConsult.shift();
+        const firstDivisionTour = await Division.findAll({
+            where:{
+                tournamentId: firstTournament.id
+            }
+        })
+
+        !query ? res.redirect('/admin/teams') : null
+
         const countTeams = await Team.count({
             where:{
                 name: { [Op.like]: `%${query}%` }
@@ -85,7 +103,7 @@ const teamsController = {
                 }
             })
         }
-        res.render("admin/teams/filterName.ejs",{consultTeams,pages,pagesCount,pageQuery,query})
+        return res.render("admin/teams/filterName.ejs",{consultTeams,pages,pagesCount,pageQuery,query,consultTournament,firstDivisionTour})
     },
     create: (req,res)=>{
         res.render("admin/teams/newTeam.ejs")
