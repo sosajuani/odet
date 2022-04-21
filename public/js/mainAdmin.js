@@ -1,16 +1,20 @@
 window.addEventListener('load',()=>{
 
-    let buttonMenu = document.querySelector('.buttonMovilMenu');
-    let menuHeader = document.querySelector('.menuAdmin');
-    let buttonClose = document.querySelector('.cerraMenuBtn');
-    
-    buttonMenu.addEventListener('click',()=>{
-        menuHeader.classList.toggle('mostrarMobile');
-        buttonMenu.classList.toggle('ocultarMobile');
-    });
-    
-    buttonClose.addEventListener('click',()=>{
-        menuHeader.classList.remove('mostrarMobile')
-        buttonMenu.classList.toggle('ocultarMobile');
-    })
+    //team created
+    const nameTeamCreated = document.querySelector(".nameTeamCreated");
+    const fileTeamCreated = document.querySelector(".fileTeamCreated");
+    const tournamentIdTeamCreate = document.querySelector(".tournamentIdTeamCreate");
+    const divisionIdTeamCreate = document.querySelector(".divisionIdTeamCreate");
+
+    //template team
+    const templateCreateTeamName = document.querySelector(".templateCreateTeamName");
+    const templateCreateTeamCap = document.querySelector(".templateCreateTeamCap");
+    const templateCreateTeamTour = document.querySelector(".templateCreateTeamTour");
+    const templateCreateTeamDiv = document.querySelector(".templateCreateTeamDiv")
+
+    if(nameTeamCreated){
+        nameTeamCreated.addEventListener("keydown",()=>{
+            templateCreateTeamName.textContent = "Nombre: "+nameTeamCreated.value
+        })
+    }
 })
