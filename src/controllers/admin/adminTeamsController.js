@@ -158,9 +158,14 @@ const teamsController = {
         }
         return res.render("admin/teams/filterDivTour.ejs",{consultTeams,pages,pagesCount,pageQuery,consultTournament,firstDivisionTour,query,tournamentId,divId})
     },
-    create: (req,res)=>{
-        
-        res.render("admin/teams/newTeam.ejs")
+    create: async(req,res)=>{
+        consultTournament = await Tournament.findAll()
+        consultDivision = await Division.findAll({
+            where:{
+                tournamentId: consultTournament[0].id
+            }
+        })
+        res.render("admin/teams/newTeam.ejs",{consultTournament,consultDivision})
     }
 }
 
