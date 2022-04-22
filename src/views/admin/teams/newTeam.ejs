@@ -10,7 +10,7 @@
                             <legend>Completar información del equipo</legend>
                             <label class="newTournamentLabel">
                                 Nombre:
-                                <input class="nameTeamCreated" maxlength="16" value="<%= locals.oldData ? locals.oldData.name:null %>" placeholder="Ingrese un nombre" name="name" type="text">
+                                <input <% if(locals.errors && locals.errors.name) { %> class="errFormInput nameTeamCreated" <% }else{ %> class="nameTeamCreated" <% } %>   maxlength="16" value="<%= locals.oldData ? locals.oldData.name:null %>" placeholder="Ingrese un nombre" name="name" type="text">
                                 <% if (locals.errors && locals.errors.name) { %>
                                     <p class="errForm"><%= locals.errors.name.msg %></p>
                                 <% } %>
@@ -24,24 +24,24 @@
                             </label>
                             <label class="newTournamentLabel">
                                 Torneo:
-                                <select id="selectTournament" name="tournamentId" class="tournamentIdTeamCreate">
+                                <select <% if(locals.errors && locals.errors.tournamentId) { %> class="errFormInput tournamentIdTeamCreate" <% }else{ %> class="tournamentIdTeamCreate" <% } %> id="selectTournament" name="tournamentId">
                                     <% for( let i = 0; i < consultTournament.length; i++ ) { %>
                                         <option value="<%= consultTournament[i].id  %>"><%= consultTournament[i].name  %></option>
                                     <% } %>
                                 </select>
-                                <% if (locals.errors && locals.errors.name) { %>
-                                    <p class="errForm"><%= locals.errors.name.msg %></p>
+                                <% if (locals.errors && locals.errors.tournamentId) { %>
+                                    <p class="errForm"><%= locals.errors.tournamentId.msg %></p>
                                 <% } %>
                             </label>
                             <label class="newTournamentLabel">
                                 División:
-                                <select name="divisionId" class="divisionIdTeamCreate divisionSelect">
+                                <select name="divisionId" <% if(locals.errors && locals.errors.divisionId) { %> class="errFormInput divisionIdTeamCreate divisionSelect" <% }else{ %> class="divisionIdTeamCreate divisionSelect" <% } %>>
                                     <% for( let i = 0; i < consultDivision.length; i++ ) { %>
                                         <option value="<%= consultDivision[i].id  %>"><%= consultDivision[i].name  %></option>
                                     <% } %>
                                 </select>
-                                <% if (locals.errors && locals.errors.name) { %>
-                                    <p class="errForm"><%= locals.errors.name.msg %></p>
+                                <% if (locals.errors && locals.errors.divisionId) { %>
+                                    <p class="errForm"><%= locals.errors.divisionId.msg %></p>
                                 <% } %>
                             </label>
                             <input class="formSubmitTournament btnLink" value="Crear torneo" type="submit" />
@@ -55,8 +55,8 @@
                         </div>
                         <div class="templateCreateTeamName">Nombre:</div>
                         <div class="templateCreateTeamCap">Capitan: Null</div>
-                        <div class="templateCreateTeamTour">Torneo:</div>
-                        <div class="templateCreateTeamDiv">División:</div>
+                        <div class="templateCreateTeamTour">Torneo: <%= consultTournament[0].name %></div>
+                        <div class="templateCreateTeamDiv">División: <%= consultDivision[0].name %> </div>
                     </div>
                 </div>
             </div>

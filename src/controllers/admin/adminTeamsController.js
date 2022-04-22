@@ -20,11 +20,9 @@ const Avatar = db.Avatar;
 const teamsController = {
     home: async(req,res)=>{
         const consultTournament = await Tournament.findAll();
-        const firstTournamentConsult = await Tournament.findAll();
-        const firstTournament = firstTournamentConsult.shift();
         const firstDivisionTour = await Division.findAll({
             where:{
-                tournamentId: firstTournament.id
+                tournamentId: consultTournament[0].id
             }
         })
         const countTeams = await Team.count();
@@ -59,11 +57,9 @@ const teamsController = {
     search: async(req,res)=>{
         let query = req.query.name
         const consultTournament = await Tournament.findAll();
-        const firstTournamentConsult = await Tournament.findAll();
-        const firstTournament = firstTournamentConsult.shift();
         const firstDivisionTour = await Division.findAll({
             where:{
-                tournamentId: firstTournament.id
+                tournamentId: consultTournament[0].id
             }
         })
 
@@ -111,11 +107,9 @@ const teamsController = {
         const divId = req.query.divisionSelect;
         const tournamentId = req.query.tournamentSelect;
         const consultTournament = await Tournament.findAll();
-        const firstTournamentConsult = await Tournament.findAll();
-        const firstTournament = firstTournamentConsult.shift();
         const firstDivisionTour = await Division.findAll({
             where:{
-                tournamentId: firstTournament.id
+                tournamentId: consultTournament[0].id
             }
         })
         const countTeams = await Team.count({
@@ -172,9 +166,13 @@ const teamsController = {
     createProcess: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
-            //return res.send("errores")
-            //{errors:errors.mapped(), oldData:req.body}
-            console.log(errors);
+            consultTournament = await Tournament.findAll()
+            consultDivision = await Division.findAll({
+                where:{
+                    tournamentId: consultTournament[0].id
+                }
+            })
+            return res.render("admin/teams/newTeam.ejs",{consultTournament,consultDivision,errors:errors.mapped(), oldData:req.body})
         }
         let avatarNew
         if(req.file){

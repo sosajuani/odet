@@ -18,41 +18,33 @@ const mainController = {
         res.render('pages/noticiaVista.ejs');
     },
     tournament: async(req,res)=>{
-        let tournamentConsult = await Tournament.findAll();
-        let firstTournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]})
-        const firstTournament = firstTournamentConsult.shift()
-        let divisionConsult = await Division.findAll({
+        const tournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]});
+        const divisionConsult = await Division.findAll({
             where:{
-                tournamentId: firstTournament.id
+                tournamentId: tournamentConsult[0].id
             }
         });
-        let firstDivisionConsult = await Division.findAll({
-            where:{
-                tournamentId: firstTournament.id
-            }
-        });
-        const firstDivision = firstDivisionConsult.shift()
         let errorConsult = false;
         if(tournamentConsult.length === 0 || divisionConsult.length === 0 || divisionConsult.length !== 0 && tournamentConsult.length === 0 || divisionConsult.length === 0 && tournamentConsult.length !== 0){
             errorConsult = true;
         }
         let statisticsConsult = await Statistic.findAll({
             where:{
-                tournamentId: firstTournament.id,
-                divisionId: firstDivision.id
+                tournamentId: tournamentConsult.id,
+                divisionId: divisionConsult[0].id
             },
             include: ['divisions','teams']
         })
         let divisionEmpty
-        const tournamentId = firstTournament.id
+        const tournamentId = tournamentConsult[0].id
         statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
         res.render('pages/tournaments/tournament.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty});
     },
     tournamentFilter: async(req,res)=>{
         const tournamentId = req.body.tournamentId;
         const divisionId = req.body.divisionId;
-        let tournamentConsult = await Tournament.findAll();
-        let divisionConsult = await Division.findAll({
+        const tournamentConsult = await Tournament.findAll();
+        const divisionConsult = await Division.findAll({
             where:{
                 tournamentId: tournamentId
             }
@@ -97,8 +89,8 @@ const mainController = {
         return res.json(response)
     },
     fixture: async(req,res)=>{
-        let tournamentConsult = await Tournament.findAll();
-        let divisionConsult =  await Division.findAll()
+        const tournamentConsult = await Tournament.findAll();
+        const divisionConsult =  await Division.findAll()
         res.render('pages/fixture.ejs',{tournamentConsult,divisionConsult});
     },
     login: (req,res)=>{
@@ -109,7 +101,7 @@ const mainController = {
         if(!errors.isEmpty()){
             return res.render("pages/login.ejs",{errors:errors.mapped(), oldData: req.body})
         }
-        let userConsult = await User.findOne({where:{user:req.body.user}});
+        const userConsult = await User.findOne({where:{user:req.body.user}});
         if(userConsult === null){
             return res.render('pages/login.ejs',{errors:{userNull:"El usuario no existe"},oldData:req.body})
         }
@@ -141,20 +133,6 @@ const mainController = {
                 {model: User,as: 'bestScorer1'},
             ]
         },{where: {id:1}})
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            //console.log(consulta.bestPlayer1.players.teams);
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-            console.log("##############");
-        res.send("hola")
     }
 }
 
