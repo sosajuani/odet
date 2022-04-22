@@ -2,6 +2,7 @@
 const db = require('../../database/models');
 const {validationResult} = require('express-validator');
 const { Op } = require("sequelize");
+const path = require("path")
 
 const User = db.User;
 const News = db.News;
@@ -166,6 +167,15 @@ const teamsController = {
             }
         })
         res.render("admin/teams/newTeam.ejs",{consultTournament,consultDivision})
+    },
+    createProcess: (req,res)=>{
+        console.log("llegue");
+        let errors = validationResult(req);
+        if(!errors.isEmpty()){
+            //return res.send("errores")
+            //{errors:errors.mapped(), oldData:req.body}
+            console.log(errors);
+        }
     }
 }
 

@@ -5,7 +5,7 @@
             <h3>Crear un nuevo equipo</h3>
             <div class="teamCreateContADM">         
                 <div>
-                    <form class="newTournament" action="/admin/tournament/new" method="post">
+                    <form class="newTournament formNewTeam" action="/admin/teams/new" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <legend>Completar información del equipo</legend>
                             <label class="newTournamentLabel">
@@ -17,7 +17,7 @@
                             </label>
                             <label class="newTournamentLabel">
                                 Escudo:
-                                <input class="fileTeamCreated" value="<%= locals.oldData ? locals.oldData.name:null %>" name="file" type="file">
+                                <input class="fileTeamCreated" value="<%= locals.oldData ? locals.oldData.name:null %>" accept=".jpg,.png,.jpeg" name="img" type="file">
                                 <% if (locals.errors && locals.errors.name) { %>
                                     <p class="errForm"><%= locals.errors.name.msg %></p>
                                 <% } %>

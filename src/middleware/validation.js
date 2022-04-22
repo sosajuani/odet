@@ -1,4 +1,5 @@
 const { body } = require("express-validator");
+const path = require("path")
 const validation = {
     validationLogin: [
             body('user').notEmpty().withMessage("Debes colocar un usuario"),
@@ -53,6 +54,22 @@ const validation = {
         body('name').notEmpty().withMessage("El nombre de la división no puede estar vacío")
          .isLength({min:4}).withMessage("Debe contener al menos 4 caracteres"),
         body('tournament').notEmpty().withMessage("Debe seleccionar un torneo")
+    ],
+    createTeam: [
+        body('name').notEmpty().withMessage("El nombre del equipo no puede estar vacío")
+         .isLength({min:2,max:16}).withMessage("El equipo tiene que tener mas tener entre 2 y 16 caracteres"),
+        body('img').custom((value, {req})=>{
+            if(!req.file){
+                return true
+            }else{
+                const extFile = path.extname(req.file.filename);
+                console.log("mildel"+extFile);
+                const extensionsValis = [".jpg",".JPEG",".png",".JPG",".jpeg",".PNG"]
+                if(extensionsValis.includes(extFile) !== true){
+                    throw new Error("error en extensión de imagen")
+                }
+            }
+        })
     ]
 }
 module.exports = validation;

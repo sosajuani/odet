@@ -382,26 +382,34 @@
     flex-direction: column;
 }
 .teamCardContCreate{
+    width: 70%;
     border: 5px solid #e7e7e7;
     border-radius: 5px;
-    display: inline-block;
     padding: 10px;
     color: #808080;
 }
 .templateCreateTeamAvatar{
-    width: 6rem;
-    height: 6rem;
-    background: #4588aa;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     margin: 5px auto;
 }
 .templateCreateTeamAvatar > img{
-    width: 6rem;
-    height: 6rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
+    border: 3px solid var(--colorBlue);
+    padding: 1px;
 }
 .teamCreateContADM{
     display: flex;
+    justify-content: space-between;
+}
+.teamCreateContADM > div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*teams*/
 @media only screen and (min-width: 1024px){
@@ -424,6 +432,9 @@
     }
     .newTournament{
         width: 50%;
+    }
+    .formNewTeam{
+        width: 100%;
     }
     .divisionList{
         width: 50%;
