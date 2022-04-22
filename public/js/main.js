@@ -68,7 +68,6 @@ if(selectTournamentChange){
         fetch('/tournament/api/change/'+selectTournamentChange.value)
         .then(result => result.json())
         .then(result => {
-            console.log(result.divisions.data);
             divisionSelect.innerHTML=""
             for(let i = 0; i<result.divisions.data.length;i++){
                 divisionSelect.innerHTML+=`

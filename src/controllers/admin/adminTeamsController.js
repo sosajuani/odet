@@ -2,7 +2,8 @@
 const db = require('../../database/models');
 const {validationResult} = require('express-validator');
 const { Op } = require("sequelize");
-const path = require("path")
+const path = require("path");
+const fs = require("fs")
 
 const User = db.User;
 const News = db.News;
@@ -155,8 +156,8 @@ const teamsController = {
         return res.render("admin/teams/filterDivTour.ejs",{consultTeams,pages,pagesCount,pageQuery,consultTournament,firstDivisionTour,query,tournamentId,divId})
     },
     create: async(req,res)=>{
-        consultTournament = await Tournament.findAll()
-        consultDivision = await Division.findAll({
+        const consultTournament = await Tournament.findAll()
+        const consultDivision = await Division.findAll({
             where:{
                 tournamentId: consultTournament[0].id
             }
@@ -166,6 +167,10 @@ const teamsController = {
     createProcess: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
+            //delete archive
+            if(req.file){
+                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/teams/"+req.file.filename))
+            }
             consultTournament = await Tournament.findAll()
             consultDivision = await Division.findAll({
                 where:{
@@ -200,7 +205,26 @@ const teamsController = {
             tournamentId: req.body.tournamentId,
             divisionId: req.body.divisionId
         })
-    }
+        return res.redirect('/admin/teams')
+    },
+    edit: async(req,res)=>{
+        const id = req.params.id
+        const teamConsult = await Team.findByPk(id,{
+            include: ['tournaments','divisions']
+        })
+        const consultTournament = await Tournament.findAll({
+            where:{
+                id: teamConsult.tournaments.id
+            }
+        })
+        const consultDivision = await Division.findAll({
+            where:{
+                tournamentId: teamConsult.tournaments.id
+            }
+        })
+        console.log(teamConsult.tournaments.id);
+        res.render("admin/teams/editTeam.ejs",{consultTournament,consultDivision})
+    },
 }
 
 module.exports = teamsController;

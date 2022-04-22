@@ -116,6 +116,9 @@ body{
     box-shadow: #f00 0 0 7px inset;
     border: none;
 }
+.validFormInput{
+    box-shadow: greenyellow 0 0 7px inset;
+}
 .infoWeb{
     background: #fff3cd;
     border: 2px solid #ffecb5;

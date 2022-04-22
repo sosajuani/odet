@@ -10,14 +10,18 @@ router.get('/',adminTeamsController.home)
 router.get('/search',adminTeamsController.search)
 router.get('/search/div',adminTeamsController.searchDivTour)
 router.get('/new',adminTeamsController.create)
-router.post('/new',validation.createTeam,upload.single("img"),adminTeamsController.createProcess)
+router.post('/new',upload.single("img"),validation.createTeam,adminTeamsController.createProcess)
+router.get('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.edit)
+router.put('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.create)
 
 //admin con permisos
 //router.get('/',authMiddleware.logged,authMiddleware.admin,adminTeamsController.home)
 // router.get('/search',authMiddleware.logged,authMiddleware.admin,adminTeamsController.search)
 // router.get('/search/div',authMiddleware.logged,authMiddleware.admin,adminTeamsController.search)
 // router.get('/new',authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
-// router.post('/new',authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
+// router.post('/new',upload.single("img"),validation.createTeam,authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
+// router.get('/edit',upload.single("img"),validation.createTeam,authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
+// router.put('/edit',upload.single("img"),validation.createTeam,authMiddleware.logged,authMiddleware.admin,adminTeamsController.create)
 
 
 
