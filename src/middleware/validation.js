@@ -58,18 +58,18 @@ const validation = {
     createTeam: [
         body('name').notEmpty().withMessage("El nombre del equipo no puede estar vacío")
          .isLength({min:2,max:16}).withMessage("El equipo tiene que tener mas tener entre 2 y 16 caracteres"),
-        body('img').custom((value, {req})=>{
-            if(!req.file){
-                return true
-            }else{
-                const extFile = path.extname(req.file.filename);
-                console.log("mildel"+extFile);
-                const extensionsValis = [".jpg",".JPEG",".png",".JPG",".jpeg",".PNG"]
-                if(extensionsValis.includes(extFile) !== true){
-                    throw new Error("error en extensión de imagen")
-                }
-            }
-        })
+        // body('img').custom((value, {req})=>{
+        //     if(!req.file){
+        //         return true
+        //     }else{
+        //         const extFile = path.extname(req.file.filename);
+        //         const extensionsValis = [".jpg",".JPEG",".png",".JPG",".jpeg",".PNG"]
+        //         if(extensionsValis.includes(extFile) !== true){
+        //             throw new Error('error en extension de archivo');
+        //         }
+        //         return true
+        //     }
+        // })
     ]
 }
 module.exports = validation;

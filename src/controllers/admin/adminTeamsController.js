@@ -15,6 +15,7 @@ const Decline = db.Decline;
 const DivisionControl = db.DivisionControl;
 const MatchWeek = db.Matchweek;
 const Statistic = db.Statistic;
+const Avatar = db.Avatar;
 
 const teamsController = {
     home: async(req,res)=>{
@@ -168,14 +169,39 @@ const teamsController = {
         })
         res.render("admin/teams/newTeam.ejs",{consultTournament,consultDivision})
     },
-    createProcess: (req,res)=>{
-        console.log("llegue");
+    createProcess: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
             //return res.send("errores")
             //{errors:errors.mapped(), oldData:req.body}
             console.log(errors);
         }
+        let avatarNew
+        if(req.file){
+            avatarNew = await Avatar.create({
+                image: req.file.filename
+            })
+        }
+        const teamCreate = await Team.create({
+            name: req.body.name,
+            avatarId: req.file ? avatarNew.id : 1,
+            captainId: null,
+            tournamentId: req.body.tournamentId,
+            divisionId: req.body.divisionId
+        })
+        await Statistic.create({
+            teamId: teamCreate.id,
+            played: 0,
+            win: 0,
+            drawn:0,
+            lost:0,
+            gf:0,
+            ga:0,
+            gd:0,
+            pts:0,
+            tournamentId: req.body.tournamentId,
+            divisionId: req.body.divisionId
+        })
     }
 }
 
