@@ -210,21 +210,57 @@ const teamsController = {
     edit: async(req,res)=>{
         const id = req.params.id
         const teamConsult = await Team.findByPk(id,{
-            include: ['tournaments','divisions']
+            include: ['tournaments','divisions','avatars']
         })
-        const consultTournament = await Tournament.findAll({
-            where:{
-                id: teamConsult.tournaments.id
-            }
-        })
-        const consultDivision = await Division.findAll({
-            where:{
-                tournamentId: teamConsult.tournaments.id
-            }
-        })
-        console.log(teamConsult.tournaments.id);
-        res.render("admin/teams/editTeam.ejs",{consultTournament,consultDivision})
+        teamConsult === null ? res.render("errors/errorConsult.ejs",{err: "team"}) : null
+        
+        if(teamConsult !== null){
+
+            const consultTournament = await Tournament.findAll()
+            const consultDivision = await Division.findAll({
+                where:{
+                    tournamentId: teamConsult.tournaments.id
+                }
+            })
+            return res.render("admin/teams/editTeam.ejs",{consultTournament,consultDivision,teamConsult})
+        }
     },
+    editProcess: async (req,res)=>{
+        const id = req.params.id
+        let errors = validationResult(req);
+        const teamConsult = await Team.findByPk(id,{
+            include: ['tournaments','divisions','avatars']
+        })
+        
+        if(!errors.isEmpty()){
+            //delete archive
+            if(req.file){
+                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/teams/"+req.file.filename))
+            }
+            const consultTournament = await Tournament.findAll()
+            const consultDivision = await Division.findAll({
+                where:{
+                    tournamentId: teamConsult.tournaments.id
+                }
+            })
+            return res.render("admin/teams/editTeam.ejs",{consultTournament,consultDivision,teamConsult,errors:errors.mapped(), oldData:req.body})
+        }
+        const oldAvatar = teamConsult.avatarId
+        let avatarNew
+        if(req.file){
+            avatarNew = await Avatar.create({
+                image: req.file.filename
+            })
+        }
+        await Team.update({
+            name: req.body.name,
+            avatarId: req.file ? avatarNew.id : oldAvatar,
+            captainId: null,
+            tournamentId: req.body.tournamentId,
+            divisionId: req.body.divisionId
+        })
+        res.redirect('/admin/teams/')
+    }
 }
 
 module.exports = teamsController;

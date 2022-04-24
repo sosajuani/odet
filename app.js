@@ -58,7 +58,7 @@ app.use('/admin/teams',routesAdmTeams);
 app.use('/install',routesInstall);
 
 app.use((req,res,next)=>{
-    res.status(404).render('404.ejs')
+    res.status(404).render('errors/404.ejs')
 });
 
 app.listen(process.env.PORT || port, () => console.log(`Sevidor funcionando`));

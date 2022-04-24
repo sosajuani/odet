@@ -21,33 +21,35 @@ window.addEventListener('load',()=>{
 
     if(nameTeamCreated){
         //front validation
+        // nameTeamCreated.addEventListener("blur",(e)=>{
+        //     if(e.target.value === ""){
+        //         nameTeamCreated.classList.add("errFormInput")
+        //         nameTeamCreated.classList.remove("validFormInput")
+        //         errorContName.innerHTML="El campo no puede estar vacio"
+        //     }else{
+        //         nameTeamCreated.classList.remove("errFormInput")
+        //         nameTeamCreated.classList.add("validFormInput")
+        //         errorContName.innerHTML=""
+        //     }
+        // })
         nameTeamCreated.addEventListener("blur",(e)=>{
-            if(e.target.value === ""){
+            if(e.target.value.length < 2 ){
                 nameTeamCreated.classList.add("errFormInput")
                 nameTeamCreated.classList.remove("validFormInput")
-                errorContName.innerHTML="El campo no puede estar vacio"
+                errorContName.innerHTML="El campo no puede estar vacio y debe tener mas de 2 caracteres"
             }else{
                 nameTeamCreated.classList.remove("errFormInput")
                 nameTeamCreated.classList.add("validFormInput")
-                errorContName.innerHTML=""
-            }
-            if(e.target.value.length < 2 && e.target.value.length !== 0){
-                nameTeamCreated.classList.add("errFormInput")
-                nameTeamCreated.classList.remove("validFormInput")
-                errorContName.innerHTML="Debe tener mas de 2 caracteres"
-            }else{
-                nameTeamCreated.classList.remove("errFormInput")
-                nameTeamCreated.classList.add("validFormInput")
-                errorContName.innerHTML=""
-            }
-            if(e.target.value.length > 16){
-                nameTeamCreated.classList.add("errFormInput")
-                nameTeamCreated.classList.remove("validFormInput")
-                errorContName.innerHTML="No puede superar los 16 caracteres"
-            }else{
-                nameTeamCreated.classList.remove("errFormInput")
-                nameTeamCreated.classList.add("validFormInput")
-                errorContName.innerHTML=""
+                errorContName.innerHTML="";    
+                if(e.target.value.length > 16){
+                    nameTeamCreated.classList.add("errFormInput")
+                    nameTeamCreated.classList.remove("validFormInput")
+                    errorContName.innerHTML="No puede superar los 16 caracteres"
+                }else{
+                    nameTeamCreated.classList.remove("errFormInput")
+                    nameTeamCreated.classList.add("validFormInput")
+                    errorContName.innerHTML=""
+                }
             }
         })
         tournamentIdTeamCreate.addEventListener("change",(e)=>{
@@ -85,7 +87,9 @@ window.addEventListener('load',()=>{
                     let image = document.createElement('img')
                     image.src = reader.result
                     templateCreateTeamAvatar.innerHTML='';
-                    templateCreateTeamAvatar.append(image)
+                    extensionsValid.includes(extensionArchive) === true 
+                     ? templateCreateTeamAvatar.append(image)
+                     : templateCreateTeamAvatar.innerHTML='archivo no valido';
                 }
                 let archiveName = fileTeamCreated.value;
                 let extensionArchive = archiveName.split(".").pop().toLowerCase()

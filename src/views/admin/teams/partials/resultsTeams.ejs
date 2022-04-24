@@ -3,8 +3,8 @@
         <div><%= team.id %></div>
         <div><%= team.name %></div>
         <div class="actionListPlayerItem">
-            <i class='bx bx-edit-alt'></i>
-            <i class='bx bxs-detail' ></i>
+            <a href="/admin/teams/edit/<%= team.id %>"><i class='bx bx-edit-alt'></i></a>
+            <a href=""><i class='bx bxs-detail' ></i></a>
         </div>
     </div>
     <% }) %>

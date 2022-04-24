@@ -128,7 +128,7 @@
     align-items: center;
     justify-content: center;
 }
-.actionListPlayerItem > i{
+.actionListPlayerItem > a > i{
     background: var(--colorBlue);
     border-radius: 50%;
     padding: 0.5rem;

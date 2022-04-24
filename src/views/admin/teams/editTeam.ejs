@@ -2,58 +2,69 @@
     <div class="contenedorAdmin">    
         <%- include("../../partials/menuAdmin.ejs")  %> 
         <div class="contAdminPrin">
-            <h3>Editar equipo $nombre</h3>
+            <h3>Edicion de equipo: <%= teamConsult.name %></h3>
             <div class="teamCreateContADM">         
                 <div>
-                    <form class="newTournament formNewTeam" action="/admin/teams/edit" method="post" enctype="multipart/form-data">
+                    <form class="newTournament formNewTeam" action="/admin/teams/edit/<%= teamConsult.id %>?_method=PUT" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <legend>Completar información del equipo</legend>
                             <label class="newTournamentLabel">
                                 Nombre:
-                                <input <% if(locals.errors && locals.errors.name) { %> class="errFormInput nameTeamCreated" <% }else{ %> class="nameTeamCreated" <% } %>   maxlength="16" value="<%= locals.oldData ? locals.oldData.name:null %>" placeholder="Ingrese un nombre" name="name" type="text">
-                                <% if (locals.errors && locals.errors.name) { %>
-                                    <p class="errForm"><%= locals.errors.name.msg %></p>
-                                <% } %>
+                                <input <% if(locals.errors && locals.errors.name) { %> class="errFormInput nameTeamCreated" <% }else{ %> class="nameTeamCreated" <% } %>   maxlength="16" value="<%= locals.oldData ? locals.oldData.name:teamConsult.name%>" placeholder="Ingrese un nombre" name="name" type="text">
+                                <p class="errForm errName">
+                                    <% if (locals.errors && locals.errors.name) { %>
+                                        <%= locals.errors.name.msg %>
+                                    <% } %>
+                                </p>
                             </label>
                             <label class="newTournamentLabel">
                                 Escudo:
-                                <input class="fileTeamCreated" value="<%= locals.oldData ? locals.oldData.name:null %>" accept="" name="img" type="file">
+                                <input <% if(locals.errors && locals.errors.img) { %> class="errFormInput fileTeamCreated" <% }else{ %> class="fileTeamCreated" <% } %> accept=".jpg,.png,jpeg" name="img" type="file">
+                                <p class="errForm errFile">
+                                    <% if (locals.errors && locals.errors.img) { %>
+                                        <%= locals.errors.img.msg %>
+                                    <% } %>
+                                </p>
                             </label>
                             <label class="newTournamentLabel">
                                 Torneo:
                                 <select <% if(locals.errors && locals.errors.tournamentId) { %> class="errFormInput tournamentIdTeamCreate" <% }else{ %> class="tournamentIdTeamCreate" <% } %> id="selectTournament" name="tournamentId">
                                     <% for( let i = 0; i < consultTournament.length; i++ ) { %>
-                                        <option value="<%= consultTournament[i].id  %>"><%= consultTournament[i].name  %></option>
+                                        <option <%= teamConsult.tournamentId == consultTournament[i].id ? "selected" : null %> value="<%= consultTournament[i].id  %>"><%= consultTournament[i].name  %></option>
                                     <% } %>
                                 </select>
-                                <% if (locals.errors && locals.errors.tournamentId) { %>
-                                    <p class="errForm"><%= locals.errors.tournamentId.msg %></p>
-                                <% } %>
+                                <p class="errForm errTournament">
+                                    <% if (locals.errors && locals.errors.tournamentId) { %>
+                                        <%= locals.errors.tournamentId.msg %>
+                                    <% } %>
+                                </p>
                             </label>
                             <label class="newTournamentLabel">
                                 División:
                                 <select name="divisionId" <% if(locals.errors && locals.errors.divisionId) { %> class="errFormInput divisionIdTeamCreate divisionSelect" <% }else{ %> class="divisionIdTeamCreate divisionSelect" <% } %>>
                                     <% for( let i = 0; i < consultDivision.length; i++ ) { %>
-                                        <option value="<%= consultDivision[i].id  %>"><%= consultDivision[i].name  %></option>
+                                        <option <%= teamConsult.divisionId == consultDivision[i].id ? "selected" : null %> value="<%= consultDivision[i].id  %>"><%= consultDivision[i].name  %></option>
                                     <% } %>
                                 </select>
-                                <% if (locals.errors && locals.errors.divisionId) { %>
-                                    <p class="errForm"><%= locals.errors.divisionId.msg %></p>
-                                <% } %>
+                                <p class="errForm errDivision">
+                                    <% if (locals.errors && locals.errors.divisionId) { %>
+                                        <%= locals.errors.divisionId.msg %>
+                                    <% } %>
+                                </p>
                             </label>
-                            <input class="formSubmitTournament btnLink" value="Crear torneo" type="submit" />
+                            <input class="formSubmitTournament btnLink" value="Editar equipo" type="submit" />
                         </fieldset>
                     </form>
                 </div>
                 <div>
                     <div class="teamCardContCreate">
                         <div class="teamCardCreateAvatar templateCreateTeamAvatar">
-                            <img src="/img/teams/default.png" alt="">
+                            <img src="/img/teams/<%= teamConsult.avatars.image %>" alt="avatar">
                         </div>
                         <div class="templateCreateTeamName">Nombre:</div>
                         <div class="templateCreateTeamCap">Capitan: Null</div>
-                        <div class="templateCreateTeamTour">Torneo: <%= consultTournament[0].name %></div>
-                        <div class="templateCreateTeamDiv">División: <%= consultDivision[0].name %> </div>
+                        <div class="templateCreateTeamTour">Torneo: <%= teamConsult.tournaments.name %></div>
+                        <div class="templateCreateTeamDiv">División: <%= teamConsult.divisions.name %> </div>
                     </div>
                 </div>
             </div>

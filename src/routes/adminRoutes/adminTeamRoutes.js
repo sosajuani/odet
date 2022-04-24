@@ -12,7 +12,7 @@ router.get('/search/div',adminTeamsController.searchDivTour)
 router.get('/new',adminTeamsController.create)
 router.post('/new',upload.single("img"),validation.createTeam,adminTeamsController.createProcess)
 router.get('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.edit)
-router.put('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.create)
+router.put('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.editProcess)
 
 //admin con permisos
 //router.get('/',authMiddleware.logged,authMiddleware.admin,adminTeamsController.home)
