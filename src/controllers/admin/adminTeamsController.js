@@ -215,7 +215,6 @@ const teamsController = {
         teamConsult === null ? res.render("errors/errorConsult.ejs",{err: "team"}) : null
         
         if(teamConsult !== null){
-
             const consultTournament = await Tournament.findAll()
             const consultDivision = await Division.findAll({
                 where:{
@@ -248,6 +247,8 @@ const teamsController = {
         const oldAvatar = teamConsult.avatarId
         let avatarNew
         if(req.file){
+            //delete old avatar and reg
+            fs.unlinkSync(path.resolve(__dirname,"../../../public/img/teams/"+teamConsult.avatars.image))
             avatarNew = await Avatar.create({
                 image: req.file.filename
             })
@@ -258,7 +259,11 @@ const teamsController = {
             captainId: null,
             tournamentId: req.body.tournamentId,
             divisionId: req.body.divisionId
+        },{
+            where:{id}
         })
+        //delete old reg
+        req.file ? await Avatar.destroy({where:{id:oldAvatar}}) : null
         res.redirect('/admin/teams/')
     }
 }
