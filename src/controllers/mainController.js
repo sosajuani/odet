@@ -11,7 +11,7 @@ const Statistic = db.Statistic;
 const mainController = {
     home: (req,res)=>{
         News.findAll()
-        .then(news => res.render('pages/home.ejs',{news}))
+        .then(news => res.render('userViews/pages/home/home.ejs',{news}))
         .catch(e => console.log(e))
     },
     noticiaVista: (req,res)=>{

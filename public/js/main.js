@@ -1,7 +1,7 @@
 window.addEventListener('load',()=>{
-    let buttonMenu = document.querySelector('.buttonMovilMenu');
-    let menuHeader = document.querySelector('.menuHeader');
-    let buttonClose = document.querySelector('.cerraMenuBtn');
+    const buttonMenu = document.querySelector('.buttonMovilMenu');
+    const menuHeader = document.querySelector('.menuHeader');
+    const buttonClose = document.querySelector('.cerraMenuBtn');
     
     //modal
     const deleteButton = document.querySelectorAll('.deleteModal');
@@ -18,7 +18,6 @@ buttonMenu.addEventListener('click',()=>{
     buttonMenu.classList.toggle('ocultarMobile');
 });
 buttonClose.addEventListener('click',()=>{
-    
     menuHeader.classList.remove('mostrarMobile')
     buttonMenu.classList.toggle('ocultarMobile');
 })

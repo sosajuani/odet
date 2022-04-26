@@ -1,10 +1,10 @@
 {
-  "name": "odet",
+  "name": "odet_sass",
   "version": "1.0.0",
-  "description": "",
+  "description": "Es un CSM enfocado a la preparación, creación y organización de torneos como su nombre lo indica ODET (Organizador de torneos).\r Actualmente en fase de desarrollo enfocado en crear torneos de futbol.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -13,15 +13,14 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
-    "ejs": "^3.0.2",
-    "express": "^4.17.1",
+    "ejs": "^3.1.7",
+    "express": "^4.18.0",
     "express-session": "^1.17.2",
     "express-validator": "^6.14.0",
     "method-override": "^3.0.0",
     "multer": "^1.4.4",
     "mysql2": "^2.3.3",
-    "node-fetch": "^3.2.3",
-    "sequelize": "^6.17.0",
+    "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1"
   }
 }

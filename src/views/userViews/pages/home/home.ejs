@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/scss/base/normalize.css"/>
+    <link rel="stylesheet" href="/scss/main.css"/>
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <header class="headerMain">
+        <div class="logo">
+            <h3><a href="">ODET</a></h3>
+        </div>
+        <nav class="navigator menuHeader">
+            <ul>
+                <li>
+                    <a href="">INICIO</a>
+                </li>
+                <li>
+                    <a href="">TORNEOS</a>
+                </li>
+                <li>
+                    <a href="">EQUIPOS</a>
+                </li>
+                <li>
+                    <a href="">FIXTURE</a>
+                </li>
+                <li>
+                    <a href="">ADMIN</a>
+                </li>
+                <% if (!user) { %>
+                    <li>
+                        <a href=""><i class='bx bx-log-in' ></i> LOGIN</a>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bxs-user-plus'></i> REGISTRO</a>
+                    </li>
+                <% } %>
+                <% if(user){ %> 
+                    <li>
+                        <a href="">MI EQUIPO</a>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bxs-user'></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class='bx bx-log-out'></i></a>
+                    </li>
+                <% } %> 
+                <li class="cerraMenuBtn"><i class='bx bx-x'></i></li>
+            </ul>
+        </nav>
+        <div class="buttonMovilMenu"><i class='bx bx-menu'></i></div>
+    </header>
+</body>
+</html>
