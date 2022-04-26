@@ -1,257 +1,353 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-*{ box-sizing: border-box; }
-:root{
-    --colorBlue: #15547e
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
-body{
-    background: #fff;
-    font-family: 'Roboto',sans-serif;
+
+body {
+  font-family: 'Roboto',sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background: #15547e;
+  width: 100%;
+  height: 100px;
+  position: -webkit-sticky;
+  position: sticky;
+  padding: 5px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header div h3 a {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.buttonMovilMenu i {
+  background: rgba(50, 130, 184, 0.5);
+  font-size: 4rem;
+  color: #fff;
+}
+
+@media only screen and (min-width: 1024px) {
+  .buttonMovilMenu {
+    display: none;
+  }
+}
+
+.menuHeaderCont {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.menuHeader {
+  background: #15547e;
+  height: 100vh;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menuHeader li {
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px 0;
+}
+
+.menuHeader li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .menuHeader {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-.desarrollo{
-    text-align: center;
-    color: #c7c7c7;
-}
-/*HEADER HOME*/
-.header{
-    background: var(--colorBlue);
-    width: 100%;
-    height: 100px;
-    position: sticky;
-    padding: 5px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header > div > h3 > a{
-    margin: 0;
-    font-size: 2rem;
-    color: #fff;
-    padding: 10px;
-    text-decoration: none;
-}
-.buttonMovilMenu > i{
-    background: rgba(50, 130, 184, 0.5);
-    font-size: 4rem;
-    color: #fff;
-}
-.menuHeaderCont{
-    width: 100%;
-    height: 100vh;
+    height: auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    position: relative;
+    border-bottom: 2px solid transparent;
+  }
+  .menuHeader li {
+    font-size: 1rem;
+    padding: 5px;
+    margin: 1px;
+  }
+  .menuHeader li .linkHeader {
+    position: relative;
+    padding-bottom: 5px;
+  }
+  .menuHeader li .linkHeader:after {
+    content: "";
+    width: 0;
     position: absolute;
-    top: 0;
-    left: 0;
-}
-.menuHeader{
-    background: var(--colorBlue);
-    height: 100vh;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    transition: all ease 1s;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.menuHeader > li{
-    text-align: center;
-    font-size: 2rem;
-    padding: 10px 0;
-}
-.menuHeader > li > a{
-    color: #fff;
-    text-decoration: none;
-}
-.cerraMenuBtn{
-    color: #fff;
-    font-size: 2rem;
-}
-/*contenedor principal*/
-.contPrin{
-    width: 90%;
-    margin: 10px auto;
-    padding: 3px;
-    border: 1px solid #c7c7c7;
-}
-
-
-/********************** individual torneo inicio*****************/
-.torneoIndividualCont > h3{
-    display: inline-block;    
-}
-/********************** individual torneo fin*****************/
-/********************** footer inicio*****************/
-.footer{
-    background: var(--colorBlue);
-    color: #fff;
-    padding: 3px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    margin-top: auto;
-}
-/********************** footer fin*******************/
-/*Menu movil abrir, ocultar*/
-.mostrarMobile{
-    transition: all ease 1s;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-.ocultarMobile{
-    transition: all ease 1s;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-}
-/************************************************/
-.errForm{
-    color: #b62727;
-    margin: 0.2rem;
-}
-.errFormInput{
-    box-shadow: #f00 0 0 7px inset;
-    border: none;
-}
-.validFormInput{
-    box-shadow: greenyellow 0 0 7px inset;
-}
-.infoWeb{
-    background: #fff3cd;
-    border: 2px solid #ffecb5;
-    color: #664d03;
-    text-align: center;
-}
-.infoWeb > a{
-    color: #523e02;
-    font-weight: bold;
-}
-.alertDanger{
-    color: #60191f;
-    background: #fde0e3;
-    padding: 0.5rem;
-}
-.alertInfo{
-    background: #cce5ff;
-    color: #004085;
-}
-.btnLink{
-    background:var(--colorBlue);
-    padding: 10px;
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-.link{text-decoration: none;color: #333;}
-.linkDisabled{cursor: default;}
-.ulBasic{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.modalCont{
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    left: 0;
-    right: 0;
     bottom: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    clip-path: circle(0% at 50% 50%);
-    transition: clip-path ease-in .2s;
+    left: 0;
+    height: 4px;
+    margin-top: 10px;
+    background: #bbe1fa;
+    -webkit-transition: all ease .3s;
+    transition: all ease .3s;
+  }
+  .menuHeader li .linkHeader:hover::after {
+    width: 100%;
+  }
+  .menuHeader .mostrarMobile {
+    -webkit-transition: all ease 1s;
+    transition: all ease 1s;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  .menuHeader .ocultarMobile {
+    -webkit-transition: all ease 1s;
+    transition: all ease 1s;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
-.modalView{
-    background: #e7e7e7;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 5px solid var(--colorBlue);
-    border-radius: 5px;
+
+.menuHeader .cerraMenuBtn {
+  color: #fff;
+  font-size: 2rem;
 }
-.modalView > h4{
-    margin: 5px 0;
-    color: var(--colorBlue);
-    font-size: 1.3rem;
+
+@media only screen and (min-width: 1024px) {
+  .menuHeader .buttonDesktop {
+    display: none;
+  }
 }
-.modalButtonCont{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
+
+/*contenedor principal*/
+.contPrin {
+  width: 90%;
+  margin: 10px auto;
+  padding: 3px;
+  border: 1px solid #c7c7c7;
 }
-.modalButton{
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    border: none;
-    color: #fff;
-    cursor: pointer;
+
+.footer {
+  background: var(--colorBlue);
+  color: #fff;
+  padding: 3px;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: auto;
 }
-.modalButtonAccept{
-    background: #3282b8;
+
+/*Menu movil abrir, ocultar*/
+.mostrarMobile {
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-.modalButtonDecline{
-    background: #1b262c;
+
+.ocultarMobile {
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
-.mostrarModal{
-    clip-path: circle(71.0% at 50% 50%);
+
+.errForm {
+  color: #b62727;
+  margin: 0.2rem;
 }
-@media only screen and (min-width: 768px){
-    .ocultarMobileTorneo{ display: block;}
+
+.errFormInput {
+  -webkit-box-shadow: #f00 0 0 7px inset;
+          box-shadow: #f00 0 0 7px inset;
+  border: none;
 }
-@media only screen and (min-width: 1024px){
-    .buttonDesktop{
-        display: none;
-    }
-    .mostrarMobile{
-        transition: all ease 1s;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-    .ocultarMobile{
-        transition: all ease 1s;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .buttonMovilMenu{
-        display: none;
-    }
-    .menuHeader{
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        display: flex;
-        height: auto;
-        flex-direction: row;
-        position: relative;
-        border-bottom: 2px solid transparent;
-    }
-    .menuHeader > li{
-        font-size: 1rem;
-        padding: 5px;
-        margin: 1px;
-    }
-    .linkHeader{
-        position: relative;
-        padding-bottom: 5px;
-    }
-    .linkHeader:after{
-        content: "";
-        width: 0;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 4px;
-        margin-top: 10px;
-        background: #bbe1fa;
-        transition: all ease .3s;
-    }
-    .linkHeader:hover::after{
-        width: 100%;
-    }
+
+.validFormInput {
+  -webkit-box-shadow: greenyellow 0 0 7px inset;
+          box-shadow: greenyellow 0 0 7px inset;
 }
+
+.infoWeb {
+  background: #fff3cd;
+  border: 2px solid #ffecb5;
+  color: #664d03;
+  text-align: center;
+}
+
+.infoWeb > a {
+  color: #523e02;
+  font-weight: bold;
+}
+
+.alertDanger {
+  color: #60191f;
+  background: #fde0e3;
+  padding: 0.5rem;
+}
+
+.alertInfo {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.btnLink {
+  background: var(--colorBlue);
+  padding: 10px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+}
+
+.linkDisabled {
+  cursor: default;
+}
+
+.ulBasic {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.modalCont {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-clip-path: circle(0% at 50% 50%);
+          clip-path: circle(0% at 50% 50%);
+  -webkit-transition: -webkit-clip-path ease-in .2s;
+  transition: -webkit-clip-path ease-in .2s;
+  transition: clip-path ease-in .2s;
+  transition: clip-path ease-in .2s, -webkit-clip-path ease-in .2s;
+}
+
+.modalView {
+  background: #e7e7e7;
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px solid var(--colorBlue);
+  border-radius: 5px;
+}
+
+.modalView > h4 {
+  margin: 5px 0;
+  color: var(--colorBlue);
+  font-size: 1.3rem;
+}
+
+.modalButtonCont {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.modalButton {
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modalButtonAccept {
+  background: #3282b8;
+}
+
+.modalButtonDecline {
+  background: #1b262c;
+}
+
+.mostrarModal {
+  -webkit-clip-path: circle(71% at 50% 50%);
+          clip-path: circle(71% at 50% 50%);
+}
+
+@media only screen and (min-width: 768px) {
+  .ocultarMobileTorneo {
+    display: block;
+  }
+}
+/*# sourceMappingURL=style.css.map */
