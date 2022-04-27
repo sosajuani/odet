@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ODET</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/scss/base/normalize.css"/>
-    <link rel="stylesheet" href="/scss/main.css"/>
+    <link rel="stylesheet" href="/css/normalize.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
     <script src="/js/main.js"></script>
 </head>
 <body>
@@ -21,10 +20,10 @@
         <nav class="navigator menuHeader">
             <ul>
                 <li>
-                    <a href="">INICIO</a>
+                    <a href="/">INICIO</a>
                 </li>
                 <li>
-                    <a href="">TORNEOS</a>
+                    <a href="/tournaments">TORNEOS</a>
                 </li>
                 <li>
                     <a href="">EQUIPOS</a>
@@ -59,5 +58,46 @@
         </nav>
         <div class="buttonMovilMenu"><i class='bx bx-menu'></i></div>
     </header>
+    <section class="alert alert--warning">
+        Página en desarrollo - Mas información <a href="">Acá</a>
+    </section>
+    <section class="gralCont">
+        <div class="carrouselCont">
+            Carrousel
+        </div>
+        <div class="lastResult">
+            <h4>Ultimos resultados</h4>
+            <div class="fixtureHome">
+                <div class="teamLastResult"></div>
+                <div class="teamLastResultData">
+                    <div>1 - 1</div>
+                    <div>Torneo: x</div>
+                </div>
+                <div class="teamLastResult"></div>
+            </div>
+            <div class="fixtureHome">
+                <div class="teamLastResult"></div>
+                <div class="teamLastResultData">
+                    <div>1 - 1</div>
+                    <div>Torneo: x</div>
+                </div>
+                <div class="teamLastResult"></div>
+            </div>
+        </div>
+        <div class="sponsorsHome">
+            <h4>Nos acompañan</h4>
+            <div class="sponsorItemsCont">
+                <div class="sponsorItem"></div>
+                <div class="sponsorItem"></div>
+                <div class="sponsorItem"></div>
+                <div class="sponsorItem"></div>
+                <div class="sponsorItem"></div>
+                <div class="sponsorItem"></div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        ODET &copy; 2021 - 2022
+    </footer>
 </body>
 </html>

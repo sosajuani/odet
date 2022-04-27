@@ -1,2 +1,8 @@
+//pages
+@forward 'views/users/home/home.scss';
+
+//base
+@forward 'layout/buttonsAlerts';
 @forward 'layout/header';
-@forward 'base/bodyReset';
+@forward 'layout/footer';
+@forward 'base/base';

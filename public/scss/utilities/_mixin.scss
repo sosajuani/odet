@@ -3,9 +3,21 @@
     padding: 0;
     margin: 0;
 }
+@mixin titleReset{
+    margin: 0;
+}
 @mixin flexPosition($flexDirection, $justifyContent, $alignItems){
     display: flex;
     flex-direction: $flexDirection;
     justify-content: $justifyContent;
     align-items: $alignItems;
+}
+@mixin alertBase($bg,$color,$border){
+    background: $bg;
+    color: $color;
+    border-color: 1px solid $border;
+}
+@mixin alertLink($color){
+    color: $color;
+    font-weight: bold
 }

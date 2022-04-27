@@ -1,0 +1,11 @@
+@use '../utilities/mixin' as mix;
+.alert{
+    text-align: center;
+    padding: 5px;
+    &--warning{
+        @include mix.alertBase(#fff3cd,#856404,#ffeeba);
+        a{
+            @include mix.alertLink(#856404);
+        } 
+    }
+}

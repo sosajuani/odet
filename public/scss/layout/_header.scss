@@ -45,6 +45,37 @@
                 }
             }
         }
+        @media only screen and (min-width: c.$twoMedia){
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            justify-content: start;
+            position: static;
+            ul{
+                font-size: c.$rem1;
+                height: auto;
+                flex-direction: row;
+                li{
+                    padding: 10px;
+                    position: relative;
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 3px;
+                        left: 0;
+                        background: c.$colorLinks;
+                        transition: width ease-in 0.5s;
+                    }
+                    &:hover{
+                        &:after{
+                            width: 100%;
+                        }
+                    }
+                }
+                .cerraMenuBtn{
+                    display: none;
+                }
+            }
+        }
     }
     .ocultarMobile{
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);

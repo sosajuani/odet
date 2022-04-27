@@ -1,0 +1,65 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+.carrouselCont{
+    background: #45555a;
+    padding: 10px;
+    height: 200px;
+}
+.lastResult{
+    background: c.$colorBlue;
+    padding: c.$rem1;
+    color: c.$colorWhite;
+    border-radius: 5px;
+    margin: 5px 0;
+    h4{
+        @include mix.titleReset()
+    }
+    .fixtureHome{
+        margin: 5px 0;
+        border: 2px solid c.$colorlightBlue;
+        border-radius: 3px; 
+    }
+    div{
+        padding: 1rem;
+        @include mix.flexPosition(row,space-evenly,center);
+        .teamLastResult{
+            background: #45aaa5;
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .teamLastResultData{
+            div{
+                padding: 0;
+            }
+            @include mix.flexPosition(column,center,center);
+        }
+    }
+    @media only screen and (min-width: c.$twoMedia){
+        width: 50%;
+        margin: 5px auto;
+    }
+}
+.sponsorsHome{
+    h4{
+        @include mix.titleReset();
+        padding: 1rem 0;
+        text-align: center;
+    }
+    .sponsorItemsCont{
+        background: rebeccapurple;
+        padding: 0.5rem;
+        flex-wrap: wrap;
+        @include mix.flexPosition(row,space-between,center);
+        .sponsorItem{
+            width: 100px;
+            height: 100px;
+            background: #45aaa5;
+            margin: 3px 0;
+        }
+        @media only screen and (min-width: c.$twoMedia){
+            justify-content: space-evenly;
+        }
+    }
+}

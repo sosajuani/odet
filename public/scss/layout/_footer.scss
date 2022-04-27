@@ -1,0 +1,8 @@
+@use '../utilities/colors' as c;
+.footer{
+    background: c.$colorBlue;
+    color: c.$colorWhite;
+    font-size: .6rem;
+    text-align: center;
+    padding: 1rem;
+}
