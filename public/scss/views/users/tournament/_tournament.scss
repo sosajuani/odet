@@ -1,0 +1,22 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+
+.gridCont{
+    div{
+        @include mix.gridTemplate(20px min(100%,5rem) repeat(8,1fr));
+        padding: 5px;
+    }
+    .gridHead{
+        background: c.$colorBlue;
+        color: c.$colorWhite;
+        border-radius: 5px 5px 0 0;
+    }
+    .gridItem{
+        border-left: 1px solid #c7c7c7;
+        border-right: 1px solid #c7c7c7;
+        &:last-child{
+            border-bottom: 1px solid #c7c7c7;
+            border-radius: 0 0 5px 5px;
+        }
+    }
+}

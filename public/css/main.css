@@ -107,6 +107,25 @@
   }
 }
 
+.gridCont div {
+  display: grid;
+  grid-template-columns: 20px min(100%, 5rem) repeat(8, 1fr);
+  padding: 5px;
+}
+.gridCont .gridHead {
+  background: #15547e;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+.gridCont .gridItem {
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
+}
+.gridCont .gridItem:last-child {
+  border-bottom: 1px solid #c7c7c7;
+  border-radius: 0 0 5px 5px;
+}
+
 .alert {
   text-align: center;
   padding: 5px;
@@ -229,6 +248,10 @@
   font-size: 0.6rem;
   text-align: center;
   padding: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 body {

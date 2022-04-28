@@ -1,121 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ODET</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/normalize.css"/>
-    <link rel="stylesheet" href="/css/main.css"/>
-    <script src="/js/main.js"></script>
-</head>
-<body>
-    <header class="headerMain">
-        <div class="logo">
-            <h3><a href="">ODET</a></h3>
-        </div>
-        <nav class="navigator menuHeader">
-            <ul>
-                <li>
-                    <a href="/">INICIO</a>
-                </li>
-                <li>
-                    <a href="/tournaments">TORNEOS</a>
-                </li>
-                <li>
-                    <a href="">EQUIPOS</a>
-                </li>
-                <li>
-                    <a href="">FIXTURE</a>
-                </li>
-                <li>
-                    <a href="">ADMIN</a>
-                </li>
-                <% if (!user) { %>
-                    <li>
-                        <a href=""><i class='bx bx-log-in' ></i> LOGIN</a>
-                    </li>
-                    <li>
-                        <a href=""><i class='bx bxs-user-plus'></i> REGISTRO</a>
-                    </li>
-                <% } %>
-                <% if(user){ %> 
-                    <li>
-                        <a href="">MI EQUIPO</a>
-                    </li>
-                    <li>
-                        <a href=""><i class='bx bxs-user'></i></a>
-                    </li>
-                    <li>
-                        <a href=""><i class='bx bx-log-out'></i></a>
-                    </li>
-                <% } %> 
-                <li class="cerraMenuBtn"><i class='bx bx-x'></i></li>
-            </ul>
-        </nav>
-        <div class="buttonMovilMenu"><i class='bx bx-menu'></i></div>
-    </header>
-    <section class="alert alert--warning">
-        Página en desarrollo - Mas información <a href="">Acá</a>
-    </section>
-    <section class="gralCont">
-        <div class="carrouselCont">
-            <div class="carrouselItemCont">
-                <div class="carrouselItem sliderShow"  data-id="1" style="background: #45551a;">
-                    primero
+<%- include("../../partials/head.ejs",{title: "Inicio"})  %> 
+<%- include("../../partials/header.ejs")  %> 
+<section class="gralCont">
+    <div class="carrouselCont">
+        <div class="carrouselItemCont">
+            <div class="carrouselItem sliderShow"  data-id="1" style="background: #45551a;">
+                primero
+            </div>
+            <div class="carrouselItem" data-id="2"  style="background: #53554d;">
+                segundo
+            </div>
+            <div class="carrouselItem" data-id="3"  style="background: #2e7896;">
+                tercero
+            </div>
+            <div class="arrowCarrouselCont">
+                <div class="leftCarrousel">
+                    <i class='bx bxs-chevron-left'></i>
                 </div>
-                <div class="carrouselItem" data-id="2"  style="background: #53554d;">
-                    segundo
-                </div>
-                <div class="carrouselItem" data-id="3"  style="background: #2e7896;">
-                    tercero
-                </div>
-                <div class="arrowCarrouselCont">
-                    <div class="leftCarrousel">
-                        <i class='bx bxs-chevron-left'></i>
-                    </div>
-                    <div class="rightCarrousel">
-                        <i class='bx bxs-chevron-right' ></i>
-                    </div>
+                <div class="rightCarrousel">
+                    <i class='bx bxs-chevron-right' ></i>
                 </div>
             </div>
         </div>
-        <div class="lastResult">
-            <h4>Ultimos resultados</h4>
-            <div class="fixtureHome">
-                <div class="teamLastResult"></div>
-                <div class="teamLastResultData">
-                    <div>1 - 1</div>
-                    <div>Torneo: x</div>
-                </div>
-                <div class="teamLastResult"></div>
+    </div>
+    <div class="lastResult">
+        <h4>Ultimos resultados</h4>
+        <div class="fixtureHome">
+            <div class="teamLastResult"></div>
+            <div class="teamLastResultData">
+                <div>1 - 1</div>
+                <div>Torneo: x</div>
             </div>
-            <div class="fixtureHome">
-                <div class="teamLastResult"></div>
-                <div class="teamLastResultData">
-                    <div>1 - 1</div>
-                    <div>Torneo: x</div>
-                </div>
-                <div class="teamLastResult"></div>
-            </div>
+            <div class="teamLastResult"></div>
         </div>
-        <div class="sponsorsHome">
-            <h4>Nos acompañan</h4>
-            <div class="sponsorItemsCont">
-                <div class="sponsorItem"></div>
-                <div class="sponsorItem"></div>
-                <div class="sponsorItem"></div>
-                <div class="sponsorItem"></div>
-                <div class="sponsorItem"></div>
-                <div class="sponsorItem"></div>
+        <div class="fixtureHome">
+            <div class="teamLastResult"></div>
+            <div class="teamLastResultData">
+                <div>1 - 1</div>
+                <div>Torneo: x</div>
             </div>
+            <div class="teamLastResult"></div>
         </div>
-    </section>
-    <footer class="footer">
-        ODET &copy; 2021 - 2022
-    </footer>
-</body>
-</html>
+    </div>
+    <div class="sponsorsHome">
+        <h4>Nos acompañan</h4>
+        <div class="sponsorItemsCont">
+            <div class="sponsorItem"></div>
+            <div class="sponsorItem"></div>
+            <div class="sponsorItem"></div>
+            <div class="sponsorItem"></div>
+            <div class="sponsorItem"></div>
+            <div class="sponsorItem"></div>
+        </div>
+    </div>
+</section>
+<%- include("../../partials/footer.ejs")  %> 

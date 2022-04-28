@@ -30,7 +30,7 @@ const mainController = {
         }
         let statisticsConsult = await Statistic.findAll({
             where:{
-                tournamentId: tournamentConsult.id,
+                tournamentId: tournamentConsult[0].id,
                 divisionId: divisionConsult[0].id
             },
             include: ['divisions','teams']
@@ -38,7 +38,8 @@ const mainController = {
         let divisionEmpty
         const tournamentId = tournamentConsult[0].id
         statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
-        res.render('pages/tournaments/tournament.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty});
+        
+        res.render('userViews/pages/tournament/tournamentMain.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty})
     },
     tournamentFilter: async(req,res)=>{
         const tournamentId = req.body.tournamentId;

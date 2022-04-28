@@ -1,0 +1,48 @@
+<header class="headerMain">
+    <div class="logo">
+        <h3><a href="/">ODET</a></h3>
+    </div>
+    <nav class="navigator menuHeader">
+        <ul>
+            <li>
+                <a href="/">INICIO</a>
+            </li>
+            <li>
+                <a href="/tournament">TORNEOS</a>
+            </li>
+            <li>
+                <a href="">EQUIPOS</a>
+            </li>
+            <li>
+                <a href="">FIXTURE</a>
+            </li>
+            <li>
+                <a href="">ADMIN</a>
+            </li>
+            <% if (!user) { %>
+                <li>
+                    <a href=""><i class='bx bx-log-in' ></i> LOGIN</a>
+                </li>
+                <li>
+                    <a href=""><i class='bx bxs-user-plus'></i> REGISTRO</a>
+                </li>
+            <% } %>
+            <% if(user){ %> 
+                <li>
+                    <a href="">MI EQUIPO</a>
+                </li>
+                <li>
+                    <a href=""><i class='bx bxs-user'></i></a>
+                </li>
+                <li>
+                    <a href=""><i class='bx bx-log-out'></i></a>
+                </li>
+            <% } %> 
+            <li class="cerraMenuBtn"><i class='bx bx-x'></i></li>
+        </ul>
+    </nav>
+    <div class="buttonMovilMenu"><i class='bx bx-menu'></i></div>
+</header>
+<section class="alert alert--warning">
+    Página en desarrollo - Mas información <a href="">Acá</a>
+</section>

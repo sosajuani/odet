@@ -21,3 +21,10 @@
     color: $color;
     font-weight: bold
 }
+@mixin hiddenMobile{
+    display: none;
+}
+@mixin gridTemplate($grid){
+    display: grid;
+    grid-template-columns: $grid;
+}
