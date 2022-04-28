@@ -86,24 +86,31 @@ if(filterOptAdm){
     })
 }
 
-})
+//carrousel
+const carrouselItems = [...document.querySelectorAll(".carrouselItem")]
+const rightArrow = document.querySelector(".rightCarrousel")
+const leftArrow = document.querySelector(".leftCarrousel")
 
-// let seleccion = (item)=>{
-//     const vari = document.querySelector(item);
-//     return vari;
-// }
-// let mostrar = (boton1,mostrar,btnCierra)=>{
-//     let buttonMostrar = seleccion(boton1);
-//     let mostrarItem = seleccion(mostrar);
-//     let cierraMenu = seleccion(btnCierra);
-//     buttonMostrar.addEventListener('click',()=>{
-//         mostrarItem.classList.toggle("mostrarMobile");
-//         buttonMostrar.classList.toggle("ocultarMobile");
-//     });
-//     cierraMenu.addEventListener('click',()=>{
-//         mostrarItem.classList.remove("mostrarMobile");
-//         buttonMostrar.classList.remove("ocultarMobile");
-//     });
-// }
-// mostrar(".buttonMovilMenu","menuHeader","cerraMenuBtn");
-// mostrar(".buttonMovilMenu","menuAdmin","cerraMenuBtn");
+const moveCarrousel = (direction)=>{
+    const item = Number(document.querySelector(".sliderShow").dataset.id);
+    let value;
+    value = item;
+    value += direction;
+    if(value === 0 || value === carrouselItems.length +1){
+        value = value === 0 ? carrouselItems.length : 1
+    }
+    carrouselItems[item-1].classList.toggle("sliderShow")
+    carrouselItems[value-1].classList.toggle("sliderShow")
+    console.log(carrouselItems[item-1]);
+}
+//console.log(carrouselItems.shift());
+if(rightArrow){
+    rightArrow.addEventListener("click",()=>{
+        moveCarrousel(1)
+    })
+    leftArrow.addEventListener("click",()=>{
+        moveCarrousel(-1)
+    })
+}
+
+})
