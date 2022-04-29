@@ -2,5 +2,15 @@
 <%- include("../../partials/header.ejs")  %> 
 <section class="gralCont">
     <%- include("partials/filter.ejs")  %> 
+    <%- include("partials/teams.ejs")  %> 
+    <% if(pages == true){ %>
+    <div class="contPages">
+        <a class="btn btn--blue" href="<%= pageQuery ? `/teams?page=${pageQuery-1}` : `/teams` %> "><div><i class='bx bxs-left-arrow'></i></div></a>
+        <% for( let i = 0; i < pagesCount; i++ ) { %>
+            <a class="btn btn--blue" href="/teams?page=<%= i+1 %>"><div><%= i+1 %></div></a>
+        <% } %>
+        <a class="btn btn--blue" href="<%= pageQuery ? `/teams?page=${pageQuery+1}` : `/teams?page=2` %>"><div><i class='bx bxs-right-arrow'></i></div></a>
+    </div>
+    <% } %>
 </section>
 <%- include("../../partials/footer.ejs")  %> 

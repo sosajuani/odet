@@ -1,0 +1,30 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+
+.teamCont{
+    grid-gap: 1rem;
+    @include mix.flexPosition(row,center,center);
+    flex-wrap: wrap;
+    .itemTeam{
+        background: c.$colorLightGray;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+        border: 1px solid c.$colorGray;
+        @include mix.flexPosition(column,space-between,center);
+        .avatarTeam{
+            width: 100px;
+            height: 100px;
+            background: c.$colorLightGray;
+            border: 5px solid c.$colorBlue;
+            border-radius: 50%;
+            img{
+                width: 100%;
+            }
+        }
+        .nameTeam{
+            text-align: center;
+            color: c.$colorBlue;
+        }
+    }
+}

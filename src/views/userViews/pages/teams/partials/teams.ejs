@@ -1,0 +1,9 @@
+<div class="teamCont">
+    <% for( let i = 0; i < teamsConsult.length; i++ ) { %>        
+        <div class="itemTeam">
+            <div class="avatarTeam"><img src="/img/teams/<%= teamsConsult[i].avatars.image %>" alt="avatar_team_<%= teamsConsult[i].name %>"></div>
+            <div class="nameTeam"><%= teamsConsult[i].name %></div>
+            <a href="/teams/1/info"><div class="btn btn--blue">+ Info</div></a>
+        </div>
+    <% } %>
+</div>

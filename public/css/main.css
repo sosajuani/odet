@@ -176,6 +176,64 @@
   background: #efefef;
 }
 
+.teamCont {
+  grid-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.teamCont .itemTeam {
+  background: #efefef;
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #c7c7c7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.teamCont .itemTeam .avatarTeam {
+  width: 100px;
+  height: 100px;
+  background: #efefef;
+  border: 5px solid #15547e;
+  border-radius: 50%;
+}
+.teamCont .itemTeam .avatarTeam img {
+  width: 100%;
+}
+.teamCont .itemTeam .nameTeam {
+  text-align: center;
+  color: #15547e;
+}
+
+.contPages {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.contPages div {
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 1024px) {
+  .contPages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
 .alert {
   text-align: center;
   padding: 5px;

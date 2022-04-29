@@ -1,0 +1,15 @@
+@use '../utilities/colors' as c;
+@use '../utilities/mixin' as mix;
+
+.contPages{
+    margin-top: 1rem;
+    @include mix.flexPosition(row,space-between,center);
+    div{
+        min-width: 2rem;
+        min-height: 2rem;
+        @include mix.flexPosition(row,center,center);
+    }
+    @media only screen and (min-width: c.$twoMedia){
+        @include mix.flexPosition(row,space-evenly,center);
+    }
+}
