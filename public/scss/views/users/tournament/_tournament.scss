@@ -1,22 +1,62 @@
 @use '../../../utilities/colors' as c;
 @use "../../../utilities/mixin" as mix;
 
+.filterCont{
+    background: c.$gradientGray;
+    padding: c.$rem1;
+    margin-bottom: c.$rem1;
+    @include mix.borderRadius(2px,c.$colorBlue,5px);
+    form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .filterSelect{
+            display: inline-block;
+            padding: 0 1rem;
+            &:first-child{padding: 0;}
+            label{
+                color: c.$colorBlue;
+                font-weight: bold;
+            }
+            select{
+                background: c.$colorWhite;
+                padding: 0.3rem;
+                @include mix.borderRadius(2px,c.$colorBlue,5px);
+                &:focus{
+                    font-weight: bold;
+                    color: c.$colorBlue;
+                    box-shadow: inset 0 0 10px rgba(0,0,0,0.4)
+                }
+            }
+        }
+    }
+}
+
 .gridCont{
     div{
-        @include mix.gridTemplate(20px min(100%,5rem) repeat(8,1fr));
+        @include mix.gridTemplate(40px repeat(9,1fr));
         padding: 5px;
     }
     .gridHead{
+        div{
+            @include mix.flexPosition(row, center,center);
+        }
         background: c.$colorBlue;
         color: c.$colorWhite;
         border-radius: 5px 5px 0 0;
     }
     .gridItem{
+        div{
+            @include mix.flexPosition(row, center,center);
+        }
         border-left: 1px solid #c7c7c7;
         border-right: 1px solid #c7c7c7;
         &:last-child{
             border-bottom: 1px solid #c7c7c7;
             border-radius: 0 0 5px 5px;
+        }
+        &:nth-child(odd){
+            background: c.$colorLightGray;
         }
     }
 }

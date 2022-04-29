@@ -1,0 +1,28 @@
+<div class="gridCont">
+    <div class="gridHead">
+        <div>#</div>
+        <div>Nombre</div>
+        <div>PJ</div>
+        <div>G</div>
+        <div>E</div>
+        <div>P</div>
+        <div>GF</div>
+        <div>GC</div>
+        <div>DG</div>
+        <div>Pts</div>
+    </div>
+    <% for( let i = 0; i < statisticsConsult.length; i++ ) { %>
+        <div class="gridItem">
+            <div><%= i+1 %></div>
+            <div><%= statisticsConsult[i].teams.name %></div>
+            <div><%= statisticsConsult[i].played %></div>
+            <div><%= statisticsConsult[i].win %></div>
+            <div><%= statisticsConsult[i].drawn %></div>
+            <div><%= statisticsConsult[i].lost %></div>
+            <div><%= statisticsConsult[i].gf %></div>
+            <div><%= statisticsConsult[i].ga %></div>
+            <div><%= statisticsConsult[i].gd %></div>
+            <div><%= statisticsConsult[i].pts %></div>
+        </div>
+    <% } %>
+</div>

@@ -110,7 +110,7 @@ DB_DIALECT=mysql`;
         res.redirect('/install/config?step=2')
     },
     odetDemoProcess: (req,res)=>{
-
+        
     },
     devBaseProcess: async(req,res)=>{
         await Rol.bulkCreate([

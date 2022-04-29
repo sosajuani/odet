@@ -6,10 +6,12 @@ const Division = db.Division;
 const teamController = {
     teams: async(req,res)=>{
         try{
-            let tournamentConsult = await Tournament.findAll();
-            let teamsConsult = await Team.findAll();
-            let divisionConsult = await Division.findAll();
-            res.render('pages/teams/teams.ejs',{teamsConsult,tournamentConsult,divisionConsult});
+            const tournamentConsult = await Tournament.findAll();
+            const teamsConsult = await Team.findAll();
+            const divisionConsult = await Division.findAll();
+            const tournamentId = null;
+            const divisionId = null;
+            res.render('userViews/pages/teams/teamsMain.ejs',{teamsConsult,tournamentConsult,divisionConsult,tournamentId,divisionId});
         }catch(e){
             console.log(e);
         }

@@ -1,7 +1,7 @@
-<%- include("../../src/views/partials/head.ejs",{title:"Instalación"}) %>
+<%- include("../../src/views/userViews/partials/head.ejs",{title:"Instalación"}) %>
 <link rel="stylesheet" href="/css/install.css">
 <section class="installCont">
-    <div class="contPrin">
+    <div class="gralCont">
         <h4 class="titleInstall">Crear usuario administrador</h4>
         <% if (!step || step && step !== 2) { %>
         <%- include("config/home.ejs") %> 

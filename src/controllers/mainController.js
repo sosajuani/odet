@@ -36,10 +36,11 @@ const mainController = {
             include: ['divisions','teams']
         })
         let divisionEmpty
-        const tournamentId = tournamentConsult[0].id
+        const tournamentId = tournamentConsult[0].id;
+        const divisionId = divisionConsult[0].id;
         statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
-        
-        res.render('userViews/pages/tournament/tournamentMain.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty})
+
+        res.render('userViews/pages/tournament/tournamentMain.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,tournamentId,divisionEmpty,divisionId})
     },
     tournamentFilter: async(req,res)=>{
         const tournamentId = req.body.tournamentId;
@@ -60,10 +61,11 @@ const mainController = {
                     tournamentId: tournamentId,
                     divisionId: divisionId
                 },
+                order:[['pts','DESC'],['gf','DESC']],
                 include: ['divisions','teams']
         })
         statisticsConsult.length === 0 ? divisionEmpty = true : divisionEmpty= false
-        return res.render('pages/tournaments/filterTournamentSearch.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,divisionEmpty,tournamentId});
+        return res.render('userViews/pages/tournament/tournamentFilter.ejs',{errorConsult,tournamentConsult,divisionConsult,statisticsConsult,divisionEmpty,tournamentId,divisionId});
     },
     apiTournamentChange: async(req,res)=>{
         const tournamentId = req.params.id

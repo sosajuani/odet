@@ -1,4 +1,5 @@
 @use '../utilities/mixin' as mix;
+@use '../utilities/colors' as c;
 .alert{
     text-align: center;
     padding: 5px;
@@ -7,5 +8,17 @@
         a{
             @include mix.alertLink(#856404);
         } 
+    }
+}
+.btn{
+    padding: .5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    &--blue{
+        background: c.$colorBlue;
+        border-radius: 5px;
+        color: c.$colorWhite;
     }
 }
