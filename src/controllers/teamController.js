@@ -93,7 +93,6 @@ const teamController = {
         }else{
             res.render('userViews/pages/teams/teamDetail.ejs',{teamConsult});
         }
-        console.log(teamConsult.users);
     },
     teamsDetailPosition: async(req,res)=>{
         let teamConsult = await Team.findByPk(req.params.id,{

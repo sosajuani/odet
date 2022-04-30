@@ -173,6 +173,21 @@ DB_DIALECT=mysql`;
                     rolId: 3
                 }
             ]);
+            for(let i = 1; i<=180; i++){
+                await User.create({
+                    user: 'player'+i,
+                    firstName: 'player '+i,
+                    lastName: 'demo',
+                    email: 'player'+i+'@odet.com',
+                    pass: '$2a$10$0Xhs.ir9MpmkZoYYj92rs.oWRi2crKnqJDKvMdzIYYWxi.KMB74mK',
+                    avatarId: 1,
+                    rolId: 2
+                })
+            }
+
+
+
+
             await Ascent.create({
                 type: 'Puntos'
             });
@@ -834,6 +849,27 @@ DB_DIALECT=mysql`;
                     userId: 2
                 }
             ]);
+            let entre = 1;
+            if(entre === 30){
+                return console.log("corto")
+            }else{
+                for(let i = 4; i<=183;i++){
+                    let count = 0;
+                    for(j=4; j<= 183; j++){
+                        count = count +1
+                        await Player.create({
+                            golas: 0,
+                            suspensionId: null,
+                            teamId: entre,
+                            userId: j
+                        })
+                        if(count === 6){
+                            count = 0;
+                            entre = entre + 1
+                        }
+                    }
+                }
+            }
         }catch(e){
             console.log(e);
         }

@@ -50,7 +50,8 @@
     .playersTeamGrid{
         @include mix.gridTemplate(repeat(3,1fr));
         .info{
-            background: rebeccapurple;
+            display: flex;
+            align-items: center;
         }
     }
 }

@@ -35,6 +35,7 @@
 
 //icons
 @mixin cardIcon($color,$color2) {
+    height: 14px;
     &:before{
         content: "";
         display: inline-block;

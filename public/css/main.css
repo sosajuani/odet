@@ -282,9 +282,13 @@
   grid-template-columns: repeat(3, 1fr);
 }
 .playersTeamCont .playersTeamGrid .info {
-  background: rebeccapurple;
+  display: flex;
+  align-items: center;
 }
 
+.iconCardRed {
+  height: 14px;
+}
 .iconCardRed:before {
   content: "";
   display: inline-block;
@@ -294,6 +298,9 @@
   border: 1px solid #000;
 }
 
+.iconCardYellow {
+  height: 14px;
+}
 .iconCardYellow:before {
   content: "";
   display: inline-block;
