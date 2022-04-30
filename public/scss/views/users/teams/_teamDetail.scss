@@ -54,4 +54,41 @@
             align-items: center;
         }
     }
+    @media only screen and (min-width: c.$twoMedia){
+        .playersTeamGrid{
+            @include mix.gridTemplate(20px repeat(2,1fr));
+        }
+    }
+    .flexFixture{
+        @include mix.flexPosition(row,center,center);
+        flex-wrap: wrap;
+        .fixtureCont{
+            background: c.$colorLightGray;
+            @include mix.borderRadius(c.$colorGray,1px,5px);
+            padding: 1rem;
+            margin: 1rem;
+            @include mix.flexPosition(row,center,center);
+            justify-content: center;
+            align-items: center;
+            div{
+                padding: 5px;
+                @include mix.flexPosition(row,center,center);
+                &:nth-child(2){
+                    flex-direction: column;
+                }
+            }
+            .fixtureTeam{
+            div{
+                width: 100px;
+                height: 100px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        @media only screen and (min-width: c.$twoMedia){
+            width: 40%;
+        }
+    }
+    }
 }

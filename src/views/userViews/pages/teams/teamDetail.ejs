@@ -21,19 +21,111 @@
             <div class="btn btn--blue">Ver todos</div>
         </div>
     </div>
-    <div class="playersTeamCont">
+    <div class="playersTeamCont gridCont">
         <h4>Plantilla</h4>
-        <div class="playersTeamGrid">
+        <div class="playersTeamGrid gridHead">
             <div>N°</div>
             <div>Nombre</div>
             <div>Info</div>
         </div>
-        <div class="playersTeamGrid">
-            <div>1</div>
-            <div>Player</div>
-            <div class="info">
-                <i class="iconCardRed"></i>
-                <i class="iconCaptain"></i>
+        <% for( let i = 0; i < playersConsult.length; i++ ) { %>
+            <div class="playersTeamGrid gridItem">
+                <div><%= i+1 %> </div>
+                <div><%= `${playersConsult[i].users.firstName} ${playersConsult[i].users.lastName}` %></div>
+                <div class="info">
+                    <!-- <i class="iconCardRed"></i>
+                    <i class="iconCaptain"></i> -->
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <div class="playersTeamCont">
+        <h4>Proximos partidos</h4>
+        <div class="flexFixture">
+            <div class="fixtureCont">
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+                <div class="fixtureVs">
+                    <div>VS</div>
+                    <div>30/04/2022</div>
+                    <div>14:00hs</div>
+                </div>
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="fixtureCont">
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+                <div class="fixtureVs">
+                    <div>VS</div>
+                    <div>30/04/2022</div>
+                    <div>14:00hs</div>
+                </div>
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="fixtureCont">
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+                <div class="fixtureVs">
+                    <div>VS</div>
+                    <div>30/04/2022</div>
+                    <div>14:00hs</div>
+                </div>
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="fixtureCont">
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+                <div class="fixtureVs">
+                    <div>VS</div>
+                    <div>30/04/2022</div>
+                    <div>14:00hs</div>
+                </div>
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="fixtureCont">
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
+                <div class="fixtureVs">
+                    <div>VS</div>
+                    <div>30/04/2022</div>
+                    <div>14:00hs</div>
+                </div>
+                <div class="fixtureTeam">
+                    <div>
+                        <img src="/img/teams/default.png" alt="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

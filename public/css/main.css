@@ -285,6 +285,54 @@
   display: flex;
   align-items: center;
 }
+@media only screen and (min-width: 1024px) {
+  .playersTeamCont .playersTeamGrid {
+    display: grid;
+    grid-template-columns: 20px repeat(2, 1fr);
+  }
+}
+.playersTeamCont .flexFixture {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.playersTeamCont .flexFixture .fixtureCont {
+  background: #efefef;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.playersTeamCont .flexFixture .fixtureCont div {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.playersTeamCont .flexFixture .fixtureCont div:nth-child(2) {
+  flex-direction: column;
+}
+.playersTeamCont .flexFixture .fixtureCont .fixtureTeam div {
+  width: 100px;
+  height: 100px;
+}
+.playersTeamCont .flexFixture .fixtureCont .fixtureTeam div img {
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .playersTeamCont .flexFixture .fixtureCont {
+    width: 40%;
+  }
+}
 
 .iconCardRed {
   height: 14px;

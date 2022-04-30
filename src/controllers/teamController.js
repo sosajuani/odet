@@ -2,6 +2,7 @@ let db = require('../database/models')
 const Team = db.Team;
 const Tournament = db.Tournament;
 const Division = db.Division;
+const Player = db.Player;
 
 const teamController = {
     teams: async(req,res)=>{
@@ -85,13 +86,17 @@ const teamController = {
         res.render('userViews/pages/teams/teamsFilter.ejs',{teamsConsult,tournamentConsult,divisionConsult,tournamentId,divisionId});
     },
     teamsDetail: async(req,res)=>{
-        let teamConsult = await Team.findByPk(req.params.id,{
+        const teamConsult = await Team.findByPk(req.params.id,{
              include: ['avatars','tournaments','divisions','users']
         })
         if(teamConsult == null){
             res.render('errors/404.ejs');
         }else{
-            res.render('userViews/pages/teams/teamDetail.ejs',{teamConsult});
+            const playersConsult = await Player.findAll({
+                where: { teamId: req.params.id },
+                include: ['users']
+            })
+            res.render('userViews/pages/teams/teamDetail.ejs',{teamConsult,playersConsult});
         }
     },
     teamsDetailPosition: async(req,res)=>{
