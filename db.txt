@@ -147,7 +147,12 @@ sequelize model:generate --name AwardStatistics --attributes bestPlayer:integer,
 
 sequelize model:generate --name LogoType --attributes type:string
 sequelize model:generate --name Maintenance --attributes type:string
-sequelize model:generate --name Config --attributes logoType:integer,logoText:string,logoImg:string,maintenance:integer,banners,sponsors
+
+sequelize model:generate --name BannerActive --attributes type:string
+sequelize model:generate --name Banner --attributes image:string,active:integer
+sequelize model:generate --name SponsorActive --attributes type:string
+sequelize model:generate --name Sponsor --attributes image:string,active:integer
+sequelize model:generate --name Config --attributes logoType:integer,logoText:string,logoImg:string,maintenance:integer
 
 
 mysqldump -u root -p odet > C:\Users\guns-\Documents\db\pruebas.sql

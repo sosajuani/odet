@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       Config.belongsTo(models.Maintenance,{
         foreignKey: 'maintenance',
         as: 'maintenances'
-      })
+      });
     }
   }
   Config.init({
