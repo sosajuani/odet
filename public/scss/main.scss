@@ -1,8 +1,12 @@
 //pages
-@forward 'views/users/home/home.scss';
-@forward 'views/users/tournament/tournament.scss';
-@forward 'views/users/teams/teams.scss';
-@forward 'views/users/teams/teamDetail.scss';
+@forward 'views/users/home/home';
+@forward 'views/users/tournament/tournament';
+@forward 'views/users/teams/teams';
+@forward 'views/users/teams/teamDetail';
+
+//admin pages
+@forward 'views/admin/base';
+@forward 'views/admin/home/home';
 
 //layout
 @forward 'layout/icons';

@@ -23,7 +23,7 @@ const adminController = {
         // })
         // .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
         // .catch(e => console.log(e))
-        res.render('admin/indexAdm.ejs',{user:"juan"})
+        res.render('adminViews/home/home.ejs',{user:"juan"})
     },
     news: (req,res)=>{
         News.findAll()
