@@ -210,6 +210,107 @@
   color: #15547e;
 }
 
+.headerTeamDetail {
+  background: url("../img/teams/headerInfo.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.headerTeamDetail .nameAvatarCont {
+  order: 1;
+}
+.headerTeamDetail .infoTeamCont {
+  order: 2;
+}
+.headerTeamDetail .trophyCont {
+  order: 3;
+}
+.headerTeamDetail .teamCont {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.headerTeamDetail .teamCont .teamHeadUl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.headerTeamDetail .teamCont .teamHeadUl li {
+  padding: 0.8rem;
+}
+.headerTeamDetail .teamCont .teamHeadUl li a {
+  text-decoration: none;
+  color: #fff;
+}
+.headerTeamDetail .teamCont .avatarTeam {
+  background: #15547e;
+  border: 5px solid #15547e;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  line-height: 0;
+}
+.headerTeamDetail .teamCont .avatarTeam img {
+  width: 100%;
+}
+.headerTeamDetail .teamCont .nameTeam {
+  color: #fff;
+}
+@media only screen and (min-width: 1024px) {
+  .headerTeamDetail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .headerTeamDetail .infoTeamCont {
+    order: 1;
+  }
+  .headerTeamDetail .nameAvatarCont {
+    order: 2;
+  }
+  .headerTeamDetail .trophyCont {
+    order: 3;
+  }
+}
+
+.playersTeamCont .playersTeamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.playersTeamCont .playersTeamGrid .info {
+  background: rebeccapurple;
+}
+
+.iconCardRed:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+  background: #f00;
+  border: 1px solid #000;
+}
+
+.iconCardYellow:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+  background: #e9e500;
+  border: 1px solid #000;
+}
+
+.iconCaptain:before {
+  content: "C";
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1;
+  display: inline-block;
+}
+
 .contPages {
   margin-top: 1rem;
   display: flex;

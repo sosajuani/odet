@@ -2,8 +2,10 @@
 @forward 'views/users/home/home.scss';
 @forward 'views/users/tournament/tournament.scss';
 @forward 'views/users/teams/teams.scss';
+@forward 'views/users/teams/teamDetail.scss';
 
 //layout
+@forward 'layout/icons';
 @forward 'layout/pagesPag';
 @forward 'layout/buttonsAlerts';
 @forward 'layout/header';

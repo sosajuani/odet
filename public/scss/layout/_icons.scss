@@ -1,0 +1,12 @@
+@use '../utilities/colors' as c;
+@use "../utilities/mixin" as mix;
+
+.iconCardRed{
+    @include mix.cardIcon(c.$colorRed,c.$colorBlack);
+}
+.iconCardYellow{
+    @include mix.cardIcon(c.$colorYellow,c.$colorBlack);
+}
+.iconCaptain{
+    @include mix.capitainIcon();
+}

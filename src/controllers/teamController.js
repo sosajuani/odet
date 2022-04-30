@@ -86,13 +86,14 @@ const teamController = {
     },
     teamsDetail: async(req,res)=>{
         let teamConsult = await Team.findByPk(req.params.id,{
-            include: ['avatars','tournaments','divisions','users']
+             include: ['avatars','tournaments','divisions','users']
         })
         if(teamConsult == null){
-            res.render('404.ejs');
+            res.render('errors/404.ejs');
         }else{
-            res.render('pages/teams/teamsDetail.ejs',{teamConsult});
+            res.render('userViews/pages/teams/teamDetail.ejs',{teamConsult});
         }
+        console.log(teamConsult.users);
     },
     teamsDetailPosition: async(req,res)=>{
         let teamConsult = await Team.findByPk(req.params.id,{

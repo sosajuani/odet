@@ -32,3 +32,24 @@
     border: $pixel solid $color;
     border-radius: $radius;
 }
+
+//icons
+@mixin cardIcon($color,$color2) {
+    &:before{
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 14px;
+        background: $color;
+        border: 1px solid $color2;
+    }
+}
+@mixin capitainIcon {
+    &:before{
+        content: "C";
+        font-style: normal;
+        font-weight: bold;
+        line-height: 1;
+        display: inline-block;
+    }
+}

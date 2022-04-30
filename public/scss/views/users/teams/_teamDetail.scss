@@ -1,0 +1,56 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+
+.headerTeamDetail{
+    background: url("../img/teams/headerInfo.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    @include mix.gridTemplate(repeat(1,1fr));
+    .nameAvatarCont{order:1}
+    .infoTeamCont{order:2}
+    .trophyCont{order: 3;}
+    .teamCont{
+        background: rgba(0,0,0,0.4);
+        padding: 1rem;
+        @include mix.flexPosition(column,center,center);
+        .teamHeadUl{
+            @include mix.ulReset();
+            li{
+                padding: 0.8rem;
+                a{
+                    text-decoration: none;
+                    color: c.$colorWhite;
+                }
+            }
+        }
+        .avatarTeam{
+            background: c.$colorBlue;
+            border: 5px solid c.$colorBlue;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            line-height: 0;
+            img{
+                width: 100%;
+            }
+        }
+        .nameTeam{
+            color: c.$colorWhite;
+        }
+    }
+    @media only screen and (min-width: c.$twoMedia){
+        @include mix.gridTemplate(repeat(3,1fr));
+        .infoTeamCont{order:1}
+        .nameAvatarCont{order:2}
+        .trophyCont{order: 3;}
+    }
+}
+.playersTeamCont{
+    .playersTeamGrid{
+        @include mix.gridTemplate(repeat(3,1fr));
+        .info{
+            background: rebeccapurple;
+        }
+    }
+}
