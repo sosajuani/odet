@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin ODET </title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
     <section class="adminCont">
@@ -30,8 +34,101 @@
             <h4 class="titlePageAdm">Bienvenido a tu panel de administración</h4>
             <div class="homeInfo">
                 <p>Hola! $nombreUsuario. Acá vas a poder modificar todos los aspectos de la página.</p>
-                <p>¿Dudas?, Visita la web de <a href="">ODET</a> o bien envía un mail a <a href="">contacto@juansosa.com.ar</a></p>
+                <p>¿Dudas?, Visita la web de <a class="linkP" href="">ODET</a> o bien envía un mail a <a class="linkP" href="">contacto@juansosa.com.ar</a></p>
             </div>
+            <fieldset class="fieldSetAdm">
+                <legend>Banners</legend>
+                <p>En esta sección vas a poder subir, editar y eliminar los banners de inicio</p>
+                <form class="formField" action="">
+                    <div>
+                        <label class="inputFileField btn btn--blue" for="inputFile">
+                            <i class='bx bx-upload'></i>
+                            Subir imagen
+                        </label>
+                        <input id="inputFile" type="file">
+                        <input type="submit" class="btn btn--blue" value="Subir banner">
+                    </div>
+                    <div class="imagePreviewCont">
+                        <div class="imagePreview">
+                            <img src="/img/banners/1.jpg" alt="">
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <h4>Lista de banners <div class="btn btn--blue"><i class='bx bx-plus' ></i></div></h4>
+                    <div class="bannersListCont">
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                        <div class="bannerItem">
+                            <img src="/img/banners/1.jpg" alt="banner">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </section>
 </body>

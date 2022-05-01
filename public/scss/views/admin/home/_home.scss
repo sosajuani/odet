@@ -1,7 +1,80 @@
 @use '../../../utilities/colors' as c;
 @use '../../../utilities/mixin' as mix;
 
-
 .homeInfo{
 
+}
+
+.fieldSetAdm{
+    border: 2px solid c.$colorBlue;
+    legend{
+        color: c.$colorBlue;
+        font-weight: bold;
+    }
+    p{
+        margin: 0 0 10px 0;
+    }
+    .formField{
+        background: c.$colorLightGray;
+        @include mix.borderRadius(c.$colorGray,1px,0);
+        padding: c.$rem1;
+        @include mix.gridTemplate(30% repeat(1, 1fr));
+        flex-wrap: wrap;
+        div{
+            @include mix.flexPosition(column,center,start);
+            .inputFileField{
+                margin: 0 0 0.5rem 0;
+            }
+            input[type=file]{
+                display: none
+            }
+        }
+        .imagePreviewCont{
+            background: c.$colorLightGray;
+            width: 100%;
+            .imagePreview{
+                background: c.$colorGrayd1d1d1;
+                width: 100%;
+                height: 200px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    div{
+        h4{
+            @include mix.titleReset();
+            margin-top: 0.5rem;
+        }
+        .bannersListCont{
+            background: c.$colorLightGray;
+            @include mix.borderRadius(c.$colorGray,1px,0);
+            padding: c.$rem1;
+            @include mix.flexPosition(row,center,center);
+            flex-wrap: wrap;
+            .bannerItem{
+                width: 100px;
+                height: 100px;
+                margin-top: 0.5rem;
+                margin-left: 0.5rem;
+                border-radius: 50%;
+                border: 5px solid c.$colorBlue;
+                transition: border ease 0.5s;
+                cursor: pointer;
+                img{
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                &:hover{
+                    border: 5px solid c.$colorLinks;
+                }
+            }
+        }
+
+    }
 }

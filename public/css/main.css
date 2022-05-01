@@ -14,6 +14,11 @@
   position: absolute;
   transition: opacity 0.5s ease-out;
 }
+.carrouselCont .carrouselItemCont .carrouselItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .carrouselCont .carrouselItemCont .arrowCarrouselCont {
   display: flex;
   align-items: center;
@@ -384,6 +389,86 @@
   background: linear-gradient(90deg, transparent 0%, #c7c7c7 50%, transparent 100%);
 }
 
+.fieldSetAdm {
+  border: 2px solid #15547e;
+}
+.fieldSetAdm legend {
+  color: #15547e;
+  font-weight: bold;
+}
+.fieldSetAdm p {
+  margin: 0 0 10px 0;
+}
+.fieldSetAdm .formField {
+  background: #efefef;
+  border: 1px solid #c7c7c7;
+  border-radius: 0;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 30% repeat(1, 1fr);
+  flex-wrap: wrap;
+}
+.fieldSetAdm .formField div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.fieldSetAdm .formField div .inputFileField {
+  margin: 0 0 0.5rem 0;
+}
+.fieldSetAdm .formField div input[type=file] {
+  display: none;
+}
+.fieldSetAdm .formField .imagePreviewCont {
+  background: #efefef;
+  width: 100%;
+}
+.fieldSetAdm .formField .imagePreviewCont .imagePreview {
+  background: #d1d1d1;
+  width: 100%;
+  height: 200px;
+}
+.fieldSetAdm .formField .imagePreviewCont .imagePreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fieldSetAdm div h4 {
+  margin: 0;
+  margin-top: 0.5rem;
+}
+.fieldSetAdm div .bannersListCont {
+  background: #efefef;
+  border: 1px solid #c7c7c7;
+  border-radius: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fieldSetAdm div .bannersListCont .bannerItem {
+  width: 100px;
+  height: 100px;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  border: 5px solid #15547e;
+  transition: border ease 0.5s;
+  cursor: pointer;
+}
+.fieldSetAdm div .bannersListCont .bannerItem img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fieldSetAdm div .bannersListCont .bannerItem:hover {
+  border: 5px solid #3282b8;
+}
+
 .iconCardRed {
   height: 14px;
 }
@@ -590,6 +675,10 @@ body {
   padding: 10px;
   border-radius: 3px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.linkP {
+  color: #3282b8;
 }
 
 /*# sourceMappingURL=main.css.map */
