@@ -77,10 +77,10 @@
             }
         }
     }
-    .ocultarMobile{
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-    .mostrarMobile{
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
+}
+.ocultarMobile{
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.mostrarMobile{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

@@ -107,15 +107,32 @@ window.addEventListener('load',()=>{
     //banner upload
 
     //banner modal
-    const openModal = document.querySelectorAll(".openModal");
+    const modalAdm = document.querySelector(".bannerHome");
+    if(modalAdm){
+        const openModal = document.querySelectorAll(".openModal");
+        const openModalEditar = document.querySelector(".btnEditModal");
+        const modalEdit = document.querySelector(".modalEdit")
+        const closeModal = document.querySelectorAll(".btnClose");
 
-    openModal.forEach(item =>{
-        item.addEventListener("click",()=>{
-            alert("hola")
+        openModal.forEach(item =>{
+            item.addEventListener("click",()=>{
+                modalAdm.classList.toggle("mostrarMobile")
+            })
+        });
+        closeModal.forEach(closeBtn =>{
+            closeBtn.addEventListener("click",()=>{
+                modalAdm.classList.remove("mostrarMobile");
+                modalEdit.classList.remove("mostrarMobile")
+            });
         })
-    })
 
-
+        //open modal edit
+        openModalEditar.addEventListener("click",()=>{
+            modalAdm.classList.remove("mostrarMobile");
+            modalEdit.classList.toggle("mostrarMobile")
+        });
+        
+    }
 
 
 })

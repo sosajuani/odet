@@ -32,7 +32,11 @@
     border: $pixel solid $color;
     border-radius: $radius;
 }
-
+@mixin uploadFileButton{
+    input[type=file]{
+        display: none
+    }
+}
 
 //icons
 @mixin cardIcon($color,$color2) {

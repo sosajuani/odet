@@ -399,6 +399,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path ease-in 0.5s;
 }
 .modalContAdmGral .btnClose {
   position: absolute;
@@ -428,6 +430,17 @@
 }
 .modalContAdmGral .modalContAdm .titleModalContAdm {
   color: red;
+}
+.modalContAdmGral .modalContAdm .formModal input[type=file] {
+  display: none;
+}
+.modalContAdmGral .modalContAdm .formModal label {
+  margin-top: 0.5rem;
+}
+.modalContAdmGral .modalContAdm .formModal .preview {
+  width: 100%;
+  height: 200px;
+  background: red;
 }
 
 .fieldSetAdm {
@@ -693,10 +706,12 @@
     display: none;
   }
 }
-.headerMain .ocultarMobile {
+
+.ocultarMobile {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
-.headerMain .mostrarMobile {
+
+.mostrarMobile {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 

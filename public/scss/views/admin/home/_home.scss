@@ -25,9 +25,7 @@
             .inputFileField{
                 margin: 0 0 0.5rem 0;
             }
-            input[type=file]{
-                display: none
-            }
+            @include mix.uploadFileButton();
         }
         .imagePreviewCont{
             background: c.$colorLightGray;

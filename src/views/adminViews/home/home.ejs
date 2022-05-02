@@ -132,13 +132,29 @@
             </fieldset>
         </div>
     </section>
-    <div class="modalContAdmGral">
+    <div class="modalContAdmGral bannerHome">
         <div class="btnClose"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
             <img src="/img/banners/1.jpg" alt="banner">
             <div class="btnCont">
-                <button class="btn btn--blue">EDITAR</button>
-                <button class="btn btn--red">ELIMINAR</button>
+                <button class="btn btn--blue btnEditModal">EDITAR</button>
+                <button class="btn btn--red btnEditDelete">ELIMINAR</button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContAdmGral modalEdit">
+        <div class="btnClose"><i class='bx bx-x'></i></div>
+        <div class="modalContAdm">
+            <form class="formModal" action="">
+                <div class="preview"></div>
+                <label class="btn btn--blue" for="uploadFileEdit">
+                    <i class='bx bx-upload'></i>
+                    Subir imagen
+                </label>
+                <input id="uploadFileEdit" type="file">
+            </form>
+            <div class="btnCont">
+                <button class="btn btn--blue btnEditModal">EDITAR</button>
             </div>
         </div>
     </div>
