@@ -103,7 +103,6 @@ const moveCarrousel = (direction)=>{
     carrouselItems[value-1].classList.toggle("sliderShow")
     console.log(carrouselItems[item-1]);
 }
-//console.log(carrouselItems.shift());
 if(rightArrow){
     rightArrow.addEventListener("click",()=>{
         moveCarrousel(1)

@@ -20,18 +20,6 @@ window.addEventListener('load',()=>{
     const errorContDivision = document.querySelector(".errDivision");
 
     if(nameTeamCreated){
-        //front validation
-        // nameTeamCreated.addEventListener("blur",(e)=>{
-        //     if(e.target.value === ""){
-        //         nameTeamCreated.classList.add("errFormInput")
-        //         nameTeamCreated.classList.remove("validFormInput")
-        //         errorContName.innerHTML="El campo no puede estar vacio"
-        //     }else{
-        //         nameTeamCreated.classList.remove("errFormInput")
-        //         nameTeamCreated.classList.add("validFormInput")
-        //         errorContName.innerHTML=""
-        //     }
-        // })
         nameTeamCreated.addEventListener("blur",(e)=>{
             if(e.target.value.length < 2 ){
                 nameTeamCreated.classList.add("errFormInput")
@@ -115,4 +103,19 @@ window.addEventListener('load',()=>{
             templateCreateTeamDiv.innerHTML="Division: "+divisionText
         })
     }
+
+    //banner upload
+
+    //banner modal
+    const openModal = document.querySelectorAll(".openModal");
+
+    openModal.forEach(item =>{
+        item.addEventListener("click",()=>{
+            alert("hola")
+        })
+    })
+
+
+
+
 })

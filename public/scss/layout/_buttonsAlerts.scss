@@ -21,4 +21,9 @@
         border-radius: 5px;
         color: c.$colorWhite;
     }
+    &--red{
+        background: c.$colorRedBtn;
+        border-radius: 5px;
+        color: c.$colorWhite;
+    }
 }

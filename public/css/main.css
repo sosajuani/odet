@@ -389,6 +389,47 @@
   background: linear-gradient(90deg, transparent 0%, #c7c7c7 50%, transparent 100%);
 }
 
+.modalContAdmGral {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContAdmGral .btnClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 5rem;
+  display: inline-flex;
+  color: #fff;
+  cursor: pointer;
+}
+.modalContAdmGral .modalContAdm {
+  background: #efefef;
+  line-height: 0;
+  width: 80%;
+  padding: 0.5rem;
+}
+.modalContAdmGral .modalContAdm img {
+  width: 100%;
+}
+.modalContAdmGral .modalContAdm .btnCont {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.modalContAdmGral .modalContAdm .btnCont button {
+  margin-left: 1rem;
+}
+.modalContAdmGral .modalContAdm .titleModalContAdm {
+  color: red;
+}
+
 .fieldSetAdm {
   border: 2px solid #15547e;
 }
@@ -548,6 +589,11 @@
 }
 .btn--blue {
   background: #15547e;
+  border-radius: 5px;
+  color: #fff;
+}
+.btn--red {
+  background: #dc3545;
   border-radius: 5px;
   color: #fff;
 }

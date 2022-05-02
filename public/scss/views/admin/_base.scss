@@ -3,7 +3,7 @@
 .adminCont{
     @include mix.gridTemplate(150px repeat(1,1fr));
     .headerAdmin{
-        padding: 1rem;
+        padding: c.$rem1;
         background: c.$colorBlue;
         color: c.$colorWhite;
         min-height: 100vh;
@@ -21,7 +21,7 @@
                 @include mix.ulReset();
                 font-size: 1.3rem;
                 li{
-                    margin-top: 1rem;
+                    margin-top: c.$rem1;
                     text-align: center;
                     a{
                         color: c.$colorWhite;
@@ -47,6 +47,46 @@
                 box-shadow: 0px 1px 1px rgb(0 0 0 / 20%);
                 background: linear-gradient(90deg, transparent 0%, c.$colorGray 50% ,transparent 100%);
             }
+        }
+    }
+}
+.modalContAdmGral{
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btnClose{
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 5rem;
+        display: inline-flex;
+        color: c.$colorWhite;
+        cursor: pointer;
+    }
+    .modalContAdm{
+        background: c.$colorLightGray;
+        line-height: 0;
+        width: 80%;
+        padding: 0.5rem;
+        img{
+            width: 100%;
+        }
+        .btnCont{
+            padding: c.$rem1;
+            display: flex;
+            justify-content: flex-end;
+            button{
+                margin-left: c.$rem1;
+            }
+        }
+        .titleModalContAdm{
+            color: red;
         }
     }
 }
