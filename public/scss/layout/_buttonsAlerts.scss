@@ -9,6 +9,12 @@
             @include mix.alertLink(#856404);
         } 
     }
+    &--danger{
+        @include mix.alertBase(#f8d7da,#721c24,#f5c6cb);
+        a{
+            @include mix.alertLink(#491217);
+        }
+    }
 }
 .btn{
     padding: .5rem;
@@ -17,18 +23,15 @@
     text-decoration: none;
     display: inline-block;
     &--blue{
-        background: c.$colorBlue;
-        border-radius: 5px;
-        color: c.$colorWhite;
+        @include mix.btn(c.$colorBlue,c.$colorWhite,5px);
     }
     &--red{
-        background: c.$colorRedBtn;
-        border-radius: 5px;
-        color: c.$colorWhite;
+        @include mix.btn(c.$colorRedBtn,c.$colorWhite,5px);
     }
     &--gray{
-        background: c.$colorDisabled;
-        border-radius: 5px;
-        color: c.$colorWhite;
+        @include mix.btn(c.$colorDisabled,c.$colorWhite,5px);
+    }
+    &--green{
+        @include mix.btn(c.$colorGreen,c.$colorWhite,5px);
     }
 }

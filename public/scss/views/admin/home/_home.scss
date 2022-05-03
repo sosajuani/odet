@@ -21,6 +21,10 @@
         @include mix.gridTemplate(30% repeat(1, 1fr));
         flex-wrap: wrap;
         div{
+            .alert{
+                width: 80%;
+                margin: 10px auto;
+            }
             @include mix.flexPosition(column,center,start);
             .inputFileField{
                 margin: 0 0 0.5rem 0;

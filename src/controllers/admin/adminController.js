@@ -13,18 +13,9 @@ const Decline = db.Decline;
 const DivisionControl = db.DivisionControl;
 const MatchWeek = db.Matchweek;
 const Statistic = db.Statistic;
+const Banner = db.Banner;
 
 const adminController = {
-    home: (req,res)=>{
-        // User.findOne({
-        //     where:{
-        //         id: req.session.user.id
-        //     }
-        // })
-        // .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
-        // .catch(e => console.log(e))
-        res.render('adminViews/home/home.ejs',{user:"juan"})
-    },
     news: (req,res)=>{
         News.findAll()
         .then(news => res.render('admin/newsAdm.ejs',{news}))

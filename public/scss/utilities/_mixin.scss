@@ -15,7 +15,12 @@
 @mixin alertBase($bg,$color,$border){
     background: $bg;
     color: $color;
-    border-color: 1px solid $border;
+    border: 1px solid $border;
+}
+@mixin btn($bg,$color,$borderRadius){
+    background: $bg;
+    color: $color;
+    border-radius: $borderRadius;
 }
 @mixin alertLink($color){
     color: $color;

@@ -40,14 +40,17 @@
             <fieldset class="fieldSetAdm">
                 <legend>Banners</legend>
                 <p>En esta sección vas a poder subir, editar y eliminar los banners de inicio</p>
-                <form class="formField" action="">
+                <form class="formField" action="/admin/uploadBanner" method="post" enctype="multipart/form-data">
                     <div>
-                        <label class="inputFileField btn btn--blue" for="inputFile">
+                        <% if(locals.errors && locals.errors.img){ %> 
+                            <div class="alert alert--danger"><%= locals.errors.img.msg %></div>
+                        <% } %> 
+                        <label class="inputFileField btn btn--green" for="inputFile">
                             <i class='bx bx-upload'></i>
                             Subir imagen
                         </label>
-                        <input id="inputFile" class="uploadBanner" type="file">
-                        <input type="submit" name="banner" class="btn btn--blue" value="Subir banner">
+                        <input id="inputFile" name="img" class="uploadBanner" type="file">
+                        <input type="submit" name="banner" class="btn btn--blue uploadBannerBtn" value="Subir banner">  
                     </div>
                     <div class="imagePreviewCont">
                         <div class="imagePreview">

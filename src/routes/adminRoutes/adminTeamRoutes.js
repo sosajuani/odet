@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminTeamsController = require('../../controllers/admin/adminTeamsController');
-const upload = require("../../middleware/multer")
+const upload = require("../../middleware/multer/uploadAvatarTeam")
 const authMiddleware = require('../../middleware/authMiddleware')
 const validation = require('../../middleware/validation')
 
@@ -11,7 +11,7 @@ router.get('/search',adminTeamsController.search)
 router.get('/search/div',adminTeamsController.searchDivTour)
 router.get('/new',adminTeamsController.create)
 router.post('/new',upload.single("img"),validation.createTeam,adminTeamsController.createProcess)
-router.get('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.edit)
+router.get('/edit/:id',validation.createTeam,adminTeamsController.edit)
 router.put('/edit/:id',upload.single("img"),validation.createTeam,adminTeamsController.editProcess)
 
 //admin con permisos

@@ -18,6 +18,10 @@ const Tournament = db.Tournament;
 const Division = db.Division;
 const DivisionControl = db.DivisionControl;
 const Statistic = db.Statistic;
+const Banner = db.Banner;
+const BannerActive = db.BannerActive;
+const Sponsor = db.Sponsor;
+const SponsorActive = db.SponsorActive;
 
 const adminController = {
     home: (req,res)=>{
@@ -870,6 +874,15 @@ DB_DIALECT=mysql`;
                     }
                 }
             }
+            SponsorActive.bulkCreate([
+                { type: "activado" },
+                { type: "desactivado" }
+            ])
+            BannerActive.bulkCreate([
+                { type: "activado" },
+                { type: "desactivado" }
+            ])
+
         }catch(e){
             console.log(e);
         }

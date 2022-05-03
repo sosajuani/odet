@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
-const path = require("path")
+const path = require("path");
+
 const validation = {
     validationLogin: [
             body('user').notEmpty().withMessage("Debes colocar un usuario"),
@@ -61,6 +62,21 @@ const validation = {
         body('tournamentId').notEmpty().withMessage("Debe seleccionar un torneo"),
         body('divisionId').notEmpty().withMessage("Debe seleccionar una división"),
         body('img').custom((value, {req})=>{
+            if(!req.file){
+                return true
+            }else{
+                const archiveName = req.file.originalname.toLowerCase()
+                const extensionArchive = path.extname(archiveName)
+                const extensions = ['.jpg','.png','.jpeg']
+                if(extensions.includes(extensionArchive) === false){
+                    throw new Error("Oops la extensión de la imagen no es correcta")
+                }
+            }
+            return true
+        })
+    ],
+    uploadImage: [
+        body('.img').custom((value, {req})=>{
             if(!req.file){
                 return true
             }else{

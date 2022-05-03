@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../../controllers/admin/adminController');
+const adminHomeController = require('../../controllers/admin/adminHomeController');
 const authMiddleware = require('../../middleware/authMiddleware')
 const validation = require('../../middleware/validation')
+const uploadBanner = require("../../middleware/multer/uploadBanner")
 
 //admin desarrollo
-router.get('/',adminController.home)
+router.get('/',adminHomeController.home)
+router.post('/uploadBanner',uploadBanner.single("img"),validation.uploadImage,adminHomeController.uploadBanner)
 router.get('/news',adminController.news)
 
 router.get('/news/create',adminController.newsCreate)
