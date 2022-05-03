@@ -19,6 +19,30 @@ window.addEventListener('load',()=>{
     const errorContTournament = document.querySelector(".errTournament");
     const errorContDivision = document.querySelector(".errDivision");
 
+    //function preview file
+    const previewFunction = (input,preview)=>{
+        const inputFile = document.querySelector(input);
+        const previewDiv = document.querySelector(preview)
+        inputFile.addEventListener("change",(e)=>{
+            let reader = new FileReader();
+            if(e.target.files[0]){  
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload = ()=>{
+                    let image = document.createElement('img')
+                    image.src = reader.result
+                    previewDiv.innerHTML='';
+                    extensionsValid.includes(extensionArchive) === true 
+                     ? previewDiv.append(image)
+                     : previewDiv.innerHTML='archivo no valido';
+                }
+            }
+            let archiveName = inputFile.value;
+            let extensionArchive = archiveName.split(".").pop().toLowerCase()
+            const extensionsValid = ['jpg','png','jpeg']
+        })
+    }  
+
+
     if(nameTeamCreated){
         nameTeamCreated.addEventListener("blur",(e)=>{
             if(e.target.value.length < 2 ){
@@ -105,7 +129,8 @@ window.addEventListener('load',()=>{
     }
 
     //banner upload
-
+    //previewFunction(".inputFileField",".imagePreview")
+    previewFunction(".uploadBanner",".imagePreview")
     //banner modal
     const modalAdm = document.querySelector(".bannerHome");
     if(modalAdm){

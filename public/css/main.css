@@ -482,6 +482,10 @@
   background: #d1d1d1;
   width: 100%;
   height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .fieldSetAdm .formField .imagePreviewCont .imagePreview img {
   width: 100%;
@@ -607,6 +611,11 @@
 }
 .btn--red {
   background: #dc3545;
+  border-radius: 5px;
+  color: #fff;
+}
+.btn--gray {
+  background: #6c757d;
   border-radius: 5px;
   color: #fff;
 }

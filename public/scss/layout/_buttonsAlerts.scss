@@ -26,4 +26,9 @@
         border-radius: 5px;
         color: c.$colorWhite;
     }
+    &--gray{
+        background: c.$colorDisabled;
+        border-radius: 5px;
+        color: c.$colorWhite;
+    }
 }

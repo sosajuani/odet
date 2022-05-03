@@ -46,8 +46,8 @@
                             <i class='bx bx-upload'></i>
                             Subir imagen
                         </label>
-                        <input id="inputFile" type="file">
-                        <input type="submit" class="btn btn--blue" value="Subir banner">
+                        <input id="inputFile" class="uploadBanner" type="file">
+                        <input type="submit" name="banner" class="btn btn--blue" value="Subir banner">
                     </div>
                     <div class="imagePreviewCont">
                         <div class="imagePreview">
@@ -137,6 +137,7 @@
         <div class="modalContAdm">
             <img src="/img/banners/1.jpg" alt="banner">
             <div class="btnCont">
+                <button class="btn btn--gray">DESACTIVAR</button>
                 <button class="btn btn--blue btnEditModal">EDITAR</button>
                 <button class="btn btn--red btnEditDelete">ELIMINAR</button>
             </div>
@@ -151,7 +152,7 @@
                     <i class='bx bx-upload'></i>
                     Subir imagen
                 </label>
-                <input id="uploadFileEdit" type="file">
+                <input name="bannerImg" class="uploadFileEdit" id="uploadFileEdit" type="file">
             </form>
             <div class="btnCont">
                 <button class="btn btn--blue btnEditModal">EDITAR</button>
