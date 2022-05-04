@@ -99,9 +99,10 @@ const moveCarrousel = (direction)=>{
     if(value === 0 || value === carrouselItems.length +1){
         value = value === 0 ? carrouselItems.length : 1
     }
-    carrouselItems[item-1].classList.toggle("sliderShow")
-    carrouselItems[value-1].classList.toggle("sliderShow")
-    console.log(carrouselItems[item-1]);
+    if(carrouselItems.length > 1){
+        carrouselItems[item-1].classList.toggle("sliderShow")
+        carrouselItems[value-1].classList.toggle("sliderShow")
+    }
 }
 if(rightArrow){
     rightArrow.addEventListener("click",()=>{

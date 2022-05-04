@@ -131,7 +131,9 @@ window.addEventListener('load',()=>{
     //banner upload
     //previewFunction(".inputFileField",".imagePreview")
     const uploadBannerBtn = document.querySelector(".uploadBannerBtn")
-    previewFunction(".uploadBanner",".imagePreview")
+    if(uploadBannerBtn){
+        previewFunction(".uploadBanner",".imagePreview")
+    }
 
     //banner modal
     const modalAdm = document.querySelector(".bannerHome");

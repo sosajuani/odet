@@ -3,15 +3,11 @@
 <section class="gralCont">
     <div class="carrouselCont">
         <div class="carrouselItemCont">
-            <div class="carrouselItem sliderShow"  data-id="1" style="background: #45551a;">
-                <img src="/img/banners/1.jpg" alt="">
-            </div>
-            <div class="carrouselItem" data-id="2"  style="background: #53554d;">
-                segundo
-            </div>
-            <div class="carrouselItem" data-id="3"  style="background: #2e7896;">
-                tercero
-            </div>
+            <% for( let i = 0; i < bannersConsult.length; i++ ) { %>
+                <div class="carrouselItem <%= i == 0 ? "sliderShow" : null %>"  data-id="<%= bannersConsult[i].id %>" style="background: #45551a;">
+                    <img src="/img/banners/<%= bannersConsult[i].image %>" alt="<%= bannersConsult[i].image %>">
+                </div>
+            <% } %>
             <div class="arrowCarrouselCont">
                 <div class="leftCarrousel">
                     <i class='bx bxs-chevron-left'></i>

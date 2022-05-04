@@ -7,12 +7,16 @@ const News = db.News;
 const Tournament = db.Tournament;
 const Division = db.Division;
 const Statistic = db.Statistic;
+const Banner = db.Banner;
 
 const mainController = {
-    home: (req,res)=>{
-        News.findAll()
-        .then(news => res.render('userViews/pages/home/home.ejs',{news}))
-        .catch(e => console.log(e))
+    home: async(req,res)=>{
+        const bannersConsult = await Banner.findAll({
+            where:{
+                active: 1
+            }
+        });
+        res.render('userViews/pages/home/home.ejs',{bannersConsult})
     },
     noticiaVista: (req,res)=>{
         res.render('pages/noticiaVista.ejs');
