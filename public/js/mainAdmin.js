@@ -137,29 +137,47 @@ window.addEventListener('load',()=>{
     const modalAdm = document.querySelector(".bannerHome");
     if(modalAdm){
         const openModal = document.querySelectorAll(".openModal");
-        const openModalEditar = document.querySelector(".btnEditModal");
         const modalEdit = document.querySelector(".modalEdit")
         const closeModal = document.querySelectorAll(".btnClose");
+        const previewImageModal = document.querySelector(".previewImageModal");
+        const disabledBtn = document.querySelector(".disabledBtn");
+        const statusBanner = document.querySelector(".statusBanner");
+        const idInputBanner = document.querySelector(".idInput");
+        const btnEditModal = document.querySelector(".btnEditModal");
 
         openModal.forEach(item =>{
+            const id = item.dataset.id;
             item.addEventListener("click",()=>{
-                modalAdm.classList.toggle("mostrarMobile")
+                fetch('/admin/api/bannerdata/'+id)
+                .then(res => res.json())
+                .then(data => {
+                    previewImageModal.innerHTML=`
+                        <img src="/img/banners/${data.banner.data.image}" alt="banner_${data.banner.data.id}" />
+                    `;
+                    if(data.banner.data.active === 1){
+                        disabledBtn.classList.add("btn--gray");
+                        disabledBtn.classList.remove("btn--green");
+                        disabledBtn.innerText = "DESACTIVAR"
+                    }else{
+                        disabledBtn.innerText = "ACTIVAR"
+                        disabledBtn.classList.add("btn--green");
+                        disabledBtn.classList.remove("btn--gray");
+                    }
+                    statusBanner.value= data.banner.data.active;
+                    idInputBanner.value = id;
+                    btnEditModal.href = `/admin/banner/${id}/edit`
+                })
+                modalAdm.classList.toggle("mostrarMobile");
+                disabledBtn.addEventListener("click",(e)=>{
+                    
+                })
             })
         });
         closeModal.forEach(closeBtn =>{
             closeBtn.addEventListener("click",()=>{
                 modalAdm.classList.remove("mostrarMobile");
-                modalEdit.classList.remove("mostrarMobile")
+                modalEdit.classList.remove("mostrarMobile");
             });
-        })
-
-        //open modal edit
-        openModalEditar.addEventListener("click",()=>{
-            modalAdm.classList.remove("mostrarMobile");
-            modalEdit.classList.toggle("mostrarMobile")
-        });
-        
+        })    
     }
-
-
 })

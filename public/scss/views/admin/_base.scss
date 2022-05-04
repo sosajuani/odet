@@ -95,10 +95,16 @@
             label{
                 margin-top: 0.5rem;
             }
-            .preview{
+            .previewEdit{
                 width: 100%;
                 height: 200px;
-                background: red;
+                background: c.$colorGrayd1d1d1;
+                @include mix.flexPosition(row,center,center);
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }

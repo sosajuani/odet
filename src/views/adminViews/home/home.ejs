@@ -61,75 +61,11 @@
                 <div>
                     <h4>Lista de banners <div class="btn btn--blue"><i class='bx bx-plus' ></i></div></h4>
                     <div class="bannersListCont">
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
-                        <div class="bannerItem openModal">
-                            <img src="/img/banners/1.jpg" alt="banner">
-                        </div>
+                        <% bannerConsult.forEach(banner => { %>    
+                            <div data-id="<%= banner.id %>" class="bannerItem openModal">
+                                <img src="/img/banners/<%= banner.image %>" alt="banner">
+                            </div>
+                        <% }) %> 
                     </div>
                 </div>
             </fieldset>
@@ -138,10 +74,16 @@
     <div class="modalContAdmGral bannerHome">
         <div class="btnClose"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
-            <img src="/img/banners/1.jpg" alt="banner">
+            <div class="previewImageModal">
+                <img src="/img/banners/1.jpg" class="" alt="banner">
+            </div>
             <div class="btnCont">
-                <button class="btn btn--gray">DESACTIVAR</button>
-                <button class="btn btn--blue btnEditModal">EDITAR</button>
+                <form action="/admin/bannerstatus/" method="post">
+                    <input type="hidden" name="id" class="idInput" value="">
+                    <input type="hidden" class="statusBanner" name="status" value="">
+                    <button class="btn btn--gray disabledBtn">DESACTIVAR</button>
+                </form>
+                <a class="btnEditModal" href="/admin/banner/"><button class="btn btn--blue">EDITAR</button></a>
                 <button class="btn btn--red btnEditDelete">ELIMINAR</button>
             </div>
         </div>
@@ -149,8 +91,11 @@
     <div class="modalContAdmGral modalEdit">
         <div class="btnClose"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
+            <h4>Estas editando el banner N°: </h4>
             <form class="formModal" action="">
-                <div class="preview"></div>
+                <div class="previewEdit">
+                    Subir imagen
+                </div>
                 <label class="btn btn--blue" for="uploadFileEdit">
                     <i class='bx bx-upload'></i>
                     Subir imagen

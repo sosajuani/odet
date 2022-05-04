@@ -18,7 +18,7 @@ const Statistic = db.Statistic;
 const Banner = db.Banner;
 
 const homeController = {
-    home: (req,res)=>{
+    home: async(req,res)=>{
         // User.findOne({
         //     where:{
         //         id: req.session.user.id
@@ -26,7 +26,8 @@ const homeController = {
         // })
         // .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
         // .catch(e => console.log(e))
-        res.render('adminViews/home/home.ejs',{user:"juan"})
+        const bannerConsult = await Banner.findAll();
+        res.render('adminViews/home/home.ejs',{bannerConsult})
     },
     uploadBanner: async(req,res)=>{
         let errors = validationResult(req);
@@ -37,11 +38,43 @@ const homeController = {
             }
             return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
         }
-        // Banner.create({
-        //     image: "",
-        //     active: 1
-        // })
+        Banner.create({
+            image: "",
+            active: 1
+        })
        // console.log(req.file.filename);
+    },
+    dataModal: async(req,res)=>{
+        const banner = req.params.id;
+        const bannerConsult = await Banner.findByPk(banner);
+        let response = {
+            meta: {
+                status: 200,
+                url: '/admin/api/bannerdata/'+banner
+            },
+            banner:{
+                data: {
+                    image: bannerConsult.image,
+                    active: bannerConsult.active
+                }
+            }
+        }
+        return res.json(response)
+    },
+    updateActiveBanner: async(req,res)=>{
+        const id = req.body.id;
+        const status = parseInt(req.body.status);
+        await Banner.update({
+            active: status === 1 ? 2 : 1
+        },{
+            where:{
+                id
+            }
+        })
+        return res.redirect("/admin/")
+    },
+    updateBanner: (req,res)=>{
+        res.send("funciono")
     }
 }
 
