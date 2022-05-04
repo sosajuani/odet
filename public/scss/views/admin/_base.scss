@@ -79,6 +79,13 @@
         img{
             width: 100%;
         }
+        .previewImageSponsor{
+            height: 200px;
+            @include mix.flexPosition(row,center,center);
+            img{
+                width: auto;
+            }
+        }
         .btnCont{
             padding: c.$rem1;
             display: flex;

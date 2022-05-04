@@ -16,18 +16,12 @@ const DivisionControl = db.DivisionControl;
 const MatchWeek = db.Matchweek;
 const Statistic = db.Statistic;
 const Banner = db.Banner;
+const Sponsor = db.Sponsor;
 
-const homeController = {
-    home: async(req,res)=>{
-        // User.findOne({
-        //     where:{
-        //         id: req.session.user.id
-        //     }
-        // })
-        // .then(resolve => res.render('admin/indexAdm.ejs',{user:resolve}))
-        // .catch(e => console.log(e))
-        const bannerConsult = await Banner.findAll();
-        res.render('adminViews/home/home.ejs',{bannerConsult})
+const adminSponsor = {
+    sponsors: async(req,res)=>{
+        const sponsorConsult = await Sponsor.findAll();
+        res.render('adminViews/sponsors/sponsors.ejs',{sponsorConsult})
     },
     uploadBanner: async(req,res)=>{
         let errors = validationResult(req);
@@ -124,4 +118,4 @@ const homeController = {
     }
 }
 
-module.exports = homeController;
+module.exports = adminSponsor;

@@ -2,43 +2,7 @@
     <section class="adminCont">
         <%- include("../partials/header.ejs") %> 
         <div class="contGralAdmin gralCont">
-            <h4 class="titlePageAdm">Bienvenido a tu panel de administración</h4>
-            <div class="homeInfo">
-                <p>Hola! $nombreUsuario. Acá vas a poder modificar todos los aspectos de la página.</p>
-                <p>¿Dudas?, Visita la web de <a class="linkP" href="">ODET</a> o bien envía un mail a <a class="linkP" href="">contacto@juansosa.com.ar</a></p>
-            </div>
-            <fieldset class="fieldSetAdm">
-                <legend>Banners</legend>
-                <p>En esta sección vas a poder subir, editar y eliminar los banners de inicio</p>
-                <form class="formField" action="/admin/uploadBanner" method="post" enctype="multipart/form-data">
-                    <div>
-                        <% if(locals.errors && locals.errors.img){ %> 
-                            <div class="alert alert--danger"><%= locals.errors.img.msg %></div>
-                        <% } %> 
-                        <label class="inputFileField btn btn--green" for="inputFile">
-                            <i class='bx bx-upload'></i>
-                            Subir imagen
-                        </label>
-                        <input id="inputFile" name="img" class="uploadBanner" type="file">
-                        <input type="submit" name="banner" class="btn btn--blue uploadBannerBtn" value="Subir banner">  
-                    </div>
-                    <div class="imagePreviewCont">
-                        <div class="imagePreview">
-                            Subir una imagen
-                        </div>
-                    </div>
-                </form>
-                <div>
-                    <h4>Lista de banners <div class="btn btn--blue"><i class='bx bx-plus' ></i></div></h4>
-                    <div class="bannersListCont">
-                        <% bannerConsult.forEach(banner => { %>    
-                            <div data-id="<%= banner.id %>" class="bannerItem openModal">
-                                <img src="/img/banners/<%= banner.image %>" alt="banner">
-                            </div>
-                        <% }) %> 
-                    </div>
-                </div>
-            </fieldset>
+            <h4 class="titlePageAdm">Patrocinadores</h4>
             <fieldset class="fieldSetAdm">
                 <legend>Sponsors</legend>
                 <p>En esta sección vas a poder subir, editar y eliminar los sponsors</p>
@@ -63,9 +27,10 @@
                 <div>
                     <h4>Lista de sponsors <div class="btn btn--blue"><i class='bx bx-plus' ></i></div></h4>
                     <div class="bannersListCont">
-                        <% bannerConsult.forEach(banner => { %>    
-                            <div data-id="<%= banner.id %>" class="bannerItem openModal">
-                                <img src="/img/banners/<%= banner.image %>" alt="banner">
+                        <% sponsorConsult.forEach(sponsor => { %>    
+                            <div data-id="<%= sponsor.id %>" class="sponsorItem bannerItem ">
+                                <input type="hidden" name="active" value="<%= sponsor.active %>" class="sponsorStatus">
+                                <img src="/img/sponsors/<%= sponsor.image %>" alt="sponsor">
                             </div>
                         <% }) %> 
                     </div>
@@ -76,8 +41,8 @@
     <div class="modalContAdmGral bannerHome">
         <div class="btnClose"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
-            <div class="previewImageModalBanner">
-                <img src="/img/banners/1.jpg" class="" alt="banner">
+            <div class="previewImageModal previewImageSponsor">
+                <img class="previewSponsor" src="/img/banners/1.jpg" class="" alt="banner">
             </div>
             <div class="btnCont">
                 <form action="/admin/bannerstatus/" method="post">

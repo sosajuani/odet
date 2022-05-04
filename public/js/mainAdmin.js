@@ -134,6 +134,32 @@ window.addEventListener('load',()=>{
     if(uploadBannerBtn){
         previewFunction(".uploadBanner",".imagePreview")
     }
+    const uploadSponsorBtn = document.querySelector(".uploadSponsorBtn");
+    if(uploadSponsorBtn){
+        previewFunction(".uploadSponsor",".imagePreviewSponsor")
+    }
+    //sponsor modal
+    const sponsorItem = document.querySelectorAll(".sponsorItem");
+    const previewSponsor = document.querySelector(".previewSponsor");
+    const disabledBtn = document.querySelector(".disabledBtn");
+    if(sponsorItem){
+        sponsorItem.forEach(item =>{
+            item.addEventListener("click",()=>{
+                const dataSetSponsor = item.dataset.id
+                previewSponsor.src = item.children[1].src
+                if(item.children[0].value == 1){
+                    disabledBtn.classList.add("btn--gray");
+                    disabledBtn.classList.remove("btn--green");
+                    disabledBtn.innerText = "DESACTIVAR"
+                }else{
+                    disabledBtn.innerText = "ACTIVAR"
+                    disabledBtn.classList.add("btn--green");
+                    disabledBtn.classList.remove("btn--gray");
+                }
+                modalAdm.classList.toggle("mostrarMobile");
+            })
+        })
+    }
 
     //banner modal
     const modalAdm = document.querySelector(".bannerHome");
@@ -141,7 +167,7 @@ window.addEventListener('load',()=>{
         const openModal = document.querySelectorAll(".openModal");
         const modalEdit = document.querySelector(".modalEdit")
         const closeModal = document.querySelectorAll(".btnClose");
-        const previewImageModal = document.querySelector(".previewImageModal");
+        const previewImageModalBanner = document.querySelector(".previewImageModalBanner");
         const disabledBtn = document.querySelector(".disabledBtn");
         const statusBanner = document.querySelector(".statusBanner");
         const idInputBanner = document.querySelector(".idInput");
@@ -153,7 +179,7 @@ window.addEventListener('load',()=>{
                 fetch('/admin/api/bannerdata/'+id)
                 .then(res => res.json())
                 .then(data => {
-                    previewImageModal.innerHTML=`
+                    previewImageModalBanner.innerHTML=`
                         <img src="/img/banners/${data.banner.data.image}" alt="banner_${data.banner.data.id}" />
                     `;
                     if(data.banner.data.active === 1){

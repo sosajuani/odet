@@ -9,6 +9,7 @@ const uploadBanner = require("../../middleware/multer/uploadBanner")
 //admin desarrollo
 router.get('/',adminHomeController.home)
 router.post('/uploadBanner',uploadBanner.single("img"),validation.uploadImage,adminHomeController.uploadBanner);
+router.post('/uploadSponsor',uploadBanner.single("img"),validation.uploadImage,adminHomeController.uploadSponsor);
 router.get('/banner/:id/edit',adminHomeController.updateBanner);
 router.put('/banner/:id/edit',uploadBanner.single("img"),validation.uploadImage,adminHomeController.updateBannerProcess);
 router.get('/api/bannerdata/:id',adminHomeController.dataModal);

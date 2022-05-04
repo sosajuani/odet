@@ -43,6 +43,7 @@ const routesRegister = require('./src/routes/registerRoutes');
 const routesAdm = require('./src/routes/adminRoutes/adminRoutes');
 const routesAdmTournament = require('./src/routes/adminRoutes/adminTournamentRoutes');
 const routesAdmTeams = require('./src/routes/adminRoutes/adminTeamRoutes');
+const routesAdmSponsors = require('./src/routes/adminRoutes/adminTeamSponsors');
 const routesInstall = require('./install/installRoutes');
 app.use('/',routesMain);
 app.use('/teams',routesTeam);
@@ -53,6 +54,7 @@ app.use('/register',routesRegister);
 app.use('/admin',routesAdm);
 app.use('/admin/tournament',routesAdmTournament);
 app.use('/admin/teams',routesAdmTeams);
+app.use('/admin/sponsors',routesAdmSponsors);
 
 
 app.use('/install',routesInstall);
