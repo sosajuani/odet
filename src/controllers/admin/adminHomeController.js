@@ -73,8 +73,39 @@ const homeController = {
         })
         return res.redirect("/admin/")
     },
-    updateBanner: (req,res)=>{
-        res.send("funciono")
+    updateBanner: async(req,res)=>{
+        const bannerConsult = await Banner.findByPk(req.params.id)
+        res.render("adminViews/home/bannerEdit.ejs",{bannerConsult})
+    },
+    updateBannerProcess: async(req,res)=>{
+        const bannerConsult = await Banner.findByPk(req.params.id)
+        if(bannerConsult !== null){
+            const oldImage = bannerConsult.image;
+            let errors = validationResult(req);
+            if(!errors.isEmpty()){
+                //delete archive
+                if(req.file){
+                    fs.unlinkSync(path.resolve(__dirname,"../../../public/img/banners/"+req.file.filename))
+                }
+                return res.render("adminViews/home/bannerEdit.ejs",{errors:errors.mapped(), oldData:req.body,bannerConsult})
+            }
+            if(req.file){
+                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/banners/"+oldImage))
+                await Banner.update({
+                    image: req.file.filename
+                },{
+                    where:{
+                        id: req.params.id
+                    }
+                })
+                return res.redirect("/admin/")
+            }else{
+                return res.send("debe subir un archivo")
+            }
+        }else{
+            return res.send("el registro que quiere editar no existe")
+        }
+
     }
 }
 

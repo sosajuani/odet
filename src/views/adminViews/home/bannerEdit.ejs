@@ -1,0 +1,28 @@
+<%- include("../../userViews/partials/head.ejs", {title: "Admin"}) %> 
+    <section class="adminCont">
+        <%- include("../partials/header.ejs") %> 
+        <div class="contGralAdmin gralCont">
+            <fieldset class="fieldSetAdm">
+                <legend>Editar banner</legend>
+                <p>En esta sección vas a poder visualizar el banner actual</p>
+                <form class="formField" action="/admin/banner/<%= bannerConsult.id %>/edit?_method=PUT" method="post" enctype="multipart/form-data">
+                    <div>
+                        <% if(locals.errors && locals.errors.img){ %> 
+                            <div class="alert alert--danger"><%= locals.errors.img.msg %></div>
+                        <% } %> 
+                        <label class="inputFileField btn btn--green" for="inputFile">
+                            <i class='bx bx-upload'></i>
+                            Subir imagen
+                        </label>
+                        <input id="inputFile" name="img" class="uploadBanner" type="file">
+                        <input type="submit" name="banner" class="btn btn--blue uploadBannerBtn" value="Subir banner">  
+                    </div>
+                    <div class="imagePreviewCont">
+                        <div class="imagePreview">
+                            <img src="/img/banners/<%= bannerConsult.image %>" alt="<%= bannerConsult.image %>">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </section>
