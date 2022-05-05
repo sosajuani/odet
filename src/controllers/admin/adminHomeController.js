@@ -38,7 +38,7 @@ const homeController = {
             }
             return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
         }
-        Banner.create({
+        await Banner.create({
             image: "",
             active: 1
         })

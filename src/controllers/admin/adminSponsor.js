@@ -23,35 +23,67 @@ const adminSponsor = {
         const sponsorConsult = await Sponsor.findAll();
         res.render('adminViews/sponsors/sponsors.ejs',{sponsorConsult})
     },
-    uploadBanner: async(req,res)=>{
-        let errors = validationResult(req);
-        if(!errors.isEmpty()){
-            //delete archive
-            if(req.file){
-                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/banners/"+req.file.filename))
-            }
-            return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
+    editSponsor: async(req,res)=>{
+        const sponsorConsult = await Sponsor.findByPk(req.params.id);
+        if(sponsorConsult === null){
+            return res.render("errors/404.ejs",{pageVersion:'adm'})
         }
-        Banner.create({
-            image: "",
-            active: 1
-        })
-       // console.log(req.file.filename);
+        res.render('adminViews/sponsors/edit.ejs',{sponsorConsult})
     },
     uploadSponsor: async(req,res)=>{
+        const redirect = '/admin/sponsors';
         let errors = validationResult(req);
         if(!errors.isEmpty()){
             //delete archive
             if(req.file){
-                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsor/"+req.file.filename))
+                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsors/"+req.file.filename))
             }
-            return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
+            const sponsorConsult = await Sponsor.findAll();
+            return res.render("adminViews/sponsors/sponsors.ejs",{errors:errors.mapped(), oldData:req.body,sponsorConsult})
         }
-        Banner.create({
-            image: "",
-            active: 1
-        })
-       // console.log(req.file.filename);
+        if(req.file){
+            await Sponsor.create({
+                image: req.file.filename,
+                active: 1
+            })
+            return res.redirect(redirect)
+        }else{
+            return res.redirect(redirect)
+        }
+    },
+    updateSponsor: async(req,res)=>{
+        const redirect = '/admin/sponsors';
+        const sponsorConsult = await Sponsor.findAll();
+        const id = req.params.id;
+        let errors = validationResult(req);
+        sponsorConsult == null ? res.redirect(redirect) : null
+        const oldImage = sponsorConsult.image;
+        if(!errors.isEmpty()){
+            //delete archive
+            if(req.file){
+                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsors/"+req.file.filename))
+            }
+            return res.render("adminViews/sponsors/sponsors.ejs",{errors:errors.mapped(), oldData:req.body,sponsorConsult})
+        }
+        if(req.file){
+            fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsors/"+oldImage));
+            await Sponsor.destroy({
+                where:{
+                    image: oldImage
+                }
+            })
+            await Sponsor.update({
+                image: req.file.filename,
+                active: 1
+            },{
+                where:{
+                    id
+                }
+            })
+            return res.redirect(redirect)
+        }else{
+            return res.redirect(redirect)
+        }
     },
     dataModal: async(req,res)=>{
         const banner = req.params.id;

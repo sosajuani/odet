@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const adminSponsorController = require('../../controllers/admin/adminSponsor');
-const upload = require("../../middleware/multer/uploadAvatarTeam")
+const upload = require("../../middleware/multer/uploadSponsor")
 const authMiddleware = require('../../middleware/authMiddleware')
 const validation = require('../../middleware/validation')
 
 //admin desarrollo
-router.get('/',adminSponsorController.sponsors)
+router.get('/',adminSponsorController.sponsors);
+router.get('/edit/:id',adminSponsorController.editSponsor);
+router.post('/upload',upload.single("img"),validation.uploadImage,adminSponsorController.uploadSponsor);
+router.put('/update/:id',upload.single("img"),validation.uploadImage,adminSponsorController.updateSponsor)
 
 
 //admin con permisos

@@ -1,1 +1,11 @@
-error
+<% if(pageVersion == "adm"){ %> 
+    <%- include("../userViews/partials/head.ejs",{title: "error"}) %> 
+    <section class="adminCont">
+        <%- include("../adminViews/partials/header.ejs") %> 
+        <div class="contGralAdmin gralCont">
+            <div class="alert alert--danger">REGISTRO NO ENCONTRADO - <a href="/admin/sponsors">VOLVER</a></div>
+        </div>
+    </section>
+    </body>
+    </html>
+<% } %> 

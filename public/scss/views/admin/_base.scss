@@ -84,6 +84,7 @@
             @include mix.flexPosition(row,center,center);
             img{
                 width: auto;
+                height: 200px;
             }
         }
         .btnCont{

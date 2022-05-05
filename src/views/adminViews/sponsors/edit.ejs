@@ -4,7 +4,7 @@
         <div class="contGralAdmin gralCont">
             <h4 class="titlePageAdm">Patrocinadores</h4>
             <fieldset class="fieldSetAdm">
-                <legend>Sponsors</legend>
+                <legend>Edición del producto</legend>
                 <p>En esta sección vas a poder subir, editar y eliminar los sponsors. Resolución recomendada: <b>200x200</b></p>
                 <form class="formField" action="/admin/sponsors/upload" method="post" enctype="multipart/form-data">
                     <div>
@@ -24,17 +24,6 @@
                         </div>
                     </div>
                 </form>
-                <div>
-                    <h4>Lista de sponsors</h4>
-                    <div class="bannersListCont">
-                        <% sponsorConsult.forEach(sponsor => { %>    
-                            <div data-id="<%= sponsor.id %>" class="sponsorItem bannerItem ">
-                                <input type="hidden" name="active" value="<%= sponsor.active %>" class="sponsorStatus">
-                                <img src="/img/sponsors/<%= sponsor.image %>" alt="sponsor">
-                            </div>
-                        <% }) %> 
-                    </div>
-                </div>
             </fieldset>
         </div>
     </section>

@@ -429,6 +429,7 @@
 }
 .modalContAdmGral .modalContAdm .previewImageSponsor img {
   width: auto;
+  height: 200px;
 }
 .modalContAdmGral .modalContAdm .btnCont {
   padding: 1rem;
