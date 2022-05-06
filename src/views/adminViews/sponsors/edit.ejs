@@ -5,8 +5,8 @@
             <h4 class="titlePageAdm">Patrocinadores</h4>
             <fieldset class="fieldSetAdm">
                 <legend>Edición del producto</legend>
-                <p>En esta sección vas a poder subir, editar y eliminar los sponsors. Resolución recomendada: <b>200x200</b></p>
-                <form class="formField" action="/admin/sponsors/upload" method="post" enctype="multipart/form-data">
+                <p>En esta sección vas a poder subir, editar y eliminar los sponsors. Resolución recomendada: <b>200px de alto</b></p>
+                <form class="formField" action="/admin/sponsors/update/<%= sponsorConsult.id %>?_method=PUT" method="post" enctype="multipart/form-data">
                     <div>
                         <% if(locals.errors && locals.errors.img){ %> 
                             <div class="alert alert--danger"><%= locals.errors.img.msg %></div>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="imagePreviewCont">
                         <div class="imagePreview imagePreviewSponsor">
-                            Subir una imagen
+                            <img src="/img/sponsors/<%= sponsorConsult.image %>" alt="<%= sponsorConsult.image %>">
                         </div>
                     </div>
                 </form>

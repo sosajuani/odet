@@ -40,12 +40,11 @@
     <div class="sponsorsHome">
         <h4>Nos acompañan</h4>
         <div class="sponsorItemsCont">
-            <div class="sponsorItem"></div>
-            <div class="sponsorItem"></div>
-            <div class="sponsorItem"></div>
-            <div class="sponsorItem"></div>
-            <div class="sponsorItem"></div>
-            <div class="sponsorItem"></div>
+            <% for( let i = 0; i < sponsorConsult.length; i++ ) { %>
+                <div class="sponsorItem">
+                    <img src="/img/sponsors/<%= sponsorConsult[i].image %>" alt="">
+                </div>
+            <% } %>
         </div>
     </div>
 </section>

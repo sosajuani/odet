@@ -42,22 +42,6 @@ const homeController = {
             image: "",
             active: 1
         })
-       // console.log(req.file.filename);
-    },
-    uploadSponsor: async(req,res)=>{
-        let errors = validationResult(req);
-        if(!errors.isEmpty()){
-            //delete archive
-            if(req.file){
-                fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsor/"+req.file.filename))
-            }
-            return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
-        }
-        Banner.create({
-            image: "",
-            active: 1
-        })
-       // console.log(req.file.filename);
     },
     dataModal: async(req,res)=>{
         const banner = req.params.id;

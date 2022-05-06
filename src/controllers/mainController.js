@@ -8,6 +8,7 @@ const Tournament = db.Tournament;
 const Division = db.Division;
 const Statistic = db.Statistic;
 const Banner = db.Banner;
+const Sponsor = db.Sponsor;
 
 const mainController = {
     home: async(req,res)=>{
@@ -16,7 +17,12 @@ const mainController = {
                 active: 1
             }
         });
-        res.render('userViews/pages/home/home.ejs',{bannersConsult})
+        const sponsorConsult = await Sponsor.findAll({
+            where:{
+                active:1
+            }
+        })
+        res.render('userViews/pages/home/home.ejs',{bannersConsult,sponsorConsult})
     },
     noticiaVista: (req,res)=>{
         res.render('pages/noticiaVista.ejs');
