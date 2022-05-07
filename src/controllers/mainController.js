@@ -38,7 +38,7 @@ const mainController = {
         if(tournamentConsult.length === 0 || divisionConsult.length === 0 || divisionConsult.length !== 0 && tournamentConsult.length === 0 || divisionConsult.length === 0 && tournamentConsult.length !== 0){
             errorConsult = true;
         }
-        let statisticsConsult = await Statistic.findAll({
+        const statisticsConsult = await Statistic.findAll({
             where:{
                 tournamentId: tournamentConsult[0].id,
                 divisionId: divisionConsult[0].id
@@ -102,9 +102,21 @@ const mainController = {
         return res.json(response)
     },
     fixture: async(req,res)=>{
-        const tournamentConsult = await Tournament.findAll();
-        const divisionConsult =  await Division.findAll()
-        res.render('pages/fixture.ejs',{tournamentConsult,divisionConsult});
+        const tournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]});
+        tournamentConsult.length == 0 ? res.render("errors/404.ejs",{pageVersion: 'user',errorMsg: "No hay torneos registrados en la base de datos",redirect:''}) : null
+        const divisionConsult = await Division.findAll({
+            where: {
+                tournamentId: tournamentConsult[0].id
+            }
+        })
+        const tournamentId = tournamentConsult[0];
+        const divisionId = divisionConsult[0];
+        res.render('userViews/pages/fixture/fixture.ejs',{
+            tournamentConsult,
+            divisionConsult,
+            tournamentId,
+            divisionId
+        });
     },
     login: (req,res)=>{
         res.render('pages/login.ejs');

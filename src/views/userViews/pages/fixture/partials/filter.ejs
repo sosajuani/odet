@@ -1,0 +1,25 @@
+<div class="filterCont">
+    <form action="/fixture/filter" method="post">
+        <div>
+            <div class="filterSelect">
+                <label for="selectTournament">Torneo</label>
+                <select name="tournamentId" id="selectTournament">
+                    <% for( let i = 0; i < tournamentConsult.length; i++ ) { %>
+                        <option <%= tournamentConsult[i].id == tournamentId ? "selected" : null %>  value="<%= tournamentConsult[i].id %>"><%= tournamentConsult[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="filterSelect">
+                <label for="tournament">División</label>
+                <select name="divisionId" class="divisionSelect" id="tournament">
+                    <% for( let i = 0; i < divisionConsult.length; i++ ) { %>
+                        <option <%= divisionConsult[i].id == divisionId ? "selected" : null %> value="<%= divisionConsult[i].id %>"><%= divisionConsult[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn--blue" type="submit">FILTRAR</button>
+        </div>
+    </form>
+</div>

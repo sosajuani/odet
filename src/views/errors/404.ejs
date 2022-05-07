@@ -9,3 +9,11 @@
     </body>
     </html>
 <% } %> 
+<% if(pageVersion == "user"){ %> 
+    <%- include("../userViews/partials/head.ejs",{title: "error"})  %> 
+    <%- include("../userViews/partials/header.ejs")  %> 
+    <section class="gralCont">
+        <div class="alert alert--danger"><%= errorMsg %>  - <a href="/<% redirect %> ">VOLVER</a></div>
+    </section>
+    <%- include("../userViews/partials/footer.ejs")  %> 
+<% } %> 
