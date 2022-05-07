@@ -426,6 +426,9 @@
 .modalContAdmGral .modalContAdm img {
   width: 100%;
 }
+.modalContAdmGral .modalContAdm h4 {
+  text-align: center;
+}
 .modalContAdmGral .modalContAdm .previewImageSponsor {
   height: 200px;
   display: flex;

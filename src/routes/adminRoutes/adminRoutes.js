@@ -11,6 +11,7 @@ router.get('/',adminHomeController.home)
 router.post('/uploadBanner',uploadBanner.single("img"),validation.uploadImage,adminHomeController.uploadBanner);
 router.get('/banner/:id/edit',adminHomeController.updateBanner);
 router.put('/banner/:id/edit',uploadBanner.single("img"),validation.uploadImage,adminHomeController.updateBannerProcess);
+router.delete('/banner/delete/:id',adminHomeController.deleteBanner);
 router.get('/api/bannerdata/:id',adminHomeController.dataModal);
 router.post('/bannerstatus',adminHomeController.updateActiveBanner);
 router.get('/news',adminController.news)

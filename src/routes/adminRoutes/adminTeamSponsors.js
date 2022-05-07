@@ -10,6 +10,7 @@ router.get('/',adminSponsorController.sponsors);
 router.get('/edit/:id',adminSponsorController.editSponsor);
 router.post('/upload',upload.single("img"),validation.uploadImage,adminSponsorController.uploadSponsor);
 router.put('/update/:id',upload.single("img"),validation.uploadImage,adminSponsorController.updateSponsor)
+router.delete('/delete/:id',adminSponsorController.deleteSponsor)
 
 
 //admin con permisos

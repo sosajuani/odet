@@ -39,7 +39,7 @@
         </div>
     </section>
     <div class="modalContAdmGral bannerHome">
-        <div class="btnClose"><i class='bx bx-x'></i></div>
+        <div class="btnClose btnCloseAction"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
             <div class="previewImageModal previewImageSponsor">
                 <img class="previewSponsor" src="/img/banners/1.jpg" class="" alt="banner">
@@ -55,22 +55,15 @@
             </div>
         </div>
     </div>
-    <div class="modalContAdmGral modalEdit">
-        <div class="btnClose"><i class='bx bx-x'></i></div>
+    <div class="modalContAdmGral modalDelete">
+        <div class="btnClose btnCloseAction"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
-            <h4>Estas editando el banner N°: </h4>
-            <form class="formModal" action="">
-                <div class="previewEdit">
-                    Subir imagen
-                </div>
-                <label class="btn btn--blue" for="uploadFileEdit">
-                    <i class='bx bx-upload'></i>
-                    Subir imagen
-                </label>
-                <input name="bannerImg" class="uploadFileEdit" id="uploadFileEdit" type="file">
-            </form>
+            <h4>¿Estas seguro de que queres eliminar el banner?</h4>
             <div class="btnCont">
-                <button class="btn btn--blue btnEditModal">EDITAR</button>
+                <form class="btnDeleteProcess" action="/admin/banner/delete/" method="post">
+                    <input class="btn btn--red" type="submit" value="ELIMINAR">
+                </form>
+                <button class="btn btn--blue btnCloseAction">CANCELAR</button>
             </div>
         </div>
     </div>

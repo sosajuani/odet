@@ -39,42 +39,10 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="fieldSetAdm">
-                <legend>Sponsors</legend>
-                <p>En esta sección vas a poder subir, editar y eliminar los sponsors</p>
-                <form class="formField" action="/admin/uploadSponsor" method="post" enctype="multipart/form-data">
-                    <div>
-                        <% if(locals.errors && locals.errors.img){ %> 
-                            <div class="alert alert--danger"><%= locals.errors.img.msg %></div>
-                        <% } %> 
-                        <label class="inputFileField btn btn--green" for="inputFile">
-                            <i class='bx bx-upload'></i>
-                            Subir imagen
-                        </label>
-                        <input id="inputFile" name="img" class="uploadSponsor" type="file">
-                        <input type="submit" name="sponsor" class="btn btn--blue uploadSponsorBtn" value="Subir banner">  
-                    </div>
-                    <div class="imagePreviewCont">
-                        <div class="imagePreview imagePreviewSponsor">
-                            Subir una imagen
-                        </div>
-                    </div>
-                </form>
-                <div>
-                    <h4>Lista de sponsors <div class="btn btn--blue"><i class='bx bx-plus' ></i></div></h4>
-                    <div class="bannersListCont">
-                        <% bannerConsult.forEach(banner => { %>    
-                            <div data-id="<%= banner.id %>" class="bannerItem openModal">
-                                <img src="/img/banners/<%= banner.image %>" alt="banner">
-                            </div>
-                        <% }) %> 
-                    </div>
-                </div>
-            </fieldset>
         </div>
     </section>
     <div class="modalContAdmGral bannerHome">
-        <div class="btnClose"><i class='bx bx-x'></i></div>
+        <div class="btnClose btnCloseAction"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
             <div class="previewImageModalBanner">
                 <img src="/img/banners/1.jpg" class="" alt="banner">
@@ -90,22 +58,15 @@
             </div>
         </div>
     </div>
-    <div class="modalContAdmGral modalEdit">
-        <div class="btnClose"><i class='bx bx-x'></i></div>
+    <div class="modalContAdmGral modalDelete">
+        <div class="btnClose btnCloseAction"><i class='bx bx-x'></i></div>
         <div class="modalContAdm">
-            <h4>Estas editando el banner N°: </h4>
-            <form class="formModal" action="">
-                <div class="previewEdit">
-                    Subir imagen
-                </div>
-                <label class="btn btn--blue" for="uploadFileEdit">
-                    <i class='bx bx-upload'></i>
-                    Subir imagen
-                </label>
-                <input name="bannerImg" class="uploadFileEdit" id="uploadFileEdit" type="file">
-            </form>
+            <h4>¿Estas seguro de que queres eliminar el banner?</h4>
             <div class="btnCont">
-                <button class="btn btn--blue btnEditModal">EDITAR</button>
+                <form class="btnDeleteProcess" action="/admin/banner/delete/" method="post">
+                    <input class="btn btn--red" type="submit" value="ELIMINAR">
+                </form>
+                <button class="btn btn--blue btnCloseAction">CANCELAR</button>
             </div>
         </div>
     </div>

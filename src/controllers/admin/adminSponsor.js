@@ -79,6 +79,16 @@ const adminSponsor = {
         }else{
             return res.redirect(redirect)
         }
+    },
+    deleteSponsor: async(req,res)=>{
+        const consultSponsor = await Sponsor.findByPk(req.params.id);
+        fs.unlinkSync(path.resolve(__dirname,"../../../public/img/sponsors/"+consultSponsor.image));
+        Sponsor.destroy({
+            where:{
+                id: req.params.id
+            }
+        });
+        return res.redirect('/admin/sponsors')
     }
 }
 

@@ -140,10 +140,14 @@ window.addEventListener('load',()=>{
     }
     //sponsor modal
     const sponsorItem = document.querySelectorAll('.sponsorItem');
-    const previewSponsor = document.querySelector('.previewSponsor');
-    const disabledBtn = document.querySelector('.disabledBtn');
-    const btnContSponsor = document.querySelector('.btnCont')
     if(sponsorItem){
+        const previewSponsor = document.querySelector('.previewSponsor');
+        const disabledBtn = document.querySelector('.disabledBtn');
+        const btnContSponsor = document.querySelector('.btnCont');
+        const btnEditDelete = document.querySelector('.btnEditDelete');
+        const modalDelete = document.querySelector('.modalDelete');
+        const btnDeleteProcess = document.querySelector('.btnDeleteProcess');
+
         sponsorItem.forEach(item =>{
             item.addEventListener('click',()=>{
                 const dataSetSponsor = item.dataset.id
@@ -160,21 +164,29 @@ window.addEventListener('load',()=>{
                 btnContSponsor.children[0].action = '/admin/sponsors/update/'+dataSetSponsor+'?_method=PUT'
                 modalAdm.classList.toggle('mostrarMobile');
                 btnContSponsor.children[1].href = '/admin/sponsors/edit/'+dataSetSponsor
+                btnEditDelete.addEventListener('click',()=>{
+                    modalAdm.classList.remove('mostrarMobile');
+                    modalDelete.classList.add('mostrarMobile');
+                    btnDeleteProcess.action = '/admin/sponsors/delete/'+dataSetSponsor+'?_method=DELETE'
+                })
             })
         })
     }
 
     //banner modal
     const modalAdm = document.querySelector('.bannerHome');
+    const closeModal = document.querySelectorAll('.btnCloseAction');
     if(modalAdm){
+        const modalDelete = document.querySelector('.modalDelete')
         const openModal = document.querySelectorAll('.openModal');
-        const modalEdit = document.querySelector('.modalEdit')
-        const closeModal = document.querySelectorAll('.btnClose');
         const previewImageModalBanner = document.querySelector('.previewImageModalBanner');
         const disabledBtn = document.querySelector('.disabledBtn');
         const statusBanner = document.querySelector('.statusBanner');
         const idInputBanner = document.querySelector('.idInput');
         const btnEditModal = document.querySelector('.btnEditModal');
+        const btnEditDelete = document.querySelector('.btnEditDelete');
+        const btnDeleteProcess = document.querySelector('.btnDeleteProcess');
+
 
         openModal.forEach(item =>{
             const id = item.dataset.id;
@@ -199,15 +211,17 @@ window.addEventListener('load',()=>{
                     btnEditModal.href = `/admin/banner/${id}/edit`
                 })
                 modalAdm.classList.toggle('mostrarMobile');
-                disabledBtn.addEventListener('click',(e)=>{
-                    
+                btnEditDelete.addEventListener('click',()=>{
+                    modalAdm.classList.remove('mostrarMobile');
+                    modalDelete.classList.add('mostrarMobile');
+                    btnDeleteProcess.action= '/admin/banner/delete/'+id+'?_method=DELETE'
                 })
             })
         });
         closeModal.forEach(closeBtn =>{
             closeBtn.addEventListener('click',()=>{
                 modalAdm.classList.remove('mostrarMobile');
-                modalEdit.classList.remove('mostrarMobile');
+                modalDelete.classList.remove('mostrarMobile');
             });
         })    
     }

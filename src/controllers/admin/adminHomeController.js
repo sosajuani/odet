@@ -29,6 +29,16 @@ const homeController = {
         const bannerConsult = await Banner.findAll();
         res.render('adminViews/home/home.ejs',{bannerConsult})
     },
+    deleteBanner: async(req,res)=>{
+        const consultBanner = await Banner.findByPk(req.params.id);
+        fs.unlinkSync(path.resolve(__dirname,"../../../public/img/banners/"+consultBanner.image));
+        await Banner.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        return res.redirect('/admin')
+    },
     uploadBanner: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -39,9 +49,10 @@ const homeController = {
             return res.render("adminViews/home/home.ejs",{errors:errors.mapped(), oldData:req.body})
         }
         await Banner.create({
-            image: "",
+            image: req.file.filename,
             active: 1
         })
+        return res.redirect('/admin')
     },
     dataModal: async(req,res)=>{
         const banner = req.params.id;

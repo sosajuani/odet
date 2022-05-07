@@ -79,6 +79,9 @@
         img{
             width: 100%;
         }
+        h4{
+            text-align: center;
+        }
         .previewImageSponsor{
             height: 200px;
             @include mix.flexPosition(row,center,center);
