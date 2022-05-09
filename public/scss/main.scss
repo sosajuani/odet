@@ -9,9 +9,9 @@
 @forward 'views/admin/home/home';
 
 //layout
+@forward 'base/base';
 @forward 'layout/icons';
 @forward 'layout/pagesPag';
 @forward 'layout/buttonsAlerts';
 @forward 'layout/header';
 @forward 'layout/footer';
-@forward 'base/base';

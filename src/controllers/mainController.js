@@ -22,7 +22,8 @@ const mainController = {
                 active:1
             }
         })
-        res.render('userViews/pages/home/home.ejs',{bannersConsult,sponsorConsult})
+        res.render('userViews/pages/home/home.ejs',{bannersConsult,sponsorConsult});
+
     },
     noticiaVista: (req,res)=>{
         res.render('pages/noticiaVista.ejs');
@@ -119,7 +120,7 @@ const mainController = {
         });
     },
     login: (req,res)=>{
-        res.render('pages/login.ejs');
+        res.render('userViews/pages/login/login.ejs');
     },
     loginProcess: async(req,res)=>{
         let errors = validationResult(req);

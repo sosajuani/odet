@@ -560,6 +560,29 @@
   border: 5px solid #3282b8;
 }
 
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gralCont {
+  width: 90%;
+  background: #fff;
+  margin: 1rem auto;
+  border: 1px solid #c7c7c7;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.linkP {
+  color: #3282b8;
+}
+
 .iconCardRed {
   height: 14px;
 }
@@ -777,25 +800,6 @@
   font-size: 0.6rem;
   text-align: center;
   padding: 1rem;
-}
-
-body {
-  margin: 0;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-}
-
-.gralCont {
-  width: 90%;
-  background: #fff;
-  margin: 1rem auto;
-  border: 1px solid #c7c7c7;
-  padding: 10px;
-  border-radius: 3px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-}
-
-.linkP {
-  color: #3282b8;
 }
 
 /*# sourceMappingURL=main.css.map */

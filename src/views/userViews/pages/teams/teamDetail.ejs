@@ -1,133 +1,135 @@
 <%- include("../../partials/head.ejs",{title: "Equipo"})  %> 
-<%- include("../../partials/header.ejs")  %> 
-<section class="gralCont">
-    <div class="headerTeamDetail">
-        <div class="teamCont infoTeamCont">
-            <ul class="teamHeadUl">
-                <li><a href="">Torneo: <%= teamConsult.tournaments.name %></a></li>
-                <li><a href="">División: <%= teamConsult.divisions.name %></a></li>
-                <li><a href="">Capitán: <%= teamConsult.users === null ? 'Sin capitán' : teamConsult.users.firstName %></a></li>
-            </ul>
-        </div>
-        <div class="teamCont nameAvatarCont">
-            <div class="avatarTeam">
-                <img src="/img/teams/<%= teamConsult.avatars.image %>" alt="">
+<div>
+    <%- include("../../partials/header.ejs")  %> 
+    <section class="gralCont">
+        <div class="headerTeamDetail">
+            <div class="teamCont infoTeamCont">
+                <ul class="teamHeadUl">
+                    <li><a href="">Torneo: <%= teamConsult.tournaments.name %></a></li>
+                    <li><a href="">División: <%= teamConsult.divisions.name %></a></li>
+                    <li><a href="">Capitán: <%= teamConsult.users === null ? 'Sin capitán' : teamConsult.users.firstName %></a></li>
+                </ul>
             </div>
-            <div class="nameTeam"><%= teamConsult.name %></div>
-        </div>
-        <div class="teamCont trophyCont">
-            <div>Titulos</div>
-            <div><i class='bx bxs-trophy' ></i> NOMBRE DEL TORNEO</div>
-            <div class="btn btn--blue">Ver todos</div>
-        </div>
-    </div>
-    <div class="playersTeamCont gridCont">
-        <h4>Plantilla</h4>
-        <div class="playersTeamGrid gridHead">
-            <div>N°</div>
-            <div>Nombre</div>
-            <div>Info</div>
-        </div>
-        <% for( let i = 0; i < playersConsult.length; i++ ) { %>
-            <div class="playersTeamGrid gridItem">
-                <div><%= i+1 %> </div>
-                <div><%= `${playersConsult[i].users.firstName} ${playersConsult[i].users.lastName}` %></div>
-                <div class="info">
-                    <!-- <i class="iconCardRed"></i>
-                    <i class="iconCaptain"></i> -->
+            <div class="teamCont nameAvatarCont">
+                <div class="avatarTeam">
+                    <img src="/img/teams/<%= teamConsult.avatars.image %>" alt="">
                 </div>
+                <div class="nameTeam"><%= teamConsult.name %></div>
             </div>
-        <% } %>
-    </div>
-    <div class="playersTeamCont">
-        <h4>Proximos partidos</h4>
-        <div class="flexFixture">
-            <div class="fixtureCont">
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-                <div class="fixtureVs">
-                    <div>VS</div>
-                    <div>30/04/2022</div>
-                    <div>14:00hs</div>
-                </div>
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="fixtureCont">
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-                <div class="fixtureVs">
-                    <div>VS</div>
-                    <div>30/04/2022</div>
-                    <div>14:00hs</div>
-                </div>
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="fixtureCont">
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-                <div class="fixtureVs">
-                    <div>VS</div>
-                    <div>30/04/2022</div>
-                    <div>14:00hs</div>
-                </div>
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="fixtureCont">
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-                <div class="fixtureVs">
-                    <div>VS</div>
-                    <div>30/04/2022</div>
-                    <div>14:00hs</div>
-                </div>
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="fixtureCont">
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
-                <div class="fixtureVs">
-                    <div>VS</div>
-                    <div>30/04/2022</div>
-                    <div>14:00hs</div>
-                </div>
-                <div class="fixtureTeam">
-                    <div>
-                        <img src="/img/teams/default.png" alt="">
-                    </div>
-                </div>
+            <div class="teamCont trophyCont">
+                <div>Titulos</div>
+                <div><i class='bx bxs-trophy' ></i> NOMBRE DEL TORNEO</div>
+                <div class="btn btn--blue">Ver todos</div>
             </div>
         </div>
-    </div>
-</section>
+        <div class="playersTeamCont gridCont">
+            <h4>Plantilla</h4>
+            <div class="playersTeamGrid gridHead">
+                <div>N°</div>
+                <div>Nombre</div>
+                <div>Info</div>
+            </div>
+            <% for( let i = 0; i < playersConsult.length; i++ ) { %>
+                <div class="playersTeamGrid gridItem">
+                    <div><%= i+1 %> </div>
+                    <div><%= `${playersConsult[i].users.firstName} ${playersConsult[i].users.lastName}` %></div>
+                    <div class="info">
+                        <!-- <i class="iconCardRed"></i>
+                        <i class="iconCaptain"></i> -->
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <div class="playersTeamCont">
+            <h4>Proximos partidos</h4>
+            <div class="flexFixture">
+                <div class="fixtureCont">
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                    <div class="fixtureVs">
+                        <div>VS</div>
+                        <div>30/04/2022</div>
+                        <div>14:00hs</div>
+                    </div>
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="fixtureCont">
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                    <div class="fixtureVs">
+                        <div>VS</div>
+                        <div>30/04/2022</div>
+                        <div>14:00hs</div>
+                    </div>
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="fixtureCont">
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                    <div class="fixtureVs">
+                        <div>VS</div>
+                        <div>30/04/2022</div>
+                        <div>14:00hs</div>
+                    </div>
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="fixtureCont">
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                    <div class="fixtureVs">
+                        <div>VS</div>
+                        <div>30/04/2022</div>
+                        <div>14:00hs</div>
+                    </div>
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="fixtureCont">
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                    <div class="fixtureVs">
+                        <div>VS</div>
+                        <div>30/04/2022</div>
+                        <div>14:00hs</div>
+                    </div>
+                    <div class="fixtureTeam">
+                        <div>
+                            <img src="/img/teams/default.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 <%- include("../../partials/footer.ejs")  %> 

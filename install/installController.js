@@ -27,13 +27,13 @@ const adminController = {
     home: (req,res)=>{
         const archive = path.resolve(__dirname,`../.env`);
         const leer = fs.readFileSync(archive,'UTF-8')
-        console.log("trae "+process.env.DB_DATABASE);
-        res.render("../../install/views/home.ejs")
+        console.log('trae '+process.env.DB_DATABASE);
+        res.render('../../install/views/home.ejs')
     },
     setup: (req,res)=>{
         let step = parseInt(req.query.step);
         let errQuery = req.query.err;
-        res.render("../../install/views/setup.ejs",{step,errQuery})
+        res.render('../../install/views/setup.ejs',{step,errQuery})
         console.log(process.env.DB_DATABASE);
     },
     install: (req,res)=>{
@@ -90,9 +90,9 @@ DB_DIALECT=mysql`;
         })
         connect.connect((e)=>{
             if(!!e){
-                console.log("error");
+                console.log('error');
             }else{
-                console.log("connected");
+                console.log('connected');
             }
         })
         const sql = fs.readFileSync(archive,'utf-8')
@@ -215,15 +215,15 @@ DB_DIALECT=mysql`;
             });
             await Division.bulkCreate([
                 {
-                    name: "Primera división",
+                    name: 'Primera división',
                     tournamentId: tournamentConsult.id
                 },
                 {
-                    name: "Segunda división",
+                    name: 'Segunda división',
                     tournamentId: tournamentConsult.id
                 },
                 {
-                    name: "Tercera división",
+                    name: 'Tercera división',
                     tournamentId: tournamentConsult.id
                 },
             ]);
@@ -853,40 +853,58 @@ DB_DIALECT=mysql`;
                     userId: 2
                 }
             ]);
+            await SponsorActive.bulkCreate([
+                { type: 'activado' },
+                { type: 'desactivado' }
+            ]);
+            await Sponsor.bulkCreate([
+                {
+                    image: 'sponsor-1651888418439.jpg',
+                    active: 1
+                },
+                {
+                    image: 'sponsor-1651888420739.jpg',
+                    active: 1
+                },
+            ])
+            await BannerActive.bulkCreate([
+                { type: 'activado' },
+                { type: 'desactivado' }
+            ]);
+            await Banner.bulkCreate([
+                {
+                    image: 'banner-1651888265106.jpg',
+                    active: 1
+                },
+                {
+                    image: 'banner-1651888414226.jpg',
+                    active: 1
+                },
+            ])
             let entre = 1;
-            if(entre === 30){
-                return console.log("corto")
-            }else{
-                for(let i = 4; i<=183;i++){
-                    let count = 0;
-                    for(j=4; j<= 183; j++){
-                        count = count +1
-                        await Player.create({
-                            golas: 0,
-                            suspensionId: null,
-                            teamId: entre,
-                            userId: j
-                        })
-                        if(count === 6){
-                            count = 0;
-                            entre = entre + 1
-                        }
+            let count = 0;
+            for(let i = 4; i<=183;i++){
+                for(j=4; j<= 183; j++){
+                    if(entre === 30){
+                        break;
+                    }
+                    count = count +1
+                    await Player.create({
+                        golas: 0,
+                        suspensionId: null,
+                        teamId: entre,
+                        userId: j
+                    })
+                    if(count === 6){
+                        count = 0;
+                        entre = entre + 1
                     }
                 }
             }
-            SponsorActive.bulkCreate([
-                { type: "activado" },
-                { type: "desactivado" }
-            ])
-            BannerActive.bulkCreate([
-                { type: "activado" },
-                { type: "desactivado" }
-            ])
-
         }catch(e){
             console.log(e);
         }
-        res.redirect('/')
+        return res.redirect('/')
     }    
     // testConnection: ()=>{
         //     require('dotenv').config()
@@ -897,10 +915,10 @@ DB_DIALECT=mysql`;
         //     });
         //     sequelize.authenticate()
         //      .then(()=>{
-        //          console.log("correcto");
+        //          console.log('correcto');
         //      })
         //      .catch(()=>{
-        //          console.log("ios");
+        //          console.log('ios');
         //      })
         // },
 }

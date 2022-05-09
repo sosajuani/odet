@@ -1,7 +1,11 @@
 @use '../utilities/colors' as c;
 body{
+    min-height: 100vh;
     margin: 0;
     font-family: 'Roboto',Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .gralCont{
     width: 90%;

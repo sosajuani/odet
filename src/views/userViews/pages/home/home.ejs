@@ -1,51 +1,53 @@
 <%- include("../../partials/head.ejs",{title: "Inicio"})  %> 
-<%- include("../../partials/header.ejs")  %> 
-<section class="gralCont">
-    <div class="carrouselCont">
-        <div class="carrouselItemCont">
-            <% for( let i = 0; i < bannersConsult.length; i++ ) { %>
-                <div class="carrouselItem <%= i == 0 ? "sliderShow" : null %>"  data-id="<%= bannersConsult[i].id %>" style="background: #45551a;">
-                    <img src="/img/banners/<%= bannersConsult[i].image %>" alt="<%= bannersConsult[i].image %>">
-                </div>
-            <% } %>
-            <div class="arrowCarrouselCont">
-                <div class="leftCarrousel">
-                    <i class='bx bxs-chevron-left'></i>
-                </div>
-                <div class="rightCarrousel">
-                    <i class='bx bxs-chevron-right' ></i>
+<div>
+    <%- include("../../partials/header.ejs")  %> 
+    <section class="gralCont">
+        <div class="carrouselCont">
+            <div class="carrouselItemCont">
+                <% for( let i = 0; i < bannersConsult.length; i++ ) { %>
+                    <div class="carrouselItem <%= i == 0 ? "sliderShow" : null %>"  data-id="<%= bannersConsult[i].id %>" style="background: #45551a;">
+                        <img src="/img/banners/<%= bannersConsult[i].image %>" alt="<%= bannersConsult[i].image %>">
+                    </div>
+                <% } %>
+                <div class="arrowCarrouselCont">
+                    <div class="leftCarrousel">
+                        <i class='bx bxs-chevron-left'></i>
+                    </div>
+                    <div class="rightCarrousel">
+                        <i class='bx bxs-chevron-right' ></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="lastResult">
-        <h4>Ultimos resultados</h4>
-        <div class="fixtureHome">
-            <div class="teamLastResult"></div>
-            <div class="teamLastResultData">
-                <div>1 - 1</div>
-                <div>Torneo: x</div>
-            </div>
-            <div class="teamLastResult"></div>
-        </div>
-        <div class="fixtureHome">
-            <div class="teamLastResult"></div>
-            <div class="teamLastResultData">
-                <div>1 - 1</div>
-                <div>Torneo: x</div>
-            </div>
-            <div class="teamLastResult"></div>
-        </div>
-    </div>
-    <div class="sponsorsHome">
-        <h4>Nos acompañan</h4>
-        <div class="sponsorItemsCont">
-            <% for( let i = 0; i < sponsorConsult.length; i++ ) { %>
-                <div class="sponsorItem">
-                    <img src="/img/sponsors/<%= sponsorConsult[i].image %>" alt="">
+        <div class="lastResult">
+            <h4>Ultimos resultados</h4>
+            <div class="fixtureHome">
+                <div class="teamLastResult"></div>
+                <div class="teamLastResultData">
+                    <div>1 - 1</div>
+                    <div>Torneo: x</div>
                 </div>
-            <% } %>
+                <div class="teamLastResult"></div>
+            </div>
+            <div class="fixtureHome">
+                <div class="teamLastResult"></div>
+                <div class="teamLastResultData">
+                    <div>1 - 1</div>
+                    <div>Torneo: x</div>
+                </div>
+                <div class="teamLastResult"></div>
+            </div>
         </div>
-    </div>
-</section>
+        <div class="sponsorsHome">
+            <h4>Nos acompañan</h4>
+            <div class="sponsorItemsCont">
+                <% for( let i = 0; i < sponsorConsult.length; i++ ) { %>
+                    <div class="sponsorItem">
+                        <img src="/img/sponsors/<%= sponsorConsult[i].image %>" alt="">
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</div>
 <%- include("../../partials/footer.ejs")  %> 

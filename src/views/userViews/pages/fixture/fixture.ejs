@@ -1,17 +1,19 @@
 <%- include("../../partials/head.ejs",{title: "Inicio"})  %> 
-<%- include("../../partials/header.ejs")  %> 
-<section class="gralCont">
-    <%- include("partials/filter.ejs")  %> 
-    <div class="lastResult">
-        <h4>Fechas del torneo <%= tournamentId.name %> </h4>
-        <div class="fixtureHome">
-            <div class="teamLastResult"></div>
-            <div class="teamLastResultData">
-                <div>1 - 1</div>
-                <div>Torneo: x</div>
+<div>
+    <%- include("../../partials/header.ejs")  %> 
+    <section class="gralCont">
+        <%- include("partials/filter.ejs")  %> 
+        <div class="lastResult">
+            <h4>Fechas del torneo <%= tournamentId.name %> </h4>
+            <div class="fixtureHome">
+                <div class="teamLastResult"></div>
+                <div class="teamLastResultData">
+                    <div>1 - 1</div>
+                    <div>Torneo: x</div>
+                </div>
+                <div class="teamLastResult"></div>
             </div>
-            <div class="teamLastResult"></div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 <%- include("../../partials/footer.ejs")  %> 
