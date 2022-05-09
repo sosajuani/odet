@@ -1,13 +1,3 @@
-//pages
-@forward 'views/users/home/home';
-@forward 'views/users/tournament/tournament';
-@forward 'views/users/teams/teams';
-@forward 'views/users/teams/teamDetail';
-
-//admin pages
-@forward 'views/admin/base';
-@forward 'views/admin/home/home';
-
 //layout
 @forward 'base/base';
 @forward 'layout/icons';
@@ -15,3 +5,14 @@
 @forward 'layout/buttonsAlerts';
 @forward 'layout/header';
 @forward 'layout/footer';
+
+//pages
+@forward 'views/users/home/home';
+@forward 'views/users/tournament/tournament';
+@forward 'views/users/teams/teams';
+@forward 'views/users/teams/teamDetail';
+@forward 'views/users/login/login';
+
+//admin pages
+@forward 'views/admin/base';
+@forward 'views/admin/home/home';

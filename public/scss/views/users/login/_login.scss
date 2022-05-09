@@ -1,0 +1,13 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+.loginContGral{
+    width: 50%;
+    .loginCont{
+        @include mix.flexPosition(column,center,center);
+        h4{
+            @include mix.titleReset();
+            font-size: 1.5rem;
+            color: c.$colorBlue;
+        }
+    }
+}

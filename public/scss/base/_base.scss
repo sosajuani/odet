@@ -19,3 +19,16 @@ body{
 .linkP{
     color: c.$colorLinks;
 }
+.formInput{
+    border: 5px solid c.$colorBlue;
+    padding: 0.4rem;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: c.$colorBlue;
+    &:focus{
+        outline: 2px solid c.$colorBlue;
+    }
+}
+.formSubmit{
+    margin: 5px 0;
+}

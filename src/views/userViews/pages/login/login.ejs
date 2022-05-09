@@ -1,11 +1,16 @@
 <%- include("../../partials/head.ejs",{title: "Inicio"})  %> 
 <div>
     <%- include("../../partials/header.ejs")  %> 
-    <section class="gralCont">
+    <section class="gralCont loginContGral">
         <form class="loginCont" action="/login" method="post">
-            <input placeholder="Usuario" class="username" type="text">
-            <input placeholder="Contraseña" class="password" type="pass">
-            <input class="btn btn--blue" type="submit" value="Entrar">
+            <h4>Bienvenido</h4>
+            <input placeholder="Usuario" name="user" class="username formInput" type="text">
+            <% if(locals.errors && locals.errors.user){ %>
+                <p><%= locals.errors.user.msg %></p> 
+            <% } %> 
+            <input placeholder="Contraseña" name="pass" class="password formInput" type="password">
+            <input class="btn btn--blue formSubmit" type="submit" value="Iniciar sesión">
+            <a class="linkP" href="">Olvidé mi contraseña</a>
         </form>
     </section>
 </div>

@@ -104,7 +104,7 @@ const mainController = {
     },
     fixture: async(req,res)=>{
         const tournamentConsult = await Tournament.findAll({include: [{association:'Divisions'}]});
-        tournamentConsult.length == 0 ? res.render("errors/404.ejs",{pageVersion: 'user',errorMsg: "No hay torneos registrados en la base de datos",redirect:''}) : null
+        tournamentConsult.length == 0 ? res.render('errors/404.ejs',{pageVersion: 'user',errorMsg: 'No hay torneos registrados en la base de datos',redirect:''}) : null
         const divisionConsult = await Division.findAll({
             where: {
                 tournamentId: tournamentConsult[0].id
@@ -125,15 +125,15 @@ const mainController = {
     loginProcess: async(req,res)=>{
         let errors = validationResult(req);
         if(!errors.isEmpty()){
-            return res.render("pages/login.ejs",{errors:errors.mapped(), oldData: req.body})
+            return res.render('userViews/pages/login/login.ejs',{errors:errors.mapped(), oldData: req.body})
         }
         const userConsult = await User.findOne({where:{user:req.body.user}});
         if(userConsult === null){
-            return res.render('pages/login.ejs',{errors:{userNull:"El usuario no existe"},oldData:req.body})
+            return res.render('userViews/pages/login/login.ejs',{errors:{userNull:'El usuario no existe'},oldData:req.body})
         }
          let confirmPass = compareSync(req.body.pass,userConsult.pass);
         if(!confirmPass){
-            return res.render('pages/login.ejs',{errors:{passIncorrect: "La contraseña ingresada no es válida"},oldData:req.body})
+            return res.render('userViews/pages/login/login.ejs',{errors:{passIncorrect: 'La contraseña ingresada no es válida'},oldData:req.body})
         }
         req.session.user = userConsult.dataValues;
         req.session.access = userConsult.dataValues.rolId;
