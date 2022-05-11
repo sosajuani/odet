@@ -1,0 +1,38 @@
+@use '../../../utilities/colors' as c;
+@use '../../../utilities/mixin' as mix;
+
+.fixtureConfigCont{
+    h5{
+        @include mix.titleReset();
+        font-size: 1.5rem;
+        margin: .5rem 0 0 0;
+        
+    }
+    .dataActual{
+        @include mix.flexPosition(row,center,center);
+        div{
+            background: c.$colorLightGray;
+            margin: 0 5px;
+            padding: 0.5rem;
+        }
+    }
+    .matchesCont{
+        .matchCont{
+            background: red;
+            display: flex;
+            .team{
+                background: #5487aa;
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+    .matchweek{
+        @include mix.flexPosition(row,center,center);
+        .partido{
+            background: c.$colorLightGray;
+            padding: 0.5rem;
+            @include mix.flexPosition(column,center,center);
+        }
+    }
+}

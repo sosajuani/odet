@@ -126,6 +126,7 @@ const mainController = {
         let errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.render('userViews/pages/login/login.ejs',{errors:errors.mapped(), oldData: req.body})
+        
         }
         const userConsult = await User.findOne({where:{user:req.body.user}});
         if(userConsult === null){

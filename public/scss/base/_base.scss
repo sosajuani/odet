@@ -1,4 +1,5 @@
 @use '../utilities/colors' as c;
+@use '../utilities/mixin' as mix;
 body{
     min-height: 100vh;
     margin: 0;
@@ -19,16 +20,20 @@ body{
 .linkP{
     color: c.$colorLinks;
 }
-.formInput{
-    border: 5px solid c.$colorBlue;
-    padding: 0.4rem;
-    margin-top: 5px;
-    border-radius: 5px;
-    color: c.$colorBlue;
-    &:focus{
-        outline: 2px solid c.$colorBlue;
+.formCont{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    .formLabel{
+
     }
-}
-.formSubmit{
-    margin: 5px 0;
+    .formInput{
+        @include mix.formInputBase(c.$colorBlue);
+    }
+    .formSelect{
+        @include mix.formInputBase(c.$colorBlue);
+    }
+    .formSubmit{
+        margin: 5px 0;
+    }
 }

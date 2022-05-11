@@ -2,15 +2,21 @@
 <div>
     <%- include("../../partials/header.ejs")  %> 
     <section class="gralCont loginContGral">
-        <form class="loginCont" action="/login" method="post">
+        <form class="loginCont formCont" action="/login" method="post">
             <h4>Bienvenido</h4>
-            <input placeholder="Usuario" name="user" class="username formInput" type="text">
+            <input placeholder="Usuario" value="<%= locals.errors ? oldData.user : null %>" name="user" class="username formInput" type="text">
             <% if(locals.errors && locals.errors.user){ %>
-                <p><%= locals.errors.user.msg %></p> 
+                <div class="alert alert--danger"><%= locals.errors.user.msg %></div> 
+            <% } %> 
+            <% if(locals.errors && locals.errors.userNull){ %>
+                <div class="alert alert--danger"><%= locals.errors.userNull %></div> 
             <% } %> 
             <input placeholder="Contraseña" name="pass" class="password formInput" type="password">
+            <% if(locals.errors && locals.errors.pass){ %>
+                <div class="alert alert--danger"><%= locals.errors.pass.msg %></div> 
+            <% } %> 
             <input class="btn btn--blue formSubmit" type="submit" value="Iniciar sesión">
-            <a class="linkP" href="">Olvidé mi contraseña</a>
+            <a class="linkP" href="#">Olvidé mi contraseña</a>
         </form>
     </section>
 </div>

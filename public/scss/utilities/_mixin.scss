@@ -42,6 +42,17 @@
         display: none
     }
 }
+@mixin formInputBase($color){
+    border: 5px solid $color;
+    padding: 0.4rem;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: $color;
+    &:focus{
+        outline: 2px solid $color;
+    }
+}
+
 
 //icons
 @mixin cardIcon($color,$color2) {

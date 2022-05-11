@@ -21,18 +21,32 @@ body {
   color: #3282b8;
 }
 
-.formInput {
+.formCont {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.formCont .formInput {
   border: 5px solid #15547e;
   padding: 0.4rem;
   margin-top: 5px;
   border-radius: 5px;
   color: #15547e;
 }
-.formInput:focus {
+.formCont .formInput:focus {
   outline: 2px solid #15547e;
 }
-
-.formSubmit {
+.formCont .formSelect {
+  border: 5px solid #15547e;
+  padding: 0.4rem;
+  margin-top: 5px;
+  border-radius: 5px;
+  color: #15547e;
+}
+.formCont .formSelect:focus {
+  outline: 2px solid #15547e;
+}
+.formCont .formSubmit {
   margin: 5px 0;
 }
 
@@ -830,6 +844,46 @@ body {
 }
 .fieldSetAdm div .bannersListCont .bannerItem:hover {
   border: 5px solid #3282b8;
+}
+
+.fixtureConfigCont h5 {
+  margin: 0;
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0 0;
+}
+.fixtureConfigCont .dataActual {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fixtureConfigCont .dataActual div {
+  background: #efefef;
+  margin: 0 5px;
+  padding: 0.5rem;
+}
+.fixtureConfigCont .matchesCont .matchCont {
+  background: red;
+  display: flex;
+}
+.fixtureConfigCont .matchesCont .matchCont .team {
+  background: #5487aa;
+  width: 150px;
+  height: 150px;
+}
+.fixtureConfigCont .matchweek {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fixtureConfigCont .matchweek .partido {
+  background: #efefef;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */

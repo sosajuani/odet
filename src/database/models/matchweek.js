@@ -32,7 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     localTeamId: DataTypes.INTEGER,
     visitedTeamId: DataTypes.INTEGER,
     tournamentId: DataTypes.INTEGER,
-    date: DataTypes.DATE
+    date: DataTypes.DATE,
+    match: DataTypes.INTEGER,
+    journey: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Matchweek',
