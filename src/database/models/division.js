@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       Division.hasMany(models.Statistic,{
         foreignKey: 'divisionId',
         as: 'statistics'
+      });
+      Division.hasOne(models.ControlMatch,{
+        foreignKey: 'divisionId',
+        as:'controlMatch'
       })
     }
   }

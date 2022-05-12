@@ -14,6 +14,7 @@ const DivisionControl = db.DivisionControl;
 const MatchWeek = db.Matchweek;
 const Statistic = db.Statistic;
 const Banner = db.Banner;
+const ControlMatch = db.ControlMatch;
 
 const adminController = {
     home: async(req,res)=>{
@@ -34,20 +35,28 @@ const adminController = {
                 divisionId: divisionId.id
             }
         });
+        const controlMatch = await ControlMatch.findOne({
+            where:{
+                tournamentId: tournamentId.id,
+                divisionId: divisionId.id
+            }
+        })
         res.render('adminViews/fixture/fixture.ejs',{
             tournamentConsult,
             divisionConsult,
             tournamentId,
             divisionId,
-            teamsConsult
+            teamsConsult,
+            controlMatch
         });
 
     },
     fixtureByHand: (req,res)=>{
         const dataDate = req.body.matchLength
+        const data_date = req.body.data_date
         console.log(dataDate);
         for(let i=0;i<dataDate;i++){
-            let teamId = req.body.na
+            let localId = local_fecha_partido
             // MatchWeek.bulkcreate([
             //     {
             //         localTeamId: null,
@@ -60,6 +69,7 @@ const adminController = {
             //     }
             // ])
         }
+        res.send("hola")
     }
     // fixtureActomatico:(req,res)=>{             
     //     const teamsConsult = await Team.findAll();

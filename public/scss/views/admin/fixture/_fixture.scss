@@ -29,10 +29,18 @@
     }
     .matchweek{
         @include mix.flexPosition(row,center,center);
+        flex-wrap: wrap;
         .partido{
             background: c.$colorLightGray;
             padding: 0.5rem;
             @include mix.flexPosition(column,center,center);
         }
+    }
+    .dateFilter{
+        background: c.$colorLightGray;
+        color: c.$colorGray68;
+        @include mix.flexPosition(row,space-between,center);
+        padding: 0.5rem;
+        margin: 0.5rem 0;
     }
 }

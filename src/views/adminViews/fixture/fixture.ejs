@@ -10,12 +10,39 @@
                         Torneo actual: <%= tournamentId.name %> 
                     </div>
                     <div>
-                        División acual: $Division
+                        División acual: <%= divisionId.name %> 
                     </div>
                     <div>
-                        Cantidad de equipos: $cant
+                        Cantidad de equipos: <%= teamsConsult.length %>
+                    </div>
+                    <div>
+                        Fechas: <%= teamsConsult.length-1 %>
+                    </div>
+                    <div>
+                        Partidos: <%= (teamsConsult.length/2)*(teamsConsult.length-1) %>
+                    </div>
+                    <div>
+                        Partidos por fecha: <%= (teamsConsult.length/2) %>
+                    </div>
+                    <div>
+                        Partidos creados: <%= controlMatch.matchCreated %>
                     </div>
                 </div>
+                <form class="dateFilter" action="/tournament/filter" method="post">
+                    <div>
+                        <div class="">
+                            <label for="date">Fechas</label>
+                            <select name="date" id="date">
+                                <% for( let i = 0; i < tournamentConsult.length; i++ ) { %>
+                                    <option <%= tournamentConsult[i].id == tournamentId ? "selected" : null %>  value="<%= tournamentConsult[i].id %>"><%= tournamentConsult[i].name %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn--blue" type="submit">FILTRAR</button>
+                    </div>
+                </form>
                 <!-- <div class="matchesCont">
                     <div class="matchCont">as
                         <div class="team"></div>
@@ -28,29 +55,7 @@
                 </div>
             </div> -->
             <form action="/admin/fixture/byHand" method="post">
-                <% for(let i = 0; i < teamsConsult.length-1 ; i++ ) { %>
-                    <h4>Fecha <%= i+1 %></h4>
-                    <input type="hidden" name="data_date" value="<%= i+1 %>">
-                    <div class="matchweek">
-                        <% for( let j = 0; j < teamsConsult.length/2; j++ ) { %>
-                            <div class="partido">
-                                <h4>Partido <%= j+1 %></h4>
-                                <select name="local_<%= i+1 %>_<%= j+1 %>" id="">
-                                    <option value="">Local</option>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                </select>
-                                <select name="" id="">
-                                    <option value="">Visitante</option>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                </select>
-                            </div>
-                        <% } %>
-                    </div>
-                <% } %>
+
                 <input type="hidden" name="matchLength" value="<%= teamsConsult.length-1 %>">
                 <input class="btn btn--blue" type="submit" value="Confirmar fixture">
             </form>
