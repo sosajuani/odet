@@ -6,6 +6,7 @@ const validation = require('../../middleware/validation')
 
 //admin desarrollo
 router.get('/',adminFixtureController.home)
+router.get('/automatico',adminFixtureController.fixtureAutomatico)
 router.post('/byHand',adminFixtureController.fixtureByHand)
 
 module.exports = router;

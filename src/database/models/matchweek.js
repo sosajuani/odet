@@ -33,7 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     visitedTeamId: DataTypes.INTEGER,
     tournamentId: DataTypes.INTEGER,
     date: DataTypes.DATE,
-    match: DataTypes.INTEGER,
     journey: DataTypes.INTEGER
   }, {
     sequelize,

@@ -17,7 +17,7 @@ const adminController = {
     tournament: async(req,res)=>{
         let consultTournament = await Tournament.findAll();
         let data = consultTournament.length;
-        res.render('admin/tournament/tournamentAdm.ejs',{consultTournament,data});
+        res.render('adminViews/tournaments/main.ejs',{consultTournament,data});
     },
     tournamentIndividual: async(req,res)=>{
         const torneoName = req.params.tournament;

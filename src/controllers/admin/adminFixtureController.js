@@ -70,56 +70,81 @@ const adminController = {
             // ])
         }
         res.send("hola")
+    },
+    fixtureAutomatico:async(req,res)=>{   
+        res.send("funcionando")          
+        const teamsConsult = await Team.findAll({
+            where:{
+                tournamentId:1,
+                divisionId:1
+            }
+        });
+        
+        console.log("-----------------");
+        console.log("creamos el emparejamiento");
+        //const teams = ['Boca','River','Colon','Ferro']; //4 equipos
+
+        const teams = [];
+        const teamPrueba = ['Boca','Colon','Banfield','Independiente']
+        teamPrueba.forEach(team => {
+            teams.push(team)
+        });
+        function fixture(teams) {
+        if (teams.length % 2 == 1) {
+            teams.push(null);
+        }
+
+        const teamsCount = teams.length; // cuento cuantos equipos hay
+        const rounds = teamsCount - 1; // número de fechas (n° de equipos - 1)
+        const half = teamsCount / 2; // número de partidos por fechas (n° de equipos / 2)
+
+        const tournamentPairings = []; //array de emparejamientos
+
+        const teamIndex = teams.map((team, i) => i).slice(1); //quito al primer equipo
+
+        for (let round = 0; round < rounds; round++) {
+            const roundPairings = [];
+
+            const newTeamIndex = [0].concat(teamIndex); //vuelvo a agregar el primer equipo
+
+            const firstHalf = newTeamIndex.slice(0, half);
+            const secondHalf = newTeamIndex.slice(half, teamsCount).reverse();
+
+            for (let i = 0; i < firstHalf.length; i++) {
+            roundPairings.push({
+                localTeamId: teams[firstHalf[i]].id,
+                visitedTeamId: teams[secondHalf[i]].id,
+                tournamentId: teams[firstHalf[i]].tournamentId,
+                divisionId: teams[firstHalf[i]].divisionId,
+                date: "14/5/2022",
+                match: round+1,
+                journey:`${round+1}`
+            });
+            }
+            teamIndex.push(teamIndex.shift());
+            tournamentPairings.push(roundPairings);
+        }
+        return tournamentPairings;
+        }
+
+        for(m = 0 ; m<fixture(teams).length;m++){
+            console.log(`Item ${m+1}`);
+            for(l = 0; l<fixture(teams)[m].length;l++){
+                //console.log(fixture(teams)[m][l]);
+            }
+        }
+        console.log(fixture(teams));
+        const alla ={
+            localTeamId: '1',
+            visitedTeamId: '2',
+            tournamentId: '3',
+            divisionId: '4',
+            date: '5',
+            match: '6',
+            journey: '7'
+        }
+
     }
-    // fixtureActomatico:(req,res)=>{             
-    //     const teamsConsult = await Team.findAll();
-    //     let teamsCant = teamsConsult.length;
-    //     const random = Math.floor(Math.random() * teamsCant);
-    //     const teamsLocals = [];
-    //     const teamsRivals = [];
-    //     const pruebaArray = teamsRivals.length == 15
-    //     for(let i = 0; teamsLocals.length < 15; i++){
-    //         const random = Math.floor(Math.random() * teamsCant);
-    //         !teamsLocals.includes(teamsConsult[random].name) && !teamsRivals.includes(teamsConsult[random].name)
-    //          ? teamsLocals.push(teamsConsult[random].name)
-    //          : null
-    //     }
-    //     for(let i = 0; teamsRivals.length < 15; i++){
-    //         const random = Math.floor(Math.random() * teamsCant);
-    //         !teamsRivals.includes(teamsConsult[random].name) && !teamsLocals.includes(teamsConsult[random].name)
-    //          ? teamsRivals.push(teamsConsult[random].name)
-    //          : null
-    //     }
-    //     //console.log("locales");
-    //     //console.log(teamsLocals);
-    //     //console.log("total: "+teamsLocals.length);
-    //     //console.log("rivales");
-    //     //console.log(teamsRivals);
-    //     //console.log("total: "+teamsRivals.length);
-    //     //console.log("------------------------");
-    //     //console.log("Duplicados en locales");
-    //     let duplicadosLocales = [];   
-    //     const tempArrayLocals = [...teamsLocals].sort();   
-    //     for (let i = 0; i < tempArrayLocals.length; i++) {
-    //       if (tempArrayLocals[i + 1] === tempArrayLocals[i]) {
-    //         duplicadosLocales.push(tempArrayLocals[i]);
-    //       }
-    //     }
-    //     //console.log(duplicadosLocales);
-    //     //console.log("Duplicados en rivales");
-    //     let duplicadosRivales = [];     
-    //     const tempArrayRivals = [...teamsRivals].sort();      
-    //     for (let i = 0; i < tempArrayRivals.length; i++) {
-    //       if (tempArrayRivals[i + 1] === tempArrayRivals[i]) {
-    //         duplicadosRivales.push(tempArrayRivals[i]);
-    //       }
-    //     }
-    //     //console.log(duplicadosRivales);
-    //     console.log("-----------------");
-    //     console.log("creamos el emparejamiento");
-    //     //console.log(teamsLocals);
-    //     //console.log(teamsLocals);
-    // }
 }
 
 module.exports = adminController;
