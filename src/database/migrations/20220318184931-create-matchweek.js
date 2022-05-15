@@ -37,7 +37,10 @@ module.exports = {
         }
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
+      },
+      time:{
+        type: Sequelize.TIME
       },
       journey:{
         type: Sequelize.INTEGER,

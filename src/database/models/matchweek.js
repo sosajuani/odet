@@ -26,13 +26,19 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'tournamentId',
         as: 'tournaments'
       })
+      Matchweek.belongsTo(models.Division,{
+        foreignKey: 'divisionId',
+        as: 'divisions'
+      })
     }
   }
   Matchweek.init({
     localTeamId: DataTypes.INTEGER,
     visitedTeamId: DataTypes.INTEGER,
     tournamentId: DataTypes.INTEGER,
-    date: DataTypes.DATE,
+    divisionId: DataTypes.INTEGER,
+    date: DataTypes.DATEONLY,
+    time: DataTypes.TIME,
     journey: DataTypes.INTEGER
   }, {
     sequelize,

@@ -86,7 +86,7 @@ const adminController = {
 
         const teams = [];
         const teamPrueba = ['Boca','Colon','Banfield','Independiente']
-        teamPrueba.forEach(team => {
+        teamsConsult.forEach(team => {
             teams.push(team)
         });
         function fixture(teams) {
@@ -116,8 +116,8 @@ const adminController = {
                 visitedTeamId: teams[secondHalf[i]].id,
                 tournamentId: teams[firstHalf[i]].tournamentId,
                 divisionId: teams[firstHalf[i]].divisionId,
-                date: "14/5/2022",
-                match: round+1,
+                date: "2022-05-14",
+                time: "15:00",
                 journey:`${round+1}`
             });
             }
@@ -130,20 +130,20 @@ const adminController = {
         for(m = 0 ; m<fixture(teams).length;m++){
             console.log(`Item ${m+1}`);
             for(l = 0; l<fixture(teams)[m].length;l++){
-                //console.log(fixture(teams)[m][l]);
+               console.log(fixture(teams)[m][l].divisionId);
+               const fixture2 = fixture(teams)[m][l];
+               await MatchWeek.create({
+                    localTeamId: fixture2.localTeamId,
+                    visitedTeamId: fixture2.visitedTeamId,
+                    tournamentId: fixture2.tournamentId,
+                    divisionId: fixture2.divisionId,
+                    date: fixture2.date,
+                    time: fixture2.time,
+                    journey:fixture2.journey
+               })
             }
         }
-        console.log(fixture(teams));
-        const alla ={
-            localTeamId: '1',
-            visitedTeamId: '2',
-            tournamentId: '3',
-            divisionId: '4',
-            date: '5',
-            match: '6',
-            journey: '7'
-        }
-
+        console.log("hecho");
     }
 }
 
