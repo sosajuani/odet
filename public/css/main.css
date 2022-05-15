@@ -849,7 +849,7 @@ body {
 .fixtureConfigCont h5 {
   margin: 0;
   font-size: 1.5rem;
-  margin: 0.5rem 0 0 0;
+  margin: 0.5rem 0;
 }
 .fixtureConfigCont .dataActual {
   display: flex;
@@ -861,6 +861,20 @@ body {
   background: #efefef;
   margin: 0 5px;
   padding: 0.5rem;
+}
+.fixtureConfigCont .msgInfo {
+  margin: 0.5rem 0;
+}
+.fixtureConfigCont .cardFixture {
+  display: inline-block;
+  background: #efefef;
+  border: 1px solid #c7c7c7;
+  border-radius: 0;
+  padding: 1rem;
+}
+.fixtureConfigCont .cardFixture form label {
+  display: block;
+  margin: 0.5rem 0;
 }
 .fixtureConfigCont .matchesCont .matchCont {
   background: red;

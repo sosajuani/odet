@@ -24,11 +24,8 @@
                     <div>
                         Partidos por fecha: <%= (teamsConsult.length/2) %>
                     </div>
-                    <div>
-                        Partidos creados: <%= controlMatch.matchCreated %>
-                    </div>
                 </div>
-                <form class="dateFilter" action="/tournament/filter" method="post">
+                <!-- <form class="dateFilter" action="/tournament/filter" method="post">
                     <div>
                         <div class="">
                             <label for="date">Fechas</label>
@@ -43,7 +40,7 @@
                     <div>
                         <button class="btn btn--blue" type="submit">FILTRAR FECHA</button>
                     </div>
-                </form>
+                </form> -->
                 <!-- <div class="matchesCont">
                     <div class="matchCont">as
                         <div class="team"></div>
@@ -54,12 +51,20 @@
                         <div class="team"></div>
                     </div>
                 </div>-->
+                <div class="alert alert--warning msgInfo">Todavía no se creo el fixture para este torneo y división</div>
+                <div class="cardFixture">
+                    <h5>Generar fixture</h5>
+                    <form class="" action="/admin/fixture/automatic" method="post">
+                        <label for="">Torneo: <%= tournamentId.name %></label>
+                        <label for="">División: <%= divisionId.name %> </label>
+                        <label for="">Fecha: 14-05-2022 </label>
+                        <label for="">Hora: 15:00hs </label>
+                        <input type="hidden" name="tournamentId" value="<%= tournamentId.id %>">
+                        <input type="hidden" name="divisionId" value="<%= divisionId.id %>">
+                        <input class="btn btn--blue" type="submit" value="Crear fixture">
+                    </form>
+                </div>
             </div> 
-            <form action="/admin/fixture/byHand" method="post">
-
-                <input type="hidden" name="matchLength" value="<%= teamsConsult.length-1 %>">
-                <input class="btn btn--blue" type="submit" value="Confirmar fixture">
-            </form>
         </div>
     </section>
 </body>
