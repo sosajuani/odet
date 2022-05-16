@@ -53,8 +53,9 @@ const adminController = {
         });
     },
     filterTourDiv: async(req,res)=>{
-        const tournamentId = req.body.tournamentId;
-        const divisionId = req.body.divisionId;
+        const tournamentId = req.query.tournamentId;
+        const divisionId = req.query.divisionId;
+        const journey = req.query.journey ? req.query.journey : 1;
         const tournamentConsult = await Tournament.findAll();
         if(tournamentConsult === null){
             return res.render("errors/404.ejs",{pageVersion:'adm'})
@@ -74,24 +75,28 @@ const adminController = {
             where:{
                 tournamentId: tournamentId,
                 divisionId: divisionId,
-                journey: 1
+                journey: journey
             },
             include: ['localTeam','visitedTeam']
         });
+        // console.log(teamsConsult.length);
         res.render('adminViews/fixture/fixtureFilter.ejs',{
             tournamentConsult,
             divisionConsult,
             tournamentId,
             divisionId,
             teamsConsult,
-            matchWeekConsult
+            matchWeekConsult,
+            journey
         });
     },
-    fixtureAutomatico:async(req,res)=>{           
+    fixtureAutomatico:async(req,res)=>{     
+        const tournamentId = req.body.tournamentId;
+        const divisionId = req.body.divisionId;
         const teamsConsult = await Team.findAll({
             where:{
-                tournamentId:req.body.tournamentId,
-                divisionId:req.body.divisionId
+                tournamentId:tournamentId,
+                divisionId:divisionId
             }
         });
         const teams = [];
@@ -100,14 +105,9 @@ const adminController = {
         });
         function fixture(teams) {
             const ghost = {
-                id: null,
-                localTeamId: teams[firstHalf[i]].id,
-                visitedTeamId: teams[secondHalf[i]].id,
-                tournamentId: teams[firstHalf[i]].tournamentId,
-                divisionId: teams[firstHalf[i]].divisionId,
-                date: "2022-05-14",
-                time: "15:00",
-                journey:`${round+1}`
+                id: null,            
+                tournamentId:tournamentId,
+                divisionId:divisionId
             }
             if (teams.length % 2 == 1) {
                 teams.push(ghost);
@@ -159,7 +159,8 @@ const adminController = {
                })
             }
         }
-        return res.redirect('/admin/fixture')
+        console.log(fixture(teams));
+        return res.redirect(`/admin/fixture/filter?tournamentId=${tournamentId}&divisionId=${divisionId}`)
     }
 }
 

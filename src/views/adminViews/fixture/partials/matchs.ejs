@@ -1,10 +1,13 @@
-<form class="dateFilter" action="/tournament/filter" method="post">
+<form class="dateFilter" action="/admin/fixture/filter" method="get">
+    <input type="hidden" name="tournamentId" value="<%= tournamentId %>">
+    <input type="hidden" name="divisionId" value="<%= divisionId %>">
     <div>
         <div class="">
             <label for="date">Fechas</label>
-            <select name="date" id="date">
-                <% for( let i = 0; i < teamsConsult.length-1; i++ ) { %>
-                    <option  value="<%= i+1 %>"><%= i+1 %></option>
+            <select name="journey" id="date">
+                <% let teams = teamsConsult.length % 2 != 0 ? teamsConsult.length+1-1 : teamsConsult.length-1 %> 
+                <% for( let i = 0; i < teams; i++ ) { %>
+                    <option <%= locals.journey == i+1 ? "selected" : null  %>  value="<%= i+1 %>"><%= i+1 %></option>
                 <% } %>
                 <option value="">Ver todas</option>
             </select>
