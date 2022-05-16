@@ -27,28 +27,71 @@ const adminController = {
                 tournamentId: tournamentConsult[0].id
             }
         });
-        const tournamentId = tournamentConsult[0];
-        const divisionId = divisionConsult[0];
+        const tournamentId = tournamentConsult[0].id;
+        const divisionId = divisionConsult[0].id;
         const teamsConsult = await Team.findAll({
             where:{
-                tournamentId: tournamentId.id,
-                divisionId: divisionId.id
+                tournamentId: tournamentId,
+                divisionId: divisionId
             }
+        });
+        const matchWeekConsult = await MatchWeek.findAll({
+            where:{
+                tournamentId: tournamentId,
+                divisionId: divisionId,
+                journey: 1
+            },
+            include: ['localTeam','visitedTeam']
         });
         res.render('adminViews/fixture/fixture.ejs',{
             tournamentConsult,
             divisionConsult,
             tournamentId,
             divisionId,
-            teamsConsult
+            teamsConsult,
+            matchWeekConsult
         });
-
+    },
+    filterTourDiv: async(req,res)=>{
+        const tournamentId = req.body.tournamentId;
+        const divisionId = req.body.divisionId;
+        const tournamentConsult = await Tournament.findAll();
+        if(tournamentConsult === null){
+            return res.render("errors/404.ejs",{pageVersion:'adm'})
+        }
+        const divisionConsult = await Division.findAll({
+            where:{
+                tournamentId: tournamentId
+            }
+        });
+        const teamsConsult = await Team.findAll({
+            where:{
+                tournamentId: tournamentId,
+                divisionId: divisionId
+            }
+        });
+        const matchWeekConsult = await MatchWeek.findAll({
+            where:{
+                tournamentId: tournamentId,
+                divisionId: divisionId,
+                journey: 1
+            },
+            include: ['localTeam','visitedTeam']
+        });
+        res.render('adminViews/fixture/fixtureFilter.ejs',{
+            tournamentConsult,
+            divisionConsult,
+            tournamentId,
+            divisionId,
+            teamsConsult,
+            matchWeekConsult
+        });
     },
     fixtureAutomatico:async(req,res)=>{           
         const teamsConsult = await Team.findAll({
             where:{
-                tournamentId:req.params.tournamentId,
-                divisionId:req.params.divisionId
+                tournamentId:req.body.tournamentId,
+                divisionId:req.body.divisionId
             }
         });
         const teams = [];
@@ -56,8 +99,18 @@ const adminController = {
             teams.push(team)
         });
         function fixture(teams) {
+            const ghost = {
+                id: null,
+                localTeamId: teams[firstHalf[i]].id,
+                visitedTeamId: teams[secondHalf[i]].id,
+                tournamentId: teams[firstHalf[i]].tournamentId,
+                divisionId: teams[firstHalf[i]].divisionId,
+                date: "2022-05-14",
+                time: "15:00",
+                journey:`${round+1}`
+            }
             if (teams.length % 2 == 1) {
-                teams.push(null);
+                teams.push(ghost);
             }
 
             const teamsCount = teams.length; // cuento cuantos equipos hay
@@ -93,9 +146,7 @@ const adminController = {
             return tournamentPairings;
         }
         for(m = 0 ; m<fixture(teams).length;m++){
-            console.log(`Item ${m+1}`);
             for(l = 0; l<fixture(teams)[m].length;l++){
-               console.log(fixture(teams)[m][l].divisionId);
                const fixture2 = fixture(teams)[m][l];
                await MatchWeek.create({
                     localTeamId: fixture2.localTeamId,

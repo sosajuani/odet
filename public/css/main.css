@@ -876,14 +876,42 @@ body {
   display: block;
   margin: 0.5rem 0;
 }
-.fixtureConfigCont .matchesCont .matchCont {
-  background: red;
+.fixtureConfigCont .matchesCont {
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fixtureConfigCont .matchesCont .matchCont {
+  background: #efefef;
+  display: flex;
+  border: 1px solid #c7c7c7;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.fixtureConfigCont .matchesCont .matchCont div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fixtureConfigCont .matchesCont .matchCont .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fixtureConfigCont .matchesCont .matchCont .infoDate {
+  border-left: 1px solid #c7c7c7;
+  padding: 0.5rem;
+}
+.fixtureConfigCont .matchesCont .matchCont .infoId {
+  border-right: 1px solid #c7c7c7;
+  padding: 0.5rem;
 }
 .fixtureConfigCont .matchesCont .matchCont .team {
-  background: #5487aa;
-  width: 150px;
-  height: 150px;
+  padding: 0.5rem;
 }
 .fixtureConfigCont .matchweek {
   display: flex;

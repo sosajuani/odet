@@ -1,0 +1,14 @@
+<div class="alert alert--warning msgInfo">Todavía no se creo el fixture para este torneo y división</div>
+   
+<div class="cardFixture">
+    <h5>Generar fixture</h5>
+    <form class="" action="/admin/fixture/automatic" method="post">
+        <label for="">Torneo: <%= tournamentId.name %></label>
+        <label for="">División: <%= divisionId.name %> </label>
+        <label for="">Fecha: 14-05-2022 </label>
+        <label for="">Hora: 15:00hs </label>
+        <input type="hidden" name="tournamentId" value="<%= tournamentId %>">
+        <input type="hidden" name="divisionId" value="<%= divisionId %>">
+        <input class="btn btn--blue" type="submit" value="Crear fixture">
+    </form>
+</div>

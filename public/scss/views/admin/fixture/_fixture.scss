@@ -32,13 +32,30 @@
         }
     }
     .matchesCont{
+        @include mix.flexPosition(row,space-evenly,center);
+        flex-wrap: wrap;
         .matchCont{
-            background: red;
+            background: c.$colorLightGray;
             display: flex;
+            border: 1px solid c.$colorGray;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            div{
+                @include mix.flexPosition(row,center,center);
+            }
+            .info{
+                @include mix.flexPosition(column,center,center);
+            }
+            .infoDate{
+                border-left: 1px solid c.$colorGray;
+                padding: 0.5rem;
+            }
+            .infoId{
+                border-right: 1px solid c.$colorGray;
+                padding: 0.5rem;
+            }
             .team{
-                background: #5487aa;
-                width: 150px;
-                height: 150px;
+                padding: 0.5rem
             }
         }
     }
