@@ -3,16 +3,33 @@
     <%- include("../../partials/header.ejs")  %> 
     <section class="gralCont">
         <%- include("partials/filter.ejs")  %> 
-        <div class="lastResult">
-            <h4>Fechas del torneo <%= tournamentId.name %> </h4>
-            <div class="fixtureHome">
-                <div class="teamLastResult"></div>
-                <div class="teamLastResultData">
-                    <div>1 - 1</div>
-                    <div>Torneo: x</div>
+        <div class="fixtureCont">
+            <h4>Fechas del torneo:  <%= tournamentId.name %> | División: <%= divisionId.name %> | Fecha: 1 </h4>
+            <% for( let i = 0; i < matchWeekConsult.length; i++ ) { %>
+                <div class="fixtureItem">
+                    <div class="teamLastResult">
+                        <div>
+                            <img src="/img/teams/<%= matchWeekConsult[i].localTeam.avatars.image %>" alt="<%= matchWeekConsult[i].localTeam.name %>">
+                        </div>
+                        <div>
+                            <%= matchWeekConsult[i].localTeam.name %> 
+                        </div>
+                    </div>
+                    <div class="teamLastResultData">
+                        <div>v</div>
+                        <div>Horario: <%= matchWeekConsult[i].time %> hs</div>
+                        <div>Fecha: <%= matchWeekConsult[i].date %></div>
+                    </div>
+                    <div class="teamLastResult">
+                        <div>
+                            <img src="/img/teams/<%= matchWeekConsult[i].visitedTeam.avatars.image %>" alt="<%= matchWeekConsult[i].visitedTeam.name %>">
+                        </div>
+                        <div>
+                            <%= matchWeekConsult[i].visitedTeam.name %> 
+                        </div>
+                    </div>
                 </div>
-                <div class="teamLastResult"></div>
-            </div>
+            <% } %>
         </div>
     </section>
 </div>

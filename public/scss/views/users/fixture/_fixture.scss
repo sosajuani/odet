@@ -1,0 +1,39 @@
+@use '../../../utilities/colors' as c;
+@use "../../../utilities/mixin" as mix;
+.fixtureCont{
+    padding: c.$rem1;
+    border-radius: 5px;
+    margin: 5px auto;
+    width: 80%;
+    h4{
+        @include mix.titleReset()
+    }
+    .fixtureItem{
+        margin: 5px 0;
+        border: 2px solid c.$colorGray;
+        border-radius: 3px; 
+    }
+    div{
+        padding: 1rem;
+        @include mix.flexPosition(row,space-evenly,center);
+        .teamLastResult{
+            @include mix.flexPosition(column,space-evenly,center);
+            width: 50px;
+            height: 50px;
+            div{
+                width: 50px;
+                padding: 0.2rem;
+            }
+            img{
+                width: 100%;
+                @include mix.borderRadius(c.$colorBlue,5px,50%)
+            }
+        }
+        .teamLastResultData{
+            div{
+                padding: 0;
+            }
+            @include mix.flexPosition(column,center,center);
+        }
+    }
+}

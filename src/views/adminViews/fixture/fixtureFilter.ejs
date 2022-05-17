@@ -22,7 +22,7 @@
                         Partidos: <%= (teamsConsult.length/2)*(teamsConsult.length-1) %>
                     </div>
                     <div>
-                        Partidos por fecha: <%= (teamsConsult.length/2) %>
+                        Partidos por fecha: <%= teamsConsult.length%2==0 ? (teamsConsult.length/2) : (teamsConsult.length+1)/2  %>
                     </div>
                 </div>
                 <% if(matchWeekConsult.length === 0){ %> 

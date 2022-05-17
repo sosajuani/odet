@@ -9,6 +9,7 @@ const Division = db.Division;
 const Statistic = db.Statistic;
 const Banner = db.Banner;
 const Sponsor = db.Sponsor;
+const MatchWeek = db.Matchweek;
 
 const mainController = {
     home: async(req,res)=>{
@@ -112,11 +113,21 @@ const mainController = {
         })
         const tournamentId = tournamentConsult[0];
         const divisionId = divisionConsult[0];
+        const matchWeekConsult = await MatchWeek.findAll({
+            where:{
+                tournamentId: tournamentId.id,
+                divisionId: divisionId.id,
+                journey: 1,
+            },
+            include: [{association:'localTeam',include:['avatars']},{association:'visitedTeam',include:['avatars']}]
+        })
+        console.log(matchWeekConsult[0].localTeam);
         res.render('userViews/pages/fixture/fixture.ejs',{
             tournamentConsult,
             divisionConsult,
             tournamentId,
-            divisionId
+            divisionId,
+            matchWeekConsult
         });
     },
     login: (req,res)=>{
