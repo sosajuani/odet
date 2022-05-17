@@ -11,6 +11,7 @@ router.post('/tournament/filter',mainController.tournamentFilter);
 router.get('/tournament/api/change/:id',mainController.apiTournamentChange);
 
 router.get('/fixture',mainController.fixture);
+router.get('/fixture/filter',mainController.fixtureFilter);
 router.get('/login',authMiddleware.visited,mainController.login);
 router.post('/login',validatorMiddleware.validationLogin,mainController.loginProcess);
 router.get('/logout',validatorMiddleware.validationLogin,mainController.logout);

@@ -616,6 +616,17 @@ body {
   }
 }
 
+.filterJourney {
+  background: #efefef;
+}
+.filterJourney form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
 .fixtureCont {
   padding: 1rem;
   border-radius: 5px;

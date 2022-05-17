@@ -57,7 +57,8 @@ const adminController = {
         const divisionId = req.query.divisionId;
         const journey = req.query.journey ? req.query.journey : 1;
         const tournamentConsult = await Tournament.findAll();
-        if(tournamentConsult === null){
+        let matchWeekConsult;
+        if(tournamentConsult.length === 0){
             return res.render("errors/404.ejs",{pageVersion:'adm'})
         }
         const divisionConsult = await Division.findAll({
@@ -71,15 +72,24 @@ const adminController = {
                 divisionId: divisionId
             }
         });
-        const matchWeekConsult = await MatchWeek.findAll({
-            where:{
-                tournamentId: tournamentId,
-                divisionId: divisionId,
-                journey: journey
-            },
-            include: ['localTeam','visitedTeam']
-        });
-        // console.log(teamsConsult.length);
+        if(req.query.journey === "all"){
+            matchWeekConsult = await MatchWeek.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: divisionId,
+                },
+                include: ['localTeam','visitedTeam']
+            });
+        }else{
+            matchWeekConsult = await MatchWeek.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: divisionId,
+                    journey: journey
+                },
+                include: ['localTeam','visitedTeam']
+            });
+        }
         res.render('adminViews/fixture/fixtureFilter.ejs',{
             tournamentConsult,
             divisionConsult,

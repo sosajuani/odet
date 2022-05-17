@@ -1,0 +1,44 @@
+<div class="fixtureCont">
+    <h4>Fechas del torneo:  <%= tournamentId.name %> | División: <%= divisionId.name %> | Fecha: <%= locals.journey ? locals.journey : 1 %> </h4>
+    <% for( let i = 0; i < matchWeekConsult.length; i++ ) { %>
+        <div class="fixtureItem">
+            <div class="teamLastResult">
+                <div>
+                    <% if(matchWeekConsult[i].localTeam == null){ %> 
+                        <img src="/img/teams/default.png" alt="libre"/>
+                    <% }else{ %>  
+                        <img src="/img/teams/<%= matchWeekConsult[i].localTeam.avatars.image %>" alt="<%= matchWeekConsult[i].localTeam.name %>">
+                    <% } %> 
+                </div>
+                <div>
+                    <% if(matchWeekConsult[i].localTeam == null){ %> 
+                        Fecha libre
+                    <% }else{ %> 
+                        <%= matchWeekConsult[i].localTeam.name %> 
+                    <% } %> 
+                </div>
+            </div>
+            <div class="teamLastResultData">
+                <div>v</div>
+                <div>Horario: <%= matchWeekConsult[i].time %> hs</div>
+                <div>Fecha: <%= matchWeekConsult[i].date %></div>
+            </div>
+            <div class="teamLastResult">
+                <div>
+                    <% if(matchWeekConsult[i].visitedTeam == null){ %> 
+                        <img src="/img/teams/default.png" alt="libre"/>
+                    <% }else{ %> 
+                        <img src="/img/teams/<%= matchWeekConsult[i].visitedTeam.avatars.image %>" alt="<%= matchWeekConsult[i].visitedTeam.name %>">
+                    <% } %> 
+                </div>
+                <div>
+                    <% if(matchWeekConsult[i].visitedTeam == null){ %> 
+                        Fecha libre
+                    <% }else{ %>
+                        <%= matchWeekConsult[i].visitedTeam.name %> 
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>

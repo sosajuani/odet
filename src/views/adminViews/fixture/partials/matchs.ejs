@@ -9,7 +9,7 @@
                 <% for( let i = 0; i < teams; i++ ) { %>
                     <option <%= locals.journey == i+1 ? "selected" : null  %>  value="<%= i+1 %>"><%= i+1 %></option>
                 <% } %>
-                <option value="">Ver todas</option>
+                <option value="all">Ver todas</option>
             </select>
         </div>
     </div>

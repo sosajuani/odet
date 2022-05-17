@@ -10,6 +10,7 @@ const Statistic = db.Statistic;
 const Banner = db.Banner;
 const Sponsor = db.Sponsor;
 const MatchWeek = db.Matchweek;
+const Team = db.Team;
 
 const mainController = {
     home: async(req,res)=>{
@@ -120,14 +121,66 @@ const mainController = {
                 journey: 1,
             },
             include: [{association:'localTeam',include:['avatars']},{association:'visitedTeam',include:['avatars']}]
+        });
+        const teamsConsult = await Team.findAll({
+            where:{
+                tournamentId: tournamentId.id,
+                divisionId: divisionId.id
+            }
         })
-        console.log(matchWeekConsult[0].localTeam);
         res.render('userViews/pages/fixture/fixture.ejs',{
             tournamentConsult,
             divisionConsult,
             tournamentId,
             divisionId,
-            matchWeekConsult
+            matchWeekConsult,
+            teamsConsult
+        });
+    },
+    fixtureFilter: async(req,res)=>{
+        const tournamentId = req.query.tournamentId;
+        const divisionId = req.query.divisionId;
+        const journey = req.query.journey ? req.query.journey : 1;
+        const tournamentConsult = await Tournament.findAll();
+        let matchWeekConsult;
+        tournamentConsult.length == 0 ? res.render('errors/404.ejs',{pageVersion: 'user',errorMsg: 'No hay torneos registrados en la base de datos',redirect:''}) : null
+        const divisionConsult = await Division.findAll({
+            where: {
+                tournamentId: tournamentId
+            }
+        })
+        const teamsConsult = await Team.findAll({
+            where:{
+                tournamentId: tournamentId,
+                divisionId: divisionId
+            }
+        });
+        if(req.query.journey == "all"){
+            matchWeekConsult = await MatchWeek.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: divisionId,
+                },
+                include: [{association:'localTeam',include:['avatars']},{association:'visitedTeam',include:['avatars']}]
+            });
+        }else{
+            matchWeekConsult = await MatchWeek.findAll({
+                where:{
+                    tournamentId: tournamentId,
+                    divisionId: divisionId,
+                    journey: journey,
+                },
+                include: [{association:'localTeam',include:['avatars']},{association:'visitedTeam',include:['avatars']}]
+            });
+        }
+        res.render('userViews/pages/fixture/fixture.ejs',{
+            tournamentConsult,
+            divisionConsult,
+            tournamentId,
+            divisionId,
+            matchWeekConsult,
+            teamsConsult,
+            journey
         });
     },
     login: (req,res)=>{

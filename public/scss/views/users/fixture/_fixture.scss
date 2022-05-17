@@ -1,5 +1,12 @@
 @use '../../../utilities/colors' as c;
 @use "../../../utilities/mixin" as mix;
+.filterJourney{
+    background: c.$colorLightGray;
+    form{
+        @include mix.flexPosition(row,space-between,center);
+        padding: c.$rem1
+    }
+}
 .fixtureCont{
     padding: c.$rem1;
     border-radius: 5px;
