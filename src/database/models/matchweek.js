@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'divisionId',
         as: 'divisions'
       })
+      Matchweek.belongsTo(models.SuspendedMatch,{
+        foreignKey: 'suspendedMatchId',
+        as: 'suspendedMatch'
+      })
     }
   }
   Matchweek.init({
@@ -39,7 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     divisionId: DataTypes.INTEGER,
     date: DataTypes.DATEONLY,
     time: DataTypes.TIME,
-    journey: DataTypes.INTEGER
+    journey: DataTypes.INTEGER,
+    localResult: DataTypes.INTEGER,
+    visitedResult: DataTypes.INTEGER,
+    suspendedMatchId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Matchweek',

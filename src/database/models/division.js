@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'divisionId',
         as: 'statistics'
       });
-      Division.hasOne(models.ControlMatch,{
+      Division.hasOne(models.Matchweek,{
         foreignKey: 'divisionId',
-        as:'controlMatch'
+        as: 'matchWeek'
       })
     }
   }

@@ -5,7 +5,6 @@ const path = require('path');
 const express = require('express');
 const server = express();
 const {hashSync} = require('bcryptjs');
-const controlmatch = require('../src/database/models/controlmatch');
 
 const Rol = db.Rol;
 const Avatar = db.Avatar;
@@ -235,29 +234,6 @@ DB_DIALECT=mysql`;
                 tournamentId: 1,
                 tournamentCompleted: 1
             })
-            await ControlMatch.bulkCreate([
-                {
-                    tournamentId: 1,
-                    divisionsId: 1,
-                    matchCreated: 0,
-                    matchLimit: 190,
-                    date: 19
-                },
-                {
-                    tournamentId: 1,
-                    divisionsId: 2,
-                    matchCreated: 0,
-                    matchLimit: 15,
-                    date: 5
-                },
-                {
-                    tournamentId: 1,
-                    divisionsId: 1,
-                    matchCreated: 0,
-                    matchLimit: 15,
-                    date: 5
-                }
-            ])
             //team prueba
             let teamCreate = await Team.bulkCreate([
                 {

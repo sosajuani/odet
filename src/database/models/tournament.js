@@ -46,10 +46,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'tournamentId',
         as: 'awardStatistics'
       })
-      Tournament.hasOne(models.ControlMatch,{
-        foreignKey: 'tournamentId',
-        as: 'controlMatch'
-      })
     }
   }
   Tournament.init({

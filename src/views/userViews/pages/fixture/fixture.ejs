@@ -4,7 +4,11 @@
     <section class="gralCont">
         <%- include("partials/filter.ejs")  %> 
         <%- include("partials/filterJourney.ejs") %> 
-        <%- include("partials/match.ejs") %> 
+        <% if(matchWeekConsult.length === 0){ %> 
+            <div class="alert alert--warning">No existe esta jornada</div>
+        <% }else{ %> 
+            <%- include("partials/match.ejs") %> 
+        <% } %> 
     </section>
 </div>
 <%- include("../../partials/footer.ejs")  %> 

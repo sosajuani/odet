@@ -112,20 +112,20 @@ const mainController = {
                 tournamentId: tournamentConsult[0].id
             }
         })
-        const tournamentId = tournamentConsult[0];
-        const divisionId = divisionConsult[0];
+        const tournamentId = tournamentConsult[0].id;
+        const divisionId = divisionConsult[0].id;
         const matchWeekConsult = await MatchWeek.findAll({
             where:{
-                tournamentId: tournamentId.id,
-                divisionId: divisionId.id,
+                tournamentId: tournamentId,
+                divisionId: divisionId,
                 journey: 1,
             },
             include: [{association:'localTeam',include:['avatars']},{association:'visitedTeam',include:['avatars']}]
         });
         const teamsConsult = await Team.findAll({
             where:{
-                tournamentId: tournamentId.id,
-                divisionId: divisionId.id
+                tournamentId: tournamentId,
+                divisionId: divisionId
             }
         })
         res.render('userViews/pages/fixture/fixture.ejs',{

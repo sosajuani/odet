@@ -45,6 +45,19 @@ module.exports = {
       journey:{
         type: Sequelize.INTEGER,
       },
+      localResult:{
+        type: Sequelize.INTEGER,
+      },
+      visitedResult:{
+        type: Sequelize.INTEGER,
+      },
+      suspendedMatchId:{
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'SuspendedMatch',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
