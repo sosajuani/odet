@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as:'users'
       })
+      Player.hasOne(models.Card,{
+        foreignKey: 'playerId',
+        as: 'cards'
+      })
     }
   }
   Player.init({

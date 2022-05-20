@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       TypeCard.hasOne(models.Card,{
-        foreignKey: 'TypeCardId',
+        foreignKey: 'typeCardId',
         as:'cards'
       })
     }

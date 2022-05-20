@@ -58,10 +58,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'bestGoalKeeper',
         as: 'bestGoalKeeperConsult'
       })
-      User.hasOne(models.Card,{
-        foreignKey: 'userId',
-        as: 'cards'
-      })
     }
   }
   User.init({

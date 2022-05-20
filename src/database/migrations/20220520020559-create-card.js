@@ -8,17 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      TypeCardId: {
+      typeCardId: {
         type: Sequelize.INTEGER,
         references:{
           model: 'TypeCards',
           key: 'id'
         }
       },
-      userId: {
+      playerId: {
         type: Sequelize.INTEGER,
         references:{
-          model: 'Users',
+          model: 'Players',
           key: 'id'
         }
       },

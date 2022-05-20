@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Card.belongsTo(models.TypeCard,{
-        foreignKey: 'TypeCardId',
+        foreignKey: 'typeCardId',
         as: 'typeCards'
       })
-      Card.belongsTo(models.User,{
-        foreignKey: 'userId',
-        as: 'users'
+      Card.belongsTo(models.Player,{
+        foreignKey: 'playerId',
+        as: 'players'
       });
       Card.belongsTo(models.Matchweek,{
         foreignKey: 'matchId',
@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Card.init({
-    TypeCardId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    typeCardId: DataTypes.INTEGER,
+    playerId: DataTypes.INTEGER,
     matchId: DataTypes.INTEGER
   }, {
     sequelize,

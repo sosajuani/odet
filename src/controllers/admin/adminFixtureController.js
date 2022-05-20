@@ -1,7 +1,6 @@
 // const express = require('express');
 const db = require('../../database/models');
 const {validationResult} = require('express-validator');
-
 const User = db.User;
 const News = db.News;
 const Tournament = db.Tournament;
@@ -15,6 +14,7 @@ const MatchWeek = db.Matchweek;
 const Statistic = db.Statistic;
 const Banner = db.Banner;
 const ControlMatch = db.ControlMatch;
+const Card = db.Card;
 
 const adminController = {
     home: async(req,res)=>{
@@ -178,14 +178,21 @@ const adminController = {
         return res.redirect(`/admin/fixture/filter?tournamentId=${tournamentId}&divisionId=${divisionId}`)
     },
     matchDetail: async(req,res)=>{
-        const matchConsult = await MatchWeek.findByPk(req.params.id,{
+        const id=req.params.id;
+        const matchConsult = await MatchWeek.findByPk(id,{
             include: ['localTeam','visitedTeam']
         });
-        console.log(matchConsult);
         if(matchConsult === null){
             return res.render("errors/404.ejs",{pageVersion:'adm',msg: 'No se encontro registro'})
         }
-        res.render('adminViews/fixture/matchDetail.ejs',{matchConsult});
+        const cardConsult = await Card.findAll({
+            where:{
+                matchId: id
+            }
+        });
+        const prueba = await db.TypeCard.findAll()
+        console.log(prueba);
+        res.render('adminViews/fixture/matchDetail.ejs',{matchConsult,cardConsult});
     }
 }
 
