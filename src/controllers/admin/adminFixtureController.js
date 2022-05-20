@@ -147,7 +147,10 @@ const adminController = {
                     divisionId: teams[firstHalf[i]].divisionId,
                     date: "2022-05-14",
                     time: "15:00",
-                    journey:`${round+1}`
+                    journey:`${round+1}`,
+                    localResult: 0,
+                    visitedResult: 0,
+                    suspendedMatchId: 1
                 });
                 }
                 teamIndex.push(teamIndex.shift());
@@ -165,12 +168,24 @@ const adminController = {
                     divisionId: fixture2.divisionId,
                     date: fixture2.date,
                     time: fixture2.time,
-                    journey:fixture2.journey
+                    journey:fixture2.journey,
+                    localResult: fixture2.localResult,
+                    visitedResult: fixture2.visitedResult,
+                    suspendedMatchId: fixture2.suspendedMatchId
                })
             }
         }
-        console.log(fixture(teams));
         return res.redirect(`/admin/fixture/filter?tournamentId=${tournamentId}&divisionId=${divisionId}`)
+    },
+    matchDetail: async(req,res)=>{
+        const matchConsult = await MatchWeek.findByPk(req.params.id,{
+            include: ['localTeam','visitedTeam']
+        });
+        console.log(matchConsult);
+        if(matchConsult === null){
+            return res.render("errors/404.ejs",{pageVersion:'adm',msg: 'No se encontro registro'})
+        }
+        res.render('adminViews/fixture/matchDetail.ejs',{matchConsult});
     }
 }
 

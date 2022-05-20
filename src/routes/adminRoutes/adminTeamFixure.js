@@ -8,5 +8,6 @@ const validation = require('../../middleware/validation')
 router.get('/',adminFixtureController.home)
 router.get('/filter',adminFixtureController.filterTourDiv)
 router.post('/automatic',adminFixtureController.fixtureAutomatico)
+router.get('/match/:id',adminFixtureController.matchDetail)
 
 module.exports = router;

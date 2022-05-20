@@ -44,3 +44,33 @@
         }
     }
 }
+.dataTeams{
+    @include mix.flexPosition(row,center,center);
+    .dataIndividualTeam{
+        background: c.$colorLightGray;
+        border: 1px solid c.$colorGray;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        ul{
+            @include mix.flexPosition(column,center,center);
+            @include mix.ulReset();
+            .avatar{
+                width: 100px;
+                height: 100px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.dataMatch{
+    background: c.$colorLightGray;
+    border: 1px solid c.$colorGray;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    h5{
+        @include mix.titleReset();
+        font-size: 1.2rem;
+    }
+}

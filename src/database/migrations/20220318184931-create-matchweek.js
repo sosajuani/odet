@@ -54,7 +54,7 @@ module.exports = {
       suspendedMatchId:{
         type: Sequelize.INTEGER,
         references:{
-          model: 'SuspendedMatch',
+          model: 'SuspendedMatches',
           key: 'id'
         }
       },

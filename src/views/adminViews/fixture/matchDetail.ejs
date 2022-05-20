@@ -1,0 +1,37 @@
+<%- include("../../userViews/partials/head.ejs", {title: "Admin"}) %> 
+    <section class="adminCont">
+        <%- include("../partials/header.ejs") %>  
+        <div class="contGralAdmin gralCont">
+            <h4 class="titlePageAdm">Información sobre el partido: <%= matchConsult.localTeam.name %> v <%= matchConsult.visitedTeam.name %></h4>
+            <div class="dataTeams">
+                <div class="dataIndividualTeam">
+                    <ul>
+                        <li class="avatar"><img src="/img/teams/default.png" alt="<%= matchConsult.localTeam.name %>"></li>
+                        <li>Nombre: <%= matchConsult.localTeam.name %></li>
+                        <li>Goles: <%= matchConsult.localTeam.localResult %></li>
+                        <li>Tarjetas amarillas: x</li>
+                        <li>Tarjetas rojas: x</li>
+                    </ul>
+                </div>
+                <div class="dataIndividualTeam">
+                    <ul>
+                        <li class="avatar"><img src="/img/teams/default.png" alt="<%= matchConsult.visitedTeam.name %>"></li>
+                        <li>Nombre: <%= matchConsult.visitedTeam.name %></li>
+                        <li>Goles: <%= matchConsult.localTeam.visitedResult %>0</li>
+                        <li>Tarjetas amarillas: x</li>
+                        <li>Tarjetas rojas: x</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dataMatch">
+                <h5>Información actual:</h5>
+                <ul>
+                    <li>Estado: Sin comenzar</li>
+                    <li>Tarjetas: 0</li>
+                    <li>Reclamos: 0</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -155,5 +155,7 @@ sequelize model:generate --name Sponsor --attributes image:string,active:integer
 sequelize model:generate --name Config --attributes logoType:integer,logoText:string,logoImg:string,maintenance:integer
 
 sequelize model:generate --name SuspendedMatch --attributes type:string
+sequelize model:generate --name TypeCard --attributes type:string
+sequelize model:generate --name Card --attributes TypeCardId:integer,userId:integer,matchId:integer
 
 mysqldump -u root -p odet > C:\Users\guns-\Documents\db\pruebas.sql

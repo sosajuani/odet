@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'suspendedMatchId',
         as: 'suspendedMatch'
       })
+      Matchweek.hasOne(models.Card,{
+        foreignKey: 'matchId',
+        as:'cards'
+      })
     }
   }
   Matchweek.init({

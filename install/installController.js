@@ -22,7 +22,8 @@ const Banner = db.Banner;
 const BannerActive = db.BannerActive;
 const Sponsor = db.Sponsor;
 const SponsorActive = db.SponsorActive;
-const ControlMatch = db.ControlMatch;
+const SuspendedMatch = db.SuspendedMatch;
+const CardType = db.CardType;
 
 const adminController = {
     home: (req,res)=>{
@@ -902,6 +903,16 @@ DB_DIALECT=mysql`;
                     }
                 }
             }
+            await SuspendedMatch.bulkCreate([
+                {type: 'Sin comenzar'},
+                {type: 'En curso'},
+                {type: 'Suspendido'},
+                {type: 'Finalizado'},
+            ]);
+            await CardType.bulkCreate([
+                {type:'Amarilla'},
+                {type:'Roja'}
+            ])
         }catch(e){
             console.log(e);
         }

@@ -25,12 +25,24 @@
             </div>
             <div class="team"><%= matchWeekConsult[i].localTeam === null ? "Libre" : matchWeekConsult[i].localTeam.name %></div>
             <div class="info">
+                <% if(matchWeekConsult[i].suspendedMatchId === 1){ %> 
                 <div>vs</div>
+                <% } %> 
+                <% if(matchWeekConsult[i].suspendedMatchId === 2){ %> 
+                    <div>-En curso-</div>
+                <% } %> 
+                <% if(matchWeekConsult[i].suspendedMatchId === 3){ %> 
+                    <div>-Suspendido-</div>
+                <% } %> 
+                <% if(matchWeekConsult[i].suspendedMatchId === 4){ %> 
+                    <div><%= matchWeekConsult[i].localResult %> - <%= matchWeekConsult[i].visitedResult %></div>
+                <% } %> 
             </div>
             <div class="team"><%= matchWeekConsult[i].visitedTeam === null ? "Libre" : matchWeekConsult[i].visitedTeam.name %></div>
             <div class="info infoDate">
                 <div>15/5/22</div>
                 <div>15:00hs</div>
+                <a href="/admin/fixture/match/<%= matchWeekConsult[i].id %>" class="btn btn--blue">Entrar</a>
             </div>
         </div>
     <% } %>
